@@ -1,3 +1,28 @@
+<script>
+    import { Gallery } from 'flowbite-svelte';
+    const images = [
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_2.webp' },
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_3.webp' },
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_4.webp' },
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_5.webp' },
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_6.webp' },
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_7.webp' },
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_8.webp' },
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_9.webp' },
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_10.webp' },
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_11.webp' },
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_12.webp' },
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_13.webp' },
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_14.webp' },
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_15.webp' },
+      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_16.webp' }
+    ];
+</script>
+
+<style>
+</style>
+
+
 <section class="bg-white dark:bg-gray-900">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
         <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Online Sketchup Classes, Zoom Tutors & Professional Services</h1>
@@ -12,23 +37,5 @@
         </div>
     </div>
 </section>
-
-<script>
-    import { Gallery } from 'flowbite-svelte';
-    const images = [
-      { alt: 'erbology', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg' },
-      { alt: 'shoes', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg' },
-      { alt: 'small bag', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg' },
-      { alt: 'plants', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg' },
-      { alt: 'watch', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg' },
-      { alt: 'shoe', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg' },
-      { alt: 'cream', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg' },
-      { alt: 'small bag', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg' },
-      { alt: 'lamp', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg' },
-      { alt: 'toiletbag', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg' },
-      { alt: 'playstation', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg' },
-      { alt: 'bag', src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg' }
-    ];
-  </script>
   
-  <Gallery items={images} class="gap-4 grid-cols-2 md:grid-cols-3" />
+<Gallery items={images} class="gap-4 p-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" imgClass='h-auto m-auto max-w-full aspect-square rounded-3xl'/>
