@@ -38,6 +38,10 @@
       address: 'the UK',
       datetime: '2022-03-25'
     };
+
+    //Tutors
+    import { Avatar, Tooltip } from 'flowbite-svelte';
+
 </script>
 
 <style>
@@ -61,11 +65,8 @@
   
 <!-- <Gallery items={images} class="gap-4 p-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" imgClass='h-auto m-auto max-w-full aspect-square rounded-3xl'/> -->
 
-
   
-<RatingComment {comment} helpfullink="/" abuselink="/">
-    <p class="mb-2 font-light text-gray-500 dark:text-gray-400">This is my third Invicta Pro Diver. They are just fantastic value for money. This one arrived yesterday and the first thing I did was set the time, popped on an identical strap from another Invicta and went in the shower with it to test the waterproofing.... No problems.</p>
-    <p class="mb-3 font-light text-gray-500 dark:text-gray-400">It is obviously not the same build quality as those very expensive watches. But that is like comparing a Citroën to a Ferrari. This watch was well under £100! An absolute bargain.</p>
-    <a href="/" class="block mb-5 text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"> Read more </a>
-    <svelte:fragment slot="evaluation">19 people found this helpful</svelte:fragment>
-</RatingComment>
+  <Avatar data-name="Jese Leos" rounded src="/images/profile-picture-1.webp" />
+  <Avatar data-name="Robert Gouth" rounded src="/images/profile-picture-2.webp" />
+  <Avatar data-name="Bonnie Green" rounded src="/images/profile-picture-3.webp" />
+  <Tooltip triggeredBy="[data-name]" on:show={(e) => (name = e.target.dataset.name)}>{name}</Tooltip>
