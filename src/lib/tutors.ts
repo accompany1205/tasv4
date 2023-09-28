@@ -1,73 +1,118 @@
+enum Status {
+    Active,
+    Full,
+    OnHold,
+  }
+
 export type Tutor = {
+    //Personal Info
+    id: string;
+
+    // first: string;
+    // last: string;
     name: string;
-    subjects: string;
+    // email: string;
+    // phone: string;
+
+
+    // status: Status;
+    // statusNotes: string;
     hourlyRate: number;
+
+    // location: string;
+    // availability: string;
+    // aboutMe: string;
+
+    //Web
+    title: string;
+    // description: string;
+    // specialOffer: string;
+
+    //Services
+    // software: string[];
+    // services: string[];
+
+    //Testimonials
+    // testimonials: string[];
   };
   
 export const tutors: Tutor[] = [
     {
+        id: '2652',
         name: 'Tim D',
-        subjects: 'SketchUp & Solid WORKS Introductory Tutor & 3D Printing',
+        title: 'SketchUp & Solid WORKS Introductory Tutor & 3D Printing',
         hourlyRate: 40
     },
     {
+        id: '12112',
         name: 'Aims A',
-        subjects: 'SketchUp Beginner Tutor and VRAY Rendering Services',
+        title: 'SketchUp Beginner Tutor and VRAY Rendering Services',
         hourlyRate: 40
     },
     {
+        id: '24291',
         name: 'Vladamir S',
-        subjects: 'Engineering 3D Visualization and Sketchup Training',
+        title: 'Engineering 3D Visualization and Sketchup Training',
         hourlyRate: 40
     },
     {
+        id: '1619',
         name: 'Shanthi O',
-        subjects: 'Sketchup Interior 3D Modelling and Rendering Services',
+        title: 'Sketchup Interior 3D Modelling and Rendering Services',
         hourlyRate: 45
     },
     {
+        id: '12081',
         name: 'Kyle T',
-        subjects: 'Sketchup and Layout Tutor for Beginners to Intermediate',
+        title: 'Sketchup and Layout Tutor for Beginners to Intermediate',
         hourlyRate: 45
     },
     {
+        id: '12113',
         name: 'Michael H',
-        subjects: 'AutoCAD Manager, Drafting Specialist and Sketchup Tutor',
+        title: 'AutoCAD Manager, Drafting Specialist and Sketchup Tutor',
         hourlyRate: 45
     },
     {
+        id: '18035',
         name: 'Joshua B',
-        subjects: 'Custom 3D Model Drawing Tutor/Service for Architecture &more',
+        title: 'Custom 3D Model Drawing Tutor/Service for Architecture &more',
         hourlyRate: 45
     },
     {
+        id: '12115',
         name: 'Juan S',
-        subjects: '3D Multi-Program & Multidisciplinary Tutor (English/Spanish)',
+        title: '3D Multi-Program & Multidisciplinary Tutor (English/Spanish)',
         hourlyRate: 50
     },
     {
+        id: '20684',
         name: 'Paul H',
-        subjects: 'Sketchup Trainer for Terrain, Landscape & Garden Design',
+        title: 'Sketchup Trainer for Terrain, Landscape & Garden Design',
         hourlyRate: 75
     },
     {
+        id: '2515',
         name: 'Geoff B',
-        subjects: 'Sketchup Architectural & Custom 3D Modeling Tutor / Services',
+        title: 'Sketchup Architectural & Custom 3D Modeling Tutor / Services',
         hourlyRate: 80
     },
     {
+        id: '2972',
         name: 'Curt A',
-        subjects: 'Architectural Designer/3D Visualizer/3D Modeling & Rendering',
+        title: 'Architectural Designer/3D Visualizer/3D Modeling & Rendering',
         hourlyRate: 80
     },
     {
+        id: '18836',
         name: 'Matthew W',
-        subjects: 'Advanced AutoCAD and Sketchup Tutor for Architecture',
+        title: 'Advanced AutoCAD and Sketchup Tutor for Architecture',
         hourlyRate: 100
     },
     {
+        id: '22530',
         name: 'Joanne S',
-        subjects: 'Interior Design Training with Sketchup and Layout',
+        title: 'Interior Design Training with Sketchup and Layout',
         hourlyRate: 100
     }
 ]
