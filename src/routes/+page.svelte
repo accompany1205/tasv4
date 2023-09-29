@@ -1,16 +1,21 @@
 <script>
-    import PageBase from '$lib/PageBase.svelte';
+	//Components
+	import TopHero from '$lib/components/TopHero.svelte';
 
-    //Components
-    import HeaderHero from '$lib/components/HeaderHero.svelte';
-    import TutorList from '$lib/components/TutorList.svelte';
-    import Ratings from '$lib/components/Ratings.svelte';
-    import ProductGallery from '$lib/components/ProductGallery.svelte';
-    import GoogleRatings from '$lib/components/GoogleRatings.svelte';
+	import TutorList from '$lib/components/TutorList.svelte';
+	import TutorSwipeBlock from '$lib/components/swiper/TutorSwipeBlock.svelte';
+	import Ratings from '$lib/components/Ratings.svelte';
+	import ProductGallery from '$lib/components/ProductGallery.svelte';
+	import GoogleRatings from '$lib/components/GoogleRatings.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+
+	import { tutors } from '$lib/tutors';
 </script>
 
+<TopHero>
+	<TutorSwipeBlock tutors="{tutors.slice(0, 3)}" />
+</TopHero>
 
-<PageBase> 
-  <HeaderHero></HeaderHero>
-  <TutorList></TutorList>
-</PageBase> 
+<hr class="m-auto w-5/6 pb-8" />
+<TutorList />
+<Footer />
