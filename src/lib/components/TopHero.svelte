@@ -1,21 +1,26 @@
 <section class="bg-[#e8e8e8] pb-8 dark:bg-gray-900">
-	<h1
-		class="
-    mb-8
-    bg-nile-blue-900
-    py-8
-    text-center
-    text-3xl
-    font-extrabold
-    leading-none
-    tracking-tight
-    text-white
-    md:text-5xl
-    lg:text-6xl
-   "
+	<div
+		class="mb-8
+                bg-nile-blue-900
+            py-8"
 	>
-		Online Sketchup Classes, Zoom Tutors & Professional Services
-	</h1>
+		<h1
+			class="
+            m-auto
+            max-w-6xl
+            text-center
+            text-3xl
+            font-extrabold
+            leading-none
+            tracking-tight
+            text-white
+            md:text-5xl
+            lg:text-6xl
+           "
+		>
+			Online Sketchup Classes, Zoom Tutors & Professional Services
+		</h1>
+	</div>
 	<div class="mx-auto mb-6 max-w-screen-lg px-0 text-center">
 		<span
 			class="my-8 block text-lg font-normal text-gray-500 dark:text-gray-400 sm:px-16 lg:px-48 lg:text-xl"
