@@ -8,7 +8,7 @@
 
 <Card padding="sm" class="mx-4 mb-0 flex-grow-[1] {_class}">
 	<div class="flex flex-col items-center pb-4">
-		<Avatar size="lg" src="src\lib\assets\tutors\{tutor.id}\hs.webp" />
+		<Avatar size="lg" src="../assets/tutors/{tutor.id}/hs.webp" />
 		<h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white"
 			>{tutor.name} • ${tutor.hourlyRate}/hr</h5
 		>
@@ -22,3 +22,6 @@
 		</div>
 	</div>
 </Card>
+
+<!-- src\lib\assets\tutors\1619\hs.webp -->
+<!-- src\lib\components\TutorCard.svelte -->
