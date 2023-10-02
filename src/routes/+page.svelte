@@ -15,6 +15,7 @@
 <svelte:head>
 	<title>Tutors and Services</title>
 </svelte:head>
+
 <TopHero>
 	<TutorSwipeBlock tutors="{tutors.slice(0, 3)}" />
 </TopHero>
