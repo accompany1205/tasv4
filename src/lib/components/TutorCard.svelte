@@ -8,10 +8,8 @@
 
 <Card padding="sm" class="mx-4 mb-0 flex-grow-[1] {_class}">
 	<div class="flex flex-col items-center pb-4">
-		<Avatar size="lg" src="../assets/tutors/{tutor.id}/hs.webp" />
-		<h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white"
-			>{tutor.name} • ${tutor.hourlyRate}/hr</h5
-		>
+		<Avatar size="lg" src={`/lib/assets/tutors/2652/hs.webp`} />
+		<h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{tutor.name} • ${tutor.hourlyRate}/hr</h5>
 		<span class="text-center text-sm text-gray-500 dark:text-gray-400">{tutor.title}</span>
 		<div class="mt-4 flex space-x-3 lg:mt-6">
 			<Button
