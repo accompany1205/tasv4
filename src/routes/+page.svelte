@@ -8,6 +8,7 @@
 	import ProductGallery from '$lib/components/ProductGallery.svelte';
 	import GoogleRatings from '$lib/components/GoogleRatings.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Services from '$lib/blocks/frontpage/Services.svelte';
 
 	import { tutors } from '$lib/tutors';
 </script>
@@ -18,6 +19,7 @@
 <TopHero>
 	<TutorSwipeBlock tutors="{tutors.slice(0, 3)}" />
 </TopHero>
+<Services/>
 
 <hr class="m-auto w-5/6 pb-8" />
 <TutorList />
