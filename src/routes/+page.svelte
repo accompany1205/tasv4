@@ -8,7 +8,9 @@
 	import ProductGallery from '$lib/components/ProductGallery.svelte';
 	import GoogleRatings from '$lib/components/GoogleRatings.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import Services from '$lib/blocks/frontpage/Services.svelte';
+	import GeneralServices from '$lib/blocks/frontpage/GeneralServices.svelte';
+	import GeneralServicesDetail from '$lib/blocks/frontpage/GeneralServicesDetail.svelte';
+	import SketchupServices from '$lib/blocks/frontpage/SketchupServices.svelte';
 
 	import { tutors } from '$lib/tutors';
 </script>
@@ -19,7 +21,9 @@
 <TopHero>
 	<TutorSwipeBlock tutors="{tutors.slice(0, 3)}" />
 </TopHero>
-<Services/>
+<GeneralServices/>
+<GeneralServicesDetail/>
+<SketchupServices/>
 
 <hr class="m-auto w-5/6 pb-8" />
 <TutorList />
