@@ -1,3 +1,13 @@
+<style>
+	swiper-container {
+		--swiper-theme-color: #61ce70;
+		--swiper-pagination-bottom: 8px;
+		--swiper-pagination-padding: 32px;
+		--swiper-pagination-bullet-width: 16px;
+		--swiper-pagination-bullet-height: 16px;
+	}
+</style>
+
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { Card, Button, Toggle } from 'flowbite-svelte';
@@ -5,36 +15,37 @@
 	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
 
 	import type { Tutor } from '$lib/tutors.ts';
-	
+
 	let _class = '';
-	export {_class as class};
+	export { _class as class };
 	export let tutor: Tutor;
-	
+
 	let vCard = false;
 
-	const autoplay = '{delay:1500}'
+	const autoplay = '{delay:1500}';
 	let slider: HTMLElement;
 	function dohickey(e: CustomEvent) {
-		if (typeof e.detail == "number") {
-			return
+		if (typeof e.detail == 'number') {
+			return;
 		} else {
 			// WARN: Incredibly Brittle
-			const box = Array.from(e.detail[0]?.slides[e.detail[0].activeIndex].children).filter((e) => {
-				// @ts-ignore
-				return e.classList.contains("svelte-lightbox-thumbnail")
-			})
+			const box = Array.from(e.detail[0]?.slides[e.detail[0].activeIndex].children).filter(
+				(e) => {
+					// @ts-ignore
+					return e.classList.contains('svelte-lightbox-thumbnail');
+				},
+			);
 			// @ts-ignore
 			box[0]?.click();
 		}
 	}
 </script>
 
-
-<Card img="/" reverse="{vCard}" class="mb-4 mx-auto {_class}" padding="none">
+<Card img="/" reverse="{vCard}" class="mx-auto mb-4 {_class}" padding="none">
 	<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
-	<swiper-container 
+	<swiper-container
 		pagination="true"
-		effect='flip'
+		effect="flip"
 		pagination-clickable="true"
 		class=" mb-0"
 		nested="true"
@@ -43,10 +54,8 @@
 		prevent-clicks="false"
 		prevent-clicks-propagation="false"
 		edge-swipe-detection="true"
-		
-		on:click={dohickey}
-		
-		>
+		on:click="{dohickey}"
+	>
 		<swiper-slide>
 			<Lightbox on:click>
 				<img class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" />
@@ -77,14 +86,3 @@
 		</Button>
 	</div>
 </Card>
-
-<style>
-	swiper-container {
-		--swiper-theme-color: #61ce70;
-		--swiper-pagination-bottom: 8px;
-		--swiper-pagination-padding: 32px;
-		--swiper-pagination-bullet-width:  16px;
-		--swiper-pagination-bullet-height: 16px;
-
-	}
-</style>

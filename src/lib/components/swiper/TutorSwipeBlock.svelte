@@ -3,16 +3,16 @@
 	import TutorCard from '$lib/components/TutorCard.svelte';
 	export let tutors: Tutor[];
 	const breakpoints = '{"320": {"slidesPerView": 1}, "1440":{"slidesPerView": 2}}';
-	const autoplay = '{delay:3000}'
+	const autoplay = '{delay:3000}';
 </script>
 
-<div class="h-[550px] swiper mb-8">
+<div class="swiper mb-8 h-[550px]">
 	<swiper-container
 		breakpoints="{breakpoints}"
-		effect='slide'
-
+		effect="slide"
 		loop="true"
-		touch-start-prevent-default="false" >
+		touch-start-prevent-default="false"
+	>
 		{#each tutors as tutor}
 			<swiper-slide>
 				<div class="mx-8 w-auto flex-shrink-0">

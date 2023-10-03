@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 swiper-container::part(container) {
-    padding-bottom: var(--swiper-pagination-padding, 0px);
+	padding-bottom: var(--swiper-pagination-padding, 0px);
 }

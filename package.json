@@ -11,7 +11,7 @@
 		"lint": "prettier --write . --plugin=prettier-plugin-svelte --plugin=prettier-plugin-tailwindcss",
 		"lint-check": "prettier --check . --plugin=prettier-plugin-svelte --plugin=prettier-plugin-tailwindcss",
 		"make-seed": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./directus/make-seed.ps1",
-		"apply-seed": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./directus/apply-seed.ps1" 
+		"apply-seed": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./directus/apply-seed.ps1"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
