@@ -1,7 +1,7 @@
 <div class="py-4">
     <h3 class="text-3xl font-black  border-emerald-400 border-b-4 py-4 pl-4">Types of Service</h3>
-    <div class="flex  flex-wrap gap-4 m-2 text-white">
-        <div class="card flex-shrink-0 aspect-square bg-nile-blue-900 p-4 max-w-xs mx-auto min-h-[12rem]">
+    <div class="flex flex-wrap gap-4 m-2 text-white">
+        <div class="card flex-shrink-0 aspect-square bg-nile-blue-900 p-4 max-w-xs mx-auto w-full">
             <h4 class="text-2xl mb-2 text-center font-black">Tutoring</h4>
             <svg style="fill: white; width: 50px; height: 50px; margin: auto;" aria-hidden="true" class="e-font-icon-svg e-fas-hands-helping" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg">
                 <path d="M488 192H336v56c0 39.7-32.3 72-72 72s-72-32.3-72-72V126.4l-64.9 39C107.8 176.9 96 197.8 96 220.2v47.3l-80 46.2C.7 322.5-4.6 342.1 4.3 357.4l80 138.6c8.8 15.3 28.4 20.5 43.7 11.7L231.4 448H368c35.3 0 64-28.7 64-64h16c17.7 0 32-14.3 32-32v-64h8c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24zm147.7-37.4L555.7 16C546.9.7 527.3-4.5 512 4.3L408.6 64H306.4c-12 0-23.7 3.4-33.9 9.7L239 94.6c-9.4 5.8-15 16.1-15 27.1V248c0 22.1 17.9 40 40 40s40-17.9 40-40v-88h184c30.9 0 56 25.1 56 56v28.5l80-46.2c15.3-8.9 20.5-28.4 11.7-43.7z"></path>
@@ -12,7 +12,7 @@
                 Learn only what you need for your specific projects, and nothing more!
             </p>
         </div>
-        <div class="card flex-shrink-0 aspect-square bg-nile-blue-900 p-4 max-w-xs mx-auto min-h-[12rem]">
+        <div class="card flex-shrink-0 aspect-square bg-nile-blue-900 p-4 max-w-xs mx-auto w-full">
             <h4 class="text-2xl mb-2 text-center font-black">Collaborative</h4>
             <svg style="fill: white; width: 50px; height: 50px; margin: auto;" aria-hidden="true" class="e-font-icon-svg e-fas-people-carry" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="M128 96c26.5 0 48-21.5 48-48S154.5 0 128 0 80 21.5 80 48s21.5 48 48 48zm384 0c26.5 0 48-21.5 48-48S538.5 0 512 0s-48 21.5-48 48 21.5 48 48 48zm125.7 372.1l-44-110-41.1 46.4-2 18.2 27.7 69.2c5 12.5 17 20.1 29.7 20.1 4 0 8-.7 11.9-2.3 16.4-6.6 24.4-25.2 17.8-41.6zm-34.2-209.8L585 178.1c-4.6-20-18.6-36.8-37.5-44.9-18.5-8-39-6.7-56.1 3.3-22.7 13.4-39.7 34.5-48.1 59.4L432 229.8 416 240v-96c0-8.8-7.2-16-16-16H240c-8.8 0-16 7.2-16 16v96l-16.1-10.2-11.3-33.9c-8.3-25-25.4-46-48.1-59.4-17.2-10-37.6-11.3-56.1-3.3-18.9 8.1-32.9 24.9-37.5 44.9l-18.4 80.2c-4.6 20 .7 41.2 14.4 56.7l67.2 75.9 10.1 92.6C130 499.8 143.8 512 160 512c1.2 0 2.3-.1 3.5-.2 17.6-1.9 30.2-17.7 28.3-35.3l-10.1-92.8c-1.5-13-6.9-25.1-15.6-35l-43.3-49 17.6-70.3 6.8 20.4c4.1 12.5 11.9 23.4 24.5 32.6l51.1 32.5c4.6 2.9 12.1 4.6 17.2 5h160c5.1-.4 12.6-2.1 17.2-5l51.1-32.5c12.6-9.2 20.4-20 24.5-32.6l6.8-20.4 17.6 70.3-43.3 49c-8.7 9.9-14.1 22-15.6 35l-10.1 92.8c-1.9 17.6 10.8 33.4 28.3 35.3 1.2.1 2.3.2 3.5.2 16.1 0 30-12.1 31.8-28.5l10.1-92.6 67.2-75.9c13.6-15.5 19-36.7 14.4-56.7zM46.3 358.1l-44 110c-6.6 16.4 1.4 35 17.8 41.6 16.8 6.6 35.1-1.7 41.6-17.8l27.7-69.2-2-18.2-41.1-46.4z"></path>
             </svg>
@@ -21,7 +21,7 @@
                 More communication increases our understanding of your project.
             </p>
         </div>
-        <div class="card flex-shrink-0 aspect-square bg-nile-blue-900 p-4 max-w-xs mx-auto min-h-[12rem]">
+        <div class="card flex-shrink-0 aspect-square bg-nile-blue-900 p-4 max-w-xs mx-auto w-full">
             <h4 class="text-2xl mb-2 text-center font-black">Contract</h4>
             <svg style="fill: white; width: 50px; height: 50px; margin: auto;" aria-hidden="true" class="e-font-icon-svg e-fas-pencil-ruler" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M109.46 244.04l134.58-134.56-44.12-44.12-61.68 61.68a7.919 7.919 0 0 1-11.21 0l-11.21-11.21c-3.1-3.1-3.1-8.12 0-11.21l61.68-61.68-33.64-33.65C131.47-3.1 111.39-3.1 99 9.29L9.29 99c-12.38 12.39-12.39 32.47 0 44.86l100.17 100.18zm388.47-116.8c18.76-18.76 18.75-49.17 0-67.93l-45.25-45.25c-18.76-18.76-49.18-18.76-67.95 0l-46.02 46.01 113.2 113.2 46.02-46.03zM316.08 82.71l-297 296.96L.32 487.11c-2.53 14.49 10.09 27.11 24.59 24.56l107.45-18.84L429.28 195.9 316.08 82.71zm186.63 285.43l-33.64-33.64-61.68 61.68c-3.1 3.1-8.12 3.1-11.21 0l-11.21-11.21c-3.09-3.1-3.09-8.12 0-11.21l61.68-61.68-44.14-44.14L267.93 402.5l100.21 100.2c12.39 12.39 32.47 12.39 44.86 0l89.71-89.7c12.39-12.39 12.39-32.47 0-44.86z"></path>
             </svg>
