@@ -6,8 +6,8 @@
 	const autoplay = '{delay:3000}'
 </script>
 
-<div class="h-[300px] swiper">
-	<swiper-container height="300px" breakpoints="{breakpoints}" autoplay="{autoplay}" effect='slide' grab-cursor="true"  loop="true">
+<div class="h-[550px] swiper mb-8">
+	<swiper-container  breakpoints="{breakpoints}"  effect='slide' grab-cursor="true"  loop="true" >
 		{#each tutors as tutor}
 			<swiper-slide>
 				<div class="mx-8 w-auto flex-shrink-0">

@@ -1,31 +1,36 @@
-<style>
-	swiper-container {
-		--swiper-theme-color: #61ce70;
-	}
-</style>
-
 <script lang="ts">
 	import { Card, Button, Toggle } from 'flowbite-svelte';
 	import { ArrowRightOutline } from 'flowbite-svelte-icons';
 
 	import type { Tutor } from '$lib/tutors.ts';
+	
+	let _class = '';
+	export {_class as class};
 	export let tutor: Tutor;
-
+	
 	let vCard = false;
+
+	const autoplay = '{delay:1500}'
 </script>
 
-<div>
-	<Card img="/" reverse="{vCard}" class="mb-4">
-		<swiper-container pagination="true" pagination-dynamic-bullets="true">
-			<swiper-slide><img src="/tutors/{tutor.id}/hs.webp" alt="" /></swiper-slide>
-			<swiper-slide><img src="src/lib/assets/sketchup/sketchup_1.webp" alt="" /></swiper-slide
-			>
-			<swiper-slide><img src="/tutors/{tutor.id}/hs.webp" alt="" /></swiper-slide>
-		</swiper-container>
 
-		<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-			>{tutor.name} • ${tutor.hourlyRate}/hr</h5
-		>
+<Card img="/" reverse="{vCard}" class="mb-4 mx-auto {_class}" padding="none">
+	<swiper-container pagination="true" autoplay="{autoplay}" effect='flip' pagination-clickable="true" class=" mb-0">
+		<swiper-slide>
+			<img class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" />
+		</swiper-slide>
+		<swiper-slide>
+			<img class="rounded-md" src="src/lib/assets/sketchup/sketchup_1.webp" alt="" />
+		</swiper-slide>
+		<swiper-slide>
+			<img class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" />
+		</swiper-slide>
+	</swiper-container>
+
+	<div class="p-4 pt-2">
+		<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+			{tutor.name} • ${tutor.hourlyRate}/hr
+		</h5>
 		<p class="mb-3 font-normal leading-tight text-gray-700 dark:text-gray-400">{tutor.title}</p>
 		<Button
 			class="duration-250 transform border-2 border-solid border-emerald-400 text-black transition-transform ease-in-out hover:bg-alabaster-50 active:bg-alabaster-50"
@@ -33,5 +38,16 @@
 		>
 			Learn More <ArrowRightOutline class="ml-2 h-3.5 w-3.5 text-black" />
 		</Button>
-	</Card>
-</div>
+	</div>
+</Card>
+
+<style>
+	swiper-container {
+		--swiper-theme-color: #61ce70;
+		--swiper-pagination-bottom: 8px;
+		--swiper-pagination-padding: 32px;
+		--swiper-pagination-bullet-width:  16px;
+		--swiper-pagination-bullet-height: 16px;
+
+	}
+</style>
