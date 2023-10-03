@@ -3,7 +3,7 @@
 	export let sources = [''];
 </script>
 
-<div class="m-auto grid max-w-md grid-cols-2 gap-1 p-4">
+<div class="m-auto grid max-w-md min-h-[20rem] grid-cols-2 gap-1 p-4">
 	{#each sources as pic_src}
 		<Lightbox>
 			<picture

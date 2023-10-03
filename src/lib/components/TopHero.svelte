@@ -59,7 +59,7 @@
 						></path>
 					</svg>
 				</a>
-				<TutorSwipeBlock tutors="{tutors.slice(0, 3)}" />
+				<TutorSwipeBlock tutors="{tutors.slice(0, 6)}" />
 			</div>
 			<SketchupLightboxGrid />
 		</div>
