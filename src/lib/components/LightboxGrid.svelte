@@ -1,36 +1,35 @@
 <script lang="ts">
-    import { 
-        Lightbox,
-        LightboxGallery,
-        GalleryThumbnail,
-        GalleryImage
-    } from 'svelte-lightbox'
-    export let sources = [''];
+	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
+	export let sources = [''];
 </script>
 
-<div class="grid grid-cols-2 gap-1 m-auto p-4 max-w-md ">
-    {#each sources as pic_src}
-        <Lightbox>
-            <picture slot="thumbnail" class="max-w-xs bg-pink-500 aspect-square overflow-hidden block">
-                <img class="min-h-full min-w-full object-cover object-center"
-                srcset="{pic_src}"
-                alt="sketchup"
-                decoding="async"
-                width="240"
-                style="content-visibility:auto"
-                >
-            </picture>
-            <picture class="">
-                <img 
-                srcset="{pic_src}"
-                alt="sketchup"
-                decoding="async"
-                width="1200"
-                style="content-visibility:auto"
-                >
-            </picture>
-        </Lightbox>
-    {/each}
+<div class="m-auto grid max-w-md grid-cols-2 gap-1 p-4">
+	{#each sources as pic_src}
+		<Lightbox>
+			<picture
+				slot="thumbnail"
+				class="block aspect-square max-w-xs overflow-hidden bg-pink-500"
+			>
+				<img
+					class="min-h-full min-w-full object-cover object-center"
+					srcset="{pic_src}"
+					alt="sketchup"
+					decoding="async"
+					width="240"
+					style="content-visibility:auto"
+				/>
+			</picture>
+			<picture class="">
+				<img
+					srcset="{pic_src}"
+					alt="sketchup"
+					decoding="async"
+					width="1200"
+					style="content-visibility:auto"
+				/>
+			</picture>
+		</Lightbox>
+	{/each}
 </div>
 
 <!-- <LightboxGallery>

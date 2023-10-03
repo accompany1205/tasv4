@@ -21,11 +21,11 @@
 <svelte:head>
 	<title>Tutors and Services</title>
 </svelte:head>
-<TopHero/>
-<GeneralServices/>
-<GeneralServicesDetail/>
-<SketchupServices/>
-<TutorGrid/>
+<TopHero />
+<GeneralServices />
+<GeneralServicesDetail />
+<SketchupServices />
+<TutorGrid />
 
 <hr class="m-auto w-5/6 pb-8" />
 <TutorList />
