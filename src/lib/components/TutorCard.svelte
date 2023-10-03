@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { Card, Button, Toggle } from 'flowbite-svelte';
 	import { ArrowRightOutline } from 'flowbite-svelte-icons';
+	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
 
 	import type { Tutor } from '$lib/tutors.ts';
 	
@@ -11,19 +13,54 @@
 	let vCard = false;
 
 	const autoplay = '{delay:1500}'
+	let slider: HTMLElement;
+	function dohickey(e: CustomEvent) {
+		if (typeof e.detail == "number") {
+			return
+		} else {
+			// WARN: Incredibly Brittle
+			const box = Array.from(e.detail[0]?.slides[e.detail[0].activeIndex].children).filter((e) => {
+				// @ts-ignore
+				return e.classList.contains("svelte-lightbox-thumbnail")
+			})
+			// @ts-ignore
+			box[0]?.click();
+		}
+	}
 </script>
 
 
 <Card img="/" reverse="{vCard}" class="mb-4 mx-auto {_class}" padding="none">
-	<swiper-container pagination="true" autoplay="{autoplay}" effect='flip' pagination-clickable="true" class=" mb-0">
+	<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
+	<swiper-container 
+		pagination="true"
+		effect='flip'
+		pagination-clickable="true"
+		class=" mb-0"
+		nested="true"
+		touch-start-prevent-default="false"
+		touch-move-stop-propagation="false"
+		prevent-clicks="false"
+		prevent-clicks-propagation="false"
+		edge-swipe-detection="true"
+		
+		on:click={dohickey}
+		
+		>
 		<swiper-slide>
-			<img class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" />
+			<Lightbox on:click>
+				<img class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" />
+			</Lightbox>
 		</swiper-slide>
 		<swiper-slide>
-			<img class="rounded-md" src="src/lib/assets/sketchup/sketchup_1.webp" alt="" />
+			<Lightbox>
+				<img class="rounded-md" src="src/lib/assets/sketchup/sketchup_1.webp" alt="" />
+			</Lightbox>
 		</swiper-slide>
 		<swiper-slide>
-			<img class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" />
+			<Lightbox>
+				<img class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" />
+			</Lightbox>
 		</swiper-slide>
 	</swiper-container>
 

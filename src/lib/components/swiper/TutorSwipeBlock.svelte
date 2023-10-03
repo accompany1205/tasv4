@@ -7,7 +7,12 @@
 </script>
 
 <div class="h-[550px] swiper mb-8">
-	<swiper-container  breakpoints="{breakpoints}"  effect='slide' grab-cursor="true"  loop="true" >
+	<swiper-container
+		breakpoints="{breakpoints}"
+		effect='slide'
+
+		loop="true"
+		touch-start-prevent-default="false" >
 		{#each tutors as tutor}
 			<swiper-slide>
 				<div class="mx-8 w-auto flex-shrink-0">
