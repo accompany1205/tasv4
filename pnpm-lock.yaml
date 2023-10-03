@@ -46,6 +46,9 @@ devDependencies:
   svelte-check:
     specifier: ^3.4.3
     version: 3.5.2(postcss@8.4.30)(svelte@4.2.1)
+  svelte-lightbox:
+    specifier: ^1.1.2
+    version: 1.1.2(svelte@4.2.1)
   tailwindcss:
     specifier: ^3.3.3
     version: 3.3.3
@@ -1663,6 +1666,14 @@ packages:
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
     peerDependencies:
       svelte: ^3.19.0 || ^4.0.0
+    dependencies:
+      svelte: 4.2.1
+    dev: true
+
+  /svelte-lightbox@1.1.2(svelte@4.2.1):
+    resolution: {integrity: sha512-zOvLq+z1TI5V2/U2myUL6m+oHATum8dV9wNnzBe+cCUGpP79OqRwoRu6Y9T9F9jomc/wiy4SomvL7RGnsXN81g==}
+    peerDependencies:
+      svelte: ^3.25.0 || ^4.0.0
     dependencies:
       svelte: 4.2.1
     dev: true

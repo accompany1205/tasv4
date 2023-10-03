@@ -13,6 +13,7 @@
 	import SketchupServices from '$lib/blocks/frontpage/SketchupServices.svelte';
 	import TutorGrid from '$lib/blocks/frontpage/TutorGrid.svelte';
 	import SketchupImageGrid from '$lib/blocks/frontpage/SketchupImageGrid.svelte';
+	import SketchupLightboxGrid from '$lib/blocks/frontpage/SketchupLightboxGrid.svelte';
 
 	import { tutors } from '$lib/tutors';
 </script>
@@ -20,10 +21,7 @@
 <svelte:head>
 	<title>Tutors and Services</title>
 </svelte:head>
-<SketchupImageGrid/>
-<TopHero>
-	<TutorSwipeBlock tutors="{tutors.slice(0, 3)}" />
-</TopHero>
+<TopHero/>
 <GeneralServices/>
 <GeneralServicesDetail/>
 <SketchupServices/>
