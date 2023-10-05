@@ -13,6 +13,17 @@
 	import { Card, Button, Toggle } from 'flowbite-svelte';
 	import { ArrowRightOutline } from 'flowbite-svelte-icons';
 	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
+	import Slide from '$lib/components/swiper/Slide.svelte';
+
+	import { inview } from 'svelte-inview';
+	import type { ObserverEventDetails, Options } from 'svelte-inview';
+
+	let isInView: boolean;
+	const options = {
+		rootMargin: '50px',
+    	unobserveOnEnter: true,
+	};
+	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => (isInView = detail.inView);
 
 	import type { Tutor } from '$lib/tutors.ts';
 
@@ -43,35 +54,31 @@
 
 <Card img="/" reverse="{vCard}" class="mx-auto mb-4 {_class}" padding="none">
 	<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
-	<swiper-container
-		pagination="true"
-		effect="flip"
-		pagination-clickable="true"
-		class=" mb-0"
-		nested="true"
-		touch-start-prevent-default="false"
-		touch-move-stop-propagation="false"
-		prevent-clicks="false"
-		prevent-clicks-propagation="false"
-		edge-swipe-detection="true"
-		on:click="{dohickey}"
-	>
-		<swiper-slide>
-			<Lightbox on:click>
-				<img class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" />
-			</Lightbox>
-		</swiper-slide>
-		<swiper-slide>
-			<Lightbox>
-				<img class="rounded-md" src="src/lib/assets/sketchup/sketchup_1.webp" alt="" />
-			</Lightbox>
-		</swiper-slide>
-		<swiper-slide>
-			<Lightbox>
-				<img class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" />
-			</Lightbox>
-		</swiper-slide>
-	</swiper-container>
+	<div use:inview={options} on:inview_change={handleChange}>
+			<swiper-container
+				pagination="true"
+				effect="flip"
+				pagination-clickable="true"
+				class=" mb-0"
+				nested="true"
+				touch-start-prevent-default="false"
+				touch-move-stop-propagation="false"
+				prevent-clicks="false"
+				prevent-clicks-propagation="false"
+				edge-swipe-detection="true"
+				on:click="{dohickey}"
+			>
+				<Slide bind:isInView>
+					<img slot="content" class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" />
+				</Slide>
+				<Slide bind:isInView>
+					<img slot="content" class="rounded-md" src="src/lib/assets/sketchup/sketchup_1.webp" alt="" />
+				</Slide>
+				<Slide bind:isInView>
+					<img slot="content" class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" />
+				</Slide>
+			</swiper-container>
+	</div>
 
 	<div class="p-4 pt-2">
 		<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
