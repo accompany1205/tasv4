@@ -19,9 +19,10 @@
 	let isInView: boolean;
 	const options = {
 		rootMargin: '50px',
-    	unobserveOnEnter: true,
+		unobserveOnEnter: true,
 	};
-	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => (isInView = detail.inView);
+	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) =>
+		(isInView = detail.inView);
 
 	import type { Tutor } from '$lib/tutors.ts';
 
@@ -52,30 +53,51 @@
 
 <Card img="/" reverse="{vCard}" class="mx-auto mb-4 {_class}" padding="none">
 	<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
-	<div use:inview={options} on:inview_change={handleChange} class="aspect-square">
-			<swiper-container
-				class=" mb-0 aspect-square"
-				pagination="true"
-				effect="flip"
-				pagination-clickable="true"
-				nested="true"
-				touch-start-prevent-default="false"
-				touch-move-stop-propagation="false"
-				prevent-clicks="false"
-				prevent-clicks-propagation="false"
-				edge-swipe-detection="true"
-				on:click="{dohickey}"
-			>
-				<Slide bind:isInView>
-					<img slot="content" class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" width="512" height="512"/>
-				</Slide>
-				<Slide bind:isInView>
-					<img slot="content" class="rounded-md" src="src/lib/assets/sketchup/sketchup_1.webp" alt="" width="512" height="512"/>
-				</Slide>
-				<Slide bind:isInView>
-					<img slot="content" class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" width="512" height="512"/>
-				</Slide>
-			</swiper-container>
+	<div use:inview="{options}" on:inview_change="{handleChange}" class="aspect-square">
+		<swiper-container
+			class=" mb-0 aspect-square"
+			pagination="true"
+			effect="flip"
+			pagination-clickable="true"
+			nested="true"
+			touch-start-prevent-default="false"
+			touch-move-stop-propagation="false"
+			prevent-clicks="false"
+			prevent-clicks-propagation="false"
+			edge-swipe-detection="true"
+			on:click="{dohickey}"
+		>
+			<Slide bind:isInView="{isInView}">
+				<img
+					slot="content"
+					class="rounded-md"
+					src="/tutors/{tutor.id}/hs.webp"
+					alt=""
+					width="512"
+					height="512"
+				/>
+			</Slide>
+			<Slide bind:isInView="{isInView}">
+				<img
+					slot="content"
+					class="rounded-md"
+					src="src/lib/assets/sketchup/sketchup_1.webp"
+					alt=""
+					width="512"
+					height="512"
+				/>
+			</Slide>
+			<Slide bind:isInView="{isInView}">
+				<img
+					slot="content"
+					class="rounded-md"
+					src="/tutors/{tutor.id}/hs.webp"
+					alt=""
+					width="512"
+					height="512"
+				/>
+			</Slide>
+		</swiper-container>
 	</div>
 
 	<div class="p-4 pt-2">
