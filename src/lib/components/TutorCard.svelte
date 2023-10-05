@@ -9,10 +9,8 @@
 </style>
 
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { Card, Button, Toggle } from 'flowbite-svelte';
 	import { ArrowRightOutline } from 'flowbite-svelte-icons';
-	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
 	import Slide from '$lib/components/swiper/Slide.svelte';
 
 	import { inview } from 'svelte-inview';
@@ -54,12 +52,12 @@
 
 <Card img="/" reverse="{vCard}" class="mx-auto mb-4 {_class}" padding="none">
 	<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
-	<div use:inview={options} on:inview_change={handleChange}>
+	<div use:inview={options} on:inview_change={handleChange} class="aspect-square">
 			<swiper-container
+				class=" mb-0 aspect-square"
 				pagination="true"
 				effect="flip"
 				pagination-clickable="true"
-				class=" mb-0"
 				nested="true"
 				touch-start-prevent-default="false"
 				touch-move-stop-propagation="false"
@@ -69,13 +67,13 @@
 				on:click="{dohickey}"
 			>
 				<Slide bind:isInView>
-					<img slot="content" class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" />
+					<img slot="content" class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" width="512" height="512"/>
 				</Slide>
 				<Slide bind:isInView>
-					<img slot="content" class="rounded-md" src="src/lib/assets/sketchup/sketchup_1.webp" alt="" />
+					<img slot="content" class="rounded-md" src="src/lib/assets/sketchup/sketchup_1.webp" alt="" width="512" height="512"/>
 				</Slide>
 				<Slide bind:isInView>
-					<img slot="content" class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" />
+					<img slot="content" class="rounded-md" src="/tutors/{tutor.id}/hs.webp" alt="" width="512" height="512"/>
 				</Slide>
 			</swiper-container>
 	</div>
