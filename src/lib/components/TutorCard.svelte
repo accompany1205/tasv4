@@ -22,7 +22,8 @@
 		rootMargin: '50px',
 		unobserveOnEnter: true,
 	};
-	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => (isInView = detail.inView);
+	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) =>
+		(isInView = detail.inView);
 
 	import type { Tutor } from '$lib/tutors.ts';
 	import { flip } from 'svelte/animate';
@@ -36,30 +37,26 @@
 	const params = {
 		pagination: true,
 
-		effect: "slide",
+		effect: 'slide',
 		nested: true,
 		loop: true,
 		touchStartPreventDefault: false,
 		touchMoveStopPropagation: false,
 		preventClicks: false,
 		// preventClicksPropagation: false,
-		
-	}
-	onMount(()=>{
+	};
+	onMount(() => {
 		Object.assign(swiper, params);
 		setTimeout(() => {
 			swiper.initialize();
-			
-		},
-		500);
-
-	})
+		}, 500);
+	});
 </script>
 
 <Card img="/" reverse="{vCard}" class="mx-auto mb-4 {_class}" padding="none">
 	<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
-	<div use:inview="{options}" on:inview_change="{handleChange}" class="aspect-square ">
-		<swiper-container bind:this={swiper} init="true">
+	<div use:inview="{options}" on:inview_change="{handleChange}" class="aspect-square">
+		<swiper-container bind:this="{swiper}" init="true">
 			<Slide bind:isInView="{isInView}">
 				<img
 					slot="content"

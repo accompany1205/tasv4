@@ -60,7 +60,6 @@
 						></path>
 					</svg>
 				</a>
-				
 			</div>
 			<SketchupLightboxGrid />
 		</div>
