@@ -23,7 +23,7 @@
 
 <swiper-slide class:show="{show}" class="slide-content aspect-square">
 	{#if isInView}
-		<div class:show="{show}" class="fadebox">
+		<div class:show="{show}" class="fadebox aspect-square overflow-hidden rounded-md">
 			<Lightbox on:click>
 				<slot name="content" />
 			</Lightbox>

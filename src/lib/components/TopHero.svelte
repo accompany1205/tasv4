@@ -5,7 +5,7 @@
 </script>
 
 <section class="bg-[#e8e8e8] pb-8 dark:bg-gray-900">
-	<div class="bg-nile-blue-900 py-8">
+	<div class="bg-nile-blue-900 py-4 md:py-8">
 		<h1
 			class="
             m-auto
@@ -27,16 +27,17 @@
 		</h1>
 	</div>
 	<div class="mx-auto mb-4 max-w-screen-xl px-0 py-2 text-center">
-		<div class="grid grid-cols-1 lg:grid-cols-2">
+		<div class="grid grid-cols-1 lg:grid-cols-1">
 			<div class=" sm:justify-center">
-				<h2 class="mx-auto mb-0 max-w-sm text-xl font-black">
+				<h2 class="mx-auto my-4 max-w-sm text-xl font-black">
 					Don't Struggle Alone, Get Sketchup Help from a Pro.
 				</h2>
+				<TutorSwipeBlock tutors="{tutors.slice(0, 6)}" />
 				<p
-					class="mx-auto my-2 block max-w-md px-4 text-center text-lg font-normal text-gray-500 sm:px-16 lg:text-xl"
+					class="mx-auto my-4 block max-w-md px-4 text-center text-lg font-normal text-gray-500 sm:px-16 lg:text-xl"
 				>
 					Get SketchUp classes & 1-on-1 help from a live SketchUp tutor online via Zoom.
-					Tutors & services are available now. Call for a free consultation and demo.
+					Call for a free consultation and demo.
 				</p>
 				<a
 					href="https://www.jotform.com/221775033335048"
@@ -59,7 +60,7 @@
 						></path>
 					</svg>
 				</a>
-				<TutorSwipeBlock tutors="{tutors.slice(0, 6)}" />
+				
 			</div>
 			<SketchupLightboxGrid />
 		</div>

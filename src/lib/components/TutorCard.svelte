@@ -1,5 +1,5 @@
 <style>
-	swiper-container {
+	:global(swiper-container) {
 		--swiper-theme-color: #61ce70;
 		--swiper-pagination-bottom: 8px;
 		--swiper-pagination-padding: 32px;
@@ -9,6 +9,7 @@
 </style>
 
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { Card, Button, Toggle } from 'flowbite-svelte';
 	import { ArrowRightOutline } from 'flowbite-svelte-icons';
 	import Slide from '$lib/components/swiper/Slide.svelte';
@@ -21,52 +22,44 @@
 		rootMargin: '50px',
 		unobserveOnEnter: true,
 	};
-	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) =>
-		(isInView = detail.inView);
+	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => (isInView = detail.inView);
 
 	import type { Tutor } from '$lib/tutors.ts';
+	import { flip } from 'svelte/animate';
 
 	let _class = '';
 	export { _class as class };
 	export let tutor: Tutor;
 
 	let vCard = false;
+	let swiper: HTMLElement;
+	const params = {
+		pagination: true,
 
-	const autoplay = '{delay:1500}';
-	let slider: HTMLElement;
-	function dohickey(e: CustomEvent) {
-		if (typeof e.detail == 'number') {
-			return;
-		} else {
-			// WARN: Incredibly Brittle
-			const box = Array.from(e.detail[0]?.slides[e.detail[0].activeIndex].children).filter(
-				(e) => {
-					// @ts-ignore
-					return e.classList.contains('svelte-lightbox-thumbnail');
-				},
-			);
-			// @ts-ignore
-			box[0]?.click();
-		}
+		effect: "slide",
+		nested: true,
+		loop: true,
+		touchStartPreventDefault: false,
+		touchMoveStopPropagation: false,
+		preventClicks: false,
+		// preventClicksPropagation: false,
+		
 	}
+	onMount(()=>{
+		Object.assign(swiper, params);
+		setTimeout(() => {
+			swiper.initialize();
+			
+		},
+		500);
+
+	})
 </script>
 
 <Card img="/" reverse="{vCard}" class="mx-auto mb-4 {_class}" padding="none">
 	<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
-	<div use:inview="{options}" on:inview_change="{handleChange}" class="aspect-square">
-		<swiper-container
-			class=" mb-0 aspect-square"
-			pagination="true"
-			effect="flip"
-			pagination-clickable="true"
-			nested="true"
-			touch-start-prevent-default="false"
-			touch-move-stop-propagation="false"
-			prevent-clicks="false"
-			prevent-clicks-propagation="false"
-			edge-swipe-detection="true"
-			on:click="{dohickey}"
-		>
+	<div use:inview="{options}" on:inview_change="{handleChange}" class="aspect-square ">
+		<swiper-container bind:this={swiper} init="true">
 			<Slide bind:isInView="{isInView}">
 				<img
 					slot="content"
@@ -85,6 +78,7 @@
 					alt=""
 					width="512"
 					height="512"
+					loading="lazy"
 				/>
 			</Slide>
 			<Slide bind:isInView="{isInView}">
@@ -95,6 +89,7 @@
 					alt=""
 					width="512"
 					height="512"
+					loading="lazy"
 				/>
 			</Slide>
 		</swiper-container>
