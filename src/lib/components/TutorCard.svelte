@@ -60,6 +60,7 @@
 	onMount(() => {
 		Object.assign(swiper, params);
 		setTimeout(() => {
+			// @ts-ignore
 			swiper.initialize();
 		}, 500);
 	});

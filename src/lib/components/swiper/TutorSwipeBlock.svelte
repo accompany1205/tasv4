@@ -36,6 +36,7 @@
 	let swiper: HTMLElement;
 	onMount(() => {
 		Object.assign(swiper, params);
+		// @ts-ignore
 		swiper.initialize();
 	});
 </script>
