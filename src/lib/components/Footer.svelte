@@ -12,7 +12,7 @@
 	import LogoFramed from '$lib/assets/svg/LogoFramed.svelte';
 </script>
 
-<Footer footerType="sitemap" class="bg-nile-blue-900">
+<Footer footerType="sitemap" class="bg-nile-blue-900 overflow-x-hidden">
 	<div class="p-4">
 		<LogoFramed class="" fill="white"/>
 	</div>

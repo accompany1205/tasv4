@@ -1,4 +1,4 @@
-<div class="py-4 ">
+<div class="py-4 overflow-x-hidden">
 	<h3 class="border-b-4 border-emerald-400 py-4 pl-4 text-3xl font-black">Types of Service</h3>
 	<div class="m-2 flex flex-wrap gap-4 text-white max-w-7xl mx-auto">
 		<div class="card mx-auto aspect-square w-full max-w-xs flex-shrink-0 bg-nile-blue-900 p-4">

@@ -4,26 +4,24 @@
 	import { tutors } from '$lib/tutors';
 </script>
 
-<section class="bg-[#e8e8e8] pb-8 dark:bg-gray-900">
+<section class="bg-[#e8e8e8] pb-8 dark:bg-gray-900 overflow-x-hidden">
 	<div class="bg-nile-blue-900 py-4 md:py-8">
 		<h1
 			class="
             m-auto
-			max-w-xs
+
             text-center
-			text-2xl
+
 			font-extrabold
             leading-none
             tracking-tight
             text-white
-            sm:max-w-lg
-            md:max-w-4xl
-            md:text-5xl
-            lg:max-w-6xl
-            lg:text-6xl
+
+
+			fluid
            "
 		>
-			Online Sketchup Classes, Zoom Tutors & Professional Services
+			Online Sketchup Classes, Zoom Tutors<br> & Professional Services
 		</h1>
 	</div>
 	<div class="mx-auto mb-4 max-w-screen-xl px-0 py-2 text-center">
@@ -65,3 +63,10 @@
 		</div>
 	</div>
 </section>
+
+<style>
+	.fluid {
+		font-size: clamp(1rem, 4vw, 90rem);
+		/* white-space: nowrap; */
+	}
+</style>

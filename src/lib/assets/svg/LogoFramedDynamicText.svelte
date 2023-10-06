@@ -4,67 +4,70 @@
     export {_class as class}
 </script>
 
-<svg id="framed" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 433 122.43" class="{_class}" style="--fill: {fill}">
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 433 122.43" class="{_class}" style="--fill: {fill}">
   <defs>
     <style>
-      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
-        stroke-miterlimit: 8;
-      }
-      .cls-1, .cls-3, .cls-6 {
-        stroke: var(--fill);
-		fill: var(--fill);
-      }
+        .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+          stroke-miterlimit: 8;
+        }
+    
+        .cls-1, .cls-3, .cls-6 {
+          stroke: var(--fill);
+          fill: var(--fill);
+        }
+    
+        .cls-7 {
+          fill: var(--fill);
+        }
+    
+        .cls-7, .cls-8, .cls-9 {
+          stroke-width: 0px;
+        }
+    
+        .cls-2, .cls-3, .cls-4, .cls-5 {
+          fill: none;
+        }
+    
+        .cls-2, .cls-3, .cls-5, .cls-6 {
+          stroke-width: 3px;
+        }
+    
+        .cls-2, .cls-4, .cls-5 {
+          stroke: var(--fill);
+        }
+    
+        .cls-9, .cls-6 {
+          fill: #fff;
+        }
+    
+        .cls-4 {
+          stroke-width: 4px;
+        }
+    
+        .cls-5 {
+          stroke-linecap: round;
+        }
+    
+        .cls-8 {
+          fill: var(--fill);
+        }
+    
+        .cls-9 {
+          fill: var(--fill);
+          filter: invert(1);
+        }
+    
+        .dyntext {
+            font-family: sans-serif;
+            font-weight: 600;
+            font-variant: small-caps;
 
-      .cls-7 {
-        fill: var(--fill);
-      }
+		    font-size: 45px;
+            fill: var(--fill);
 
-      .cls-7, .cls-8, .cls-9 {
-        stroke-width: 0px;
-      }
-
-      .cls-2, .cls-3, .cls-4, .cls-5 {
-        fill: none;
-      }
-
-      .cls-2, .cls-3, .cls-5, .cls-6 {
-        stroke-width: 3px;
-      }
-
-      .cls-2, .cls-4, .cls-5 {
-        stroke: var(--fill);
-      }
-
-      .cls-9, .cls-6 {
-        fill: #fff;
-      }
-
-      .cls-4 {
-        stroke-width: 4px;
-      }
-
-      .cls-5 {
-        stroke-linecap: round;
-      }
-
-	  .cls-8 {
-		fill: var(--fill);
-	  }
-
-	  .cls-9 {
-		fill: var(--fill);
-		filter: invert(1);
-	  }
-
-	  .cls-18 {
-		font-family: NiveauGroteskMedium-SmallCaps, 'Niveau Grotesk', sans-serif;
-		font-variant: small-caps;
-		font-weight: 900;
-		font-size: 35px;
-		fill: var(--fill);
-	  }
-
-    </style>
+        }
+    
+      </style>
   </defs>
   <g id="_1_LADY_CPU_2" data-name="1 LADY CPU 2">
     <g id="Lady">
@@ -98,12 +101,15 @@
       </g>
     </g>
     <g id="Wordmark">
-		<text class="cls-18" transform="translate(175.04 44.36)">
-			Tutors And
-		</text>
-		<text class="cls-18" transform="translate(175.04 94.36)">
-			Services<tspan style="font-size: 32px">.com</tspan>
-		</text>
-	  </g>
+		<slot>
+            <text class="cls-18" transform="translate(175.04 44.36)">
+                Tutors And
+            </text>
+            <text class="cls-18" transform="translate(175.04 94.36)">
+                Services<tspan style="font-size: 32px">.com</tspan>
+            </text>
+        </slot>
+	</g>
   </g>
 </svg>
+
