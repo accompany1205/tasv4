@@ -16,7 +16,7 @@ export default {
 					500: '#35b247',
 					600: '#279236',
 					700: '#22732e',
-					800: '#1f5c28',
+					800: '#1f5c28', // Optimal text contrast on white
 					900: '#1c4b24',
 					950: '#0a2910',
 				},

@@ -17,6 +17,18 @@
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
 
+	const pictures = import.meta.glob('$lib/assets/sketchup/*.webp', {
+		query: {
+			format: 'webp;',
+			w: '120;240;480;',
+			picture: '',
+			as: 'srcset',
+		},
+		import: 'default',
+		eager: true,
+	});
+	const flattened = <string[]>Object.values(pictures);
+
 	let isInView: boolean;
 	const options = {
 		rootMargin: '50px',
@@ -68,26 +80,20 @@
 				/>
 			</Slide>
 			<Slide bind:isInView="{isInView}">
-				<img
-					slot="content"
-					class="rounded-md"
-					src="src/lib/assets/sketchup/sketchup_1.webp"
-					alt=""
-					width="512"
-					height="512"
-					loading="lazy"
-				/>
-			</Slide>
-			<Slide bind:isInView="{isInView}">
-				<img
-					slot="content"
-					class="rounded-md"
-					src="/tutors/{tutor.id}/hs.webp"
-					alt=""
-					width="512"
-					height="512"
-					loading="lazy"
-				/>
+				<picture slot="content" class="aspect-square  overflow-hidden bg-pink-500 block">
+					<img
+						
+						class="min-h-full min-w-full object-cover object-center"
+						srcset="{flattened[Math.floor(Math.random() * (flattened.length - 1))]}"
+						alt="sketchup"
+						decoding="async"
+						
+						width="512"
+						height="512"
+						loading="lazy"
+
+					/>
+				</picture>
 			</Slide>
 		</swiper-container>
 	</div>
@@ -101,7 +107,7 @@
 			class="duration-250 transform border-2 border-solid border-emerald-400 text-black transition-transform ease-in-out hover:bg-alabaster-50 active:bg-alabaster-50"
 			href="https://www.tutorsandservices.com/{tutor.first}-{tutor.id}/"
 		>
-			Learn More <ArrowRightOutline class="ml-2 h-3.5 w-3.5 text-black" />
+			Learn More About {tutor.first} <ArrowRightOutline class="ml-2 h-3.5 w-3.5 text-black" />
 		</Button>
 	</div>
 </Card>
