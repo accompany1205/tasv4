@@ -28,7 +28,7 @@
 			expensive fees for redrawing or changing plans.
 		</p>
 	</ServiceCard>
-	<div>
+	<div class="max-w-7xl mx-auto">
 		<h4 class="mb-4 text-3xl font-bold">We Can Help!</h4>
 		<ul class="list-inside list-disc text-lg">
 			<li>Architecture</li>
@@ -69,7 +69,7 @@
 			<li>And more…</li>
 		</ul>
 	</div>
-	<div>
+	<div class="max-w-7xl mx-auto">
 		<h4 class="my-4 text-3xl font-black"> About Sketchup </h4>
 		<p class="pb-4 text-lg">
 			Sketchup is a great visualization program that puts the power of 3D modeling in the

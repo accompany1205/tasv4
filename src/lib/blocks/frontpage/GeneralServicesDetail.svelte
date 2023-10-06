@@ -2,7 +2,7 @@
 	<h3 class="border-b-4 border-emerald-400 py-4 pl-4 text-3xl font-black">
 		Remote & On-Demand Help
 	</h3>
-	<div class="grid gap-4 sm:grid-cols-2">
+	<div class="grid gap-4 sm:grid-cols-2 max-w-7xl mx-auto">
 		<div class="max-w-sm">
 			<h4 class="py-4 text-2xl"> Sketchup Tutors and Services </h4>
 			<p>

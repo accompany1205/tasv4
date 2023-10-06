@@ -8,9 +8,14 @@
 		FooterCopyright,
 	} from 'flowbite-svelte';
 	import { FacebookSolid, GithubSolid, DiscordSolid, TwitterSolid } from 'flowbite-svelte-icons';
+
+	import LogoFramed from '$lib/assets/svg/LogoFramed.svelte';
 </script>
 
-<Footer footerType="sitemap" class="mt-8">
+<Footer footerType="sitemap" class="bg-nile-blue-900">
+	<div class="p-4">
+		<LogoFramed class="" fill="white"/>
+	</div>
 	<div class="grid grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
 		<div>
 			<h2 class="mb-6 text-sm font-semibold uppercase text-gray-400">Company</h2>
@@ -22,12 +27,21 @@
 			</FooterLinkGroup>
 		</div>
 		<div>
-			<h2 class="mb-6 text-sm font-semibold uppercase text-gray-400">Download</h2>
+			<h2 class="mb-6 text-sm font-semibold uppercase text-gray-400">Services</h2>
 			<FooterLinkGroup ulClass="text-gray-300">
-				<FooterLink liClass="mb-4" href="/">Discord Server</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Twitter</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Facebook</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Contact Us</FooterLink>
+				<FooterLink liClass="mb-4" href="/">Professional services</FooterLink>
+				<FooterLink liClass="mb-4" href="/">Private & flexible tutors</FooterLink>
+				<FooterLink liClass="mb-4" href="/">Personalized lessons</FooterLink>
+				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
+				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
+				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
+				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
+				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
+				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
+				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
+				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
+				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
+
 			</FooterLinkGroup>
 		</div>
 		<div>
@@ -48,11 +62,11 @@
 			</FooterLinkGroup>
 		</div>
 	</div>
-	<div class="bg-gray-700 px-4 py-6 md:flex md:items-center md:justify-between">
+	<div class="bg-nile-blue-950 px-4 py-6 md:flex md:items-center md:justify-between">
 		<FooterCopyright
 			spanClass="text-sm text-gray-300 sm:text-center"
 			href="/"
-			by="Flowbite™"
+			by="Tutors and Services"
 		/>
 		<div class="mt-4 flex space-x-6 sm:justify-center md:mt-0">
 			<FooterIcon href="/">
