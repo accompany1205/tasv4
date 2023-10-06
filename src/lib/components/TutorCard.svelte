@@ -81,18 +81,15 @@
 				/>
 			</Slide>
 			<Slide bind:isInView="{isInView}">
-				<picture slot="content" class="aspect-square  overflow-hidden bg-pink-500 block">
+				<picture slot="content" class="block aspect-square overflow-hidden bg-pink-500">
 					<img
-						
 						class="min-h-full min-w-full object-cover object-center"
 						srcset="{flattened[Math.floor(Math.random() * (flattened.length - 1))]}"
 						alt="sketchup"
 						decoding="async"
-						
 						width="512"
 						height="512"
 						loading="lazy"
-
 					/>
 				</picture>
 			</Slide>
@@ -108,7 +105,8 @@
 			class="duration-250 transform border-2 border-solid border-emerald-400 text-black transition-transform ease-in-out hover:bg-alabaster-50 active:bg-alabaster-50"
 			href="https://www.tutorsandservices.com/{tutor.first}-{tutor.id}/"
 		>
-			Learn More About {tutor.first} <ArrowRightOutline class="ml-2 h-3.5 w-3.5 text-black" />
+			Learn More About {tutor.first}
+			<ArrowRightOutline class="ml-2 h-3.5 w-3.5 text-black" />
 		</Button>
 	</div>
 </Card>

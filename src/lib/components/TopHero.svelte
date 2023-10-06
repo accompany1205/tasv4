@@ -1,27 +1,34 @@
+<style>
+	.fluid {
+		font-size: clamp(1rem, 4vw, 90rem);
+		/* white-space: nowrap; */
+	}
+</style>
+
 <script lang="ts">
 	import SketchupLightboxGrid from '$lib/blocks/frontpage/SketchupLightboxGrid.svelte';
 	import TutorSwipeBlock from './swiper/TutorSwipeBlock.svelte';
 	import { tutors } from '$lib/tutors';
 </script>
 
-<section class="bg-[#e8e8e8] pb-8 dark:bg-gray-900 overflow-x-hidden">
+<section class="overflow-x-hidden bg-[#e8e8e8] pb-8 dark:bg-gray-900">
 	<div class="bg-nile-blue-900 py-4 md:py-8">
 		<h1
 			class="
+            fluid
+
             m-auto
 
-            text-center
-
-			font-extrabold
+			text-center
+            font-extrabold
             leading-none
             tracking-tight
-            text-white
 
 
-			fluid
+			text-white
            "
 		>
-			Online Sketchup Classes, Zoom Tutors<br> & Professional Services
+			Online Sketchup Classes, Zoom Tutors<br /> & Professional Services
 		</h1>
 	</div>
 	<div class="mx-auto mb-4 max-w-screen-xl px-0 py-2 text-center">
@@ -63,10 +70,3 @@
 		</div>
 	</div>
 </section>
-
-<style>
-	.fluid {
-		font-size: clamp(1rem, 4vw, 90rem);
-		/* white-space: nowrap; */
-	}
-</style>

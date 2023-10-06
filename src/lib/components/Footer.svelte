@@ -12,9 +12,9 @@
 	import LogoFramed from '$lib/assets/svg/LogoFramed.svelte';
 </script>
 
-<Footer footerType="sitemap" class="bg-nile-blue-900 overflow-x-hidden">
+<Footer footerType="sitemap" class="overflow-x-hidden bg-nile-blue-900">
 	<div class="p-4">
-		<LogoFramed class="" fill="white"/>
+		<LogoFramed class="" fill="white" />
 	</div>
 	<div class="grid grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
 		<div>
@@ -41,7 +41,6 @@
 				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
 				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
 				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
-
 			</FooterLinkGroup>
 		</div>
 		<div>
