@@ -13,7 +13,7 @@
 </script>
 
 <Footer footerType="sitemap" class="overflow-x-hidden bg-nile-blue-900">
-	<div class="p-4">
+	<div class="p-4 max-w-xs">
 		<LogoFramed class="" fill="white" />
 	</div>
 	<div class="grid grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
@@ -27,37 +27,11 @@
 			</FooterLinkGroup>
 		</div>
 		<div>
-			<h2 class="mb-6 text-sm font-semibold uppercase text-gray-400">Services</h2>
-			<FooterLinkGroup ulClass="text-gray-300">
-				<FooterLink liClass="mb-4" href="/">Professional services</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Private & flexible tutors</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Personalized lessons</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Pro online training</FooterLink>
-			</FooterLinkGroup>
-		</div>
-		<div>
 			<h2 class="mb-6 text-sm font-semibold uppercase text-gray-400">Legal</h2>
 			<FooterLinkGroup ulClass="text-gray-300">
 				<FooterLink liClass="mb-4" href="/">Privacy Policy</FooterLink>
 				<FooterLink liClass="mb-4" href="/">Licensing</FooterLink>
 				<FooterLink liClass="mb-4" href="/">Terms & Conditions</FooterLink>
-			</FooterLinkGroup>
-		</div>
-		<div>
-			<h2 class="mb-6 text-sm font-semibold uppercase text-gray-400">Download</h2>
-			<FooterLinkGroup ulClass="text-gray-300">
-				<FooterLink liClass="mb-4" href="/">iOS</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Android</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Windows</FooterLink>
-				<FooterLink liClass="mb-4" href="/">MacOS</FooterLink>
 			</FooterLinkGroup>
 		</div>
 	</div>

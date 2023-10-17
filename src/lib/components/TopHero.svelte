@@ -59,13 +59,13 @@
 			</button>
 		</div>
 	</div>
-	<div class="Tutors bg-bay-of-many-700 p-8">
+	<div class="Tutors bg-bay-of-many-700 p-2 md:p-8">
 		<h2 class="text-white text-3xl text-center m-auto mb-8 font-bold">
 			Meet the Team
 		</h2>
-		<div class="m-auto flex w-full max-w-screen-xl flex-wrap justify-center gap-6 overflow-x-hidden">
+		<div class="m-auto flex w-full max-w-screen-2xl flex-wrap justify-center gap-6 overflow-x-hidden">
 			{#each tutors.slice(0, 4) as tutor}
-				<TutorCard tutor="{tutor}" class="max-w-[280px]" />
+				<TutorCard tutor="{tutor}" class="max-w-[280px] md:max-w-sm flex-shrink mx-0" />
 			{/each}
 		</div>
 	</div>
