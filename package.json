@@ -35,6 +35,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fontsource-variable/akshar": "^5.0.8",
+		"@fontsource/open-sans": "^5.0.15",
 		"svelte-inview": "^4.0.1",
 		"swiper": "^10.3.0"
 	}

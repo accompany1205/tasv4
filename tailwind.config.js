@@ -5,6 +5,9 @@ export default {
 		'./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}',
 	],
 	theme: {
+		fontFamily: {
+			'akshar': ['Akshar Variable', 'Arial', 'sans-serif'],
+		},	
 		extend: {
 			colors: {
 				emerald: {
