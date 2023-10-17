@@ -1,6 +1,7 @@
 <script lang="ts">
 	import LogoFramed from '$lib/assets/svg/LogoFramed.svelte';
 	import LogoFramedDynamicText from '$lib/assets/svg/LogoFramedDynamicText.svelte';
+        import LogoUnframedDynamicText from '$lib/assets/svg/LogoUnframedDynamicText.svelte';
 </script>
 
 <header
@@ -21,14 +22,14 @@
         lg:max-h-24
         "
 >
-	<LogoFramedDynamicText
+	<LogoUnframedDynamicText
 		fill="black"
-		class="h-[inherit] max-h-[inherit] py-2 font-serif text-lg "
+		class="h-[40px] mt-auto max-h-[inherit] font-serif text-lg "
 	>
-		<text class="dyntext" transform="translate(180 34)"> Sketchup </text>
-		<text class="dyntext" transform="translate(180 76)"> Tutors & </text>
-		<text class="dyntext" transform="translate(180 117)"> Services </text>
-	</LogoFramedDynamicText>
+		<text class="dyntext" transform="translate(195 34)"> Sketchup </text>
+		<text class="dyntext" transform="translate(195 76)"> Tutors & </text>
+		<text class="dyntext" transform="translate(195 117)"> Services </text>
+	</LogoUnframedDynamicText>
 	<div class="content"> </div>
 	<div class="call whitespace-nowrap pl-4 sm:pl-9">
 		<a class="text-xl font-bold text-emerald-500" href="tel: 720-335-5282"> 720-335-5282 </a>
