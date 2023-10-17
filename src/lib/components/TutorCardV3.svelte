@@ -40,7 +40,7 @@
             {#if isInView}
                 <Lightbox>
                     <img
-                        src="/temp/sketchup_9.webp"
+                        src="/tutors/{tutor.id}/img/1.webp"
                         alt="Matthew W"
                         class="min-h-full min-w-full object-cover object-center"
                         width="512"
