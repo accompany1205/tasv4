@@ -48,7 +48,7 @@
 
     <div>
         <!-- Title -->
-        <div class="m-2 p-1 text-center text-xl">Advanced AutoCAD and Sketchup Tutor for Architecture</div>
+        <div class="m-2 p-1 text-center text-xl">{tutor?.title}</div>
         {#if (tutor?.services?.length ?? 0 > 0)}
             <div class="m-2 p-1">
                 <div class="font-semibold">Services I Provide:</div>
