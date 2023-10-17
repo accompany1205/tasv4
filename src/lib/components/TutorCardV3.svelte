@@ -1,7 +1,19 @@
 <script lang="ts">
     import '@fontsource-variable/akshar';
     import ServiceTags from './ServiceTags.svelte';
+    import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
     import type { Tutor } from '$lib/tutors.ts';
+
+	import { inview } from 'svelte-inview';
+	import type { ObserverEventDetails, Options } from 'svelte-inview';
+
+	let isInView: boolean;
+	const options = {
+		rootMargin: '50px',
+		unobserveOnEnter: true,
+	};
+	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) =>
+		(isInView = detail.inView);
 
     let keywordsArray = [
     "SketchUp",
@@ -20,11 +32,24 @@
     }
 </style>
   
-<div class="card-size bg-white rounded shadow-lg mx-auto font-akshar grid grid-rows-[auto_1fr_auto] {_class}">
+<div use:inview="{options}" on:inview_change="{handleChange}"
+    class="card-size bg-white rounded shadow-lg mx-auto font-akshar grid grid-rows-[auto_1fr_auto] {_class}">
     <div>
         <!-- Image -->
-        <div class="w-full">
-            <img src="/temp/sketchup_9.webp" alt="Matthew W" class="">
+        <div class="w-full aspect-[21/9] bg-gray-200 block overflow-hidden">
+            {#if isInView}
+                <Lightbox>
+                    <img
+                        src="/temp/sketchup_9.webp"
+                        alt="Matthew W"
+                        class="min-h-full min-w-full object-cover object-center"
+                        width="512"
+                        height="230"
+                        decoding="async"
+                        loading="lazy"
+                    >
+                </Lightbox>
+            {/if}
         </div>
         <!-- Tutor Info -->
         <div class="flex overflow-x-clip">
