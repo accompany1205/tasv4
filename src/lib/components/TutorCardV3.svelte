@@ -3,9 +3,13 @@
 </script>
 
 <style>
+    .card-size {
+        width: 350px;
+        height: 700px;
+    }
 </style>
   
-<div class="bg-white rounded shadow-lg max-w-md	max-h-96 mx-auto font-akshar">
+<div class="card-size bg-white rounded shadow-lg mx-auto font-akshar">
     <!-- Image -->
     <div class="w-full">
         <img src="/temp/sketchup_9.webp" alt="Matthew W" class="">
@@ -14,8 +18,8 @@
     <!-- Tutor Info -->
     <div class="flex">
         <!-- Headshot -->
-        <div class="w-1/4">
-            <img src="/tutors/18836/hs.webp" alt="Matthew W" class="rounded-full w-32 h-32 border-emerald-400 border-2 p-1">
+        <div class="w-1/4 flex-shrink-0">
+            <img src="/tutors/18836/hs.webp" alt="Matthew W" class="flex-shrink-0 rounded-full w-28 h-28 border-emerald-400 border-2 p-1">
         </div>
 
         <!-- Name -->
