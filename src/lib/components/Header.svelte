@@ -6,7 +6,7 @@
 <header
 	class="
         flex
-        h-auto
+        h-[50px]
         max-h-16
         flex-row
         items-center

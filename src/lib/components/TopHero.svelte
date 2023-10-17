@@ -1,29 +1,30 @@
 <style>
 	.fluid {
-		font-size: clamp(1rem, 4vw, 90rem);
-		/* white-space: nowrap; */
+		font-size: clamp(1rem, 3.5vw, 3rem);
+		white-space: nowrap;
 	}
 </style>
 
 <script lang="ts">
 	import SketchupLightboxGrid from '$lib/blocks/frontpage/SketchupLightboxGrid.svelte';
 	import TutorSwipeBlock from './swiper/TutorSwipeBlock.svelte';
+	import TutorCard from './TutorCard.svelte';
+
 	import { tutors } from '$lib/tutors';
 </script>
 
-<section class="overflow-x-hidden bg-[#e8e8e8] pb-8 dark:bg-gray-900">
-	<div class="bg-nile-blue-900 py-4 md:py-8">
+<section class="overflow-x-hidden bg-[#e8e8e8]  dark:bg-gray-900">
+	<div class="bg-bay-of-many-700 py-6">
 		<h1
 			class="
             fluid
-
             m-auto
 
-			text-center
-            font-extrabold
+			text-left
+			px-4
+            font-bold
             leading-none
             tracking-tight
-
 
 			text-white
            "
@@ -31,42 +32,41 @@
 			Online Sketchup Classes, Zoom Tutors<br /> & Professional Services
 		</h1>
 	</div>
-	<div class="mx-auto mb-4 max-w-screen-xl px-0 py-2 text-center">
-		<div class="grid grid-cols-1 lg:grid-cols-1">
-			<div class=" sm:justify-center">
-				<h2 class="mx-auto my-4 max-w-sm text-xl font-black">
+	<div class="mx-auto mb-4 max-w-screen-xl px-3 py-2 grid grid-rows-[auto_1fr] gap-4 lg:grid-cols-[3fr_2fr] lg:gap-8">
+		<div class="left-col m-4">
+			<div class="bg-pink-600 aspect-video max-h-96 mx-auto">
+				PLACEHOLDER
+			</div>
+		</div>
+		<div class="right-col grid grid-rows-[1fr_auto]">
+			<div class="max-w-sm pb-6 mx-auto">
+				<h2 class="my-4 max-w-sm text-xl font-bold">
 					Don't Struggle Alone, Get Sketchup Help from a Pro.
 				</h2>
-				<TutorSwipeBlock tutors="{tutors.slice(0, 6)}" />
-				<p
-					class="mx-auto my-4 block max-w-md px-4 text-center text-lg font-normal text-gray-500 sm:px-16 lg:text-xl"
+				<p class="text-left text-lg font-normal text-gray-950 lg:text-xl"
 				>
 					Get SketchUp classes & 1-on-1 help from a live SketchUp tutor online via Zoom.
 					Call for a free consultation and demo.
 				</p>
-				<a
-					href="https://www.jotform.com/221775033335048"
-					class="mb-4 inline-flex transform items-center justify-center rounded-lg bg-[#61ce70] px-5 py-3 text-center text-base font-medium text-white transition-transform duration-500 ease-in-out hover:scale-105 hover:bg-[#69e07a]"
+				<p class="text-left text-lg font-normal text-gray-950 lg:text-xl"
 				>
-					Get started
-					<svg
-						class="ml-2 h-3.5 w-3.5"
-						aria-hidden="true"
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 14 10"
-					>
-						<path
-							stroke="currentColor"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M1 5h12m0 0L9 1m4 4L9 9"
-						></path>
-					</svg>
-				</a>
+					We are a team of tutors and freelancers that are hireable on an as-needed basis
+					for professional help with your projects.
+				</p>
 			</div>
-			<SketchupLightboxGrid />
+			<button class="bg-emerald-400 p-3 text-white font-bold text-3xl mx-auto max-w-sm">
+				Get Started Today
+			</button>
+		</div>
+	</div>
+	<div class="Tutors bg-bay-of-many-700 p-8">
+		<h2 class="text-white text-3xl text-center m-auto mb-8 font-bold">
+			Meet the Team
+		</h2>
+		<div class="m-auto flex w-full max-w-screen-xl flex-wrap justify-center gap-6 overflow-x-hidden">
+			{#each tutors.slice(0, 4) as tutor}
+				<TutorCard tutor="{tutor}" class="max-w-[280px]" />
+			{/each}
 		</div>
 	</div>
 </section>
