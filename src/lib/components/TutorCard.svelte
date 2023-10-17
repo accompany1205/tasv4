@@ -100,7 +100,9 @@
 		<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
 			{tutor.name} • ${tutor.hourlyRate}/hr
 		</h5>
-		<p class="mb-3 font-normal leading-tight text-gray-700 dark:text-gray-400">{tutor.title}</p>
+		<p class="mb-3 font-normal leading-tight text-gray-700 dark:text-gray-400">
+			{tutor.title}
+		</p>
 		<Button
 			class="duration-250 transform border-2 border-solid border-emerald-400 text-black transition-transform ease-in-out hover:bg-alabaster-50 active:bg-alabaster-50"
 			href="https://www.tutorsandservices.com/{tutor.first}-{tutor.id}/"

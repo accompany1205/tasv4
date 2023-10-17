@@ -28,8 +28,8 @@ export type Tutor = {
 	// specialOffer: string;
 
 	//Services
-	// software: string[];
-	// services: string[];
+	software?: string[] | {name: string, featured: boolean}[];
+	services?: string[] | {name: string, featured: boolean}[];
 
 	//Testimonials
 	// testimonials: string[];
@@ -43,6 +43,16 @@ export const tutors: Tutor[] = [
 		name: 'Tim D',
 		title: 'SketchUp & Solid WORKS Introductory Tutor & 3D Printing',
 		hourlyRate: 40,
+		software: [
+			"Sketchup",
+			"SolidWORKS"
+		],
+		services: [
+			"Create Sketchup Models for 3D Printing",
+			"Mechanical Drawings with Swolidworks",
+			"Interior Modeling",
+			"Mechanical Modeling"
+		]
 	},
 	{
 		id: '12112',
@@ -51,6 +61,11 @@ export const tutors: Tutor[] = [
 		name: 'Aims A',
 		title: 'SketchUp Beginner Tutor and VRAY Rendering Services',
 		hourlyRate: 40,
+		software: [
+			"VRay",
+			"Sketchup",
+			"Layout"
+		]
 	},
 	{
 		id: '24291',
@@ -59,6 +74,10 @@ export const tutors: Tutor[] = [
 		name: 'Vladimir S',
 		title: 'Engineering 3D Visualization and Sketchup Training',
 		hourlyRate: 40,
+		software: [
+			"Sketchup",
+			"Layout"
+		]
 	},
 	{
 		id: '1619',
@@ -67,6 +86,13 @@ export const tutors: Tutor[] = [
 		name: 'Shanthi O',
 		title: 'Sketchup Interior 3D Modelling and Rendering Services',
 		hourlyRate: 45,
+		software: [
+			"Sketchup",
+			"Podium",
+			"Revit LT",
+			"Twinmotion",
+			"Power Point"
+		]
 	},
 	{
 		id: '12081',
@@ -75,6 +101,12 @@ export const tutors: Tutor[] = [
 		name: 'Kyle T',
 		title: 'Sketchup and Layout Tutor for Beginners to Intermediate',
 		hourlyRate: 45,
+		software: [
+			"Sketchup",
+			"Layout",
+			"InDesign",
+			"Python"
+		]
 	},
 	{
 		id: '12113',
@@ -83,6 +115,11 @@ export const tutors: Tutor[] = [
 		name: 'Michael H',
 		title: 'AutoCAD Manager, Drafting Specialist and Sketchup Tutor',
 		hourlyRate: 45,
+		software: [
+			"AutoCAD",
+			"Sketchup",
+			"Layout"
+		]
 	},
 	{
 		id: '18035',

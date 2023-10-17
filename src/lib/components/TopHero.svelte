@@ -9,6 +9,7 @@
 	import SketchupLightboxGrid from '$lib/blocks/frontpage/SketchupLightboxGrid.svelte';
 	import TutorSwipeBlock from './swiper/TutorSwipeBlock.svelte';
 	import TutorCard from './TutorCard.svelte';
+	import TutorCardV3 from './TutorCardV3.svelte';
 
 	import { tutors } from '$lib/tutors';
 </script>
@@ -65,7 +66,7 @@
 		</h2>
 		<div class="m-auto flex w-full max-w-screen-2xl flex-wrap justify-center gap-6 overflow-x-hidden">
 			{#each tutors.slice(0, 4) as tutor}
-				<TutorCard tutor="{tutor}" class="max-w-[280px] md:max-w-sm flex-shrink mx-0" />
+				<TutorCardV3 tutor="{tutor}" class=" md:max-w-sm flex-shrink mx-0" />
 			{/each}
 		</div>
 	</div>
