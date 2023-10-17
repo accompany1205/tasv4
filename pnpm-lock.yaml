@@ -5,6 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@fontsource-variable/akshar':
+    specifier: ^5.0.8
+    version: 5.0.8
+  '@fontsource/open-sans':
+    specifier: ^5.0.15
+    version: 5.0.15
   svelte-inview:
     specifier: ^4.0.1
     version: 4.0.1(svelte@4.2.1)
@@ -296,6 +302,14 @@ packages:
   /@floating-ui/utils@0.1.4:
     resolution: {integrity: sha512-qprfWkn82Iw821mcKofJ5Pk9wgioHicxcQMxx+5zt5GSKoqdWvgG5AxVmpmUUjzTLPVSH5auBrhI93Deayn/DA==}
     dev: true
+
+  /@fontsource-variable/akshar@5.0.8:
+    resolution: {integrity: sha512-B8UHil3Vggq9RsjNfiwP4A1EsRMfrrkIxWrUjdmdGFgUNvz8ERco1Bw4ctTyKqEKwJX2YR/nMO05Zp4QNLGluw==}
+    dev: false
+
+  /@fontsource/open-sans@5.0.15:
+    resolution: {integrity: sha512-gnvxTADG72CWWN57//x5leVJqQthgkhHao3/dK6wkn5wO7uTLYpiViLfUJYeV274juC73EvGQnc/3Y+9IEST2A==}
+    dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
