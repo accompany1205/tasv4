@@ -66,7 +66,7 @@
 	});
 </script>
 
-<Card img="/" reverse="{vCard}" class="mx-auto mb-4 {_class}" padding="none" border={false}>
+<Card img="/" reverse="{vCard}" class="mx-auto mb-4 {_class}" padding="none" border="{false}">
 	<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
 	<div use:inview="{options}" on:inview_change="{handleChange}" class="aspect-square">
 		<swiper-container bind:this="{swiper}" init="true">

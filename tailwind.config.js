@@ -8,8 +8,8 @@ export default {
 	],
 	theme: {
 		fontFamily: {
-			'akshar': ['Akshar Variable', 'Arial', 'sans-serif'],
-		},	
+			akshar: ['Akshar Variable', 'Arial', 'sans-serif'],
+		},
 		extend: {
 			colors: {
 				emerald: {
@@ -65,14 +65,11 @@ export default {
 					950: '#292929',
 				},
 			},
-            aspectRatio: {
-                '4/3': '4 / 3',
-                tarot: '11 / 19'
-            }
+			aspectRatio: {
+				'4/3': '4 / 3',
+				tarot: '11 / 19',
+			},
 		},
 	},
-	plugins: [
-		require('flowbite/plugin'),
-		fluidText
-	],
+	plugins: [require('flowbite/plugin'), fluidText],
 };

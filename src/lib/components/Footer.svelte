@@ -13,7 +13,7 @@
 </script>
 
 <Footer footerType="sitemap" class="overflow-x-hidden bg-nile-blue-900">
-	<div class="p-4 max-w-xs">
+	<div class="max-w-xs p-4">
 		<LogoFramed class="" fill="white" />
 	</div>
 	<div class="grid grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">

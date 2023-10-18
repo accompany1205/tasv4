@@ -1,16 +1,17 @@
+<style>
+</style>
+
 <script>
-     /**
+	/**
 	 * @type {any[]}
 	 */
-      export let keywords = [];
-  </script>
-  
-  <style>
-  </style>
-  
-  <div>
-    {#each keywords as keyword}
-      <span class="py-1 px-2 m-1 inline-block bg-slate-100 rounded-md text-sm font-medium">{keyword}</span>
-    {/each}
-  </div>
-  
+	export let keywords = [];
+</script>
+
+<div>
+	{#each keywords as keyword}
+		<span class="m-1 inline-block rounded-md bg-slate-100 px-2 py-1 text-sm font-medium"
+			>{keyword}</span
+		>
+	{/each}
+</div>
