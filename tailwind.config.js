@@ -1,4 +1,5 @@
 import fluidText from './tailwind/fluid-text';
+import deviceSizes from './tailwind/device';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -71,5 +72,5 @@ export default {
 			},
 		},
 	},
-	plugins: [require('flowbite/plugin'), fluidText],
+	plugins: [require('flowbite/plugin'), require('@tailwindcss/container-queries'), fluidText, deviceSizes],
 };

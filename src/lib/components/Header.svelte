@@ -11,7 +11,7 @@
         grid
         h-[50px]
         max-h-16
-        grid-cols-[auto_auto_1fr]
+        grid-cols-3
         items-center
         
         justify-between
@@ -26,7 +26,6 @@
         lg:max-h-24
         "
 >
-	<BarsSolid />
 	<LogoUnframedDynamicText
 		fill="black"
 		class="font-serif mt-auto h-[40px] max-h-[inherit] text-lg "
@@ -35,6 +34,10 @@
 		<text class="dyntext" transform="translate(195 76)"> Tutors & </text>
 		<text class="dyntext" transform="translate(195 117)"> Services </text>
 	</LogoUnframedDynamicText>
+
+    <div class="justify-self-center">
+        <BarsSolid />
+    </div>
 
 	<div class="call justify-self-end whitespace-nowrap pl-4 sm:pl-9">
 		<a class="text-xl font-bold text-emerald-500" href="tel: 720-335-5282"> 720-335-5282 </a>

@@ -28,9 +28,9 @@
 			expensive fees for redrawing or changing plans.
 		</p>
 	</ServiceCard>
-	<div class="mx-auto max-w-7xl">
-		<h4 class="mb-4 text-3xl font-bold">We Can Help!</h4>
+	<div class="mx-auto max-w-6xl grid sm:grid-cols-2">
 		<ul class="list-inside list-disc text-lg">
+			<h4 class="mb-4 text-3xl font-bold">We Can Help!</h4>
 			<li>Architecture</li>
 			<li>Interior Design</li>
 			<li>Product Design</li>
@@ -68,30 +68,29 @@
 			<li>3D Modeling</li>
 			<li>And more…</li>
 		</ul>
+		<div>
+			<h4 class="mb-4 text-3xl font-black"> About Sketchup </h4>
+			<p class="pb-4 text-lg">
+				Sketchup is a great visualization program that puts the power of 3D modeling in the
+				hands of everyone. What was once only possible with years of technical training, can now
+				be learned in just a few lessons. Sketchup is great for kids too. We have taught all
+				ages from 10 to 75.
+			</p>
+			<p class="pb-4 text-lg">
+				Sketchup allows users to transfer an idea, into a visual 3D model, and eventually into
+				reality using digital manufacturing processes like 3D printers and CNC machines. You can
+				also use your model for design exploration and construction documentation for
+				traditional building methods. Models created in Sketchup can also be brought into
+				virtual reality. You can explore your future home with a VR headset! Sketchup is a
+				Universal 3D Modeling Program with Countless Applications. Users can create
+				architectural structures, virtual 3D gaming worlds, 3D printed objects, 3D Art and more.
+			</p>
+			<p class="pb-4 text-lg">
+				Anything that can be imagined, can be created. Imagine drawing or doodling an idea on a
+				piece of paper. Now imagine doodling with virtual geometric 3D shapes: cubes, cylinders,
+				spheres, cones, domes, and more. Now you can doodle quickly in 3D. The possibilities for
+				creation are endless.
+			</p>
+		</div>
 	</div>
-	<div class="mx-auto max-w-7xl">
-		<h4 class="my-4 text-3xl font-black"> About Sketchup </h4>
-		<p class="pb-4 text-lg">
-			Sketchup is a great visualization program that puts the power of 3D modeling in the
-			hands of everyone. What was once only possible with years of technical training, can now
-			be learned in just a few lessons. Sketchup is great for kids too. We have taught all
-			ages from 10 to 75.
-		</p>
-		<p class="pb-4 text-lg">
-			Sketchup allows users to transfer an idea, into a visual 3D model, and eventually into
-			reality using digital manufacturing processes like 3D printers and CNC machines. You can
-			also use your model for design exploration and construction documentation for
-			traditional building methods. Models created in Sketchup can also be brought into
-			virtual reality. You can explore your future home with a VR headset! Sketchup is a
-			Universal 3D Modeling Program with Countless Applications. Users can create
-			architectural structures, virtual 3D gaming worlds, 3D printed objects, 3D Art and more.
-		</p>
-		<p class="pb-4 text-lg">
-			Anything that can be imagined, can be created. Imagine drawing or doodling an idea on a
-			piece of paper. Now imagine doodling with virtual geometric 3D shapes: cubes, cylinders,
-			spheres, cones, domes, and more. Now you can doodle quickly in 3D. The possibilities for
-			creation are endless.
-		</p>
-	</div>
-	<!-- TODO: Insert Slider Gallery Here -->
 </div>
