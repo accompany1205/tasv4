@@ -22,7 +22,7 @@
             tracking-tight
             text-white
 
-			fluid-h1
+			text-fc-[1.5rem_3.5cqw_2.75rem]
            "
 		>
 			Online&nbsp;Sketchup&nbsp;Classes, Zoom&nbsp;Tutors<wbr /> &&nbsp;Professional&nbsp;Services
