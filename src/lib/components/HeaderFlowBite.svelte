@@ -43,46 +43,48 @@
 
 </script>
   
-<Navbar class="flex justify-evenly mx-0 m-0 p-0" let:hidden let:toggle>
-	<LogoUnframedDynamicText
-		fill="black"
-		class="font-serif mt-auto h-[40px] max-h-[inherit] text-lg max-w-full"
-        >
-        <text class="dyntext" transform="translate(195 34)"> Sketchup </text>
-        <text class="dyntext" transform="translate(195 76)"> Tutors & </text>
-        <text class="dyntext" transform="translate(195 117)"> Services </text>
-	</LogoUnframedDynamicText>
+<Navbar fluid=true class="flex justify-evenly bg-transparent m-0 p-0" let:hidden let:toggle let:NavContainer>
+    <NavContainer class="m-0 mx-0 md:m-auto">
+        <LogoUnframedDynamicText
+            fill="black"
+            class="font-serif mt-auto h-[40px] max-h-[inherit] text-lg max-w-1/4"
+            >
+            <text class="dyntext" transform="translate(195 34)"> Sketchup </text>
+            <text class="dyntext" transform="translate(195 76)"> Tutors & </text>
+            <text class="dyntext" transform="translate(195 117)"> Services </text>
+        </LogoUnframedDynamicText>
 
-    <NavHamburger on:click={toggle} />
-    <NavUl class="order-1" {hidden}>
-        <NavLi href="/" active={true}>Home</NavLi>
+        <NavHamburger on:click={toggle} />
+        <NavUl class="order-1" {hidden}>
+            <NavLi href="/" active={true}>Home</NavLi>
 
-        <!-- Tutors -->
-        <NavLi class="cursor-pointer">
-            Tutors<ChevronDownOutline class="w-3 h-3 ml-2 text-primary-800 dark:text-white inline" />
-        </NavLi>
-            <MegaMenu items={software} let:item class="z-50">
-                <a href={item.href} class="hover:text-primary-600 dark:hover:text-primary-500">{item.name}</a>
-            </MegaMenu>
+            <!-- Tutors -->
+            <NavLi class="cursor-pointer">
+                Tutors<ChevronDownOutline class="w-3 h-3 ml-2 text-primary-800 dark:text-white inline" />
+            </NavLi>
+                <MegaMenu items={software} let:item class="z-50">
+                    <a href={item.href} class="hover:text-primary-600 dark:hover:text-primary-500">{item.name}</a>
+                </MegaMenu>
 
-        <!-- Services -->
-        <NavLi class="cursor-pointer">
-            Services<ChevronDownOutline class="w-3 h-3 ml-2 text-primary-800 dark:text-white inline" />
-        </NavLi>
-            <MegaMenu items={services} let:item class="z-50">
-                <a href={item.href} class="hover:text-primary-600 dark:hover:text-primary-500">{item.name}</a>
-            </MegaMenu>
+            <!-- Services -->
+            <NavLi class="cursor-pointer">
+                Services<ChevronDownOutline class="w-3 h-3 ml-2 text-primary-800 dark:text-white inline" />
+            </NavLi>
+                <MegaMenu items={services} let:item class="z-50">
+                    <a href={item.href} class="hover:text-primary-600 dark:hover:text-primary-500">{item.name}</a>
+                </MegaMenu>
+            
+            <!-- More -->
+            <NavLi class="cursor-pointer">
+                More<ChevronDownOutline class="w-3 h-3 ml-2 text-primary-800 dark:text-white inline" />
+            </NavLi>
+                <MegaMenu items={more} let:item class="z-50">
+                    <a href={item.href} class="hover:text-primary-600 dark:hover:text-primary-500">{item.name}</a>
+                </MegaMenu>
+        </NavUl>
         
-        <!-- More -->
-        <NavLi class="cursor-pointer">
-            More<ChevronDownOutline class="w-3 h-3 ml-2 text-primary-800 dark:text-white inline" />
-        </NavLi>
-            <MegaMenu items={more} let:item class="z-50">
-                <a href={item.href} class="hover:text-primary-600 dark:hover:text-primary-500">{item.name}</a>
-            </MegaMenu>
-    </NavUl>
-    
-    <Button class="flex bg-emerald-500 rounded py-1 text-xl md:order-2" size="sm">720-335-5282</Button>
+        <Button class="flex bg-emerald-500 rounded py-1 text-xl md:order-2" size="sm">720-335-5282</Button>
+    </NavContainer>
 </Navbar>
 
 
