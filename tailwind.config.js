@@ -63,6 +63,10 @@ export default {
 					950: '#292929',
 				},
 			},
+            aspectRatio: {
+                '4/3': '4 / 3',
+                tarot: '11 / 19'
+            }
 		},
 	},
 	plugins: [require('flowbite/plugin')],

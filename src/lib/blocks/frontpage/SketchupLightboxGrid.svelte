@@ -2,7 +2,7 @@
 	import LightboxGrid from '$lib/components/LightboxGrid.svelte';
 	const pictures = import.meta.glob('$lib/assets/sketchup/*.webp', {
 		query: {
-			format: 'webp;avif;jpeg',
+			format: 'webp;jpeg',
 			w: '120;1200;',
 			as: 'srcset',
 		},

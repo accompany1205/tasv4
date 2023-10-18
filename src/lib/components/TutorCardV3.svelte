@@ -27,13 +27,13 @@
 
 <style>
     .card-size {
-        width: 350px;
+        /* width: 350px; */
         height: auto;
     }
 </style>
   
 <div use:inview="{options}" on:inview_change="{handleChange}"
-    class="card-size bg-white rounded shadow-lg mx-auto font-akshar grid grid-rows-[auto_1fr_auto] {_class}">
+    class="overflow-clip flex-shrink bg-white rounded shadow-lg font-akshar grid grid-rows-[auto_1fr_auto] {_class}">
     <div>
         <!-- Image -->
         <div class="w-full aspect-[21/9] bg-gray-200 block overflow-hidden">
@@ -66,16 +66,16 @@
         </div>
 
         <!-- Software Tags -->
-        <div class="m-2 p-1">
+        <div class="mx-3 py-1">
             <ServiceTags keywords={tutor?.software} />
         </div>
     </div>
 
     <div>
         <!-- Title -->
-        <div class="m-2 p-1 text-center text-xl">{tutor?.title}</div>
+        <div class="mx-3 mb-1 font-medium text-left text-xl">{tutor?.title}</div>
         {#if (tutor?.services?.length ?? 0 > 0)}
-            <div class="m-2 p-1">
+            <div class="mx-2 mb-2 p-1">
                 <div class="font-semibold">Services I Provide:</div>
                 <ul class="list-disc pl-5 mt-2 text-gray-500">
                     {#each tutor?.services ?? [] as service}
@@ -88,7 +88,7 @@
 
     <!-- Buttons -->
     <div class="m-2 p-1 flex justify-between">
-        <button class="bg-alabaster-300 text-white text-sm rounded mx-4 p-1">Learn More About Matthew W</button>
-        <button class="bg-emerald-400 text-white text-sm rounded mx-4 p-1">Book A Free Consultation</button>
+        <button class="bg-alabaster-300 text-white font-medium text-md rounded mx-4 p-2">Learn More About {tutor.first}</button>
+        <button class="bg-emerald-400 text-white font-medium text-md rounded mx-4 p-2">Book A Free Consultation</button>
     </div>
 </div>

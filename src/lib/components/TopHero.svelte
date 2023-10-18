@@ -8,6 +8,7 @@
 <script lang="ts">
 	import SketchupLightboxGrid from '$lib/blocks/frontpage/SketchupLightboxGrid.svelte';
 	import TutorSwipeBlock from './swiper/TutorSwipeBlock.svelte';
+	import TutorV3Swipeblock from './swiper/TutorV3Swipeblock.svelte';
 	import TutorCard from './TutorCard.svelte';
 	import TutorCardV3 from './TutorCardV3.svelte';
 
@@ -60,14 +61,16 @@
 			</button>
 		</div>
 	</div>
-	<div class="Tutors bg-bay-of-many-700 p-2 md:p-8">
+	<TutorV3Swipeblock tutors={tutors.slice(0, 8)}/>
+	<div class="Tutors bg-bay-of-many-700 p-2 ">
 		<h2 class="text-white text-3xl text-center m-auto mb-8 font-bold">
 			Meet the Team
 		</h2>
-		<div class="m-auto flex w-full max-w-screen-2xl flex-wrap justify-center gap-6 overflow-x-hidden">
+		<div class="m-auto flex items-start w-full max-w-screen-[1800px] flex-wrap justify-center gap-6 overflow-x-hidden">
 			{#each tutors.slice(0, 4) as tutor}
-				<TutorCardV3 tutor="{tutor}" class=" md:max-w-sm flex-shrink mx-0" />
+				<TutorCardV3 tutor="{tutor}" class="min-h-[600px] max-w-sm mx-0 self-stretch" />
 			{/each}
 		</div>
 	</div>
+	
 </section>
