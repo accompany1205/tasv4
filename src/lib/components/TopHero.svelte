@@ -19,7 +19,7 @@
 	<div class="bg-bay-of-many-700 py-6">
 		<h1
 			class="
-            fluid
+            fluid-h1
             m-auto
 
 			text-left

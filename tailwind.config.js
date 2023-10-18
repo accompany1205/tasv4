@@ -1,3 +1,5 @@
+import fluidText from './tailwind/fluid-text';
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: [
@@ -69,5 +71,8 @@ export default {
             }
 		},
 	},
-	plugins: [require('flowbite/plugin')],
+	plugins: [
+		require('flowbite/plugin'),
+		fluidText
+	],
 };

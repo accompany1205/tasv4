@@ -36,7 +36,7 @@
 </script>
 
 <div class="swiper block bg-bay-of-many-700 overflow-hidden pt-8 pb-24 px-0 ">
-    <h2 class="text-white text-2xl sm:text-5xl text-center m-auto mb-8 font-bold">
+    <h2 class="text-white sm:fluid-h1 text-2xl sm:text-5xl text-center m-auto mb-8 font-bold">
         Our SketchUp Tutors & Freelancers
     </h2>
 	<div class="h-[800px] max-w-[1920px] mx-auto" style="container-type: size;">

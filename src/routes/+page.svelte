@@ -25,6 +25,6 @@
 <GeneralServices />
 <GeneralServicesDetail />
 <SketchupServices />
-<TutorGrid />
+<!-- <TutorGrid /> -->
 
 <Footer />
