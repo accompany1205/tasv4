@@ -23,13 +23,13 @@ export type Tutor = {
 	// aboutMe: string;
 
 	//Web
-	title: string;
+	title?: string;
 	// description: string;
 	// specialOffer: string;
 
 	//Services
-	// software: string[];
-	// services: string[];
+	software?: string[];
+	services?: string[];
 
 	//Testimonials
 	// testimonials: string[];
@@ -43,6 +43,8 @@ export const tutors: Tutor[] = [
 		name: 'Tim D',
 		title: 'SketchUp & Solid WORKS Introductory Tutor & 3D Printing',
 		hourlyRate: 40,
+		software: ['Sketchup', 'Solidworks'],
+		services: [],
 	},
 	{
 		id: '12112',
@@ -51,6 +53,14 @@ export const tutors: Tutor[] = [
 		name: 'Aims A',
 		title: 'SketchUp Beginner Tutor and VRAY Rendering Services',
 		hourlyRate: 40,
+		software: ['VRay', 'Sketchup', 'Layout'],
+		services: [
+			'Architectural Modeling',
+			'Architectural Rendering',
+			'Interior Modeling',
+			'Interior Rendering',
+			'Urban Planning Illustrations',
+		],
 	},
 	{
 		id: '24291',
@@ -59,6 +69,14 @@ export const tutors: Tutor[] = [
 		name: 'Vladimir S',
 		title: 'Engineering 3D Visualization and Sketchup Training',
 		hourlyRate: 40,
+		software: ['Sketchup', 'Layout'],
+		services: [
+			'3D Visualization',
+			'3D Pick Plans',
+			'3D Work Plans',
+			'Integrated Shop Drawings',
+			'Renderings and Animation',
+		],
 	},
 	{
 		id: '1619',
@@ -67,6 +85,17 @@ export const tutors: Tutor[] = [
 		name: 'Shanthi O',
 		title: 'Sketchup Interior 3D Modelling and Rendering Services',
 		hourlyRate: 45,
+		software: ['Sketchup', 'Podium', 'Revit LT', 'Twinmotion', 'Podium Walker', 'Power Point'],
+		services: [
+			'SketchUp Pro 2020 Interior and Exterior Modeling Services',
+			'Layout 2020 for Construction Documentation',
+			'Revit LT 2020',
+			'Animation Walkthrough',
+			'Virtual Staging',
+			'Architectural Modeling',
+			'Architectural Rendering',
+			'Construction Documentation',
+		],
 	},
 	{
 		id: '12081',
@@ -75,6 +104,18 @@ export const tutors: Tutor[] = [
 		name: 'Kyle T',
 		title: 'Sketchup and Layout Tutor for Beginners to Intermediate',
 		hourlyRate: 45,
+		software: ['Sketchup', 'Layout', 'InDesign', 'Python Programming'],
+		services: [
+			'Construction Modeling',
+			'Conceptual',
+			'Product Design Modeling',
+			'Architectural Rendering',
+			'Construction Documentation',
+			'Architectural Modeling',
+			'Furniture Modeling',
+			'Interior Modeling',
+			'Landscape Modeling',
+		],
 	},
 	{
 		id: '12113',
@@ -83,6 +124,8 @@ export const tutors: Tutor[] = [
 		name: 'Michael H',
 		title: 'AutoCAD Manager, Drafting Specialist and Sketchup Tutor',
 		hourlyRate: 45,
+		software: ['AutoCAD', 'Sketchup', 'Layout'],
+		services: ['Architectural Modeling'],
 	},
 	{
 		id: '18035',
@@ -91,6 +134,13 @@ export const tutors: Tutor[] = [
 		name: 'Joshua B',
 		title: 'Custom 3D Model Drawing Tutor/Service for Architecture &more',
 		hourlyRate: 45,
+		software: ['Sketchup', 'AutoCAD', 'Lumion', 'Archicad'],
+		services: [
+			'Architectural Modeling',
+			'Architectural Rendering',
+			'Interior Design',
+			'Construction Modeling',
+		],
 	},
 	{
 		id: '12115',
@@ -99,6 +149,27 @@ export const tutors: Tutor[] = [
 		name: 'Juan S',
 		title: '3D Multi-Program & Multidisciplinary Tutor (English/Spanish)',
 		hourlyRate: 50,
+		software: [
+			'Sketchup',
+			'Blender',
+			'3DS MAX',
+			'After Effects',
+			'Cinema 4D',
+			'VRay',
+			'Final Cut',
+			'Lumion',
+			'Photoshop',
+			'Illustrator',
+		],
+		services: [
+			'Architectural Modeling',
+			'3D Print Modeling',
+			'Product Rendering',
+			'Landscape Modeling',
+			'Product Development',
+			'Architectural Rendering',
+			'Construction Documentation',
+		],
 	},
 	{
 		id: '20684',
@@ -107,6 +178,13 @@ export const tutors: Tutor[] = [
 		name: 'Paul H',
 		title: 'Sketchup Trainer for Terrain, Landscape & Garden Design',
 		hourlyRate: 75,
+		software: ['Sketchup', 'Layout', 'Twinmotion'],
+		services: [
+			'Landscape Modeling',
+			'Construction Documentation',
+			'Architectural Rendering',
+			'Construction Modeling',
+		],
 	},
 	{
 		id: '2515',
@@ -115,6 +193,19 @@ export const tutors: Tutor[] = [
 		name: 'Geoff B',
 		title: 'Sketchup Architectural & Custom 3D Modeling Tutor / Services',
 		hourlyRate: 80,
+		software: ['Sketchup', 'Layout', 'Jotform', 'Google Sheets'],
+		services: [
+			'Conceptual Architectural 3D Sketchup Models',
+			'3D Models for Construction and Manufacturing',
+			'3D Landscape & Terrain Modeling from 2D Contour Lines',
+			'Modeling for 3D Printing',
+			'Custom 3D Furniture Modeling',
+			'Custom 3D Models for any Industry',
+			'Architectural Modeling',
+			'Furniture Modeling',
+			'Interior Modeling',
+			'3D Print Modeling',
+		],
 	},
 	{
 		id: '2972',
@@ -123,6 +214,18 @@ export const tutors: Tutor[] = [
 		name: 'Curt A',
 		title: 'Architectural Designer/3D Visualizer/3D Modeling & Rendering',
 		hourlyRate: 80,
+		software: ['Sketchup', 'Layout', 'Enscape', 'Twinmotion'],
+		services: [
+			'3D Print Modeling',
+			'Interior Modeling',
+			'Landscape Modeling',
+			'Architectural Modeling',
+			'Architectural Rendering',
+			'Interior Rendering',
+			'CNC Modeling',
+			'Construction Documentation',
+			'Furniture Modeling',
+		],
 	},
 	{
 		id: '18836',
@@ -131,6 +234,15 @@ export const tutors: Tutor[] = [
 		name: 'Matthew W',
 		title: 'Advanced AutoCAD and Sketchup Tutor for Architecture',
 		hourlyRate: 100,
+		software: ['Sketchup', 'Layout', 'AutoCAD'],
+		services: [
+			'Architectural Modeling',
+			'Building Custom Dynamic Components',
+			'Architectural Plans',
+			'Architectural Rendering',
+			'3D Modeling',
+			'CAD',
+		],
 	},
 	{
 		id: '22530',
@@ -139,5 +251,7 @@ export const tutors: Tutor[] = [
 		name: 'Joanne S',
 		title: 'Interior Design Training with Sketchup and Layout',
 		hourlyRate: 100,
+		software: ['Sketchup'],
+		services: ['Interior Design'],
 	},
 ];

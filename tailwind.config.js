@@ -1,3 +1,6 @@
+import fluidText from './tailwind/fluid-text';
+import deviceSizes from './tailwind/device';
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: [
@@ -5,6 +8,9 @@ export default {
 		'./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}',
 	],
 	theme: {
+		fontFamily: {
+			akshar: ['Akshar Variable', 'Arial', 'sans-serif'],
+		},
 		extend: {
 			colors: {
 				emerald: {
@@ -16,7 +22,7 @@ export default {
 					500: '#35b247',
 					600: '#279236',
 					700: '#22732e',
-					800: '#1f5c28',
+					800: '#1f5c28', // Optimal text contrast on white
 					900: '#1c4b24',
 					950: '#0a2910',
 				},
@@ -60,7 +66,11 @@ export default {
 					950: '#292929',
 				},
 			},
+			aspectRatio: {
+				'4/3': '4 / 3',
+				tarot: '11 / 19',
+			},
 		},
 	},
-	plugins: [require('flowbite/plugin')],
+	plugins: [require('flowbite/plugin'), require('@tailwindcss/container-queries'), fluidText, deviceSizes],
 };

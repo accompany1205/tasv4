@@ -11,6 +11,7 @@
 				alt="sketchup"
 				decoding="async"
 				width="112"
+				height="112"
 				style="content-visibility:auto"
 			/>
 		</picture>

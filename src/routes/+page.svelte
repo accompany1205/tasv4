@@ -25,8 +25,6 @@
 <GeneralServices />
 <GeneralServicesDetail />
 <SketchupServices />
-<TutorGrid />
+<!-- <TutorGrid /> -->
 
-<hr class="m-auto w-5/6 pb-8" />
-<TutorList />
 <Footer />

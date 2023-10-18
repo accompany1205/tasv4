@@ -8,9 +8,14 @@
 		FooterCopyright,
 	} from 'flowbite-svelte';
 	import { FacebookSolid, GithubSolid, DiscordSolid, TwitterSolid } from 'flowbite-svelte-icons';
+
+	import LogoFramed from '$lib/assets/svg/LogoFramed.svelte';
 </script>
 
-<Footer footerType="sitemap" class="mt-8">
+<Footer footerType="sitemap" class="overflow-x-hidden bg-nile-blue-900">
+	<div class="max-w-xs p-4">
+		<LogoFramed class="" fill="white" />
+	</div>
 	<div class="grid grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
 		<div>
 			<h2 class="mb-6 text-sm font-semibold uppercase text-gray-400">Company</h2>
@@ -22,15 +27,6 @@
 			</FooterLinkGroup>
 		</div>
 		<div>
-			<h2 class="mb-6 text-sm font-semibold uppercase text-gray-400">Download</h2>
-			<FooterLinkGroup ulClass="text-gray-300">
-				<FooterLink liClass="mb-4" href="/">Discord Server</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Twitter</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Facebook</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Contact Us</FooterLink>
-			</FooterLinkGroup>
-		</div>
-		<div>
 			<h2 class="mb-6 text-sm font-semibold uppercase text-gray-400">Legal</h2>
 			<FooterLinkGroup ulClass="text-gray-300">
 				<FooterLink liClass="mb-4" href="/">Privacy Policy</FooterLink>
@@ -38,21 +34,12 @@
 				<FooterLink liClass="mb-4" href="/">Terms & Conditions</FooterLink>
 			</FooterLinkGroup>
 		</div>
-		<div>
-			<h2 class="mb-6 text-sm font-semibold uppercase text-gray-400">Download</h2>
-			<FooterLinkGroup ulClass="text-gray-300">
-				<FooterLink liClass="mb-4" href="/">iOS</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Android</FooterLink>
-				<FooterLink liClass="mb-4" href="/">Windows</FooterLink>
-				<FooterLink liClass="mb-4" href="/">MacOS</FooterLink>
-			</FooterLinkGroup>
-		</div>
 	</div>
-	<div class="bg-gray-700 px-4 py-6 md:flex md:items-center md:justify-between">
+	<div class="bg-nile-blue-950 px-4 py-6 md:flex md:items-center md:justify-between">
 		<FooterCopyright
 			spanClass="text-sm text-gray-300 sm:text-center"
 			href="/"
-			by="Flowbite™"
+			by="Tutors and Services"
 		/>
 		<div class="mt-4 flex space-x-6 sm:justify-center md:mt-0">
 			<FooterIcon href="/">
