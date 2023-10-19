@@ -36,7 +36,6 @@
 	</LogoUnframedDynamicText>
 
     <div class="justify-self-center">
-        <BarsSolid />
     </div>
 
 	<div class="call @container w-full justify-self-end whitespace-nowrap  sm:pl-9">
