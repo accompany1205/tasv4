@@ -3,6 +3,7 @@
     import { FacebookSolid, GithubSolid, DiscordSolid, TwitterSolid } from 'flowbite-svelte-icons';
     import LogoUnframedDynamicText from '$lib/assets/svg/LogoUnframedDynamicText.svelte';
     import { Rating, AdvancedRating, ScoreRating } from 'flowbite-svelte';
+    import GoogleRatings from './GoogleRatings.svelte';
 
 </script>
   
@@ -18,20 +19,7 @@
           <text class="dyntext" transform="translate(195 117)"> Services </text>
         </LogoUnframedDynamicText>
 
-        <!-- Google Review -->
-        <div class="flex justify-start h-28	bg-grey">
-          <img src="temp/google.webp" class="w-24" alt="">
-          <div class="font-akshar text-white">
-            <div>Google Rating</div>
-
-            <div class="flex justify-center align-middle text-center items-center	">
-              <span>5.0</span>
-              <Rating class="w-24" id="example-1b" total={5} size={50} rating={5} />
-            </div>
-
-            <div>Based on 244 Reviews</div>
-          </div>
-        </div>
+        <GoogleRatings/>
 
       </div>
 
