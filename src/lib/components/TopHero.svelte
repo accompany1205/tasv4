@@ -5,6 +5,7 @@
 	import GoogleRatings from './GoogleRatings.svelte';
 	import TutorCard from './TutorCard.svelte';
 	import TutorCardV3 from './TutorCardV3.svelte';
+	import ImageCarousel from './ImageCarousel.svelte';
 
 	import { tutors } from '$lib/tutors';
 </script>
@@ -43,8 +44,10 @@
 			lg:gap-8"
 	>
 		<div class="left-col m-4">
-			<div class="mx-auto aspect-video max-h-96 bg-pink-600"> PLACEHOLDER </div>
+			<ImageCarousel/>
 		</div>
+
+
 		<div class="right-col grid grid-rows-[1fr_auto] shrink-0 mr-4 micro:max-sm:text-lg">
 			<div class="@container w-full mx-auto max-w-md pb-6">
 				<h2 class="my-4 max-w-sm text-fc-[1.5rem_5cqw_8rem] font-bold">
@@ -59,7 +62,7 @@
 					for professional help with your projects.
 				</p>
 			</div>
-			<button class="max-w-sm bg-emerald-400 p-3 text-3xl font-bold text-white">
+			<button class="max-w-sm bg-emerald-400 p-3 text-3xl font-bold text-white hover:bg-emerald-300">
 				Get Started Today
 			</button>
 			<GoogleRatings />

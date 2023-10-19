@@ -89,10 +89,10 @@
 
 	<!-- Buttons -->
 	<div class="m-2 flex justify-between p-1">
-		<button class="text-md mx-4 rounded bg-alabaster-300 p-2 font-medium text-white"
+		<button class="text-md mx-4 rounded bg-alabaster-300 p-2 font-medium text-white hover:bg-alabaster-200"
 			>Learn More About {tutor.first}</button
 		>
-		<button class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white"
+		<button class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300"
 			>Book A Free Consultation</button
 		>
 	</div>
