@@ -7,7 +7,7 @@
 </script>
   
   <Footer footerType="sitemap" class="bg-nile-blue-900">
-    <div class="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
+    <div class="grid grid-cols-1 gap-8 py-8 px-6 md:grid-cols-2 xl:grid-cols-4">
 
       <div class="max-w-1/4">
         <LogoUnframedDynamicText
@@ -17,9 +17,7 @@
           <text class="dyntext" transform="translate(195 76)"> Tutors & </text>
           <text class="dyntext" transform="translate(195 117)"> Services </text>
         </LogoUnframedDynamicText>
-
         <GoogleRatings/>
-
       </div>
 
       <div>

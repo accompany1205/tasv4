@@ -35,8 +35,8 @@
 	});
 </script>
 
-<div class="swiper block overflow-hidden bg-bay-of-many-700 px-0 pb-24 pt-8">
-	<h2 class="m-auto mb-8 text-center text-2xl font-bold text-white sm:text-5xl sm:fluid-h1">
+<div class="swiper block overflow-hidden bg-nile-blue-900 px-0 pb-24 pt-8">
+	<h2 class="border-b-4 border-emerald-400 pb-4 px-4 mb-8 text-2xl font-bold text-white sm:text-5xl sm:fluid-h1">
 		Our SketchUp Tutors & Freelancers
 	</h2>
 	<div class="mx-auto h-[800px] max-w-[1920px]" style="container-type: size;">

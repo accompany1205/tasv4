@@ -2,6 +2,7 @@
 	import SketchupLightboxGrid from '$lib/blocks/frontpage/SketchupLightboxGrid.svelte';
 	import TutorSwipeBlock from './swiper/TutorSwipeBlock.svelte';
 	import TutorV3Swipeblock from './swiper/TutorV3Swipeblock.svelte';
+	import GoogleRatings from './GoogleRatings.svelte';
 	import TutorCard from './TutorCard.svelte';
 	import TutorCardV3 from './TutorCardV3.svelte';
 
@@ -9,7 +10,7 @@
 </script>
 
 <section class="overflow-x-hidden bg-[#e8e8e8] dark:bg-gray-900">
-	<div class="bg-bay-of-many-700 py-6">
+	<div class="bg-nile-blue-900 py-6">
 		<!-- fluid-h1 -->
 		<h1
 			class="
@@ -58,13 +59,14 @@
 					for professional help with your projects.
 				</p>
 			</div>
-			<button class="mx-auto max-w-sm bg-emerald-400 p-3 text-3xl font-bold text-white">
+			<button class="max-w-sm bg-emerald-400 p-3 text-3xl font-bold text-white">
 				Get Started Today
 			</button>
+			<GoogleRatings />
 		</div>
 	</div>
 	<TutorV3Swipeblock tutors="{tutors.slice(0, 4)}" />
-	<!-- <div class="Tutors bg-bay-of-many-700 p-2">
+	<!-- <div class="Tutors bg-nile-blue-900 p-2">
 		<h2 class="m-auto mb-8 text-center text-3xl font-bold text-white"> Meet the Team </h2>
 		<div
 			class="max-w-screen-[1800px] m-auto flex w-full flex-wrap items-start justify-center gap-6 overflow-x-hidden"

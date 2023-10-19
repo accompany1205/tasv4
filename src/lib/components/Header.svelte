@@ -8,6 +8,9 @@
 
 <header
 	class="
+        sticky
+        top-0
+        z-20
         grid
         h-[50px]
         max-h-16
