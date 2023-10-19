@@ -1,3 +1,7 @@
+<script>
+	import { Video } from 'flowbite-svelte';
+</script>
+
 <div class="bg-nile-blue-900 p-4 text-white">
 	<h3 class="border-b-4 border-emerald-400 py-4 pl-4 text-3xl font-black">
 		Remote & On-Demand Help
@@ -15,8 +19,6 @@
 				but just minutes to ask your private tutor.
 			</p>
 		</div>
-		<div class="slider aspect-video bg-pink-500">
-			<!-- TODO: Slider -->
-		</div>
+		<Video src="/temp/remote-help.mp4" controls autoplay muted loop class="w-full max-w-full h-auto" trackSrc="/temp/remote-help.mp4" />
 	</div>
 </div>
