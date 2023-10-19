@@ -1,10 +1,3 @@
-<style>
-	.card-size {
-		/* width: 350px; */
-		height: auto;
-	}
-</style>
-
 <script lang="ts">
 	import '@fontsource-variable/akshar';
 	import ServiceTags from './ServiceTags.svelte';
@@ -22,7 +15,6 @@
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) =>
 		(isInView = detail.inView);
 
-	let keywordsArray = ['SketchUp', 'AutoCAD', 'Blender'];
 	let _class = '';
 	export { _class as class };
 	export let tutor: Tutor;
@@ -31,7 +23,7 @@
 <div
 	use:inview="{options}"
 	on:inview_change="{handleChange}"
-	class="grid flex-shrink grid-rows-[auto_1fr_auto] overflow-clip rounded bg-white font-akshar shadow-lg {_class}"
+	class="grid flex-shrink grid-rows-[auto_1fr_auto] h-[80cqh] overflow-clip rounded bg-white font-akshar shadow-lg {_class}"
 >
 	<div>
 		<!-- Image -->
@@ -77,11 +69,13 @@
 	<div>
 		<!-- Title -->
 		<div class="mx-3 mb-1 text-left text-xl font-medium">{tutor?.title}</div>
+
+		<!-- Services -->
 		{#if tutor?.services?.length ?? 0 > 0}
 			<div class="mx-2 mb-2 p-1">
 				<div class="font-semibold">Services I Provide:</div>
 				<ul class="mt-2 list-disc pl-5 text-gray-500">
-					{#each tutor?.services ?? [] as service}
+					{#each tutor?.services.slice(0, 3) ?? [] as service}
 						<li>{service}</li>
 					{/each}
 				</ul>
