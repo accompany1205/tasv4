@@ -5,7 +5,7 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import FooterFlowBite from '$lib/components/FooterFlowBite.svelte';
 	import { Button } from 'flowbite-svelte';
-
+	import FreeConsultationSticky from '$lib/components/FreeConsultationSticky.svelte';
 
 	import { register } from 'swiper/element/bundle';
 	register();
@@ -16,6 +16,4 @@
 <FooterFlowBite />
 
 
-<Button href="https://www.jotform.com/221775033335048" class="fixed bottom-4 bg-emerald-400 text-2xl px-2 py-1 right-4 rounded-none">
-	Free Consultation
-</Button>
+<FreeConsultationSticky />

@@ -1,7 +1,7 @@
 <div class="overflow-x-hidden py-4">
 	<h3 class="border-b-4 border-emerald-400 py-4 pl-4 text-3xl font-black">Types of Service</h3>
 	<div class="m-2 mx-auto flex max-w-7xl flex-wrap gap-4 text-white">
-		<div class="card mx-auto aspect-square w-full max-w-xs flex-shrink-0 bg-nile-blue-900 p-4">
+		<div class="card mx-auto w-full max-w-xs flex-shrink-0 bg-nile-blue-900 p-4">
 			<h4 class="mb-2 text-center text-2xl font-black">Tutoring</h4>
 			<svg
 				style="fill: white; width: 50px; height: 50px; margin: auto;"
@@ -19,7 +19,7 @@
 				what you need for your specific projects, and nothing more!
 			</p>
 		</div>
-		<div class="card mx-auto aspect-square w-full max-w-xs flex-shrink-0 bg-nile-blue-900 p-4">
+		<div class="card mx-auto w-full max-w-xs flex-shrink-0 bg-nile-blue-900 p-4">
 			<h4 class="mb-2 text-center text-2xl font-black">Collaborative</h4>
 			<svg
 				style="fill: white; width: 50px; height: 50px; margin: auto;"
@@ -36,7 +36,7 @@
 				increases our understanding of your project.
 			</p>
 		</div>
-		<div class="card mx-auto aspect-square w-full max-w-xs flex-shrink-0 bg-nile-blue-900 p-4">
+		<div class="card mx-auto w-full max-w-xs flex-shrink-0 bg-nile-blue-900 p-4">
 			<h4 class="mb-2 text-center text-2xl font-black">Contract</h4>
 			<svg
 				style="fill: white; width: 50px; height: 50px; margin: auto;"

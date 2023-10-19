@@ -55,7 +55,11 @@
 			<!-- Name -->
 			<div class="p-2">
 				<div class="text-4xl font-bold">{tutor.name}</div>
-				<span class="font-medium text-yellow-300">5⭐ 50 Reviews</span>
+				{#if tutor.ratingCount >= 5}
+					<span class="font-medium text-yellow-300">{tutor.ratingScore.toFixed(1)}⭐ {tutor.ratingCount} Reviews</span>
+				{:else}
+					<span class="font-medium text-yellow-300">New</span>
+				{/if}
 				<span class="font-medium text-gray-500">• Expert • ${tutor.hourlyRate}/hr</span>
 			</div>
 		</div>
