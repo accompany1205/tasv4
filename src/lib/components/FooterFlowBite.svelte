@@ -73,8 +73,8 @@
 
     </div>
 
-    <div class="py-6 px-4 bg-gray-700 md:flex md:items-center md:justify-between">
-      <FooterCopyright spanClass="text-sm text-gray-300 sm:text-center" href="/" by="Tutors and Services™" />
+    <div class="py-2 px-4 bg-gray-700 md:flex md:items-center md:justify-between">
+      <FooterCopyright spanClass="text-sm text-gray-300 sm:text-center" href="/" by="Tutors and Services™ - 1441 N Emerson St. Denver, CO 80218 -" />
       <div class="flex mt-4 space-x-6 sm:justify-center md:mt-0">
         <FooterIcon href="/">
           <FacebookSolid class="w-4 h-4 text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white" />
