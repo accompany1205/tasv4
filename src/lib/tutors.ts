@@ -33,6 +33,9 @@ export type Tutor = {
 
 	//Testimonials
 	// testimonials: string[];
+
+	ratingScore?: number;
+	ratingCount?: number;
 };
 
 export const tutors: Tutor[] = [
@@ -45,6 +48,8 @@ export const tutors: Tutor[] = [
 		hourlyRate: 40,
 		software: ['Sketchup', 'Solidworks'],
 		services: [],
+		ratingScore: 4.94,
+		ratingCount: 431
 	},
 	{
 		id: '12112',
@@ -61,6 +66,8 @@ export const tutors: Tutor[] = [
 			'Interior Rendering',
 			'Urban Planning Illustrations',
 		],
+		ratingScore: 5.0,
+		ratingCount: 0
 	},
 	{
 		id: '24291',
@@ -77,6 +84,8 @@ export const tutors: Tutor[] = [
 			'Integrated Shop Drawings',
 			'Renderings and Animation',
 		],
+		ratingScore: 0,
+		ratingCount: 0
 	},
 	{
 		id: '1619',
@@ -96,6 +105,8 @@ export const tutors: Tutor[] = [
 			'Architectural Rendering',
 			'Construction Documentation',
 		],
+		ratingScore: 4.91,
+		ratingCount: 534
 	},
 	{
 		id: '12081',
@@ -116,6 +127,8 @@ export const tutors: Tutor[] = [
 			'Interior Modeling',
 			'Landscape Modeling',
 		],
+		ratingScore: 4.98,
+		ratingCount: 427
 	},
 	{
 		id: '12113',
@@ -126,6 +139,8 @@ export const tutors: Tutor[] = [
 		hourlyRate: 45,
 		software: ['AutoCAD', 'Sketchup', 'Layout'],
 		services: ['Architectural Modeling'],
+		ratingScore: 4.87,
+		ratingCount: 127
 	},
 	{
 		id: '18035',
@@ -141,6 +156,8 @@ export const tutors: Tutor[] = [
 			'Interior Design',
 			'Construction Modeling',
 		],
+		ratingScore: 0,
+		ratingCount: 0
 	},
 	{
 		id: '12115',
@@ -170,6 +187,8 @@ export const tutors: Tutor[] = [
 			'Architectural Rendering',
 			'Construction Documentation',
 		],
+		ratingScore: 4.89,
+		ratingCount: 306
 	},
 	{
 		id: '20684',
@@ -185,6 +204,8 @@ export const tutors: Tutor[] = [
 			'Architectural Rendering',
 			'Construction Modeling',
 		],
+		ratingScore: 5.00,
+		ratingCount: 3
 	},
 	{
 		id: '2515',
@@ -206,6 +227,8 @@ export const tutors: Tutor[] = [
 			'Interior Modeling',
 			'3D Print Modeling',
 		],
+		ratingScore: 4.93,
+		ratingCount: 155
 	},
 	{
 		id: '2972',
@@ -226,6 +249,8 @@ export const tutors: Tutor[] = [
 			'Construction Documentation',
 			'Furniture Modeling',
 		],
+		ratingScore: 4.83,
+		ratingCount: 79
 	},
 	{
 		id: '18836',
@@ -243,6 +268,8 @@ export const tutors: Tutor[] = [
 			'3D Modeling',
 			'CAD',
 		],
+		ratingScore: 5.0,
+		ratingCount: 2
 	},
 	{
 		id: '22530',
@@ -253,5 +280,7 @@ export const tutors: Tutor[] = [
 		hourlyRate: 100,
 		software: ['Sketchup'],
 		services: ['Interior Design'],
+		ratingScore: 0,
+		ratingCount: 0
 	},
 ];
