@@ -1,19 +1,47 @@
 <script lang="ts">
 	import ServiceCard from '$lib/components/ServiceCard.svelte';
+
+    let conceptualArchitecture = [
+		{ alt: '', src: 'src/lib/assets/sketchup/services/conceptual-architecture/1.webp' },
+		{ alt: '', src: 'src/lib/assets/sketchup/services/conceptual-architecture/2.webp' },
+		{ alt: '', src: 'src/lib/assets/sketchup/services/conceptual-architecture/3.webp' },
+		{ alt: '', src: 'src/lib/assets/sketchup/services/conceptual-architecture/4.webp' },
+		{ alt: '', src: 'src/lib/assets/sketchup/services/conceptual-architecture/5.webp' },
+
+    ];
+
+	let interiorDesign = [
+		{ alt: '', src: 'src/lib/assets/sketchup/services/interior-design/1.webp' },
+		{ alt: '', src: 'src/lib/assets/sketchup/services/interior-design/2.webp' },
+		{ alt: '', src: 'src/lib/assets/sketchup/services/interior-design/3.webp' },
+		{ alt: '', src: 'src/lib/assets/sketchup/services/interior-design/4.webp' },
+		{ alt: '', src: 'src/lib/assets/sketchup/services/interior-design/5.webp' },
+		{ alt: '', src: 'src/lib/assets/sketchup/services/interior-design/6.webp' },
+    ];
+
+	let productDesign = [
+		{ alt: '', src: 'src/lib/assets/sketchup/services/product-design/1.webp' },
+		{ alt: '', src: 'src/lib/assets/sketchup/services/product-design/2.webp' },
+		{ alt: '', src: 'src/lib/assets/sketchup/services/product-design/3.webp' },
+		{ alt: '', src: 'src/lib/assets/sketchup/services/product-design/4.webp' },
+    ];
+
 </script>
 
 <div class="bg-nile-blue-900 p-4 text-white">
 	<h3 class="border-b-4 border-emerald-400 py-4 pl-4 text-3xl font-black">
 		Sketchup Services We Provide
 	</h3>
-	<ServiceCard>
+
+	<ServiceCard images = {productDesign}>
 		<h4 class="py-4 text-2xl"> Product Design </h4>
 		<p>
 			Use 3D modeling to visualize a design, 3D print, show it to prospective investors, or
 			conduct rapid prototyping.
 		</p>
 	</ServiceCard>
-	<ServiceCard>
+
+	<ServiceCard images = {interiorDesign}>
 		<h4 class="py-4 text-2xl"> Interior Design </h4>
 		<p>
 			Sketchup is a great tool for interior design. Place materials on 3d shapes to recreate a
@@ -21,13 +49,15 @@
 			customizable. There are no limitations to what you can create.
 		</p>
 	</ServiceCard>
-	<ServiceCard>
-		<h4 class="py-4 text-2xl"> Conceptual Archetectural 3D Modeling </h4>
+
+	<ServiceCard images = {conceptualArchitecture}>
+		<h4 class="py-4 text-2xl"> Conceptual Architecture 3D Modeling </h4>
 		<p>
 			Create conceptual archetectural 3D models to hash out your basic ideas. This can save
 			expensive fees for redrawing or changing plans.
 		</p>
 	</ServiceCard>
+
 	<div class="mx-auto max-w-6xl grid sm:grid-cols-2">
 		<ul class="list-inside list-disc text-lg">
 			<h4 class="mb-4 text-3xl font-bold">We Can Help!</h4>
