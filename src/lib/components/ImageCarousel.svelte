@@ -19,7 +19,7 @@
 	];
   </script>
   
-  <div class="max-w-4xl">
+  <div class="max-w-4xl w-full">
     <Carousel {images} let:Indicators duration="4000">
       <Indicators />
     </Carousel>
