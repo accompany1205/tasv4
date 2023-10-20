@@ -14,6 +14,7 @@
 	import TutorGrid from '$lib/blocks/frontpage/TutorGrid.svelte';
 	import SketchupImageGrid from '$lib/blocks/frontpage/SketchupImageGrid.svelte';
 	import SketchupLightboxGrid from '$lib/blocks/frontpage/SketchupLightboxGrid.svelte';
+	import FAQ from '$lib/components/FAQ.svelte';
 
 	import { tutors } from '$lib/tutors';
 </script>
@@ -25,4 +26,5 @@
 <GeneralServices />
 <GeneralServicesDetail />
 <SketchupServices />
+<FAQ/>
 <!-- <TutorGrid /> -->
