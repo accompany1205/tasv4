@@ -39,7 +39,7 @@
 	<h2 class="border-b-4 border-emerald-400 pb-4 px-4 mb-8 text-2xl font-bold text-white sm:text-5xl sm:fluid-h1">
 		Our SketchUp Tutors & Freelancers
 	</h2>
-	<div class="mx-auto h-[800px] max-w-[1920px]" style="container-type: size;">
+	<div class="mx-auto h-[625px] max-w-[1920px]" style="container-type: size;">
 		<swiper-container bind:this="{swiper}" init="false" navigation="true">
 			{#each tutors as tutor}
 				<swiper-slide>
