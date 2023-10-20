@@ -23,7 +23,7 @@
 <div
 	use:inview="{options}"
 	on:inview_change="{handleChange}"
-	class="grid flex-shrink grid-rows-[auto_1fr_auto] h-[80cqh] overflow-clip rounded bg-white font-akshar shadow-lg {_class}"
+	class="grid flex-shrink grid-rows-[auto_1fr_auto] max-h-full overflow-clip rounded bg-white font-akshar shadow-lg {_class}"
 >
 	<div>
 		<!-- Image -->
