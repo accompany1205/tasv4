@@ -1,5 +1,5 @@
 <script>
-    import { Carousel } from 'flowbite-svelte';
+	import { Carousel } from 'flowbite-svelte';
 	export let images = [
 		{ alt: '', src: '/sketchup/main/sketchup_1.webp' },
 		{ alt: '', src: '/sketchup/main/sketchup_3.webp' },
@@ -17,10 +17,10 @@
 		{ alt: '', src: '/sketchup/main/sketchup_15.webp' },
 		{ alt: '', src: '/sketchup/main/sketchup_16.webp' },
 	];
-  </script>
+</script>
   
-  <div class="max-w-4xl w-full">
-    <Carousel {images} let:Indicators duration="4000" class="rounded-sm">
-      <Indicators />
-    </Carousel>
-  </div>
+<div class="max-w-4xl w-full">
+	<Carousel {images} let:Indicators duration="4000" class="rounded-sm">
+		<Indicators />
+	</Carousel>
+</div>

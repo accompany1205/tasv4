@@ -17,4 +17,4 @@
     <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
         <ImageCarousel/>
     </div>
-</Section>
+</Section>5
