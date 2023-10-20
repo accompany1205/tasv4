@@ -19,6 +19,7 @@
 				but just minutes to ask your private tutor.
 			</p>
 		</div>
-		<Video src="/temp/remote-help.mp4" controls autoplay muted loop class="w-full max-w-full h-auto" trackSrc="/temp/remote-help.mp4" />
+		<!-- <Video src="/temp/remote-help.mp4" controls autoplay muted loop class="w-full max-w-full h-auto" trackSrc="/temp/remote-help.mp4" /> -->
+		<img src="/temp/ScreenshareMockup.webp" alt="">
 	</div>
 </div>
