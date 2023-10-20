@@ -2,28 +2,28 @@
 	import ServiceCard from '$lib/components/ServiceCard.svelte';
 
     let conceptualArchitecture = [
-		{ alt: '', src: 'src/lib/assets/sketchup/services/conceptual-architecture/1.webp' },
-		{ alt: '', src: 'src/lib/assets/sketchup/services/conceptual-architecture/2.webp' },
-		{ alt: '', src: 'src/lib/assets/sketchup/services/conceptual-architecture/3.webp' },
-		{ alt: '', src: 'src/lib/assets/sketchup/services/conceptual-architecture/4.webp' },
-		{ alt: '', src: 'src/lib/assets/sketchup/services/conceptual-architecture/5.webp' },
+		{ alt: '', src: '/sketchup/services/conceptual-architecture/1.webp' },
+		{ alt: '', src: '/sketchup/services/conceptual-architecture/2.webp' },
+		{ alt: '', src: '/sketchup/services/conceptual-architecture/3.webp' },
+		{ alt: '', src: '/sketchup/services/conceptual-architecture/4.webp' },
+		{ alt: '', src: '/sketchup/services/conceptual-architecture/5.webp' },
 
     ];
 
 	let interiorDesign = [
-		{ alt: '', src: 'src/lib/assets/sketchup/services/interior-design/1.webp' },
-		{ alt: '', src: 'src/lib/assets/sketchup/services/interior-design/2.webp' },
-		{ alt: '', src: 'src/lib/assets/sketchup/services/interior-design/3.webp' },
-		{ alt: '', src: 'src/lib/assets/sketchup/services/interior-design/4.webp' },
-		{ alt: '', src: 'src/lib/assets/sketchup/services/interior-design/5.webp' },
-		{ alt: '', src: 'src/lib/assets/sketchup/services/interior-design/6.webp' },
+		{ alt: '', src: '/sketchup/services/interior-design/1.webp' },
+		{ alt: '', src: '/sketchup/services/interior-design/2.webp' },
+		{ alt: '', src: '/sketchup/services/interior-design/3.webp' },
+		{ alt: '', src: '/sketchup/services/interior-design/4.webp' },
+		{ alt: '', src: '/sketchup/services/interior-design/5.webp' },
+		{ alt: '', src: '/sketchup/services/interior-design/6.webp' },
     ];
 
 	let productDesign = [
-		{ alt: '', src: 'src/lib/assets/sketchup/services/product-design/1.webp' },
-		{ alt: '', src: 'src/lib/assets/sketchup/services/product-design/2.webp' },
-		{ alt: '', src: 'src/lib/assets/sketchup/services/product-design/3.webp' },
-		{ alt: '', src: 'src/lib/assets/sketchup/services/product-design/4.webp' },
+		{ alt: '', src: '/sketchup/services/product-design/1.webp' },
+		{ alt: '', src: '/sketchup/services/product-design/2.webp' },
+		{ alt: '', src: '/sketchup/services/product-design/3.webp' },
+		{ alt: '', src: '/sketchup/services/product-design/4.webp' },
     ];
 
 </script>
