@@ -7,21 +7,24 @@
 <div class="
     z-30
     
-    w-[100dvw]
+    w-full
     flex
-    flex-col-reverse
-    flex-nowrap
-
-    h-auto
+    flex-row
+    flex-wrap
+    h-36
+    gap-0
+    p-4
     content-stretch
-    items-stretch
+    items-start
     justify-stretch
     justify-items-stretch
-
+    sm:gap-4
     lg:h-12
     lg:flex-column
     lg:flex-wrap
     lg:sticky
+    lg:gap-0
+    lg:p-0
     bg-gray-700
     text-white
     bottom-0">
@@ -33,9 +36,10 @@
         text-xl
         font-black
         items-center
+        px-4
         mx-auto
-        flex-grow-0
-        whitespace-nowrap
+        flex-grow-[2]
+        sm:whitespace-nowrap
         ">
         <span>TutorsAndServices.com</span>
         <span>720 335 5282</span>
@@ -43,13 +47,19 @@
     <GoogleRatingsCompact/>
     <Button href="https://www.jotform.com/221775033335048"
         class="
+            fixed
+            bottom-4
+            right-4
+            lg:relative
+            lg:bottom-[unset]
+            lg:right-[unset]
             flex-grow
             h-12
             bg-emerald-400
             text-2xl
             px-2
             py-1
-            right-4
+            
             rounded-none
             whitespace-nowrap
             hover:bg-emerald-300
