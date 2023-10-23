@@ -7,7 +7,7 @@
 	const params = {
 		slidesPerView: 1,
 		spaceBetween: 300,
-		effect: 'slide',
+		effect: 'slides',
 		loop: false,
 		touchStartPreventDefault: false,
 		breakpoints: {
