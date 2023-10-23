@@ -30,10 +30,11 @@
 			Online&nbsp;Sketchup&nbsp;Classes, Zoom&nbsp;Tutors<wbr /> &&nbsp;Professional&nbsp;Services
 		</h1>
 	</div>
+
 	<div
 		class="
 			mx-auto
-			mb-4
+			items-center
 			grid
 			max-w-screen-xl
 			grid-rows-[auto_1fr]
@@ -43,16 +44,17 @@
 			sm:grid-cols-[minmax(100px,_1fr)_1fr]
 			lg:gap-8"
 	>
-		<div class="left-col m-4">
+		<div class="left-col mt-3">
 			<ImageCarousel/>
 		</div>
 
 
-		<div class="right-col grid grid-rows-[1fr_auto] shrink-0 mr-4 micro:max-sm:text-lg">
-			<div class="@container w-full mx-auto max-w-md pb-6">
-				<h2 class="my-4 max-w-sm text-fc-[1.5rem_5cqw_8rem] font-bold">
+		<div class="right-col grid grid-rows-[1fr_auto] shrink-0  micro:max-sm:text-lg">
+			<div class="@container w-full max-w-md pb-6">
+				<h2 class="max-w-sm text-fc-[1.5rem_5cqw_8rem] font-bold mb-4">
 					Don't Struggle Alone, Get Sketchup Help from a Pro.
 				</h2>
+
 				<p class="text-left micro:max-unfolded:text-lg font-normal text-gray-950 unfolded:text-xl">
 					Get SketchUp classes & 1-on-1 help from a live SketchUp tutor online via Zoom.
 					Call for a free consultation and demo.
@@ -62,21 +64,13 @@
 					for professional help with your projects.
 				</p>
 			</div>
-			<button class="max-w-sm bg-emerald-400 p-3 text-3xl font-bold text-white hover:bg-emerald-300">
+
+			<GoogleRatings />
+
+			<button class="max-w-sm bg-emerald-400 p-3 text-3xl font-bold text-center items-center text-white hover:bg-emerald-300">
 				Get Started Today
 			</button>
-			<GoogleRatings />
 		</div>
+
 	</div>
-	<TutorV3Swipeblock tutors="{tutors.slice(0, 4)}" />
-	<!-- <div class="Tutors bg-nile-blue-900 p-2">
-		<h2 class="m-auto mb-8 text-center text-3xl font-bold text-white"> Meet the Team </h2>
-		<div
-			class="max-w-screen-[1800px] m-auto flex w-full flex-wrap items-start justify-center gap-6 overflow-x-hidden"
-		>
-			{#each tutors.slice(0, 4) as tutor}
-				<TutorCardV3 tutor="{tutor}" class="mx-0 min-h-[600px] max-w-sm self-stretch" />
-			{/each}
-		</div>
-	</div> -->
 </section>
