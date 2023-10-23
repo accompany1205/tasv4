@@ -30,7 +30,7 @@
 
 </script>
   
-<div use:inview="{options}" on:inview_change="{handleChange}" class="max-w-4xl w-full">
+<div use:inview="{options}" on:inview_change="{handleChange}" class="max-w-7xl w-full h-full">
 	{#if isInView}
 		<Carousel {images} let:Indicators duration="4000" class="rounded-sm">
 			<Indicators />
