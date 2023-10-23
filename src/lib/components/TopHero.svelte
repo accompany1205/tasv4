@@ -53,7 +53,7 @@
 		</div>
 
 
-		<div class="right-col grid grid-rows-[1fr_auto] shrink-0 border-2 border-emerald-400 rounded-lg micro:max-sm:text-lg">
+		<div class="right-col grid grid-rows-[1fr_auto] shrink-0  rounded-lg micro:max-sm:text-lg">
 			<div class="@container w-full max-w-md pb-6">
 
 
@@ -62,13 +62,13 @@
 						Don't Struggle Alone,&nbsp;Get Sketchup Help from a Pro.
 					</h2>
 
-					<div class="flex">
+					<div class="hidden lg:flex">
 						{#each featuredTutors as tutorID, index}
 							<div class="flex-shrink-0 -mx-4">
 								<img
 									src="/tutors/{tutorID}/hs.webp"
 									alt="Featured Tutor"
-									class="h-20 w-20 flex-shrink-0 rounded-full border-2 border-emerald-400 p-1"
+									class="h-20 w-20 flex-shrink-0 rounded-full  p-1"
 								/>
 							</div>
 						{/each}
