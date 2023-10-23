@@ -8,10 +8,14 @@
 	import ImageCarousel from './ImageCarousel.svelte';
 
 	import { tutors } from '$lib/tutors';
+
+	export let featuredTutors = ['1619', '2515', '2972'];
+	let z = 3;
+
 </script>
 
 <section class="overflow-x-hidden bg-[#e8e8e8] dark:bg-gray-900">
-	<div class="bg-nile-blue-900 py-6">
+	<div class="bg-nile-blue-900 py-3 sm:py-6">
 		<!-- fluid-h1 -->
 		<h1
 			class="
@@ -24,7 +28,7 @@
             tracking-tight
             text-white
 
-			text-fc-[1.5rem_3.5cqw_2.75rem]
+			text-fc-[1.3rem_3.5cqw_2.75rem]
            "
 		>
 			Online&nbsp;Sketchup&nbsp;Classes, Zoom&nbsp;Tutors<wbr /> &&nbsp;Professional&nbsp;Services
@@ -49,11 +53,28 @@
 		</div>
 
 
-		<div class="right-col grid grid-rows-[1fr_auto] shrink-0  micro:max-sm:text-lg">
+		<div class="right-col grid grid-rows-[1fr_auto] shrink-0 border-2 border-emerald-400 rounded-lg micro:max-sm:text-lg">
 			<div class="@container w-full max-w-md pb-6">
-				<h2 class="max-w-sm text-fc-[1.5rem_5cqw_8rem] font-bold mb-4">
-					Don't Struggle Alone, Get Sketchup Help from a Pro.
-				</h2>
+
+
+				<div class="flex">
+					<h2 class="max-w-lg text-fc-[1.5rem_5cqw_8rem] font-bold mb-4">
+						Don't Struggle Alone,&nbsp;Get Sketchup Help from a Pro.
+					</h2>
+
+					<div class="flex">
+						{#each featuredTutors as tutorID, index}
+							<div class="flex-shrink-0 -mx-4">
+								<img
+									src="/tutors/{tutorID}/hs.webp"
+									alt="Featured Tutor"
+									class="h-20 w-20 flex-shrink-0 rounded-full border-2 border-emerald-400 p-1"
+								/>
+							</div>
+						{/each}
+					</div>
+
+				</div>
 
 				<p class="text-left micro:max-unfolded:text-lg font-normal text-gray-950 unfolded:text-xl">
 					Get SketchUp classes & 1-on-1 help from a live SketchUp tutor online via Zoom.
