@@ -14,6 +14,3 @@
 <Header />
 <slot />
 <FooterFlowBite />
-
-
-<FreeConsultationSticky />
