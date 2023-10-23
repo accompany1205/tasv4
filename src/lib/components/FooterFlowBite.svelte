@@ -3,6 +3,7 @@
     import { FacebookSolid, GithubSolid, DiscordSolid, TwitterSolid } from 'flowbite-svelte-icons';
     import LogoUnframedDynamicText from '$lib/assets/svg/LogoUnframedDynamicText.svelte';
     import GoogleRatings from './GoogleRatings.svelte';
+    import FreeConsultationSticky from './FreeConsultationSticky.svelte';
 
 </script>
   
@@ -71,7 +72,7 @@
 
     </div>
 
-    <div class="py-2 px-4 bg-gray-700 md:flex md:items-center md:justify-between">
+    <div class="py-2 px-4 bg-gray-700 md:flex md:items-center md:justify-evenly">
       <FooterCopyright spanClass="text-sm text-gray-300 sm:text-center" href="/" by="Tutors and Services™ - 1441 N Emerson St. Denver, CO 80218 -" />
       <div class="flex mt-4 space-x-6 sm:justify-center md:mt-0">
         <FooterIcon href="/">

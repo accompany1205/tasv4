@@ -15,6 +15,9 @@
         <p class="text-gray-500 dark:text-gray-400">SketchUp offers both free and paid versions. The free version, called SketchUp Free, has limited features and is available online. The paid version, called SketchUp Pro, costs $299 per year, and offers advanced features like export to CAD format, unlimited cloud storage, and augmented reality viewing.</p>
       </FaqItem>
 
+    </div>
+
+    <div>
       <FaqItem>
         <svelte:fragment slot="h3">Is SketchUp easy to learn?</svelte:fragment>
         <p class="text-gray-500 dark:text-gray-400">SketchUp is relatively easy to learn compared to other 3D modeling software applications. It has a user-friendly interface, and there are many tutorials and resources available online to help beginners get started.</p>
