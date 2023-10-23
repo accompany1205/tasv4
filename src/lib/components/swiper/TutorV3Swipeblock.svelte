@@ -20,7 +20,7 @@
 				spaceBetween: 40,
 			},
 			1700: {
-				slidesPerView: 4,
+				slidesPerView: 3,
 				spaceBetween: 50,
 			},
 		},
