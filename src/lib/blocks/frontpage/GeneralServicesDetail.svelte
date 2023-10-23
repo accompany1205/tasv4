@@ -6,7 +6,7 @@
 	<h3 class="border-b-4 border-emerald-400 py-4 pl-4 text-3xl font-black">
 		Remote & On-Demand Help
 	</h3>
-	<div class="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2">
+	<div class="card grid flex-shrink-0 gap-4 p-4 sm:grid-cols-2 mx-auto max-w-7xl">
 		<div class="max-w-sm">
 			<h4 class="py-4 text-2xl"> Sketchup Tutors and Services </h4>
 			<p>
