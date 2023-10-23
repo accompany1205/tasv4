@@ -33,7 +33,7 @@
 </script>
 
 <div class="bg-nile-blue-900 p-4 text-white">
-	<H3>Sketchup Services We Provide</H3>
+	<H3 class="max-w-screen-xl m-auto">Sketchup Services We Provide</H3>
 	<ServiceCard images = {productDesign}>
 		<H4> Product Design </H4>
 		<P>
