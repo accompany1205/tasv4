@@ -21,7 +21,7 @@
 			class="
             m-auto
             px-4
-
+			max-w-screen-xl
 			text-left
 			font-bold
             leading-none
