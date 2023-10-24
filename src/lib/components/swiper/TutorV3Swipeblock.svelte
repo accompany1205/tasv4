@@ -5,9 +5,7 @@
 	import TutorCardV3 from '../TutorCardV3.svelte';
 
 	export let tutors: string[];
-
 	let featuredTutors = getTutors(tutors);
-	console.log(featuredTutors);
 
 	const params = {
 		slidesPerView: 1,

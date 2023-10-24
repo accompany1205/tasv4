@@ -1,17 +1,9 @@
 <script lang="ts">
-	import SketchupLightboxGrid from '$lib/blocks/frontpage/SketchupLightboxGrid.svelte';
-	import TutorSwipeBlock from './swiper/TutorSwipeBlock.svelte';
-	import TutorV3Swipeblock from './swiper/TutorV3Swipeblock.svelte';
 	import GoogleRatings from './GoogleRatings.svelte';
-	import TutorCard from './TutorCard.svelte';
-	import TutorCardV3 from './TutorCardV3.svelte';
 	import ImageCarousel from './ImageCarousel.svelte';
 
-	import { tutors } from '$lib/tutors';
-
-	export let featuredTutors = ['1619', '2515', '2972'];
-	let z = 3;
-
+	export let images = [{ alt: '', src: '' }];
+	export let featuredTutors = [''];
 </script>
 
 <section class="overflow-x-hidden bg-[#e8e8e8] dark:bg-gray-900">
@@ -49,7 +41,7 @@
 			lg:gap-8"
 	>
 		<div class="left-col mt-3">
-			<ImageCarousel/>
+			<ImageCarousel images={images}/>
 		</div>
 
 
