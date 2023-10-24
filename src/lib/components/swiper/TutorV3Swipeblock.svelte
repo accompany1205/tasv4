@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { Tutor } from '$lib/tutors.ts';
+	import { getTutors, type Tutor } from '$lib/tutors';
 	import TutorCard from '$lib/components/TutorCard.svelte';
 	import TutorCardV3 from '../TutorCardV3.svelte';
-	export let tutors: Tutor[];
+
+	export let tutors: string[];
+	let featuredTutors = getTutors(tutors);
+
 	const params = {
 		slidesPerView: 1,
 		spaceBetween: 300,
@@ -42,7 +45,7 @@
 
 	<div class="mx-auto h-[625px] max-w-full m-auto xl:max-w-screen-xl " style="container-type: size;">
 		<swiper-container bind:this="{swiper}" init="false" navigation="true">
-			{#each tutors as tutor}
+			{#each featuredTutors as tutor}
 				<swiper-slide class="">
 					<div class="h-[100cqh] p-2 max-w-2xl w-96 m-auto flex-shrink-0 ">
 						<TutorCardV3

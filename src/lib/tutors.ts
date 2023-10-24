@@ -5,38 +5,23 @@ enum Status {
 }
 
 export type Tutor = {
-	//Personal Info
 	id: string;
-
 	first: string;
 	last: string;
 	name: string;
-	// email: string;
-	// phone: string;
-
-	// status: Status;
-	// statusNotes: string;
 	hourlyRate: number;
-
-	// location: string;
-	// availability: string;
-	// aboutMe: string;
-
-	//Web
+	
 	title?: string;
-	// description: string;
-	// specialOffer: string;
-
-	//Services
 	software?: string[];
 	services?: string[];
-
-	//Testimonials
-	// testimonials: string[];
-
 	ratingScore?: number;
 	ratingCount?: number;
 };
+
+export function getTutors(tutorIds: string[]): Tutor[] {
+    const selectedTutors = tutorIds.map(id => tutors.find(tutor => tutor.id === id)).filter(Boolean) as Tutor[];
+    return selectedTutors;
+}
 
 export const tutors: Tutor[] = [
 	{
