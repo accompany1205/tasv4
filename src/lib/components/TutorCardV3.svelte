@@ -66,7 +66,7 @@
 
 		<!-- Software Tags -->
 		<div class="mx-3 py-1">
-			<ServiceTags keywords="{tutor?.software}" />
+			<ServiceTags keywords={tutor?.software.slice(0, 8)} />
 		</div>
 	</div>
 
