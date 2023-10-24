@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Carousel } from 'flowbite-svelte';
 	export let images = [{ alt: '', src: '' }];
-	console.log(images);
 
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';

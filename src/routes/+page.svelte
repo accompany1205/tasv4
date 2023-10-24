@@ -29,7 +29,7 @@
 
 
 	let featuredTutorsHero = ["1619","12081","12115","2652"];
-	let featuredTutorsCards = ["2515","1619","12115","12081","2652","20684","2972"];
+	let featuredTutorsCards = ["2515","1619","12115","12081","2652","20684","2972","12113"];
 </script>
 
 <svelte:head>
