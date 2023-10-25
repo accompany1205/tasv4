@@ -19,7 +19,7 @@
 		RocketSolid,
 		CogOutline,
 	} from 'flowbite-svelte-icons';
-	import TutorV3Swipeblock from '$lib/components/swiper/TutorV3Swipeblock.svelte';
+	import TutorV3Swipeblock from '$lib/components/blocks/common/TutorV3Swipeblock.svelte';
 
 	import { tutors } from '$lib/tutors';
 </script>
