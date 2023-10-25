@@ -1,6 +1,6 @@
 <script lang="ts">
-	import GoogleRatings from '../../components/GoogleRatings.svelte';
-	import ImageCarousel from '../../components/ImageCarousel.svelte';
+	import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
+	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
 
 	export let images = [{ alt: '', src: '' }];
 	export let featuredTutors = [''];

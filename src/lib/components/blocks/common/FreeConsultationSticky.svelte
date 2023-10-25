@@ -1,7 +1,7 @@
 <script>
 	import { Button } from 'flowbite-svelte';
 	import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
-	import GoogleRatingsCompact from '../../GoogleRatingsCompact.svelte';
+	import GoogleRatingsCompact from '$lib/components/cards/GoogleRatingsCompact.svelte';
 </script>
 
 <div

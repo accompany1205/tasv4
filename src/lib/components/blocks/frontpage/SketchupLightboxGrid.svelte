@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LightboxGrid from '$lib/components/LightboxGrid.svelte';
+	import LightboxGrid from '$lib/components/cards/LightboxGrid.svelte';
 	const pictures = import.meta.glob('$lib/assets/sketchup/*.webp', {
 		query: {
 			format: 'webp;jpeg',

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import ServiceCard from '$lib/components/ServiceCard.svelte';
-	import Section2Col from '../../components/elements/Section2Col.svelte';
-	import H3 from '../../components/elements/H3.svelte';
-	import H4 from '../../components/elements/H4.svelte';
-	import P from '../../components/elements/P.svelte';
+	import ServiceCard from '$lib/components/cards/ServiceCard.svelte';
+	import Section2Col from '$lib/components/elements/Section2Col.svelte';
+	import H3 from '$lib/components/elements/H3.svelte';
+	import H4 from '$lib/components/elements/H4.svelte';
+	import P from '$lib/components/elements/P.svelte';
 
 	let conceptualArchitecture = [
 		{ alt: '', src: '/sketchup/services/conceptual-architecture/1.webp' },
