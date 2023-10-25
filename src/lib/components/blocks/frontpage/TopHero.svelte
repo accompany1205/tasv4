@@ -41,7 +41,7 @@
 			lg:gap-8"
 	>
 		<div class="left-col mt-3">
-			<ImageCarousel images="{images}" />
+			<ImageCarousel images="{images}" showLogo="true"/>
 		</div>
 
 		<div class="right-col grid shrink-0 grid-rows-[1fr_auto] rounded-lg micro:max-sm:text-lg">

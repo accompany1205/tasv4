@@ -16,11 +16,16 @@
 		(isInView = detail.inView);
 </script>
 
-<div use:inview="{options}" on:inview_change="{handleChange}" class="h-full w-full max-w-7xl">
-	<img src="/temp/SketchUp-logo.webp" alt="Girl in a jacket" width="500" height="600" />
+<div use:inview="{options}" on:inview_change="{handleChange}" class="max-w-7xl w-full h-full relative">
 	{#if isInView}
-		<Carousel images="{images}" let:Indicators duration="4000" class="rounded-sm">
+		<Carousel images="{images}" let:Indicators duration="4000" class="rounded-sm relative z-0">
 			<Indicators />
 		</Carousel>
+	{/if}
+
+	{#if showLogo}
+		<div class="absolute top-0 backdrop-blur-sm w-1/2 bg-white bg-opacity-50">
+			<img src="/temp/SketchUp-logo_720_cropped.webp" alt="SketchUp Logo" width="250" class=""/>
+		</div>
 	{/if}
 </div>
