@@ -32,7 +32,7 @@
     </div>
 
     <div class="text-gray-600 font-akshar text-center pt-[0.25rem]">
-        <a class="hover:text-nile-blue-300"href="https://www.google.com/maps/place/TutorsAndServices.com/@39.739301,-104.9816413,17z/data=!4m8!3m7!1s0x876c7f11e86d4569:0xf20a041fd855df4f!8m2!3d39.7393011!4d-104.9767704!9m1!1b1!16s%2Fg%2F11jj0j4_81?entry=ttu" target="_blank" rel="noopener noreferrer">
+        <a class="hover:text-nile-blue-300"href="https://www.tutorsandservices.com/reviews/" target="_blank" rel="noopener noreferrer">
             {ratingCount} Reviews
         </a>
     </div>
