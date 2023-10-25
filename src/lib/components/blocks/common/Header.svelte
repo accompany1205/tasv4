@@ -32,6 +32,7 @@
 	<LogoUnframedDynamicText
 		fill="black"
 		class="font-serif mt-auto h-[40px] max-h-[inherit] max-w-full text-lg"
+        icon="sketchup"
 	>
 		<text class="dyntext" transform="translate(195 34)"> Sketchup </text>
 		<text class="dyntext" transform="translate(195 76)"> Tutors & </text>
