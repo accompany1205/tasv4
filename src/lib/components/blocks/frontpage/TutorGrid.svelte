@@ -1,5 +1,5 @@
 <script lang="ts">
-	import TutorList from '$lib/components/TutorList.svelte';
+	import TutorList from '$lib/components/blocks/common/TutorList.svelte';
 </script>
 
 <div class="overflow-x-hidden bg-[#e8e8e8]">

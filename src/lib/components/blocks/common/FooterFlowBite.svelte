@@ -2,7 +2,7 @@
     import { Footer, FooterLinkGroup, FooterLink, FooterBrand, FooterIcon, FooterCopyright } from 'flowbite-svelte';
     import { FacebookSolid, GithubSolid, DiscordSolid, TwitterSolid } from 'flowbite-svelte-icons';
     import LogoUnframedDynamicText from '$lib/assets/svg/LogoUnframedDynamicText.svelte';
-    import GoogleRatings from './GoogleRatings.svelte';
+    import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
     import FreeConsultationSticky from './FreeConsultationSticky.svelte';
 
 </script>

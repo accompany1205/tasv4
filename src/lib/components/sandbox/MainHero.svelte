@@ -2,7 +2,7 @@
     import { Section, News, HeroHeader, HeroBody } from 'flowbite-svelte-blocks';
     import { Button } from 'flowbite-svelte';
     import { ArrowRightSolid } from 'flowbite-svelte-icons';
-    import ImageCarousel from '../ImageCarousel.svelte';
+    import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
 </script>
   
 <Section name="heroVisual">

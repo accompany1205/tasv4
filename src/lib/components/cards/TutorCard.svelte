@@ -12,7 +12,7 @@
 	import { onMount } from 'svelte';
 	import { Card, Button, Toggle } from 'flowbite-svelte';
 	import { ArrowRightOutline } from 'flowbite-svelte-icons';
-	import Slide from '$lib/components/swiper/Slide.svelte';
+	import Slide from '$lib/components/blocks/common/Slide.svelte';
 
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';

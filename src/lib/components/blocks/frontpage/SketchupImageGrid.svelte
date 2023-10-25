@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ImageGrid from '$lib/components/ImageGrid.svelte';
+	import ImageGrid from '$lib/components/blocks/common/ImageGrid.svelte';
 	const pictures = import.meta.glob('$lib/assets/sketchup/*.webp', {
 		query: {
 			format: 'webp;jpeg',

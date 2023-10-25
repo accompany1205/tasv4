@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { Tutor } from '$lib/tutors.ts';
-	import TutorCard from '$lib/components/TutorCard.svelte';
+	import TutorCard from '$lib/components/cards/TutorCard.svelte';
 	export let tutors: Tutor[];
 	const params = {
 		slidesPerView: 2,

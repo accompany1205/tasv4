@@ -43,7 +43,7 @@
 
 </script>
   
-<Navbar fluid=true class="flex justify-evenly bg-transparent m-0 p-0" let:hidden let:toggle let:NavContainer>
+<Navbar fluid={true} class="flex justify-evenly bg-transparent m-0 p-0" let:hidden let:toggle let:NavContainer>
     <NavContainer class="m-0 mx-0 md:m-auto">
         <LogoUnframedDynamicText
             fill="black"

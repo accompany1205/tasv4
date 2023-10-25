@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { getTutors, type Tutor } from '$lib/tutors';
-	import TutorCard from '$lib/components/TutorCard.svelte';
-	import TutorCardV3 from '../TutorCardV3.svelte';
+	import TutorCard from '$lib/components/cards/TutorCard.svelte';
+	import TutorCardV3 from '$lib/components/cards/TutorCardV3.svelte';
 
 	export let tutors: string[];
 	let featuredTutors = getTutors(tutors);

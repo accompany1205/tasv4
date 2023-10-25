@@ -1,5 +1,5 @@
 <script lang="ts">
-	import TutorCard from './TutorCard.svelte';
+	import TutorCard from '$lib/components/cards/TutorCard.svelte';
 	import { tutors } from '$lib/tutors';
 </script>
 

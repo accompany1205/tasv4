@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '@fontsource-variable/akshar';
-	import ServiceTags from './ServiceTags.svelte';
+	import ServiceTags from '../elements/ServiceTags.svelte';
 	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
 	import type { Tutor } from '$lib/tutors.ts';
 
@@ -55,8 +55,8 @@
 			<!-- Name -->
 			<div class="p-2">
 				<div class="text-4xl font-bold">{tutor.name}</div>
-				{#if tutor.ratingCount >= 5}
-					<span class="font-medium text-yellow-300">{tutor.ratingScore.toFixed(1)}⭐ {tutor.ratingCount} Reviews</span>
+				{#if tutor?.ratingCount ?? 0 >= 5}
+					<span class="font-medium text-yellow-300">{tutor?.ratingScore?.toFixed(1)}⭐ {tutor.ratingCount} Reviews</span>
 				{:else}
 					<span class="font-medium text-yellow-300">New</span>
 				{/if}
@@ -66,7 +66,7 @@
 
 		<!-- Software Tags -->
 		<div class="mx-3 py-1">
-			<ServiceTags keywords={tutor?.software.slice(0, 8)} />
+			<ServiceTags keywords={tutor?.software?.slice(0, 8)} />
 		</div>
 	</div>
 
@@ -79,7 +79,7 @@
 			<div class="mx-2 mb-2 p-1">
 				<div class="font-semibold">Services I Provide:</div>
 				<ul class="mt-2 list-disc pl-5 text-gray-500">
-					{#each tutor?.services.slice(0, 3) ?? [] as service}
+					{#each tutor?.services?.slice(0, 3) ?? [] as service}
 						<li>{service}</li>
 					{/each}
 				</ul>
