@@ -2,7 +2,7 @@
 	export let sources = [''];
 </script>
 
-<div class="m-auto grid w-fit grid-cols-3 gap-1 p-4">
+<div class="m-auto grid w-full grid-cols-3 gap-1 p-4">
 	{#each sources as pic_src}
 		<picture class="aspect-square w-20 overflow-hidden bg-pink-500">
 			<img
