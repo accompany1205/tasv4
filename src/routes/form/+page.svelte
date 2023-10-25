@@ -1,18 +1,9 @@
 <script lang="ts">
-	import { browser } from "$app/environment";
-  export const ssr = false;
-  import { onMount } from 'svelte';
-  
-  onMount(async () => { 
-    let script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = 'https://form.jotform.com/jsform/213494772938167';
-      document.getElementById("jotform").appendChild(script);
-  });
+  const bad_idea = "<script src='https://form.jotform.com/jsform/213494772938167'/>";
+  const worse_idea = `<script type="text/javascript" src="https://form.jotform.com/jsform/221775033335048"/>`;
 </script>
+{@html bad_idea}
 
-<div id="jotform">
-</div>
 
 
 
