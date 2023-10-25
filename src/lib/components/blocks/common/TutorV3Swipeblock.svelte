@@ -38,24 +38,25 @@
 	});
 </script>
 
-<div class="swiper block overflow-hidden bg-nile-blue-900 px-0 pb-24 pt-8 ">
-	<h2 class="border-b-4 border-emerald-400 max-w-screen-xl m-auto pb-4 px-4 mb-8 text-2xl font-bold text-white sm:text-5xl sm:fluid-h1">
+<div class="swiper block overflow-hidden bg-nile-blue-900 px-0 pb-24 pt-8">
+	<h2
+		class="m-auto mb-8 max-w-screen-xl border-b-4 border-emerald-400 px-4 pb-4 text-2xl font-bold text-white sm:text-5xl sm:fluid-h1"
+	>
 		Our SketchUp Tutors & Freelancers
 	</h2>
 
-	<div class="mx-auto h-[625px] max-w-full m-auto xl:max-w-screen-xl " style="container-type: size;">
+	<div
+		class="m-auto mx-auto h-[625px] max-w-full xl:max-w-screen-xl"
+		style="container-type: size;"
+	>
 		<swiper-container bind:this="{swiper}" init="false" navigation="true">
 			{#each featuredTutors as tutor}
 				<swiper-slide class="">
-					<div class="h-[100cqh] p-2 max-w-2xl w-96 m-auto flex-shrink-0 ">
-						<TutorCardV3
-							tutor="{tutor}"
-							class="mx-auto h-full self-stretch"
-						/>
+					<div class="m-auto h-[100cqh] w-96 max-w-2xl flex-shrink-0 p-2">
+						<TutorCardV3 tutor="{tutor}" class="mx-auto h-full self-stretch" />
 					</div>
 				</swiper-slide>
 			{/each}
 		</swiper-container>
 	</div>
-
 </div>

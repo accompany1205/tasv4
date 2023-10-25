@@ -23,22 +23,20 @@
 		{ alt: '', src: '/sketchup/main/sketchup_13.webp' },
 		{ alt: '', src: '/sketchup/main/sketchup_14.webp' },
 		{ alt: '', src: '/sketchup/main/sketchup_15.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_16.webp' }
+		{ alt: '', src: '/sketchup/main/sketchup_16.webp' },
 	];
 
-
-
-	let featuredTutorsHero = ["1619","12081","12115","2652"];
-	let featuredTutorsCards = ["2515","1619","12115","12081","2652","20684","2972","12113"];
+	let featuredTutorsHero = ['1619', '12081', '12115', '2652'];
+	let featuredTutorsCards = ['2515', '1619', '12115', '12081', '2652', '20684', '2972', '12113'];
 </script>
 
 <svelte:head>
 	<title>Tutors and Services</title>
 </svelte:head>
 
-<TopHero images={imagesHero} featuredTutors={featuredTutorsHero}/>
-<TutorV3Swipeblock tutors={featuredTutorsCards} />
+<TopHero images="{imagesHero}" featuredTutors="{featuredTutorsHero}" />
+<TutorV3Swipeblock tutors="{featuredTutorsCards}" />
 <GeneralServices />
 <GeneralServicesDetail />
 <SketchupServices />
-<FAQ/>
+<FAQ />

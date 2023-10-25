@@ -3,10 +3,13 @@ import deviceSizes from './tailwind/device';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{html,js,svelte,ts}', './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}', './node_modules/flowbite-svelte-blocks/**/*.{html,js,svelte,ts}'],
+	content: [
+		'./src/**/*.{html,js,svelte,ts}',
+		'./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}',
+		'./node_modules/flowbite-svelte-blocks/**/*.{html,js,svelte,ts}',
+	],
 
 	darkMode: 'class',
-
 
 	theme: {
 		fontFamily: {
@@ -24,8 +27,8 @@ export default {
 					600: '#EF562F',
 					700: '#EB4F27',
 					800: '#CC4522',
-					900: '#A5371B'
-				  },
+					900: '#A5371B',
+				},
 
 				emerald: {
 					50: '#f2fbf3',
@@ -86,5 +89,11 @@ export default {
 			},
 		},
 	},
-	plugins: [require('flowbite/plugin'), require('@tailwindcss/container-queries'), require('flowbite-typography'), fluidText, deviceSizes],
+	plugins: [
+		require('flowbite/plugin'),
+		require('@tailwindcss/container-queries'),
+		require('flowbite-typography'),
+		fluidText,
+		deviceSizes,
+	],
 };

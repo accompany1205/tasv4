@@ -14,13 +14,12 @@
 	};
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) =>
 		(isInView = detail.inView);
-
 </script>
-  
-<div use:inview="{options}" on:inview_change="{handleChange}" class="max-w-7xl w-full h-full">
-	<img src="/temp/SketchUp-logo.webp" alt="Girl in a jacket" width="500" height="600">
+
+<div use:inview="{options}" on:inview_change="{handleChange}" class="h-full w-full max-w-7xl">
+	<img src="/temp/SketchUp-logo.webp" alt="Girl in a jacket" width="500" height="600" />
 	{#if isInView}
-		<Carousel {images} let:Indicators duration="4000" class="rounded-sm">
+		<Carousel images="{images}" let:Indicators duration="4000" class="rounded-sm">
 			<Indicators />
 		</Carousel>
 	{/if}

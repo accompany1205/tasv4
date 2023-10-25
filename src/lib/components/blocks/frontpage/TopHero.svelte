@@ -12,8 +12,8 @@
 		<h1
 			class="
             m-auto
-            px-4
-			max-w-screen-xl
+            max-w-screen-xl
+			px-4
 			text-left
 			font-bold
             leading-none
@@ -30,10 +30,10 @@
 	<div
 		class="
 			mx-auto
-			items-center
 			grid
 			max-w-screen-xl
 			grid-rows-[auto_1fr]
+			items-center
 			gap-4
 			px-3
 			py-2
@@ -41,38 +41,38 @@
 			lg:gap-8"
 	>
 		<div class="left-col mt-3">
-			<ImageCarousel images={images}/>
+			<ImageCarousel images="{images}" />
 		</div>
 
-
-		<div class="right-col grid grid-rows-[1fr_auto] shrink-0  rounded-lg micro:max-sm:text-lg">
-			<div class="@container w-full max-w-md pb-6">
-
-
+		<div class="right-col grid shrink-0 grid-rows-[1fr_auto] rounded-lg micro:max-sm:text-lg">
+			<div class="w-full max-w-md pb-6 @container">
 				<div class="flex">
-					<h2 class="max-w-lg text-fc-[1.5rem_5cqw_8rem] font-bold mb-4">
+					<h2 class="mb-4 max-w-lg font-bold text-fc-[1.5rem_5cqw_8rem]">
 						Don't Struggle Alone,&nbsp;Get Sketchup Help from a Pro.
 					</h2>
 
 					<div class="hidden lg:flex">
 						{#each featuredTutors as tutorID, index}
-							<div class="flex-shrink-0 -mx-4">
+							<div class="-mx-4 flex-shrink-0">
 								<img
 									src="/tutors/{tutorID}/hs.webp"
 									alt="Featured Tutor"
-									class="h-20 w-20 flex-shrink-0 rounded-full  p-1"
+									class="h-20 w-20 flex-shrink-0 rounded-full p-1"
 								/>
 							</div>
 						{/each}
 					</div>
-
 				</div>
 
-				<p class="text-left micro:max-unfolded:text-lg font-normal text-gray-950 unfolded:text-xl">
+				<p
+					class="text-left font-normal text-gray-950 micro:max-unfolded:text-lg unfolded:text-xl"
+				>
 					Get SketchUp classes & 1-on-1 help from a live SketchUp tutor online via Zoom.
 					Call for a free consultation and demo.
 				</p>
-				<p class="text-left micro:max-unfolded:text-lg font-normal text-gray-950 unfolded:text-xl">
+				<p
+					class="text-left font-normal text-gray-950 micro:max-unfolded:text-lg unfolded:text-xl"
+				>
 					We are a team of tutors and freelancers that are hireable on an as-needed basis
 					for professional help with your projects.
 				</p>
@@ -80,10 +80,11 @@
 
 			<GoogleRatings />
 
-			<button class="max-w-sm bg-emerald-400 p-3 text-3xl font-bold text-center items-center text-white hover:bg-emerald-300">
+			<button
+				class="max-w-sm items-center bg-emerald-400 p-3 text-center text-3xl font-bold text-white hover:bg-emerald-300"
+			>
 				Get Started Today
 			</button>
 		</div>
-
 	</div>
 </section>

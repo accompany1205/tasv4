@@ -31,20 +31,21 @@
 >
 	<LogoUnframedDynamicText
 		fill="black"
-		class="font-serif mt-auto h-[40px] max-h-[inherit] text-lg max-w-full"
+		class="font-serif mt-auto h-[40px] max-h-[inherit] max-w-full text-lg"
 	>
 		<text class="dyntext" transform="translate(195 34)"> Sketchup </text>
 		<text class="dyntext" transform="translate(195 76)"> Tutors & </text>
 		<text class="dyntext" transform="translate(195 117)"> Services </text>
 	</LogoUnframedDynamicText>
 
-    <div class="justify-self-center">
-    </div>
+	<div class="justify-self-center"> </div>
 
-	<div class="call @container w-full justify-self-end whitespace-nowrap  sm:pl-9">
-		<a class=" block ml-auto w-fit text-fc-[0.5rem_15cqw_1.5rem] font-bold text-emerald-500"
-            href="tel: 720-335-5282">
-            720-335-5282
-        </a>
+	<div class="call w-full justify-self-end whitespace-nowrap @container sm:pl-9">
+		<a
+			class=" ml-auto block w-fit font-bold text-emerald-500 text-fc-[0.5rem_15cqw_1.5rem]"
+			href="tel: 720-335-5282"
+		>
+			720-335-5282
+		</a>
 	</div>
 </header>

@@ -23,7 +23,7 @@
 <div
 	use:inview="{options}"
 	on:inview_change="{handleChange}"
-	class="grid flex-shrink grid-rows-[auto_1fr_auto] max-h-full overflow-clip rounded bg-white font-akshar shadow-lg {_class}"
+	class="grid max-h-full flex-shrink grid-rows-[auto_1fr_auto] overflow-clip rounded bg-white font-akshar shadow-lg {_class}"
 >
 	<div>
 		<!-- Image -->
@@ -56,7 +56,9 @@
 			<div class="p-2">
 				<div class="text-4xl font-bold">{tutor.name}</div>
 				{#if tutor?.ratingCount ?? 0 >= 5}
-					<span class="font-medium text-yellow-300">{tutor?.ratingScore?.toFixed(1)}⭐ {tutor.ratingCount} Reviews</span>
+					<span class="font-medium text-yellow-300"
+						>{tutor?.ratingScore?.toFixed(1)}⭐ {tutor.ratingCount} Reviews</span
+					>
 				{:else}
 					<span class="font-medium text-yellow-300">New</span>
 				{/if}
@@ -66,7 +68,7 @@
 
 		<!-- Software Tags -->
 		<div class="mx-3 py-1">
-			<ServiceTags keywords={tutor?.software?.slice(0, 8)} />
+			<ServiceTags keywords="{tutor?.software?.slice(0, 8)}" />
 		</div>
 	</div>
 
@@ -89,10 +91,12 @@
 
 	<!-- Buttons -->
 	<div class="m-2 flex justify-between p-1">
-		<button class="text-md mx-4 rounded bg-alabaster-300 p-2 font-medium text-white hover:bg-alabaster-200"
+		<button
+			class="text-md mx-4 rounded bg-alabaster-300 p-2 font-medium text-white hover:bg-alabaster-200"
 			>Learn More About {tutor.first}</button
 		>
-		<button class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300"
+		<button
+			class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300"
 			>Book A Free Consultation</button
 		>
 	</div>

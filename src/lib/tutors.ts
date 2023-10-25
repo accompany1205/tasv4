@@ -10,7 +10,7 @@ export type Tutor = {
 	last: string;
 	name: string;
 	hourlyRate: number;
-	
+
 	title?: string;
 	software?: string[];
 	services?: string[];
@@ -19,8 +19,10 @@ export type Tutor = {
 };
 
 export function getTutors(tutorIds: string[]): Tutor[] {
-    const selectedTutors = tutorIds.map(id => tutors.find(tutor => tutor.id === id)).filter(Boolean) as Tutor[];
-    return selectedTutors;
+	const selectedTutors = tutorIds
+		.map((id) => tutors.find((tutor) => tutor.id === id))
+		.filter(Boolean) as Tutor[];
+	return selectedTutors;
 }
 
 export const tutors: Tutor[] = [
@@ -34,7 +36,7 @@ export const tutors: Tutor[] = [
 		software: ['Sketchup', 'Solidworks'],
 		services: [],
 		ratingScore: 4.94,
-		ratingCount: 431
+		ratingCount: 431,
 	},
 	{
 		id: '12112',
@@ -52,7 +54,7 @@ export const tutors: Tutor[] = [
 			'Urban Planning Illustrations',
 		],
 		ratingScore: 5.0,
-		ratingCount: 0
+		ratingCount: 0,
 	},
 	{
 		id: '24291',
@@ -70,7 +72,7 @@ export const tutors: Tutor[] = [
 			'Renderings and Animation',
 		],
 		ratingScore: 0,
-		ratingCount: 0
+		ratingCount: 0,
 	},
 	{
 		id: '1619',
@@ -91,7 +93,7 @@ export const tutors: Tutor[] = [
 			'Construction Documentation',
 		],
 		ratingScore: 4.91,
-		ratingCount: 534
+		ratingCount: 534,
 	},
 	{
 		id: '12081',
@@ -113,7 +115,7 @@ export const tutors: Tutor[] = [
 			'Landscape Modeling',
 		],
 		ratingScore: 4.98,
-		ratingCount: 427
+		ratingCount: 427,
 	},
 	{
 		id: '12113',
@@ -125,7 +127,7 @@ export const tutors: Tutor[] = [
 		software: ['AutoCAD', 'Sketchup', 'Layout'],
 		services: ['Architectural Modeling'],
 		ratingScore: 4.87,
-		ratingCount: 127
+		ratingCount: 127,
 	},
 	{
 		id: '18035',
@@ -142,7 +144,7 @@ export const tutors: Tutor[] = [
 			'Construction Modeling',
 		],
 		ratingScore: 0,
-		ratingCount: 0
+		ratingCount: 0,
 	},
 	{
 		id: '12115',
@@ -173,7 +175,7 @@ export const tutors: Tutor[] = [
 			'Construction Documentation',
 		],
 		ratingScore: 4.89,
-		ratingCount: 306
+		ratingCount: 306,
 	},
 	{
 		id: '20684',
@@ -189,8 +191,8 @@ export const tutors: Tutor[] = [
 			'Architectural Rendering',
 			'Construction Modeling',
 		],
-		ratingScore: 5.00,
-		ratingCount: 3
+		ratingScore: 5.0,
+		ratingCount: 3,
 	},
 	{
 		id: '2515',
@@ -213,7 +215,7 @@ export const tutors: Tutor[] = [
 			'3D Print Modeling',
 		],
 		ratingScore: 4.93,
-		ratingCount: 155
+		ratingCount: 155,
 	},
 	{
 		id: '2972',
@@ -235,7 +237,7 @@ export const tutors: Tutor[] = [
 			'Furniture Modeling',
 		],
 		ratingScore: 4.83,
-		ratingCount: 79
+		ratingCount: 79,
 	},
 	{
 		id: '18836',
@@ -254,7 +256,7 @@ export const tutors: Tutor[] = [
 			'CAD',
 		],
 		ratingScore: 5.0,
-		ratingCount: 2
+		ratingCount: 2,
 	},
 	{
 		id: '22530',
@@ -266,6 +268,6 @@ export const tutors: Tutor[] = [
 		software: ['Sketchup'],
 		services: ['Interior Design'],
 		ratingScore: 0,
-		ratingCount: 0
+		ratingCount: 0,
 	},
 ];

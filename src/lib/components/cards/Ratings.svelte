@@ -31,7 +31,7 @@
 	>
 	<a
 		href="/"
-		class="text-primary-600 dark:text-primary-500 mb-5 block text-sm font-medium hover:underline"
+		class="mb-5 block text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
 	>
 		Read more
 	</a>

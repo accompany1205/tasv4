@@ -18,8 +18,8 @@ export default plugin(
 					return {
 						fontSize: `clamp(${parsed_value[0]}, ${parsed_value[1]}, ${parsed_value[2]})`,
 						// whiteSpace: 'nowrap',
-					}
-				}
+					};
+				},
 			},
 			{ values: theme('containerSize') },
 		);
@@ -32,12 +32,12 @@ export default plugin(
 				h3: '2',
 				h4: '1',
 			},
-            containerSize: {
-                sm: '1.25rem_3vw_3rem',
-                md: '1.25rem_3vw_3rem',
-                lg: '1.25rem_3vw_3rem',
-                xl: '1.25rem_3vw_3rem'
-            },
+			containerSize: {
+				sm: '1.25rem_3vw_3rem',
+				md: '1.25rem_3vw_3rem',
+				lg: '1.25rem_3vw_3rem',
+				xl: '1.25rem_3vw_3rem',
+			},
 			extend: {},
 		},
 	},
