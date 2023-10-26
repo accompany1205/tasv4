@@ -1,7 +1,3 @@
-<script>
-	import { Video } from 'flowbite-svelte';
-</script>
-
 <div class="bg-nile-blue-900 p-4 text-white">
 	<h3 class="m-auto max-w-screen-xl border-b-4 border-emerald-400 py-4 pl-4 text-3xl font-black">
 		Remote & On-Demand Help
