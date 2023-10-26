@@ -18,8 +18,6 @@
 	};
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) =>
 		{
-			console.log("kajdklajdls");
-			console.log(detail.inView);
 			(CTAVisibility.set(detail.inView))
 		};
 
