@@ -20,6 +20,6 @@
 			</p>
 		</div>
 		<!-- <Video src="/temp/remote-help.mp4" controls autoplay muted loop class="w-full max-w-full h-auto" trackSrc="/temp/remote-help.mp4" /> -->
-		<img src="/temp/ScreenshareMockup.webp" alt="" />
+		<img src="/temp/ScreenshareMockupV2.webp" alt="" />
 	</div>
 </div>
