@@ -1,7 +1,15 @@
-<script>
+<script lang="ts">
 	import { Button } from 'flowbite-svelte';
 	import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
 	import GoogleRatingsCompact from '$lib/components/cards/GoogleRatingsCompact.svelte';
+    import CTAVisibility from "$lib/stores/cta_visibility_anchor";
+
+    let viz_state = false; 
+    let viz_class = "";
+    $: viz_class = viz_state ? "folded:inline-flex" : "folded:hidden"
+    const visibility = CTAVisibility.subscribe((value) => {
+        viz_state = !value
+    })
 </script>
 
 <div
@@ -68,6 +76,8 @@
             lg:relative
             lg:bottom-[unset]
             lg:right-[unset]
+            {viz_class}
+            lg:inline-flex
         "
 	>
 		Free Consultation
