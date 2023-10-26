@@ -36,7 +36,8 @@
     lg:h-12
     lg:flex-wrap
     lg:gap-0
-    lg:p-0"
+    lg:p-0
+    text-fc-[0.5rem_15cqw_1.5rem]"
 >
 	<div
 		class="
@@ -46,15 +47,20 @@
         flex-grow-[2]
         items-center
         gap-2
-        px-4
+        lg:px-0
         align-middle
-        text-xl
-        font-black
-        sm:whitespace-nowrap
+        
+        font-bold
+        
         "
 	>
-		<span>TutorsAndServices.com</span>
-		<span>720 335 5282</span>
+		<span>Call Anytime:</span>
+        <a
+        class="  block w-fit font-bold text-white "
+        href="tel: 720-335-5282"
+    >
+        720-335-5282
+    </a>
 	</div>
 	<GoogleRatingsCompact />
 	<Button
