@@ -9,7 +9,7 @@
 	<div class="max-w-sm">
 		<slot />
 	</div>
-	<div class="slider aspect-video">
+	<div class="slider ">
 		<ImageCarousel images="{images}" />
 	</div>
 </div>
