@@ -1,4 +1,4 @@
-<div class="overflow-x-hidden py-4">
+<div class="overflow-x-hidden py-4  mb-6">
 	<h3 class="m-auto max-w-screen-xl border-b-4 border-emerald-400 py-4 pl-4 text-3xl font-black"
 		>Types of Service</h3
 	>

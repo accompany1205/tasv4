@@ -1,7 +1,3 @@
-<script>
-	import { Video } from 'flowbite-svelte';
-</script>
-
 <div class="bg-nile-blue-900 p-4 text-white">
 	<h3 class="m-auto max-w-screen-xl border-b-4 border-emerald-400 py-4 pl-4 text-3xl font-black">
 		Remote & On-Demand Help
@@ -20,6 +16,6 @@
 			</p>
 		</div>
 		<!-- <Video src="/temp/remote-help.mp4" controls autoplay muted loop class="w-full max-w-full h-auto" trackSrc="/temp/remote-help.mp4" /> -->
-		<img src="/temp/ScreenshareMockup.webp" alt="" />
+		<img src="/temp/ScreenshareMockupV2.webp" alt="" />
 	</div>
 </div>

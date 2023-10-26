@@ -10,7 +10,7 @@
 	class="
         sticky
         top-0
-        z-20
+        z-50
         grid
         h-[50px]
         max-h-16

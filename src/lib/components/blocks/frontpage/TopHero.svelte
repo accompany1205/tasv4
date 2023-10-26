@@ -33,15 +33,18 @@
 			grid
 			max-w-screen-xl
 			grid-rows-[auto_1fr]
-			items-center
-			gap-4
+			items-top
+			gap-x-4
+
 			px-3
 			py-2
 			sm:grid-cols-[minmax(100px,_1fr)_1fr]
-			lg:gap-8"
+			lg:gap-x-8
+			m-6
+			"
 	>
 		<div class="left-col mt-3">
-			<ImageCarousel images="{images}" showLogo="true"/>
+			<ImageCarousel images="{images}" showLogo={true}/>
 		</div>
 
 		<div class="right-col grid shrink-0 grid-rows-[1fr_auto] rounded-lg micro:max-sm:text-lg">

@@ -13,6 +13,12 @@
 		effect: 'slides',
 		loop: false,
 		touchStartPreventDefault: false,
+		pagination: {enabled:true,
+					clickable:true
+					},
+
+		
+
 		breakpoints: {
 			640: {
 				slidesPerView: 2,
@@ -38,7 +44,14 @@
 	});
 </script>
 
-<div class="swiper block overflow-hidden bg-nile-blue-900 px-0 pb-24 pt-8">
+<style>
+	:global(swiper-container) {
+		--swiper-pagination-padding: 48px;
+	}
+</style>
+
+
+<div class="swiper block overflow-hidden bg-nile-blue-900 px-0 pb-16 pt-8 ">
 	<h2
 		class="m-auto mb-8 max-w-screen-xl border-b-4 border-emerald-400 px-4 pb-4 text-2xl font-bold text-white sm:text-5xl sm:fluid-h1"
 	>
@@ -49,7 +62,7 @@
 		class="m-auto mx-auto h-[625px] max-w-full xl:max-w-screen-xl"
 		style="container-type: size;"
 	>
-		<swiper-container bind:this="{swiper}" init="false" navigation="true">
+		<swiper-container bind:this="{swiper}" init="false">
 			{#each featuredTutors as tutor}
 				<swiper-slide class="">
 					<div class="m-auto h-[100cqh] w-96 max-w-2xl flex-shrink-0 p-2">
