@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import '../app.css';
 	import Header from '$lib/components/blocks/common/Header.svelte';
 	import HeaderFlowBite from '$lib/components/blocks/common/HeaderFlowBite.svelte';
