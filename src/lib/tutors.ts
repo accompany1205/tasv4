@@ -1,4 +1,6 @@
-const featured_images_import = import.meta.glob('$lib/assets/tutors/**/img/*.webp', {
+import { mega } from "$lib/assets"
+
+const featured_images_import: Record<string, string> = import.meta.glob('$lib/assets/tutors/**/img/*.webp', {
 	query: {
 		format: 'webp;jpeg',
 		w: '512;256;128;', //120;240;480;
@@ -9,14 +11,14 @@ const featured_images_import = import.meta.glob('$lib/assets/tutors/**/img/*.web
 	eager: true,
 });
 let featured_images: Record<string, string> = {};
-Object.entries(featured_images_import).map(([key,value]) => {
+Object.entries(featured_images_import).map(([key, value] ) => {
 	let segments = key.split('/'); 
 	// console.log(segments)
 	featured_images[segments[5]] = value;
 })
 
 
-const headshots_import = import.meta.glob('$lib/assets/tutors/**/hs.webp', {
+const headshots_import: Record<string, string> = import.meta.glob('$lib/assets/tutors/**/hs.webp', {
 	query: {
 		format: 'webp;jpeg',
 		w: '512;256;128;', //120;240;480;
