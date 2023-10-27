@@ -5,7 +5,7 @@
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
 
-	import sketchup_logo from "$lib/assets/logos/SketchUp-logo_720_cropped.webp";
+	import sketchup_logo from "$lib/assets/logos/SketchUp-logo_720_cropped.webp?w=400";
 
 	export let showLogo = false;
 
@@ -27,7 +27,7 @@
 
 	{#if showLogo}
 		<div class="absolute top-0 backdrop-blur-sm w-auto px-4 py-1 bg-white bg-opacity-50">
-			<img src="{sketchup_logo}" alt="SketchUp Logo" width="250" class=""/>
+			<img src="{sketchup_logo}" alt="SketchUp Logo" width="250" height="54" class="" />
 		</div>
 	{/if}
 </div>

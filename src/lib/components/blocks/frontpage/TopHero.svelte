@@ -63,6 +63,8 @@
 									srcset="{headshots[tutorID]}"
 									alt="Featured Tutor"
 									class="h-20 w-20 flex-shrink-0 rounded-full p-1"
+									width="80"
+									height="80"
 								/>
 							</div>
 						{/each}

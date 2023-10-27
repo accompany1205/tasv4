@@ -1,5 +1,5 @@
 <script lang="ts">
-	import screenshare from "$lib/assets/show-case/ScreenshareMockupV2.webp"
+	import screenshare from "$lib/assets/show-case/ScreenshareMockupV2.webp?w=800"
 </script>
 
 <div class="bg-nile-blue-900 p-4 text-white">
@@ -20,6 +20,6 @@
 			</p>
 		</div>
 		<!-- <Video src="/temp/remote-help.mp4" controls autoplay muted loop class="w-full max-w-full h-auto" trackSrc="/temp/remote-help.mp4" /> -->
-		<img src="{screenshare}" alt="" />
+		<img src="{screenshare}" alt="" width="800" height="450"/>
 	</div>
 </div>

@@ -31,7 +31,7 @@
 		import: 'default',
 		eager: true,
 	});
-	const hero_images_flattened = Object.values(hero_images_import).map((url) => ({alt:'', srcset:url}));
+	const hero_images_flattened = Object.values(hero_images_import).map((url) => ({alt:'', srcset:url})).slice(0, 8);
 
 	let featuredTutorsHero = ['1619', '12081', '12115', '2652'];
 	let featuredTutorsCards = ['2515', '1619', '12115', '12081', '2652', '20684', '2972', '12113'];
