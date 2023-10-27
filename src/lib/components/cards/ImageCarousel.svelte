@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { Carousel } from 'flowbite-svelte';
-	export let images = [{ alt: '', src: '' }];
+	export let images = [{ alt: '', srcset: '' }];
 
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
+
+	import sketchup_logo from "$lib/assets/logos/SketchUp-logo_720_cropped.webp";
 
 	export let showLogo = false;
 
@@ -25,7 +27,7 @@
 
 	{#if showLogo}
 		<div class="absolute top-0 backdrop-blur-sm w-auto px-4 py-1 bg-white bg-opacity-50">
-			<img src="/temp/SketchUp-logo_720_cropped.webp" alt="SketchUp Logo" width="250" class=""/>
+			<img src="{sketchup_logo}" alt="SketchUp Logo" width="250" class=""/>
 		</div>
 	{/if}
 </div>

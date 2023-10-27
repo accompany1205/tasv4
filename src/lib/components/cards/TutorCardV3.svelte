@@ -2,11 +2,12 @@
 	import '@fontsource-variable/akshar';
 	import ServiceTags from '../elements/ServiceTags.svelte';
 	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
-	import type { Tutor } from '$lib/tutors.ts';
-
+	import type { Tutor } from '$lib/tutors.ts'; 
+	import {featured_images, headshots} from '$lib/tutors';
+	
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
-
+	
 	let isInView: boolean;
 	const options = {
 		rootMargin: '50px',
@@ -14,10 +15,11 @@
 	};
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) =>
 		(isInView = detail.inView);
-
+		
 	let _class = '';
 	export { _class as class };
 	export let tutor: Tutor;
+	
 </script>
 
 <div
@@ -31,7 +33,7 @@
 			{#if isInView}
 				<Lightbox>
 					<img
-						src="/tutors/{tutor.id}/img/1.webp"
+						srcset="{featured_images[tutor.id]}"
 						alt="Matthew W"
 						class="min-h-full min-w-full object-cover object-center"
 						width="512"
@@ -47,7 +49,7 @@
 			<!-- Headshot -->
 			<div class="-ml-4 -mt-10 flex-shrink-0">
 				<img
-					src="/tutors/{tutor.id}/hs.webp"
+					srcset="{headshots[tutor.id]}"
 					alt="Matthew W"
 					class="h-28 w-28 flex-shrink-0 rounded-full border-2 border-emerald-400 p-1"
 				/>

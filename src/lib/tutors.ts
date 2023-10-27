@@ -1,3 +1,40 @@
+const featured_images_import = import.meta.glob('$lib/assets/tutors/**/img/*.webp', {
+	query: {
+		format: 'webp;jpeg',
+		w: '512;256;128;', //120;240;480;
+		picture: '',
+		as: 'srcset',
+	},
+	import: 'default',
+	eager: true,
+});
+let featured_images: Record<string, string> = {};
+Object.entries(featured_images_import).map(([key,value]) => {
+	let segments = key.split('/'); 
+	// console.log(segments)
+	featured_images[segments[5]] = value;
+})
+
+
+const headshots_import = import.meta.glob('$lib/assets/tutors/**/hs.webp', {
+	query: {
+		format: 'webp;jpeg',
+		w: '512;256;128;', //120;240;480;
+		picture: '',
+		as: 'srcset',
+	},
+	import: 'default',
+	eager: true,
+});
+let headshots: Record<string, string> = {};
+Object.entries(headshots_import).map(([key,value]) => {
+	let segments = key.split('/'); 
+	// console.log(segments)
+	headshots[segments[5]] = value;
+})
+
+export {featured_images, headshots}
+
 enum Status {
 	Active,
 	Full,

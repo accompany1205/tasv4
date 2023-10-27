@@ -21,24 +21,17 @@
 			(CTAVisibility.set(detail.inView))
 		};
 
-	//Data Sets
-	let imagesHero = [
-		{ alt: '', src: '/sketchup/main/sketchup_1.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_3.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_4.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_5.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_6.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_7.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_8.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_9.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_10.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_11.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_12.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_13.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_14.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_15.webp' },
-		{ alt: '', src: '/sketchup/main/sketchup_16.webp' },
-	];
+	const hero_images_import = import.meta.glob('$lib/assets/sketchup/main/*.webp', {
+		query: {
+			format: 'webp;jpeg',
+			w: '512;256;128;', //120;240;480;
+			picture: '',
+			as: 'srcset',
+		},
+		import: 'default',
+		eager: true,
+	});
+	const hero_images_flattened = Object.values(hero_images_import).map((url) => ({alt:'', srcset:url}));
 
 	let featuredTutorsHero = ['1619', '12081', '12115', '2652'];
 	let featuredTutorsCards = ['2515', '1619', '12115', '12081', '2652', '20684', '2972', '12113'];
@@ -49,7 +42,7 @@
 </svelte:head>
 
 <div  use:inview="{options}" on:inview_change="{handleChange}"/>
-<TopHero images="{imagesHero}" featuredTutors="{featuredTutorsHero}" />
+<TopHero images="{hero_images_flattened}" featuredTutors="{featuredTutorsHero}" />
 <TutorV3Swipeblock tutors="{featuredTutorsCards}" />
 <GeneralServices />
 <GeneralServicesDetail />

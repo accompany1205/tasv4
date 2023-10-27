@@ -3,40 +3,51 @@
 	import Section2Col from '$lib/components/elements/Section2Col.svelte';
 	import H3 from '$lib/components/elements/H3.svelte';
 	import H4 from '$lib/components/elements/H4.svelte';
-	import P from '$lib/components/elements/P.svelte';
-	import ServiceTags from '$lib/components/elements/ServiceTags.svelte';
+	import P from '$lib/components/elements/P.svelte'; 
+	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
 
-	import services from '$lib/services';
+	const concept_arc_import = import.meta.glob('$lib/assets/sketchup/services/conceptual-architecture/*.webp', {
+		query: {
+			format: 'webp;jpeg',
+			w: '512;256;128;', //120;240;480;
+			picture: '',
+			as: 'srcset',
+		},
+		import: 'default',
+		eager: true,
+	});
+	const concept_arc_flattened = Object.values(concept_arc_import).map((url) => ({alt:'', srcset:url}));
+
+	const interior_design_import = import.meta.glob('$lib/assets/sketchup/services/interior-design/*.webp', {
+		query: {
+			format: 'webp;jpeg',
+			w: '512;256;128;', //120;240;480;
+			picture: '',
+			as: 'srcset',
+		},
+		import: 'default',
+		eager: true,
+	}); 
+	const interior_design_flattened = Object.values(interior_design_import).map((url) => ({alt:'', srcset:url}));
 
 
-	let conceptualArchitecture = [
-		{ alt: '', src: '/sketchup/services/conceptual-architecture/1.webp' },
-		{ alt: '', src: '/sketchup/services/conceptual-architecture/2.webp' },
-		{ alt: '', src: '/sketchup/services/conceptual-architecture/3.webp' },
-		{ alt: '', src: '/sketchup/services/conceptual-architecture/4.webp' },
-		{ alt: '', src: '/sketchup/services/conceptual-architecture/5.webp' },
-	];
+	const product_design_import = import.meta.glob('$lib/assets/sketchup/services/product-design/*.webp', {
+		query: {
+			format: 'webp;jpeg',
+			w: '512;256;128;', //120;240;480;
+			picture: '',
+			as: 'srcset',
+		},
+		import: 'default',
+		eager: true,
+	});
+	const product_design_flattened = Object.values(product_design_import).map((url) => ({alt:'', srcset:url}));
 
-	let interiorDesign = [
-		{ alt: '', src: '/sketchup/services/interior-design/1.webp' },
-		{ alt: '', src: '/sketchup/services/interior-design/2.webp' },
-		{ alt: '', src: '/sketchup/services/interior-design/3.webp' },
-		{ alt: '', src: '/sketchup/services/interior-design/4.webp' },
-		{ alt: '', src: '/sketchup/services/interior-design/5.webp' },
-		{ alt: '', src: '/sketchup/services/interior-design/6.webp' },
-	];
-
-	let productDesign = [
-		{ alt: '', src: '/sketchup/services/product-design/1.webp' },
-		{ alt: '', src: '/sketchup/services/product-design/2.webp' },
-		{ alt: '', src: '/sketchup/services/product-design/3.webp' },
-		{ alt: '', src: '/sketchup/services/product-design/4.webp' },
-	];
 </script>
 
 <div class="bg-nile-blue-900 p-4 text-white">
 	<H3 class="m-auto max-w-screen-xl">Sketchup Services We Provide</H3>
-	<ServiceCard images="{productDesign}">
+	<ServiceCard images="{product_design_flattened}">
 		<H4>Product Design</H4>
 		<P>
 			Use 3D modeling to visualize a design, 3D print, show it to prospective investors, or
@@ -44,7 +55,7 @@
 		</P>
 	</ServiceCard>
 
-	<ServiceCard images="{interiorDesign}">
+	<ServiceCard images="{interior_design_flattened}">
 		<H4>Interior Design</H4>
 		<P>
 			Sketchup is a great tool for interior design. Place materials on 3d shapes to recreate a
@@ -53,7 +64,7 @@
 		</P>
 	</ServiceCard>
 
-	<ServiceCard images="{conceptualArchitecture}">
+	<ServiceCard images="{concept_arc_flattened}">
 		<H4>Conceptual Architecture 3D Modeling</H4>
 		<P>
 			Create conceptual archetectural 3D models to hash out your basic ideas. This can save

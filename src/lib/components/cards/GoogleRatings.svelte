@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Rating, AdvancedRating, ScoreRating } from 'flowbite-svelte';
+	import google_logo from "$lib/assets/icons/google.webp"
 	export let rating = 5.0;
 	export let ratingCount = 225;
 </script>
@@ -15,7 +16,7 @@
 		rel="noopener noreferrer"
 	>
 		<img
-			src="temp/google.webp"
+			src="{google_logo}"
 			class="flex-shrink-0 object-contain object-center"
 			alt="Google Review"
 		/>

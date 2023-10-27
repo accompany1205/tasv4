@@ -33,6 +33,6 @@
 		</HeroHeader>
 	</div>
 	<div class="hidden lg:col-span-5 lg:mt-0 lg:flex">
-		<ImageCarousel />
+		<!-- <ImageCarousel /> -->
 	</div>
 </Section>5

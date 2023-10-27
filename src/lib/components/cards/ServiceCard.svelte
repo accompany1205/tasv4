@@ -1,7 +1,7 @@
 <script lang="ts">
 	let _class = '';
 	export { _class as class };
-	export let images = [{ alt: '', src: 'src/lib/assets/sketchup/main/sketchup_1.webp' }];
+	export let images = [{ alt: '', srcset: 'src/lib/assets/sketchup/main/sketchup_1.webp' }];
 	import ImageCarousel from './ImageCarousel.svelte';
 </script>
 

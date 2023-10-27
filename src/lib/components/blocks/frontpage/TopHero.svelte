@@ -1,9 +1,11 @@
 <script lang="ts">
 	import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
 	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
+	import { headshots} from '$lib/tutors';
 
-	export let images = [{ alt: '', src: '' }];
-	export let featuredTutors = [''];
+	export let images = [{ alt: '', srcset: '' }];
+	export let featuredTutors = ['']; 
+
 </script>
 
 <section class="overflow-x-hidden bg-[#e8e8e8] dark:bg-gray-900">
@@ -58,7 +60,7 @@
 						{#each featuredTutors as tutorID, index}
 							<div class="-mx-4 flex-shrink-0">
 								<img
-									src="/tutors/{tutorID}/hs.webp"
+									srcset="{headshots[tutorID]}"
 									alt="Featured Tutor"
 									class="h-20 w-20 flex-shrink-0 rounded-full p-1"
 								/>
