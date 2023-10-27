@@ -6,7 +6,7 @@
 	import P from '$lib/components/elements/P.svelte'; 
 	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
 	import services from '$lib/services';
-	const concept_arc_import = import.meta.glob('$lib/assets/sketchup/services/conceptual-architecture/*.webp', {
+	const concept_arc_import: Record<string, string> = import.meta.glob('$lib/assets/sketchup/services/conceptual-architecture/*.webp', {
 		query: {
 			format: 'webp;jpeg',
 			w: '512;256;128;', //120;240;480;
@@ -18,7 +18,7 @@
 	});
 	const concept_arc_flattened = Object.values(concept_arc_import).map((url) => ({alt:'', srcset:url}));
 
-	const interior_design_import = import.meta.glob('$lib/assets/sketchup/services/interior-design/*.webp', {
+	const interior_design_import: Record<string, string> = import.meta.glob('$lib/assets/sketchup/services/interior-design/*.webp', {
 		query: {
 			format: 'webp;jpeg',
 			w: '512;256;128;', //120;240;480;
@@ -31,7 +31,7 @@
 	const interior_design_flattened = Object.values(interior_design_import).map((url) => ({alt:'', srcset:url}));
 
 
-	const product_design_import = import.meta.glob('$lib/assets/sketchup/services/product-design/*.webp', {
+	const product_design_import: Record<string, string> = import.meta.glob('$lib/assets/sketchup/services/product-design/*.webp', {
 		query: {
 			format: 'webp;jpeg',
 			w: '512;256;128;', //120;240;480;

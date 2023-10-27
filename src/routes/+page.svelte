@@ -21,7 +21,7 @@
 			(CTAVisibility.set(detail.inView))
 		};
 
-	const hero_images_import = import.meta.glob('$lib/assets/sketchup/main/*.webp', {
+	const hero_images_import: Record<string, string> = import.meta.glob('$lib/assets/sketchup/main/*.webp', {
 		query: {
 			format: 'webp;jpeg',
 			w: '512;256;128;', //120;240;480;
