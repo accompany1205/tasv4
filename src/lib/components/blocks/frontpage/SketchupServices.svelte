@@ -4,6 +4,10 @@
 	import H3 from '$lib/components/elements/H3.svelte';
 	import H4 from '$lib/components/elements/H4.svelte';
 	import P from '$lib/components/elements/P.svelte';
+	import ServiceTags from '$lib/components/elements/ServiceTags.svelte';
+
+	import services from '$lib/services';
+
 
 	let conceptualArchitecture = [
 		{ alt: '', src: '/sketchup/services/conceptual-architecture/1.webp' },
@@ -60,43 +64,10 @@
 	<div class="card mx-auto grid max-w-7xl flex-shrink-0 gap-4 p-4 sm:grid-cols-2">
 		<div class="order-1 sm:-order-1">
 			<H4>We Can Help!</H4>
-			<ul class="list-inside list-disc text-lg">
-				<li>Architecture</li>
-				<li>Interior Design</li>
-				<li>Product Design</li>
-				<li>Event Planning</li>
-				<li>Industrial Design</li>
-				<li>Landscape Design</li>
-				<li>Urban Planning</li>
-				<li>Commercial Construction</li>
-				<li>Residential Construction</li>
-				<li>BIM (Building Information Management)</li>
-				<li>Ordering, Cut Lists</li>
-				<li>Bidding and Budget Modeling</li>
-				<li>Project Management</li>
-				<li>Infrastructure Construction</li>
-				<li>Light&nbsp;Construction</li>
-				<li>Remodeling</li>
-				<li>Civil Engineering</li>
-				<li>Mechanical Engineering</li>
-				<li>Game Design</li>
-				<li>Graphic Design</li>
-				<li>Illustration</li>
-				<li>Visualization</li>
-				<li>Stage Design</li>
-				<li>Film Design</li>
-				<li>Medical Equipment Design</li>
-				<li>Process Design</li>
-				<li>Animation</li>
-				<li>Presentations</li>
-				<li>Sales and Marketing</li>
-				<li>Surveying</li>
-				<li>Government Planning</li>
-				<li>Hi-Resolution Rendering</li>
-				<li>3D Printing</li>
-				<li>3D ART</li>
-				<li>3D Modeling</li>
-				<li>And more…</li>
+			<ul>
+				{#each services as service, index}
+					<li>{service}</li>
+				{/each}
 			</ul>
 		</div>
 		<div>
