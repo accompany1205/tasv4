@@ -5,7 +5,7 @@
 	import H4 from '$lib/components/elements/H4.svelte';
 	import P from '$lib/components/elements/P.svelte'; 
 	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
-
+	import services from '$lib/services';
 	const concept_arc_import = import.meta.glob('$lib/assets/sketchup/services/conceptual-architecture/*.webp', {
 		query: {
 			format: 'webp;jpeg',
