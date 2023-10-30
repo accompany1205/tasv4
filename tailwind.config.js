@@ -93,6 +93,7 @@ export default {
 		require('flowbite/plugin'),
 		require('@tailwindcss/container-queries'),
 		require('flowbite-typography'),
+		require('@tailwindcss/typography'),
 		fluidText,
 		deviceSizes,
 	],
