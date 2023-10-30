@@ -1,54 +1,50 @@
-<script>
-    // Gallery
-    import { Gallery } from 'flowbite-svelte';
-    import HeaderHero from '$lib/components/HeaderHero.svelte';
-    import TutorList from '$lib/components/TutorList.svelte';
+<script lang="ts">
+	//Components
+	import TopHero from '$lib/components/blocks/frontpage/TopHero.svelte';
+	import GeneralServices from '$lib/components/blocks/frontpage/GeneralServices.svelte';
+	import GeneralServicesDetail from '$lib/components/blocks/frontpage/GeneralServicesDetail.svelte';
+	import SketchupServices from '$lib/components/blocks/frontpage/SketchupServices.svelte';
+	import FAQ from '$lib/components/blocks/frontpage/FAQ.svelte';
+	import TutorV3Swipeblock from '$lib/components/blocks/common/TutorV3Swipeblock.svelte'; 
 
-    const images = [
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_2.webp' },
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_3.webp' },
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_4.webp' },
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_5.webp' },
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_6.webp' },
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_7.webp' },
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_8.webp' },
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_9.webp' },
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_10.webp' },
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_11.webp' },
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_12.webp' },
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_13.webp' },
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_14.webp' },
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_15.webp' },
-      { alt: '', src: 'https://tas-v4.b-cdn.net/sketchup_16.webp' }
-    ];
+	import { inview } from 'svelte-inview';
+	import type { ObserverEventDetails, Options } from 'svelte-inview';
+	import CTAVisibility from "$lib/stores/cta_visibility_anchor";
 
-    // Ratings
+	let isInView: boolean;
+	const options = {
+		rootMargin: '50px',
+		unobserveOnEnter: false,
+	};
+	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) =>
+		{
+			(CTAVisibility.set(detail.inView))
+		};
 
-    import { RatingComment } from 'flowbite-svelte';
-    let comment = {
-      id: '1',
-      user: {
-        name: 'Richard S.',
-        img: {
-          src: '/images/profile-picture-2.webp',
-          alt: 'Richard S.'
-        },
-        joined: 'Joined on August 2014'
-      },
-      total: 5,
-      rating: 4.5,
-      heading: 'Thinking to buy another one!',
-      address: 'the UK',
-      datetime: '2022-03-25'
-    };
+	const hero_images_import: Record<string, string> = import.meta.glob('$lib/assets/sketchup/main/*.webp', {
+		query: {
+			format: 'webp;jpeg',
+			w: '512;256;128;', //120;240;480;
+			picture: '',
+			as: 'srcset',
+		},
+		import: 'default',
+		eager: true,
+	});
+	const hero_images_flattened = Object.values(hero_images_import).map((url) => ({alt:'', srcset:url})).slice(0, 8);
 
+	let featuredTutorsHero = ['1619', '12081', '12115', '2652'];
+	let featuredTutorsCards = ['2515', '1619', '12115', '12081', '2652', '20684', '2972', '12113'];
 </script>
 
-<style>
-</style>
+<svelte:head>
+	<title>Tutors and Services</title>
+</svelte:head>
 
-
-<HeaderHero></HeaderHero>
-  
-<!-- <Gallery items={images} class="gap-4 p-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" imgClass='h-auto m-auto max-w-full aspect-square rounded-3xl'/> -->
-<TutorList></TutorList>
+<div  use:inview="{options}" on:inview_change="{handleChange}"/>
+<TopHero images="{hero_images_flattened}" featuredTutors="{featuredTutorsHero}" />
+<TutorV3Swipeblock tutors="{featuredTutorsCards}" />
+<GeneralServices />
+<GeneralServicesDetail />
+<SketchupServices />
+<FAQ />
