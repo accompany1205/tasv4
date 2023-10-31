@@ -13,12 +13,13 @@
 
     import { headshots} from '$lib/tutors';
     export let data: PageData; 
+    const page_data = data.page[0];
 
     export let featuredTutors = ['']; 
 </script>
 
 <svelte:head>
-    <title>{data.page[0].page_title}</title>
+    <title>{page_data.landing_metadata.page_title}</title>
 </svelte:head>
 
 <main >
@@ -36,7 +37,7 @@
                     text-fc-[1.3rem_3.5cqw_2.75rem]
             "
             >
-                {data.page[0].top_heading}
+                {page_data.top_block.page_heading}
             </h1>
         </div>
             <div
@@ -56,7 +57,7 @@
                     "
             >
                 <div class="left-col mt-3">
-                {JSON.stringify(data.page[0].top_gallery, undefined, 2)}
+                {JSON.stringify(page_data.top_block.featured_images, undefined, 2)}
                     <!-- <ImageCarousel images="{images}" showLogo={true}/> -->
                 </div>
         
@@ -81,11 +82,14 @@
                                 {/each}
                             </div>
                         </div>
-                    {#each data.page[0].page_description[0].children as block}
+
                         <div class="text-left font-normal text-gray-950 micro:max-unfolded:text-lg unfolded:text-xl">
-                            {block.text}
+                            <PortableText
+                            value={page_data.top_block.blurb}
+                            onMissingComponent={false}
+                            components={{}}
+                        />
                         </div>
-                    {/each}
                     </div>
         
                     <GoogleRatings />
@@ -101,14 +105,14 @@
     <GeneralServices />
     <GeneralServicesDetail />
     <div class="bg-nile-blue-900 p-4 text-white">
-        {#each data.page[0].subservice_details as sub}
+        {#each page_data.services_block.featured_services as sub}
             <RichBlock data={sub}/>
         {/each}
         <div class="card mx-auto grid max-w-7xl flex-shrink-0 gap-4 p-4 sm:grid-cols-2">
             <div class="order-1 sm:-order-1">
                 <H4>We Can Help!</H4>
                 <PortableText
-                    value={data.page[0].subservices}
+                    value={page_data.services_block.other_services}
                     onMissingComponent={false}
                     components={{}}
                 />
@@ -116,14 +120,14 @@
             <div>
                 <H4>About Sketchup</H4>
                 <PortableText
-                    value={data.page[0].about}
+                    value={page_data.services_block.extra_info}
                     onMissingComponent={false}
                     components={{}}
                 />
             </div>
         </div>
     </div>
-    <Faq data={data.page[0].faq}/>
+    <Faq data={page_data.faq.faq}/>
 </main>
 
 <!-- <pre>{JSON.stringify(data, undefined, 2)}</pre> -->
