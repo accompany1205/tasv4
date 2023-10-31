@@ -11,20 +11,14 @@
     }
   </script>
   
-  <svelte:head>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-T85S72BN4E">
-    </script>
+<svelte:head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T85S72BN4E"></script>
     <script>
-      window.dataLayer = window.dataLayer || []
-  
-      function gtag() {
-        dataLayer.push(arguments)
-      }
-  
-      gtag('js', new Date())
-      gtag('config', 'G-T85S72BN4E')
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-T85S72BN4E');
     </script>
-  </svelte:head>
+</svelte:head>
   
