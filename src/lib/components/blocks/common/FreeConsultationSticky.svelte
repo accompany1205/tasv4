@@ -54,7 +54,7 @@
         
         "
 	>
-		<span>Call Anytime:</span>
+		<span class="ml-2">Call Anytime:</span>
         <a
         class="  block w-fit font-bold text-white "
         href="tel: 720-335-5282"

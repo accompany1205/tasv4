@@ -16,6 +16,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
+		"@types/gtag.js": "^0.0.17",
 		"autoprefixer": "^10.4.16",
 		"flowbite": "^1.8.1",
 		"flowbite-svelte": "^0.44.18",

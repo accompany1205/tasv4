@@ -37,6 +37,6 @@ Object.entries(mega_import).map(([key, value] ) => {
     mega = merge(mega, segments)
 })
 
-console.log(JSON.stringify(mega, undefined, 2))
+// console.log(JSON.stringify(mega, undefined, 2))
 
 export { mega }
