@@ -3,7 +3,7 @@
   
     $: {
       if (typeof gtag !== 'undefined') {
-        gtag('config', 'MEASUREMENT_ID', {
+        gtag('config', 'G-T85S72BN4E', {
           page_title: document.title,
           page_path: $page.url.pathname,
         })
@@ -24,7 +24,7 @@
       }
   
       gtag('js', new Date())
-      gtag('config', 'T85S72BN4E')
+      gtag('config', 'G-T85S72BN4E')
     </script>
   </svelte:head>
   
