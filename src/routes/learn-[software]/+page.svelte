@@ -7,15 +7,16 @@
 	import GeneralServices from '$lib/components/blocks/frontpage/GeneralServices.svelte';
 	import GeneralServicesDetail from '$lib/components/blocks/frontpage/GeneralServicesDetail.svelte';
 	import ServiceCard from '$lib/components/cards/ServiceCard.svelte';
-    import RichBlock from '$sanity/blocks/RichBlock.svelte';
 	import H4 from '$lib/components/elements/H4.svelte';
+
+    import RichBlock from '$sanity/blocks/RichBlock.svelte';
+    import Image from '$sanity/elements/Image.svelte';
     import Faq from '$sanity/blocks/FAQ.svelte';
-
-    import { headshots} from '$lib/tutors';
-    export let data: PageData; 
+    import {AssetRefToImageURL} from '$sanity/helpers';
+    
+    export let data: PageData;
+    // @ts-ignore
     const page_data = data.page[0];
-
-    export let featuredTutors = ['']; 
 </script>
 
 <svelte:head>
@@ -57,8 +58,7 @@
                     "
             >
                 <div class="left-col mt-3">
-                {JSON.stringify(page_data.top_block.featured_images, undefined, 2)}
-                    <!-- <ImageCarousel images="{images}" showLogo={true}/> -->
+                    <ImageCarousel images="{page_data.top_block.featured_images.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref) + ".webp"}))}" showLogo={true}/>
                 </div>
         
                 <div class="right-col grid shrink-0 grid-rows-[1fr_auto] rounded-lg micro:max-sm:text-lg">
@@ -67,22 +67,18 @@
                             <h2 class="mb-4 max-w-lg font-bold text-fc-[1.5rem_5cqw_8rem]">
                                 Don't Struggle Alone,&nbsp;Get Sketchup Help from a Pro.
                             </h2>
-        
-                            <div class="hidden lg:flex">
-                                {#each featuredTutors as tutorID, index}
-                                    <div class="-mx-4 flex-shrink-0">
-                                        <img
-                                            srcset="{headshots[tutorID]}"
-                                            alt="Featured Tutor"
-                                            class="h-20 w-20 flex-shrink-0 rounded-full p-1"
-                                            width="80"
-                                            height="80"
-                                        />
-                                    </div>
+                            <div class="hidden lg:block">
+                                {#each page_data.top_block.featured_tutors as tutor}
+                                    <img
+                                        src="{AssetRefToImageURL(tutor.asset._ref)}.webp"
+                                        alt="Featured Tutor"
+                                        class="aspect-square h-20 w-20 flex-shrink-0 rounded-full p-1 object-cover object-center max-w-none"
+                                        width="80"
+                                        height="80"
+                                    />
                                 {/each}
                             </div>
                         </div>
-
                         <div class="text-left font-normal text-gray-950 micro:max-unfolded:text-lg unfolded:text-xl">
                             <PortableText
                             value={page_data.top_block.blurb}
@@ -94,8 +90,16 @@
         
                     <GoogleRatings />
         
-                    <button
-                        class="max-w-sm items-center bg-emerald-400 p-3 text-center text-3xl font-bold text-white hover:bg-emerald-300"
+                    <button class="
+                            max-w-sm
+                            items-center
+                            bg-emerald-400
+                            p-3
+                            text-center
+                            text-3xl
+                            font-bold
+                            text-white
+                            hover:bg-emerald-300"
                     >
                         Get Started Today
                     </button>

@@ -17,6 +17,9 @@ dependencies:
   '@sanity/client':
     specifier: ^6.7.0
     version: 6.7.0
+  '@sanity/image-url':
+    specifier: ^1.0.2
+    version: 1.0.2
   '@sveltejs/adapter-vercel':
     specifier: ^3.0.3
     version: 3.0.3(@sveltejs/kit@1.25.1)
@@ -26,6 +29,9 @@ dependencies:
   deepmerge:
     specifier: ^4.3.1
     version: 4.3.1
+  groq:
+    specifier: ^3.19.0
+    version: 3.19.0
   svelte-inview:
     specifier: ^4.0.1
     version: 4.0.1(svelte@4.2.1)
@@ -444,6 +450,11 @@ packages:
       '@types/eventsource': 1.1.12
       event-source-polyfill: 1.0.31
       eventsource: 2.0.2
+    dev: false
+
+  /@sanity/image-url@1.0.2:
+    resolution: {integrity: sha512-C4+jb2ny3ZbMgEkLd7Z3C75DsxcTEoE+axXQJsQ75ou0AKWGdVsP351hqK6mJUUxn5HCSlu3vznoh7Yljye4cQ==}
+    engines: {node: '>=10.0.0'}
     dev: false
 
   /@sveltejs/adapter-auto@2.1.0(@sveltejs/kit@1.25.1):
@@ -1202,6 +1213,11 @@ packages:
 
   /graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
+
+  /groq@3.19.0:
+    resolution: {integrity: sha512-X4UenHCr0QBiizZpBbbYyhNJH3IMkSnKG4o6x8tfLggjqUMDo9NvI2hbrSa5CooIYv/+s125INJyPe1mE+bRfg==}
+    engines: {node: '>=18'}
+    dev: false
 
   /has-unicode@2.0.1:
     resolution: {integrity: sha512-8Rf9Y83NBReMnx0gFzA8JImQACstCYWUplepDa9xprwwtmgEZUF0h/i5xSA625zB/I37EtrswSST6OXxwaaIJQ==}

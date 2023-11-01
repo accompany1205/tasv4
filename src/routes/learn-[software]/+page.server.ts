@@ -1,6 +1,7 @@
 import type { PageServerLoad  } from './$types';
 
 import {createClient} from "@sanity/client";
+import groq from "groq";
 
 const client = createClient({
   projectId: "20gocjb2",
@@ -18,8 +19,22 @@ interface landing_page_data {
         page_heading: string,
         sub_heading: string,
         blurb: [],
-        featured_tutors: [],
-        featured_images: [],
+        featured_tutors: {
+            _type: "image",
+            _key: string,
+            asset: {
+                _ref: string,
+                type: string
+            }
+        }[],
+        featured_images: {
+            _type: "image",
+            _key: string,
+            asset: {
+                _ref: string,
+                type: string
+            }
+        }[],
     },
     tutors_block: {
         block_heading: string,
@@ -39,7 +54,8 @@ interface landing_page_data {
 }
 
 export const load: PageServerLoad = async ({ params }) => {
-    const query = `*[_type == "landing_page" && landing_metadata.slug.current == "${params.software}"]`
+    /* groq */
+    const query = groq`*[_type == "landing_page" && landing_metadata.slug.current == "${params.software}"]`
     const data = <landing_page_data[]> await client.fetch(query);
 
     // console.log("*************************************")

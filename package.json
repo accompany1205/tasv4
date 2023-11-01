@@ -42,9 +42,11 @@
 		"@fontsource/open-sans": "^5.0.15",
 		"@portabletext/svelte": "^2.1.4",
 		"@sanity/client": "^6.7.0",
+		"@sanity/image-url": "^1.0.2",
 		"@sveltejs/adapter-vercel": "^3.0.3",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"deepmerge": "^4.3.1",
+		"groq": "^3.19.0",
 		"svelte-inview": "^4.0.1",
 		"svelte-preprocess": "^5.0.4",
 		"swiper": "^10.3.0"
