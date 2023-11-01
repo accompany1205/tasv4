@@ -58,7 +58,7 @@
                     "
             >
                 <div class="left-col mt-3">
-                    <ImageCarousel images="{page_data.top_block.featured_images.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref) + ".webp"}))}" showLogo={true}/>
+                    <ImageCarousel images="{page_data.top_block.featured_images.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref) + ".webp", }))}" showLogo={true}/>
                 </div>
         
                 <div class="right-col grid shrink-0 grid-rows-[1fr_auto] rounded-lg micro:max-sm:text-lg">
