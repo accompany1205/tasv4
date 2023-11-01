@@ -64,7 +64,7 @@
 	</div>
 	<GoogleRatingsCompact />
 	<Button
-		href="/form"
+		href="https://www.sketchuptutors.com/form"
 		class="
             fixed
             bottom-4
