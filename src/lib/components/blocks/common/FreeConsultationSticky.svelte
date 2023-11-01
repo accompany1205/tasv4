@@ -64,7 +64,7 @@
 	</div>
 	<GoogleRatingsCompact />
 	<Button
-		href="https://www.jotform.com/221775033335048"
+		href="/form"
 		class="
             fixed
             bottom-4

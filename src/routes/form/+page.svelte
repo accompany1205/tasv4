@@ -3,6 +3,6 @@
 	const worse_idea = `<script type="text/javascript" src="https://form.jotform.com/jsform/221775033335048"/>`;
 </script>
 
-<div class="jotform">
+<div class="jotform p-10">
 	{@html bad_idea}
 </div>
