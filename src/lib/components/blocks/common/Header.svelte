@@ -12,6 +12,7 @@
         top-0
         z-50
         grid
+		
         h-[50px]
         max-h-16
         grid-cols-[4fr_auto_4fr]
@@ -31,7 +32,7 @@
 >
 	<LogoUnframedDynamicText
 		fill="black"
-		class="font-serif mt-auto h-[40px] max-h-[inherit] max-w-full text-lg"
+		class="font-serif mt-auto h-[40px] max-h-[inherit] max-w-full text-lg pb-[5px]"
         icon="sketchup"
 	>
 		<text class="dyntext" transform="translate(195 34)"> Sketchup </text>

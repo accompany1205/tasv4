@@ -29,7 +29,7 @@
     justify-items-stretch
     gap-0
     bg-gray-700
-    p-4
+
     text-white
     sm:gap-4
     lg:sticky
@@ -66,7 +66,7 @@
 	<Button
 		href="/form"
 		class="
-            fixed
+            
             bottom-4
             right-4
             h-12
