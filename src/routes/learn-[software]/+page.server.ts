@@ -1,4 +1,4 @@
-import type { PageLoad } from './$types';
+import type { PageServerLoad  } from './$types';
 
 import {createClient} from "@sanity/client";
 
@@ -38,12 +38,13 @@ interface landing_page_data {
     }
 }
 
-// @ts-ignore
-export const load: PageLoad = async ({ params }) => {
-    const data = <landing_page_data[]> await client.fetch(`*[_type == "landing_page"]`);
-    console.log("*************************************")
+export const load: PageServerLoad = async ({ params }) => {
+    const query = `*[_type == "landing_page" && landing_metadata.slug.current == "${params.software}"]`
+    const data = <landing_page_data[]> await client.fetch(query);
+
+    // console.log("*************************************")
     // console.log(data)
-    console.log(data[0].top_block.blurb)
+    // console.log(data[0].top_block.blurb)
     // console.log(JSON.stringify(data, undefined, 2))
     
 	if (data) return {
