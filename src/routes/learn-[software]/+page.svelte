@@ -12,6 +12,8 @@
     import RichBlock from '$sanity/blocks/RichBlock.svelte';
     import Image from '$sanity/elements/Image.svelte';
     import Faq from '$sanity/blocks/FAQ.svelte';
+    import SwipeBlock from '$sanity/blocks/SwipeBlock.svelte';
+    import TutorCard from '$sanity/cards/TutorCard.svelte';
     import {AssetRefToImageURL} from '$sanity/helpers';
     
     export let data: PageData;
@@ -106,6 +108,15 @@
                 </div>
             </div>
     </section>
+    <SwipeBlock>
+        {#each page_data.tutorsBlock.featured_tutors as tutor}
+            <swiper-slide class="">
+                <div class="m-auto h-[100cqh] w-96 max-w-2xl flex-shrink-0 p-2">
+                    <TutorCard {tutor}/>
+                </div>
+            </swiper-slide>
+        {/each}
+    </SwipeBlock>
     <GeneralServices />
     <GeneralServicesDetail />
     <div class="bg-nile-blue-900 p-4 text-white">
