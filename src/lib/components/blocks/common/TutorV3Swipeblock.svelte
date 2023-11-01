@@ -15,7 +15,8 @@
 		autoplay: {
 			enabled:true,
 			delay:3000,
-			pauseOnMouseEnter:true
+			pauseOnMouseEnter:true,
+			disableOnInteraction:true
 		},
 		
 		touchStartPreventDefault: false,
