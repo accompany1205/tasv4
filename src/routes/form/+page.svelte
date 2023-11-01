@@ -4,7 +4,7 @@
 
 	onMount(() => {
 		const parameters = window.location.search;  // Capture everything after the '?'
-		goto('https://form.jotform.com/213494772938167' + parameters);
+		goto('https://form.jotform.com/232983962310055?' + parameters +'&whichWebsite=newsite');
 	});
 
 </script>
