@@ -10,6 +10,10 @@
     });
 </script>
 
+<svelte:head>
+	<title>Sketchup ThankYou</title>
+</svelte:head>
+
 <Section name="testimonial">
   <TestimonialCard>
     <svelte:fragment slot="header">
