@@ -12,6 +12,7 @@
 		spaceBetween: 300,
 		effect: 'slides',
 		loop: false,
+
 		autoplay: {
 			enabled:true,
 			delay:3000,
@@ -23,8 +24,6 @@
 		pagination: {enabled:true,
 					clickable:true
 					},
-
-		
 
 		breakpoints: {
 			640: {
