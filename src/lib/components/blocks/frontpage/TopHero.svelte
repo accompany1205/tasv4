@@ -90,7 +90,7 @@
 
 			<Button
 				class="max-w-sm items-center bg-emerald-400 p-3 text-center text-3xl font-bold text-white hover:bg-emerald-300"
-				href="https://www.sketchuptutors.com/form"
+				href="/form"
 			>
 				Get Started Today
 			</Button>
