@@ -1,8 +1,10 @@
 <script lang="ts">
-	const bad_idea = "<script src='https://form.jotform.com/jsform/213494772938167'/>";
-	const worse_idea = `<script type="text/javascript" src="https://form.jotform.com/jsform/221775033335048"/>`;
-</script>
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 
-<div class="jotform p-10">
-	{@html bad_idea}
-</div>
+	onMount(() => {
+		const parameters = window.location.search;  // Capture everything after the '?'
+		goto('https://form.jotform.com/232983962310055?' + parameters +'&whichWebsite=newsite');
+	});
+
+</script>

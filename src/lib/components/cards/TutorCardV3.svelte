@@ -102,7 +102,7 @@
 		
 		<Button
 			class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300"
-			href="https://www.sketchuptutors.com/form/?specificPerson={tutor.first}&softwarePref=SketchUp&cameFrom={tutor.first}"
+			href="/form/?specificPerson={tutor.first}&softwarePref=SketchUp&cameFrom={tutor.first}"
 			>Book A Free Consultation
 		</Button
 		>
