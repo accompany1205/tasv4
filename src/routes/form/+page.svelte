@@ -8,3 +8,7 @@
 	});
 
 </script>
+
+<svelte:head>
+	<title>Sketchup PreForm</title>
+</svelte:head>
