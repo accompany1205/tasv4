@@ -12,6 +12,11 @@
 		spaceBetween: 300,
 		effect: 'slides',
 		loop: false,
+		autoplay: {
+			enabled:true,
+			delay:3000,
+			pauseOnMouseEnter:true
+		},
 		
 		touchStartPreventDefault: false,
 		pagination: {enabled:true,
@@ -50,6 +55,8 @@
 		--swiper-pagination-padding: 48px;
 		--swiper-pagination-bullet-inactive-color: #ffffff;
 		--swiper-pagination-bullet-inactive-opacity: 0.5;
+		--swiper-scrollbar-drag-bg-color: #61ce70;
+
 	}
 </style>
 
