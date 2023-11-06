@@ -7,12 +7,23 @@
         setTimeout(() => {
             window.location.href = '/';
         }, 3000);
+
+        
     });
 </script>
 
 <svelte:head>
-	<title>Sketchup ThankYou</title>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('event', 'conversion', {'event_category': 'form', 'event_label': 'sketchup_form_submitted'});
+  </script>
+
+  <title>Sketchup ThankYou</title>
 </svelte:head>
+
+
+
 
 <Section name="testimonial">
   <TestimonialCard>
