@@ -14,9 +14,7 @@
 
 <svelte:head>
   <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('event', 'conversion', {'event_category': 'form', 'event_label': 'sketchup_form_submitted'});
+    gtag('event', 'sketchup_form_submitted');
   </script>
 
   <title>Sketchup ThankYou</title>
