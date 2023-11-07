@@ -12,6 +12,7 @@
     import RichBlock from '$sanity/blocks/RichBlock.svelte';
     import Image from '$sanity/elements/Image.svelte';
     import Faq from '$sanity/blocks/FAQ.svelte';
+    import Builder from '$sanity/blocks/Builder.svelte';
     import SwipeBlock from '$sanity/blocks/SwipeBlock.svelte';
     import TutorCard from '$sanity/cards/TutorCard.svelte';
     import {AssetRefToImageURL} from '$sanity/helpers';
@@ -22,7 +23,7 @@
 </script>
 
 <svelte:head>
-    <title>{page_data.landing_metadata.page_title}</title>
+    <title>{page_data.pageTitle}</title>
 </svelte:head>
 
 <main >
@@ -40,7 +41,7 @@
                     text-fc-[1.3rem_3.5cqw_2.75rem]
             "
             >
-                {page_data.top_block.page_heading}
+                {page_data.heroBlock.richBlock.blockHeading}
             </h1>
         </div>
             <div
@@ -60,7 +61,7 @@
                     "
             >
                 <div class="left-col mt-3">
-                    <ImageCarousel images="{page_data.top_block.featured_images.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref) + ".webp", }))}" showLogo={true}/>
+                    <ImageCarousel images="{page_data.heroBlock.richBlock.imageGallery.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref) }))}" showLogo={true}/>
                 </div>
         
                 <div class="right-col grid shrink-0 grid-rows-[1fr_auto] rounded-lg micro:max-sm:text-lg">
@@ -70,9 +71,9 @@
                                 Don't Struggle Alone,&nbsp;Get Sketchup Help from a Pro.
                             </h2>
                             <div class="hidden lg:block">
-                                {#each page_data.top_block.featured_tutors as tutor}
+                                {#each page_data.heroBlock.featuredTutors as tutor}
                                     <img
-                                        src="{AssetRefToImageURL(tutor.asset._ref)}.webp"
+                                        src="{AssetRefToImageURL(tutor.asset._ref)}"
                                         alt="Featured Tutor"
                                         class="aspect-square h-20 w-20 flex-shrink-0 rounded-full p-1 object-cover object-center max-w-none"
                                         width="80"
@@ -83,7 +84,7 @@
                         </div>
                         <div class="text-left font-normal text-gray-950 micro:max-unfolded:text-lg unfolded:text-xl">
                             <PortableText
-                            value={page_data.top_block.blurb}
+                            value={page_data.heroBlock.richBlock.blockBody}
                             onMissingComponent={false}
                             components={{}}
                         />
@@ -109,7 +110,7 @@
             </div>
     </section>
     <SwipeBlock>
-        {#each page_data.tutorsBlock.featured_tutors as tutor}
+        {#each page_data.tutorBlock.featuredTutors as tutor}
             <swiper-slide class="">
                 <div class="m-auto h-[100cqh] w-96 max-w-2xl flex-shrink-0 p-2">
                     <TutorCard {tutor}/>
@@ -117,13 +118,16 @@
             </swiper-slide>
         {/each}
     </SwipeBlock>
+    <div class="bg-nile-blue-900 p-4 text-white">
+        <Builder data={page_data.builderBlock}/>
+    </div>
     <GeneralServices />
     <GeneralServicesDetail />
     <div class="bg-nile-blue-900 p-4 text-white">
-        {#each page_data.services_block.featured_services as sub}
+        {#each page_data.services_block?.featured_services ?? [] as sub}
             <RichBlock data={sub}/>
         {/each}
-        <div class="card mx-auto grid max-w-7xl flex-shrink-0 gap-4 p-4 sm:grid-cols-2">
+        <!-- <div class="card mx-auto grid max-w-7xl flex-shrink-0 gap-4 p-4 sm:grid-cols-2">
             <div class="order-1 sm:-order-1">
                 <H4>We Can Help!</H4>
                 <PortableText
@@ -140,9 +144,9 @@
                     components={{}}
                 />
             </div>
-        </div>
+        </div> -->
     </div>
-    <Faq data={page_data.faq.faq}/>
+    <!-- <Faq data={page_data.faq.faq}/> -->
 </main>
 
 <!-- <pre>{JSON.stringify(data, undefined, 2)}</pre> -->

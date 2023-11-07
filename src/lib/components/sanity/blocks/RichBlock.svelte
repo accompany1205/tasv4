@@ -1,16 +1,5 @@
 <script lang="ts">
-    interface RichBlockData {
-        heading: string,
-        body: [],
-        gallery: {
-            _type: "image",
-            _key: string,
-            asset: {
-                _ref: string,
-                type: string
-            }
-        }[],
-    }
+    import type RichBlockData from '$lib/schemas/RichBlock';
     export let data: RichBlockData
 
     import { PortableText } from '@portabletext/svelte';
@@ -20,13 +9,14 @@
 	import H4 from '$lib/components/elements/H4.svelte';
 	import P from '$lib/components/elements/P.svelte'; 
 
-    const images = data.gallery.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref) + ".webp"}))
+    const images = data.imageGallery.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref)}))
 </script>
 
 <ServiceCard {images}>
-    <H4>{data.heading}</H4>
+    <H4>{data.blockHeading}</H4>
+    
     <PortableText
-        value={data.body}
+        value={data.blockBody}
         components={{}}
     />
 </ServiceCard>

@@ -1,5 +1,7 @@
 const base_path = "https://cdn.sanity.io/images/20gocjb2/production/"
 
 export const AssetRefToImageURL = (asset_ref: string) => {
-    return base_path + asset_ref.split('-').slice(1, 3).join('-')
+    const segments = asset_ref.split('-')
+    console.log (segments)
+    return base_path + segments.slice(1, 3).join('-') + "." + segments[3]
 }
