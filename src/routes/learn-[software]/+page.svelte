@@ -11,7 +11,7 @@
 
     import RichBlock from '$sanity/blocks/RichBlock.svelte';
     import Image from '$sanity/elements/Image.svelte';
-    import Faq from '$sanity/blocks/FAQ.svelte';
+    import Faq from '$sanity/blocks/FAQBlock.svelte';
     import Builder from '$sanity/blocks/Builder.svelte';
     import SwipeBlock from '$sanity/blocks/SwipeBlock.svelte';
     import TutorCard from '$sanity/cards/TutorCard.svelte';
