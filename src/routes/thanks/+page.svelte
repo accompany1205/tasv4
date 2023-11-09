@@ -7,8 +7,6 @@
         setTimeout(() => {
             window.location.href = '/';
         }, 3000);
-
-        
     });
 </script>
 
@@ -19,9 +17,6 @@
 
   <title>Sketchup ThankYou</title>
 </svelte:head>
-
-
-
 
 <Section name="testimonial">
   <TestimonialCard>
