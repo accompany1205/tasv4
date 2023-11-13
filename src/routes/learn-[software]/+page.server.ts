@@ -12,13 +12,37 @@ const client = createClient({
 
 export const load: PageServerLoad = async ({ params }) => {
     /* groq */
-    const query = groq`*[_type == "servicePage" && slug.current == "${params.software}"]{..., "tutorBlock": tutorBlock {..., featuredTutors[] ->}}`
+    const query = groq`*[_type == "service" && slug.current == "sketchup"]{
+      ...defaultPage -> {
+        pageTitle,
+        heroBlock,
+        builderBlock,
+        ...,
+        "tutorBlock" : tutorBlock {
+          ...,
+          featuredTutors[] -> {
+            _type,
+            blurb,
+            rate,
+            shortName,
+            longName,
+            headshot,
+            defaultCard -> {
+              coverImage,
+              featuredTags,
+              featuredServices,
+              overrides
+            }
+        }
+      }
+      }
+    }`
     const data = <ServicePage[]> await client.fetch(query);
 
     console.log("*************************************")
     // console.log(data)
     // console.log(data[0].top_block.blurb)
-    console.log(JSON.stringify(data, undefined, 2))
+    // console.log(JSON.stringify(data, undefined, 2))
     
 	if (data) return {
         page: data

@@ -1,18 +1,18 @@
 export default interface TutorData {
-        _type: "tutor"
-        tutorCoreInfo: {
-            shortName: string,
-            fullName: string,
-            rate: number,
-            blurb: string,
-            headshot: {
-                _type: "image",
-                caption: string,
-                asset: {
-                    _type: "reference",
-                    _ref: string
-                }
-            },
+        _type: "tutor",
+        shortName: string,
+        longName: string,
+        rate: number,
+        blurb: string,
+        headshot: {
+            _type: "image",
+            caption: string,
+            asset: {
+                _type: "reference",
+                _ref: string
+            }
+        },
+        defaultCard: {
             coverImage: {
                 _type: "image",
                 caption: string,
@@ -22,6 +22,31 @@ export default interface TutorData {
                 }
             }
             featuredTags: string[],
-            featuredServices: string[]
+            featuredServices: string[],
+            overrides?: {
+                shortName: string,
+                longName: string,
+                rate: number,
+                headshot: {
+                    _type: "image",
+                    caption: string,
+                    asset: {
+                        _type: "reference",
+                        _ref: string
+                    }
+                },
+                asset: {
+                    _type: "reference",
+                    _ref: string
+                }
+
+            }
+        }
+        tutorCoreInfo: {
+
+            
+            
+
+
         }
     }

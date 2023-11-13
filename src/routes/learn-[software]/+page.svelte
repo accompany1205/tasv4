@@ -70,24 +70,26 @@
                             <h2 class="mb-4 max-w-lg font-bold text-fc-[1.5rem_5cqw_8rem]">
                                 Don't Struggle Alone,&nbsp;Get Sketchup Help from a Pro.
                             </h2>
-                            <div class="hidden lg:block">
+                            <div class="hidden lg:flex">
                                 {#each page_data.heroBlock.featuredTutors as tutor}
-                                    <img
-                                        src="{AssetRefToImageURL(tutor.asset._ref)}"
-                                        alt="Featured Tutor"
-                                        class="aspect-square h-20 w-20 flex-shrink-0 rounded-full p-1 object-cover object-center max-w-none"
-                                        width="80"
-                                        height="80"
-                                    />
+                                    <div class="-mx-4 flex-shrink-0">
+                                        <img
+                                            src="{AssetRefToImageURL(tutor.asset._ref)}"
+                                            alt="Featured Tutor"
+                                            class="aspect-square h-20 w-20 flex-shrink-0 rounded-full p-1 object-cover object-center max-w-none"
+                                            width="80"
+                                            height="80"
+                                        />
+                                    </div>
                                 {/each}
                             </div>
                         </div>
                         <div class="text-left font-normal text-gray-950 micro:max-unfolded:text-lg unfolded:text-xl">
                             <PortableText
-                            value={page_data.heroBlock.richBlock.blockBody}
-                            onMissingComponent={false}
-                            components={{}}
-                        />
+                                value={page_data.heroBlock.richBlock.blockBody}
+                                onMissingComponent={false}
+                                components={{}}
+                            />
                         </div>
                     </div>
         
@@ -118,33 +120,17 @@
             </swiper-slide>
         {/each}
     </SwipeBlock>
+    <GeneralServices />
     <div class="bg-nile-blue-900 p-4 text-white">
         <Builder data={page_data.builderBlock}/>
     </div>
-    <GeneralServices />
+    
     <GeneralServicesDetail />
     <div class="bg-nile-blue-900 p-4 text-white">
         {#each page_data.services_block?.featured_services ?? [] as sub}
             <RichBlock data={sub}/>
         {/each}
-        <!-- <div class="card mx-auto grid max-w-7xl flex-shrink-0 gap-4 p-4 sm:grid-cols-2">
-            <div class="order-1 sm:-order-1">
-                <H4>We Can Help!</H4>
-                <PortableText
-                    value={page_data.services_block.other_services}
-                    onMissingComponent={false}
-                    components={{}}
-                />
-            </div>
-            <div>
-                <H4>About Sketchup</H4>
-                <PortableText
-                    value={page_data.services_block.extra_info}
-                    onMissingComponent={false}
-                    components={{}}
-                />
-            </div>
-        </div> -->
+
     </div>
     <!-- <Faq data={page_data.faq.faq}/> -->
 </main>
