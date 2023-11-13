@@ -21,6 +21,6 @@ export default interface RichBlock {
             _type: "reference",
             _ref: string
         }
-    }[]
-
+    }[],
+    bg: string
 }

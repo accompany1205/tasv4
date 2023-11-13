@@ -121,7 +121,7 @@
         {/each}
     </SwipeBlock>
     <GeneralServices />
-    <div class="bg-nile-blue-900 p-4 text-white">
+    <div class=" py-4 text-white">
         <Builder data={page_data.builderBlock}/>
     </div>
     

@@ -4,5 +4,6 @@ export default interface FaqBlock {
     questions: {
         heading: string,
         body: {}[]
-    }[]
+    }[],
+    bg: string
 }
