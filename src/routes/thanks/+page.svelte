@@ -4,6 +4,8 @@
     import { onMount } from 'svelte';
 
     onMount(() => {
+        gtag('event', 'sketchup_form_submitted');
+
         setTimeout(() => {
             window.location.href = '/';
         }, 3000);
@@ -11,10 +13,6 @@
 </script>
 
 <svelte:head>
-  <script>
-    gtag('event', 'sketchup_form_submitted');
-  </script>
-
   <title>Sketchup ThankYou</title>
 </svelte:head>
 
