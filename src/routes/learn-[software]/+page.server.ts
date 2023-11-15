@@ -31,6 +31,7 @@ export const load: PageServerLoad = async ({ params }) => {
               coverImage,
               featuredTags,
               featuredServices,
+              gallery,
               overrides
             }
         }

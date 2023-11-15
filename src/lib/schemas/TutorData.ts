@@ -23,6 +23,15 @@ export default interface TutorData {
             }
             featuredTags: string[],
             featuredServices: string[],
+            gallery: {
+                _type: "image",
+                title: string,
+                caption: string,
+                asset: {
+                    _type: "reference",
+                    _ref: string
+                }
+            }[]
             overrides?: {
                 shortName: string,
                 longName: string,

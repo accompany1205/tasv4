@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type TutorData from "$lib/schemas/TutorData"
+	import ActiveTutor from "$lib/stores/TutorCardModal_ActiveTutor";
 
 	import '@fontsource-variable/akshar';
 	import ServiceTags from '$lib/components/elements/ServiceTags.svelte';
@@ -22,6 +23,10 @@
 	export { _class as class };
 	export let tutor: TutorData;
 	
+	// let dialog: TutorCardModal;
+	const openDialog = () => {
+		ActiveTutor.set(tutor.defaultCard.gallery);
+	}
 </script>
 
 <div
@@ -33,7 +38,8 @@
 		<!-- Image -->
 		<div class="block aspect-[21/9] w-full overflow-hidden bg-gray-200">
 			{#if isInView}
-				<Lightbox>
+				<!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
+				<picture on:click="{openDialog}" role="button">
 					<img
 						src="{AssetRefToImageURL(tutor.defaultCard.coverImage.asset._ref)}"
 						alt="Matthew W"
@@ -43,7 +49,7 @@
 						decoding="async"
 						loading="lazy"
 					/>
-				</Lightbox>
+				</picture>
 			{/if}
 		</div>
 		<!-- Tutor Info -->

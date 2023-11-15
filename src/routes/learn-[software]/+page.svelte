@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { PageData } from './$types';
     import {PortableText} from '@portabletext/svelte'
+    import TutorCardModal from '$sanity/cards/TutorCardModal.svelte';
 
 	import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
 	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
@@ -120,19 +121,9 @@
             </swiper-slide>
         {/each}
     </SwipeBlock>
+    <TutorCardModal/>
     <GeneralServices />
     <div class=" py-4 text-white">
         <Builder data={page_data.builderBlock}/>
     </div>
-    
-    <GeneralServicesDetail />
-    <div class="bg-nile-blue-900 p-4 text-white">
-        {#each page_data.services_block?.featured_services ?? [] as sub}
-            <RichBlock data={sub}/>
-        {/each}
-
-    </div>
-    <!-- <Faq data={page_data.faq.faq}/> -->
 </main>
-
-<!-- <pre>{JSON.stringify(data, undefined, 2)}</pre> -->
