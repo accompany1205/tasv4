@@ -114,8 +114,8 @@
     </section>
     <SwipeBlock>
         {#each page_data.tutorBlock.featuredTutors as tutor}
-            <swiper-slide class="">
-                <div class="m-auto h-[100cqh] w-96 max-w-2xl flex-shrink-0 p-2">
+            <swiper-slide class="w-fit">
+                <div class=" h-[100cqh] min-w-[16rem] max-w-sm  flex-shrink-0 p-0">
                     <TutorCard {tutor}/>
                 </div>
             </swiper-slide>
