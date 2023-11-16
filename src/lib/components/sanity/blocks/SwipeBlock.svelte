@@ -14,30 +14,34 @@
 			clickable:true
 		},
 
-		effect: 'slides',
+		effect: 'coverflow',
 		coverflowEffect: {
-			rotate: 30,
-			slideShadows: false,
+			rotate: 20,
+			slideShadows: true,
+			depth: 150,
+			stretch: 5,
+			modifier: 0.5
+			// scale: 0.95,
 		},
 
-		breakpoints: {
-			0: {
-				slidesPerView: 1,
-				spaceBetween: 8,
-			},
-			400: {
-				slidesPerView: "auto",
-				spaceBetween: "12",
-			},
-			1200: {
-				slidesPerView: 3.25,
-				spaceBetween: 40,
-			},
-			1700: {
-				slidesPerView: 3.25,
-				spaceBetween: 20,
-			},
-		},
+		// breakpoints: {
+		// 	0: {
+		// 		slidesPerView: 1,
+		// 		spaceBetween: 8,
+		// 	},
+		// 	400: {
+		// 		slidesPerView: "auto",
+		// 		spaceBetween: "12",
+		// 	},
+		// 	1200: {
+		// 		slidesPerView: 3.25,
+		// 		spaceBetween: 12,
+		// 	},
+		// 	1700: {
+		// 		slidesPerView: 3.25,
+		// 		spaceBetween: 12,
+		// 	},
+		// },
 	};
 	const autoplay = '{delay:3000}';
 	const coverflow = '{depth:32, rotate:0, slideShows:false, scale:0.5}';
