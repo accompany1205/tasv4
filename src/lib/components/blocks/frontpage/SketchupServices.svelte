@@ -47,11 +47,12 @@
 
 <div class="bg-nile-blue-900 p-4 text-white">
 	<H3 class="m-auto max-w-screen-xl">Sketchup Services We Provide</H3>
-	<ServiceCard images="{product_design_flattened}">
-		<H4>Product Design</H4>
+
+	<ServiceCard images="{concept_arc_flattened}">
+		<H4>Conceptual Architecture 3D Modeling</H4>
 		<P>
-			Use 3D modeling to visualize a design, 3D print, show it to prospective investors, or
-			conduct rapid prototyping.
+			Create conceptual archetectural 3D models to hash out your basic ideas. This can save
+			expensive fees for redrawing or changing plans.
 		</P>
 	</ServiceCard>
 
@@ -64,11 +65,11 @@
 		</P>
 	</ServiceCard>
 
-	<ServiceCard images="{concept_arc_flattened}">
-		<H4>Conceptual Architecture 3D Modeling</H4>
+	<ServiceCard images="{product_design_flattened}">
+		<H4>Product Design</H4>
 		<P>
-			Create conceptual archetectural 3D models to hash out your basic ideas. This can save
-			expensive fees for redrawing or changing plans.
+			Use 3D modeling to visualize a design, 3D print, show it to prospective investors, or
+			conduct rapid prototyping.
 		</P>
 	</ServiceCard>
 

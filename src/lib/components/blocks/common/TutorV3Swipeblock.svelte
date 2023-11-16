@@ -12,12 +12,18 @@
 		spaceBetween: 300,
 		effect: 'slides',
 		loop: false,
+
+		autoplay: {
+			enabled:true,
+			delay:3000,
+			pauseOnMouseEnter:true,
+			disableOnInteraction:true
+		},
+		
 		touchStartPreventDefault: false,
 		pagination: {enabled:true,
 					clickable:true
 					},
-
-		
 
 		breakpoints: {
 			640: {
@@ -47,6 +53,10 @@
 <style>
 	:global(swiper-container) {
 		--swiper-pagination-padding: 48px;
+		--swiper-pagination-bullet-inactive-color: #ffffff;
+		--swiper-pagination-bullet-inactive-opacity: 0.5;
+		--swiper-scrollbar-drag-bg-color: #61ce70;
+
 	}
 </style>
 

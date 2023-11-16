@@ -25,8 +25,8 @@
 
 <div use:inview="{options}" on:inview_change="{handleChange}" class="max-w-7xl w-full aspect-video relative mb-14">
 	{#if isInView}
-		<Carousel images="{images}"   let:Indicators duration="{4000}" class="rounded-sm relative z-0 h-auto sm:h-auto md:h-auto xl:h-auto 2xl:h-auto aspect-video" transition={null}>
-			<Indicators class="translate-y-12 " let:selected activeClass="bg-alabaster-600" inactiveClass="bg-alabaster-300"/>
+		<Carousel images="{images}"   let:Indicators duration="{7000}" class="rounded-sm relative z-0 h-auto sm:h-auto md:h-auto xl:h-auto 2xl:h-auto aspect-video" transition={null}>
+			<Indicators class="translate-y-12 " let:selected activeClass="bg-emerald-400" inactiveClass="bg-alabaster-300"/>
 		</Carousel>
 	{/if}
 

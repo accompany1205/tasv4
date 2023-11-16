@@ -2,9 +2,14 @@
 	import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
 	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
 	import { headshots} from '$lib/tutors';
+	import { Button } from 'flowbite-svelte';
 
 	export let images = [{ alt: '', srcset: '' }];
 	export let featuredTutors = ['']; 
+
+    function handleButtonClick() {
+        gtag('event', 'sketchup_form_clicked');
+    }
 
 </script>
 
@@ -87,11 +92,13 @@
 
 			<GoogleRatings />
 
-			<button
+			<Button
 				class="max-w-sm items-center bg-emerald-400 p-3 text-center text-3xl font-bold text-white hover:bg-emerald-300"
+				href="/form?softwarePref=SketchUp"
+				on:click={handleButtonClick}
 			>
 				Get Started Today
-			</button>
+			</Button>
 		</div>
 	</div>
 </section>

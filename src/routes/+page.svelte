@@ -38,7 +38,7 @@
 </script>
 
 <svelte:head>
-	<title>Tutors and Services</title>
+	<title>SketchUp Tutors</title>
 </svelte:head>
 
 <div  use:inview="{options}" on:inview_change="{handleChange}"/>

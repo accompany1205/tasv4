@@ -7,6 +7,7 @@
 	
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
+	import { Button } from 'flowbite-svelte';
 	
 	let isInView: boolean;
 	const options = {
@@ -93,13 +94,17 @@
 
 	<!-- Buttons -->
 	<div class="m-2 flex justify-between p-1">
-		<button
+		<Button
 			class="text-md mx-4 rounded bg-alabaster-300 p-2 font-medium text-white hover:bg-alabaster-200"
-			>Learn More About {tutor.first}</button
-		>
-		<button
+			href="https://www.tutorsandservices.com/{tutor.first}-{tutor.id}/"
+			>Learn More About {tutor.first}
+		</Button>
+		
+		<Button
 			class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300"
-			>Book A Free Consultation</button
+			href="/form/?specificPerson={tutor.first}&softwarePref=SketchUp&cameFrom={tutor.first}"
+			>Book A Free Consultation
+		</Button
 		>
 	</div>
 </div>

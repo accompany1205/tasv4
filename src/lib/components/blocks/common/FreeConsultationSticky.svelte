@@ -29,7 +29,7 @@
     justify-items-stretch
     gap-0
     bg-gray-700
-    p-4
+
     text-white
     sm:gap-4
     lg:sticky
@@ -54,7 +54,7 @@
         
         "
 	>
-		<span>Call Anytime:</span>
+		<span class="ml-2">Call Anytime:</span>
         <a
         class="  block w-fit font-bold text-white "
         href="tel: 720-335-5282"
@@ -64,9 +64,9 @@
 	</div>
 	<GoogleRatingsCompact />
 	<Button
-		href="https://www.jotform.com/221775033335048"
+		href="/form?softwarePref=SketchUp"
 		class="
-            fixed
+            
             bottom-4
             right-4
             h-12
