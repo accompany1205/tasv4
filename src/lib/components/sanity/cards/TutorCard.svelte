@@ -42,7 +42,7 @@
 				<picture on:click="{openDialog}" role="button">
 					<img
 						src="{AssetRefToImageURL(tutor.defaultCard.coverImage.asset._ref)}"
-						alt="Matthew W"
+						alt="{tutor.defaultCard.coverImage.caption ?? "cover image"}"
 						class="min-h-full min-w-full object-cover object-center"
 						width="512"
 						height="230"
@@ -58,7 +58,7 @@
 			<div class="-ml-4 -mt-10 flex-shrink-0">
 				<img
 					src="{AssetRefToImageURL(tutor.headshot.asset._ref)}"
-					alt="Matthew W"
+					alt="{tutor.longName}"
 					class="h-28 w-28 flex-shrink-0 rounded-full border-2 border-emerald-400 p-1 object-contain object-center"
 				/>
 			</div>
@@ -101,10 +101,19 @@
 
 	<!-- Buttons -->
 	<div class="m-2 flex justify-between p-1">
-		<button
-			class="text-md mx-4 rounded bg-alabaster-300 p-2 font-medium text-white hover:bg-alabaster-200"
-			>Learn More About {tutor.longName}</button
-		>
+		<button on:click="{openDialog}"
+			class="
+				text-md
+				mx-4
+				rounded
+				bg-alabaster-300
+				p-2
+				font-medium
+				text-white
+				hover:bg-alabaster-200"
+			>
+			See {tutor.shortName}'s Portfolio
+		</button>
 		<button
 			class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300"
 			>Book A Free Consultation</button
