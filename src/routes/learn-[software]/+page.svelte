@@ -122,6 +122,18 @@
         {/each}
     </SwipeBlock>
     <TutorCardModal/>
+
+    <div>
+        {page_data.typesOfServices.services[0].icon}
+        {page_data.typesOfServices.services[0].body}
+
+        <PortableText
+            value={page_data.typesOfServices.services[0].body}
+            onMissingComponent={false}
+            components={{}}
+        />
+    </div>
+
     <GeneralServices />
     <div class=" py-4 text-white">
         <Builder data={page_data.builderBlock}/>

@@ -3,6 +3,8 @@ import type RichBlock from "./RichBlock";
 import type TutorBlock from "./TutorBlock";
 import type HeroBlock from "./HeroBlock";
 import type BuilderBlock from "./BuilderBlock";
+import type TypesOfServices from "./TypesOfServices";
+
 
 
 export default interface ServicePage {
@@ -12,6 +14,6 @@ export default interface ServicePage {
     slug: {current: string}
     heroBlock: HeroBlock,
     tutorBlock: TutorBlock,
-    builderBlock: BuilderBlock
-
+    builderBlock: BuilderBlock,
+    typesOfServices: TypesOfServices
 }
