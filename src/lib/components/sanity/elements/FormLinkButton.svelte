@@ -1,0 +1,21 @@
+<script lang="ts">
+    import type FormLink from "$lib/schemas/FormLink";
+    export let formLink: FormLink;
+    console.log(formLink)
+
+    const link = formLink 
+        ? formLink.url + '?' + formLink.formParams
+          .map(pair => `&${pair.paramName}=${pair.paramValue}`)
+          .join()
+        : "/"
+
+</script>
+
+
+<a href="{link}">
+    <button class="
+        text-md rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300 w-full"
+        >
+        Book A Free Consultation
+    </button>
+</a>

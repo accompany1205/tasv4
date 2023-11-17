@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type TutorData from "$lib/schemas/TutorData"
+	import type FormLink from "$lib/schemas/FormLink";
 	import ActiveTutor from "$lib/stores/TutorCardModal_ActiveTutor";
+	import FormLinkButton from "$sanity/elements/FormLinkButton.svelte";
 
 	import '@fontsource-variable/akshar';
 	import ServiceTags from '$lib/components/elements/ServiceTags.svelte';
@@ -22,6 +24,7 @@
 	let _class = '';
 	export { _class as class };
 	export let tutor: TutorData;
+	export let formLink: FormLink;
 
 	const hasGallery = tutor.defaultCard?.gallery?.length > 0
 	
@@ -136,9 +139,6 @@
 				See {tutor.shortName}'s Portfolio
 			</button>
 		{/if}
-		<button
-			class="text-md  rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300"
-			>Book A Free Consultation</button
-		>
+		<FormLinkButton {formLink}/>
 	</div>
 </div>

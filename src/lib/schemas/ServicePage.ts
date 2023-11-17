@@ -4,8 +4,7 @@ import type TutorBlock from "./TutorBlock";
 import type HeroBlock from "./HeroBlock";
 import type BuilderBlock from "./BuilderBlock";
 import type TypesOfServices from "./TypesOfServices";
-
-
+import type FormLink from "./FormLink";
 
 export default interface ServicePage {
     _type: "servicePage",
@@ -15,5 +14,6 @@ export default interface ServicePage {
     heroBlock: HeroBlock,
     tutorBlock: TutorBlock,
     builderBlock: BuilderBlock,
-    typesOfServices: TypesOfServices
+    typesOfServices: TypesOfServices,
+    formLink: FormLink
 }
