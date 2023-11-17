@@ -1,5 +1,7 @@
 <script lang="ts">
     import type FormLink from "$lib/schemas/FormLink";
+    let _class = "text-md rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300 w-full";
+    export {_class as class}
     export let formLink: FormLink;
     console.log(formLink)
 
@@ -12,10 +14,9 @@
 </script>
 
 
-<a href="{link}">
-    <button class="
-        text-md rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300 w-full"
+<a href="{link}" >
+    <button class="{_class}"
         >
-        Book A Free Consultation
+        <slot>Book A Free Consultation</slot>
     </button>
 </a>

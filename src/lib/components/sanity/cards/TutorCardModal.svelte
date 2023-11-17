@@ -4,7 +4,13 @@
 	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage, BodyChild } from 'svelte-lightbox';
 
     import {AssetRefToImageURL} from '$sanity/helpers';
-    import ActiveTutor from "$lib/stores/TutorCardModal_ActiveTutor"
+    import ActiveTutor from "$lib/stores/TutorCardModal_ActiveTutor";
+    
+    import FormLinkButton from '$sanity/elements/FormLinkButton.svelte';
+
+    import type FormLink from '$lib/schemas/FormLink';
+    export let formLink: FormLink;
+
     let ready = false;
 
     interface Gallery {
@@ -137,10 +143,10 @@
         </div>
         <!-- CTA Buttons -->
         <div class="w-full grid grid-cols-[1fr_auto] items-center">
-            
-            <button class="bg-emerald-400 p-4 text-lg font-bold text-white h-full">
+            <FormLinkButton {formLink} class="bg-emerald-400 p-4 text-lg font-bold text-white h-full w-full">
                 Schedule a Call
-            </button>
+            </FormLinkButton>
+
             <button class="bg-alabaster-400 p-4 text-lg font-bold text-white h-full">
                 View Profile
             </button>

@@ -1,17 +1,12 @@
 <script lang="ts">
     import type { PageData } from './$types';
-    import {PortableText} from '@portabletext/svelte'
     import TutorCardModal from '$sanity/cards/TutorCardModal.svelte';
-
-	import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
-	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
 
     import Builder from '$sanity/blocks/Builder.svelte';
     import SwipeBlock from '$sanity/blocks/SwipeBlock.svelte';
     import HeroBlock from '$sanity/blocks/HeroBlock.svelte';
     import TutorCard from '$sanity/cards/TutorCard.svelte';
     import StaticCardGridBlock from '$sanity/blocks/StaticCardGridBlock.svelte';
-    import {AssetRefToImageURL} from '$sanity/helpers';
     
     export let data: PageData;
     // @ts-ignore
@@ -33,7 +28,7 @@
             </swiper-slide>
         {/each}
     </SwipeBlock>
-    <TutorCardModal/>
+    <TutorCardModal formLink={page_data.formLink}/>
     <StaticCardGridBlock data={page_data.typesOfServices}/>
     <div class=" py-4 text-white">
         <Builder data={page_data.builderBlock}/>
