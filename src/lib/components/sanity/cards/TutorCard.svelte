@@ -22,10 +22,14 @@
 	let _class = '';
 	export { _class as class };
 	export let tutor: TutorData;
+
+	const hasGallery = tutor.defaultCard?.gallery?.length > 0
 	
 	// let dialog: TutorCardModal;
 	const openDialog = () => {
-		ActiveTutor.set(tutor.defaultCard.gallery);
+		if (hasGallery) {
+			ActiveTutor.set({name: tutor.shortName, images: tutor.defaultCard.gallery});
+		}
 	}
 </script>
 
@@ -38,18 +42,34 @@
 		<!-- Image -->
 		<div class="block aspect-[21/9] w-full overflow-hidden bg-gray-200">
 			{#if isInView}
-				<!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
-				<picture on:click="{openDialog}" role="button">
-					<img
-						src="{AssetRefToImageURL(tutor.defaultCard.coverImage.asset._ref)}"
-						alt="{tutor.defaultCard.coverImage.caption ?? "cover image"}"
-						class="min-h-full min-w-full object-cover object-center"
-						width="512"
-						height="230"
-						decoding="async"
-						loading="lazy"
-					/>
-				</picture>
+				{#if hasGallery}
+					<!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
+					<picture on:click="{openDialog}" role="button">
+						<img
+							src="{AssetRefToImageURL(tutor.defaultCard.coverImage.asset._ref)}"
+							alt="{tutor.defaultCard.coverImage.caption ?? "cover image"}"
+							class="min-h-full min-w-full object-cover object-center"
+							width="512"
+							height="230"
+							decoding="async"
+							loading="lazy"
+						/>
+					</picture>
+				{:else}
+					<Lightbox>
+						<picture>
+							<img
+								src="{AssetRefToImageURL(tutor.defaultCard.coverImage.asset._ref)}"
+								alt="{tutor.defaultCard.coverImage.caption ?? "cover image"}"
+								class="min-h-full min-w-full object-cover object-center"
+								width="512"
+								height="230"
+								decoding="async"
+								loading="lazy"
+							/>
+						</picture>
+					</Lightbox>
+				{/if}
 			{/if}
 		</div>
 		<!-- Tutor Info -->
@@ -100,22 +120,24 @@
 	</div>
 
 	<!-- Buttons -->
-	<div class="m-2 flex justify-between p-1">
-		<button on:click="{openDialog}"
-			class="
-				text-md
-				mx-4
-				rounded
-				bg-alabaster-300
-				p-2
-				font-medium
-				text-white
-				hover:bg-alabaster-200"
-			>
-			See {tutor.shortName}'s Portfolio
-		</button>
+	<div class="m-2 flex justify-between p-1 {hasGallery ? '' : 'flex-col'}">
+		{#if hasGallery}
+			<button on:click="{openDialog}"
+				class="
+					text-md
+					
+					rounded
+					bg-alabaster-300
+					p-2
+					font-medium
+					text-white
+					hover:bg-alabaster-200"
+				>
+				See {tutor.shortName}'s Portfolio
+			</button>
+		{/if}
 		<button
-			class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300"
+			class="text-md  rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300"
 			>Book A Free Consultation</button
 		>
 	</div>

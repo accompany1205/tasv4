@@ -9,8 +9,15 @@ interface Gallery {
         _ref: string
     }
 }
+interface TutorGallery {
+    name: string
+    images: Gallery[]
+}
 
-const images: Gallery[] = []
+const empty: TutorGallery = {
+    name: "",
+    images: []
+}
 
-export default writable<Gallery[]>(images);
+export default writable<TutorGallery>(empty);
 

@@ -16,16 +16,22 @@
             _ref: string
         }
     }
-    let images: Gallery[]
-    const gallery = ActiveTutor.subscribe(
+    let tutor: {name: string, images: Gallery[]}
+    let nameDisplayString = "";
+    const tutor_gallery = ActiveTutor.subscribe(
         (gallery) => {
-            images = gallery;
+            tutor = gallery;
+            nameDisplayString = 
+                gallery.name.length < 1 
+                    ? "Tutor Portfolio"
+                    : gallery.name.endsWith('s') 
+                        ? `${gallery.name}' Portfolio` 
+                        : `${gallery.name}'s Portfolio`
             if (browser && ready) {openDialog()}
         }
     )
 
     let dialog: HTMLDialogElement;
-    
     export function openDialog() {
         dialog?.showModal();
     }
@@ -69,7 +75,7 @@
         ">
         <!-- Header Row -->
         <div class="w-full grid grid-cols-[1fr_auto] items-center">
-            <h3 class="pl-2 inline font-bold text-2xl">Portfolio</h3>
+            <h3 class="pl-2 inline font-bold text-2xl">{nameDisplayString}</h3>
             <button on:click="{closeDialog}" class=" bg-alabaster-300 aspect-square w-8 ml-auto">
                 <svg class=" mx-auto w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
@@ -81,7 +87,7 @@
         <div class="swiper grid grid-rows-[minmax(0px,1fr)_auto_auto] overflow-hidden w-full h-full max-h-full  ">
                 <swiper-container bind:this="{swiper}" init="false" thumbs-swiper=".mySwiper2" class="w-[100cqw]"
                     autoplay-delay="45033330" autoplay-disable-on-interaction="false" >
-                    {#each images ?? [] as image}
+                    {#each tutor.images ?? [] as image}
                         <swiper-slide class="w-fit">
                             <div class="m-auto h-full">
                                 <picture class="bg-black  h-full w-fit block m-auto">
@@ -110,7 +116,7 @@
                     <!-- Thumbnail Gallery -->
                     <swiper-container class="mySwiper2 w-[100cqw] max-h-36 mx-auto" space-between="4" slides-per-view="auto" centered-slides="false" free-mode="false"
                         watch-slides-progress="true" >
-                        {#each images ?? [] as image}
+                        {#each tutor.images ?? [] as image}
                             <swiper-slide class="aspect-square max-h-36 w-fit">
                                 <div class=" max-w-md ">
                                     <picture class="bg-black  w-auto max-h-full block m-auto">
