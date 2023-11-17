@@ -3,7 +3,7 @@ export default interface TypesOfServices {
     blockHeading: string,
     services: {
         heading: string,
-        icon: string,
+        icon: "tutoring" | "collaborative" | "contract",
         body: {}[]
     }[],
     bg: string

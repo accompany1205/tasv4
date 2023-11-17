@@ -1,19 +1,11 @@
+import type { InputValue } from "@portabletext/svelte/dist/ptTypes"
+
 export default interface RichBlock {
     _type: "richBlock",
     layout: string,
     blockHeading: string,
     subHeading: string,
-    blockBody: {
-        markDefs: [],
-        children: {
-            _type: string,
-            marks: [],
-            text: string,
-            style: string
-        }[],
-        style: string,
-
-    }[],
+    blockBody: InputValue,
     imageGallery: {
         _type: "image",
         caption: string,

@@ -5,17 +5,11 @@
 
 	import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
 	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
-	import GeneralServices from '$lib/components/blocks/frontpage/GeneralServices.svelte';
-	import GeneralServicesDetail from '$lib/components/blocks/frontpage/GeneralServicesDetail.svelte';
-	import ServiceCard from '$lib/components/cards/ServiceCard.svelte';
-	import H4 from '$lib/components/elements/H4.svelte';
 
-    import RichBlock from '$sanity/blocks/RichBlock.svelte';
-    import Image from '$sanity/elements/Image.svelte';
-    import Faq from '$sanity/blocks/FAQBlock.svelte';
     import Builder from '$sanity/blocks/Builder.svelte';
     import SwipeBlock from '$sanity/blocks/SwipeBlock.svelte';
     import TutorCard from '$sanity/cards/TutorCard.svelte';
+    import StaticCardGridBlock from '$sanity/blocks/StaticCardGridBlock.svelte';
     import {AssetRefToImageURL} from '$sanity/helpers';
     
     export let data: PageData;
@@ -122,19 +116,7 @@
         {/each}
     </SwipeBlock>
     <TutorCardModal/>
-
-    <div>
-        {page_data.typesOfServices.services[0].icon}
-        {page_data.typesOfServices.services[0].body}
-
-        <PortableText
-            value={page_data.typesOfServices.services[0].body}
-            onMissingComponent={false}
-            components={{}}
-        />
-    </div>
-
-    <GeneralServices />
+    <StaticCardGridBlock data={page_data.typesOfServices}/>
     <div class=" py-4 text-white">
         <Builder data={page_data.builderBlock}/>
     </div>
