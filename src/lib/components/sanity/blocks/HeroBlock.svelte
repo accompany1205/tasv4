@@ -45,14 +45,14 @@
                 <ImageCarousel images="{heroBlock.richBlock.imageGallery.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref) }))}" showLogo={true}/>
             </div>
             <div class="right-col grid shrink-0 grid-rows-[1fr_auto] rounded-lg micro:max-sm:text-lg">
-                <div class="w-full max-w-md pb-6 @container">
+                <div class="w-full  pb-6 @container">
                     <div class="flex">
                         <h2 class="mb-4 max-w-lg font-bold text-fc-[1.5rem_5cqw_8rem]">
                             {heroBlock.richBlock.subHeading}
                         </h2>
                         <div class="hidden lg:flex">
                             {#each heroBlock.featuredTutors as tutor}
-                                <div class="-mx-4 flex-shrink-0">
+                                <div class=" flex-shrink-0">
                                     <img
                                         src="{AssetRefToImageURL(tutor.asset._ref)}"
                                         alt="Featured Tutor"
@@ -77,7 +77,7 @@
     
                 <a href="{heroBlock.button.buttonLink}">
                     <button class="
-                            max-w-sm
+                            w-full
                             items-center
                             bg-emerald-400
                             p-3

@@ -16,3 +16,29 @@ export default interface RichBlock {
     }[],
     bg: string
 }
+
+export interface EnhancedRichBlockData {
+    heading: string,
+    body: InputValue,
+    gallery?: {
+        _type: "image",
+        caption: string,
+        asset: {
+            _type: "reference",
+            _ref: string
+        }
+    }[],
+    button?: {
+        buttonText: string,
+        actionIdent?: string,
+        enhancedUrl: {
+            url: string,
+            params: {
+                name: string,
+                value: string
+            }
+        }
+    },
+    layout?: string,
+    bg?: string
+}

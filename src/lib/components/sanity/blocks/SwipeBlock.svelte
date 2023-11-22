@@ -6,7 +6,6 @@
 		spaceBetween: "12",
 		centeredSlides: true,
 		initialSlide: 2,
-		// effect: 'slides',
 		loop: false,
 		touchStartPreventDefault: false,
 		pagination: {
@@ -23,31 +22,28 @@
 			modifier: 0.5
 			// scale: 0.95,
 		},
-
-		// breakpoints: {
-		// 	0: {
-		// 		slidesPerView: 1,
-		// 		spaceBetween: 8,
-		// 	},
-		// 	400: {
-		// 		slidesPerView: "auto",
-		// 		spaceBetween: "12",
-		// 	},
-		// 	1200: {
-		// 		slidesPerView: 3.25,
-		// 		spaceBetween: 12,
-		// 	},
-		// 	1700: {
-		// 		slidesPerView: 3.25,
-		// 		spaceBetween: 12,
-		// 	},
-		// },
 	};
-	const autoplay = '{delay:3000}';
-	const coverflow = '{depth:32, rotate:0, slideShows:false, scale:0.5}';
+	const mobile_params = {
+		slidesPerView: "auto",
+		spaceBetween: "12",
+		centeredSlides: true,
+		initialSlide: 0,
+		effect: 'slides',
+		loop: true,
+		touchStartPreventDefault: false,
+		pagination: {
+			enabled:true,
+			clickable:true
+		},
+	};
 	let swiper: HTMLElement;
 	onMount(() => {
-		Object.assign(swiper, params);
+		console.log()
+		if (navigator.maxTouchPoints > 0) {
+			Object.assign(swiper, mobile_params)
+		} else {
+			Object.assign(swiper, params);
+		}
 		// @ts-ignore
 		swiper.initialize();
 	});

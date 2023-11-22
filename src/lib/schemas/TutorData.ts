@@ -1,3 +1,5 @@
+import type TutorPage from "./TutorPage"
+
 export default interface TutorData {
         _type: "tutor",
         shortName: string,
@@ -50,12 +52,6 @@ export default interface TutorData {
                 }
 
             }
-        }
-        tutorCoreInfo: {
-
-            
-            
-
-
-        }
+        },
+        defaultPage: TutorPage
     }

@@ -3,7 +3,6 @@
     let _class = "text-md rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300 w-full";
     export {_class as class}
     export let formLink: FormLink;
-    console.log(formLink)
 
     const link = formLink 
         ? formLink.url + '?' + formLink.formParams
@@ -15,8 +14,7 @@
 
 
 <a href="{link}" >
-    <button class="{_class}"
-        >
+    <button class="{_class}">
         <slot>Book A Free Consultation</slot>
     </button>
 </a>
