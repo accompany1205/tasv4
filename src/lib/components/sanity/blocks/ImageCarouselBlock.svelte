@@ -1,9 +1,12 @@
 <script lang="ts">
+	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
 	import { Carousel } from 'flowbite-svelte';
     export let images: {alt: string, src?: string, srcset?: string}[];
 
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
+
+	import {AssetRefToImageURL} from '$sanity/helpers';
 
     // @ts-ignore
 	import sketchup_logo from "$lib/assets/logos/SketchUp-logo_720_cropped.webp?w=400";
@@ -21,11 +24,23 @@
 
 <div use:inview="{options}" on:inview_change="{handleChange}" class="max-w-7xl w-full aspect-video relative mb-14">
 	{#if isInView}
-        <Carousel images="{images}"   let:Indicators duration="{4000}" class="rounded-sm relative z-0 h-auto sm:h-auto md:h-auto xl:h-auto 2xl:h-auto aspect-video" transition={null}>
-            {#if images.length > 1}
-                <Indicators class="translate-y-12 " let:selected activeClass="bg-alabaster-600" inactiveClass="bg-alabaster-300"/>
-            {/if}
-        </Carousel>
+		{#if images.length > 1}
+			<Carousel images="{images}"   let:Indicators duration="{4000}" class="rounded-sm relative z-0 h-auto sm:h-auto md:h-auto xl:h-auto 2xl:h-auto aspect-video" transition={null}>
+				<Indicators class="translate-y-12 " let:selected activeClass="bg-alabaster-600" inactiveClass="bg-alabaster-300"/>
+			</Carousel>
+		{:else if images.length > 0}
+			<Lightbox>
+				<picture>
+					<img
+						src="{images[0].src}"
+						alt="{images[0].alt ?? "project sample"}"
+						class="min-h-full min-w-full object-cover object-center"
+						decoding="async"
+						loading="lazy"
+					/>
+				</picture>
+			</Lightbox>
+		{/if}
 	{/if}
 
 	{#if showLogo}

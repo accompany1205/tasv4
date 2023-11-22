@@ -2,6 +2,8 @@ import type TutorPage from "./TutorPage"
 
 export default interface TutorData {
         _type: "tutor",
+        // this is a UUID used in GROQ queries for resolving references
+        _id: string,
         shortName: string,
         longName: string,
         rate: number,

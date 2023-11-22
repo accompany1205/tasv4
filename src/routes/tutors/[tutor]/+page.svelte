@@ -7,12 +7,14 @@
     import TutorPageSpecialOffers from '$sanity/blocks/TutorPageSpecialOffers.svelte';
     import TutorPageSoftware from "$sanity/blocks/TutorPageSoftware.svelte"
     import TutorPageServices from '$sanity/blocks/TutorPageServices.svelte';
+    import TutorPageTestimonials from '$sanity/blocks/TutorPageTestimonials.svelte';
     import TutorPageBio from '$sanity/blocks/TutorPageBio.svelte';
     import EnhancedRichBlock from '$sanity/blocks/EnhancedRichBlock.svelte';
 
     import GeneralServices from '$lib/components/blocks/frontpage/GeneralServices.svelte';
     import StaticCardGridBlock from '$sanity/blocks/StaticCardGridBlock.svelte';
 	import services from '$lib/services';
+	import { json } from '@sveltejs/kit';
 
     export let data: PageData;
     // @ts-ignore
@@ -111,6 +113,13 @@
     <GeneralServices/>
     <TutorPageServices services={page.services}/>
     <TutorPageBio bio={page.bio}/>
+    
+    {#await data.streamed?.testimonials }
+        <span>...LOADING</span>
+    {:then testimonialData }
+        {@const testimonials = testimonialData ?? []} 
+        <TutorPageTestimonials {testimonials} />
+    {/await}
     <div class="bg-alabaster-50">
         <h2 class="m-auto max-w-screen-xl border-b-4 border-emerald-400 py-4 pl-4 text-fc-[2rem_8vw_3rem] font-black text-black">
             Don't struggle alone, get help from a real person.
@@ -151,5 +160,6 @@
             </div>
         </div>
     </div>
+
     <!-- <pre>{JSON.stringify(rd, undefined, 2)}</pre> -->
 </main>
