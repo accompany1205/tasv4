@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Modal } from 'flowbite-svelte';
+  import { DropdownDivider, Modal } from 'flowbite-svelte';
   import { goto } from '$app/navigation';
   import { Card, Label, Textarea, Input, Button } from 'flowbite-svelte';
   import LogoUnframedDynamicText from '$lib/assets/svg/LogoUnframedDynamicText.svelte';
@@ -7,6 +7,9 @@
   import tutor from "$lib/assets/icons/tutor.webp?w=64";
   import service from "$lib/assets/icons/services.webp?w=64";
   import tutor_service from "$lib/assets/icons/tutor_service.webp?w=64";
+
+  export let butClass = "max-w-sm items-center bg-emerald-400 p-3 text-center text-3xl font-bold text-white hover:bg-emerald-300";
+  export let butTitle = "Get Started Today";
   
   let clickOutsideModal = false;
   let type1 = '';
@@ -37,48 +40,33 @@
 
   async function handleSubmit(event: any) {
     event.preventDefault();
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.target as HTMLFormElement);
 
-    const response = await fetch('/form', {
+    const response = await fetch('/', {
       method: 'POST',
       body: formData
     });
 
     if (response.ok) {
-      const result = await response.json();
+      // const result = await response.json();
       goto('/thanks');
     } else {
       console.error('Network response was not ok.');
     }
   }
-
-  function goBack() {
-    goto('/');
-  }
 </script>
 
 <Button
-  class="max-w-sm items-center bg-emerald-400 p-3 text-center text-3xl font-bold text-white hover:bg-emerald-300"
+  class={butClass}
   on:click={() => (clickOutsideModal = true)}
 >
-  Get Started Today
+  {butTitle}
 </Button>
 
-<Modal title="SketchUp Tutors Form" bind:open={clickOutsideModal} autoclose outsideclose>  
-  <Card class="w-full max-w-3xl m-auto mt-10 mb-20">
-    <form class="p-5" on:submit={handleSubmit}>
+<Modal title="Information Form" bind:open={clickOutsideModal} outsideclose class="z-50">  
+    <form class="p-5 overflow-auto" on:submit={handleSubmit}>
+      <Label class="block mb-2 text-sm">What do you need?</Label>
 
-      <LogoUnframedDynamicText
-        fill="black"
-        class="font-serif mt-auto h-[70px] max-h-[inherit] max-w-full text-lg pb-[5px]"
-        icon="sketchup"
-      >
-        <text class="dyntext" transform="translate(195 34)"> Sketchup </text>
-        <text class="dyntext" transform="translate(195 76)"> Tutors & </text>
-        <text class="dyntext" transform="translate(195 117)"> Services </text>
-      </LogoUnframedDynamicText>
-
-      <Label class="block mt-8 mb-2">What do you need?</Label>
       <Input id="typeInputHelper" size="sm" placeholder="You should not be seeing this" class="hidden" name="submission[27]" value={selectedValue}/>
       <div class="flex gap-4">
         <Button type="button" name="submission[27]" value="A Tutor (Help me learn)" class="w-24 h-24 block text-black hover:bg-emerald-100 hover:text-black {type1}" color="none" on:click={() => handleType(1)}>
@@ -97,32 +85,32 @@
         </Button>
       </div>
 
-      <Label class="block mt-8 mb-2">What do you need help with?</Label>
+      <Label class="block mt-8 mb-2 text-sm">What do you need help with?*</Label>
       <Textarea required id="desc" name="submission[31]" rows=4 class="mt-2"/>
 
       <DropdownDivider class="mt-6"/>
 
       <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
         <div class="w-full">
-          <Label class="mt-8 mb-2">First Name*
+          <Label class="mt-8 mb-2 text-sm">First Name*
             <Input id="firstName" name="submission[75][first]" required placeholder="" class="mt-2" autocomplete="on"/>
           </Label>
         </div>
 
         <div class="w-full">
-          <Label class="mt-8 mb-2">Last Name
+          <Label class="mt-8 mb-2 text-sm">Last Name
             <Input id="lastName" name="submission[75][last]" placeholder="" class="mt-2" autocomplete="on"/>
           </Label>
         </div>
 
         <div class="w-full">
-          <Label class="mt-8 mb-2">Email*
+          <Label class="mt-8 mb-2 text-sm">Email*
             <Input id="email" name="submission[9]" required placeholder="" class="mt-2" autocomplete="on"/>
           </Label>
         </div>
 
         <div class="w-full">
-          <Label class="mt-8 mb-2">Phone
+          <Label class="mt-8 mb-2 text-sm">Phone
             <Input type="text" id="phone" name="submission[62]" placeholder="" class="mt-2" autocomplete="on"/>
           </Label>
         </div>
@@ -131,9 +119,7 @@
       <DropdownDivider class="my-6"/>
 
       <div class="flex gap-5">
-        <Button type="button" class="w-3/4 text-xl" size="xl" color="alternative" on:click={goBack}>Go Back</Button>
-        <Button type="submit" class="w-3/4 bg-emerald-400 hover:bg-emerald-300 text-xl" size="xl">Submit Form</Button>
+        <Button type="submit" class="w-full bg-emerald-400 hover:bg-emerald-300 text-xl" size="xl">Submit Form</Button>
       </div>
     </form>
-  </Card>
 </Modal>

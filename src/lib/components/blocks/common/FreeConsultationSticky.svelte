@@ -3,6 +3,7 @@
 	import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
 	import GoogleRatingsCompact from '$lib/components/cards/GoogleRatingsCompact.svelte';
     import CTAVisibility from "$lib/stores/cta_visibility_anchor";
+    import FormModal from '../FormModal.svelte';
 
     let viz_state = false; 
     let viz_class = "";
@@ -63,10 +64,9 @@
     </a>
 	</div>
 	<GoogleRatingsCompact />
-	<Button
-		href="/form?softwarePref=SketchUp"
-		class="
-            
+
+    <FormModal 
+        butClass="            
             bottom-4
             right-4
             h-12
@@ -83,9 +83,8 @@
             lg:bottom-[unset]
             lg:right-[unset]
             {viz_class}
-            lg:inline-flex
-        "
-	>
-		Free Consultation
-	</Button>
+            lg:inline-flex"
+
+        butTitle="Free Consultation"
+    />
 </div>
