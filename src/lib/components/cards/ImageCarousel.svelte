@@ -1,6 +1,11 @@
 <script lang="ts">
 	import { Carousel } from 'flowbite-svelte';
-	export let images = [{ alt: '', srcset: '' }];
+	interface imageAttributes {
+		alt?: string,
+		srcset?: string,
+		src?: string
+	}
+	export let images: imageAttributes[];
 
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
@@ -18,9 +23,9 @@
 		(isInView = detail.inView);
 </script>
 
-<div use:inview="{options}" on:inview_change="{handleChange}" class="max-w-7xl w-full h-full relative mb-14">
+<div use:inview="{options}" on:inview_change="{handleChange}" class="max-w-7xl w-full aspect-video relative mb-14">
 	{#if isInView}
-		<Carousel images="{images}"   let:Indicators duration="{7000}" class="rounded-sm relative z-0 " transition={null}>
+		<Carousel images="{images}"   let:Indicators duration="{7000}" class="rounded-sm relative z-0 h-auto sm:h-auto md:h-auto xl:h-auto 2xl:h-auto aspect-video" transition={null}>
 			<Indicators class="translate-y-12 " let:selected activeClass="bg-emerald-400" inactiveClass="bg-alabaster-300"/>
 		</Carousel>
 	{/if}
