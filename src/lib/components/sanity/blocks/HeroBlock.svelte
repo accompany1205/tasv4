@@ -25,7 +25,7 @@
                 text-fc-[1.3rem_3.5cqw_2.75rem]
         "
         >
-            {heroBlock.heading}
+            {heroBlock?.heading}
         </h1>
     </div>
         <div class="
@@ -44,7 +44,7 @@
             "
         >
             <div class="left-col mt-3">
-                <ImageCarousel images="{heroBlock.gallery?.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref) })) ?? []}" showLogo={true}/>
+                <ImageCarousel images="{heroBlock?.gallery?.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref) })) ?? []}" showLogo={true}/>
             </div>
             <div class="right-col grid shrink-0 grid-rows-[1fr_auto] rounded-lg micro:max-sm:text-lg">
                 <div class="w-full  pb-6 @container">
@@ -54,7 +54,7 @@
                             <!-- {heroBlock.richBlock.subHeading} -->
                         </h2>
                         <div class="hidden lg:flex">
-                            {#each heroBlock.featuredTutors as tutor}
+                            {#each heroBlock?.featuredTutors ?? [] as tutor}
                                 <div class=" flex-shrink-0">
                                     <img
                                         src="{AssetRefToImageURL(tutor.asset._ref)}"
@@ -69,14 +69,14 @@
                     </div>
                     <div class="text-left font-normal text-gray-950 micro:max-unfolded:text-lg unfolded:text-xl">
                         <PortableText
-                            value={heroBlock.body}
+                            value={heroBlock?.body}
                             onMissingComponent={false}
                             components={{}}
                         />
                     </div>
                 </div>
                 <GoogleRatings />
-                <EnhancedButton data={heroBlock.button} class="
+                <EnhancedButton data={heroBlock?.button} class="
                     w-full
                     items-center
                     bg-emerald-400

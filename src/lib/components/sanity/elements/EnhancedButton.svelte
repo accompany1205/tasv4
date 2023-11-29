@@ -14,7 +14,6 @@
     let _class = "text-md rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300 w-full";
     export {_class as class}
 
-console.log(JSON.stringify(data, undefined, 2))
     const link = data 
         ? data.enhancedUrl.url + '?' + data.enhancedUrl.params
           .map(pair => `&${pair.name}=${pair.value}`)
