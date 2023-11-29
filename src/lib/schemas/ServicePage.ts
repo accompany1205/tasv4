@@ -4,6 +4,7 @@ import type TutorBlock from "./TutorBlock";
 import type HeroBlock from "./HeroBlock";
 import type BuilderBlock from "./BuilderBlock";
 import type TypesOfServices from "./TypesOfServices";
+import type StaticCardGridData from "./StaticCardGridData";
 import type FormLink from "./FormLink";
 
 export default interface ServicePage {
@@ -12,8 +13,10 @@ export default interface ServicePage {
     service: {_ref: string},
     slug: {current: string}
     heroBlock: HeroBlock,
+    servicesBlock: BuilderBlock,
+    extrasBlock: BuilderBlock,
     tutorBlock: TutorBlock,
     builderBlock: BuilderBlock,
-    typesOfServices: TypesOfServices,
+    staticCardGridBlock: StaticCardGridData,
     formLink: FormLink
 }

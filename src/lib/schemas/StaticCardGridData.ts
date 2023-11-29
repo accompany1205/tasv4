@@ -1,11 +1,12 @@
 import type { InputValue } from "@portabletext/svelte/dist/ptTypes"
 
 
-export default interface FaqBlock {
-    _type: "faqBlock",
+export default interface StaticCardGridData {
+    _type: "staticCardGridBlock",
     heading: string,
-    questions: {
+    cards: {
         heading: string,
+        icon: "tutoring" | "collaborative" | "contract",
         body: InputValue
     }[],
     bg: string

@@ -4,7 +4,6 @@
 
     import RichBlock from "./RichBlock.svelte";
     import FaqBlock from "./FAQBlock.svelte";
-
 </script>
 
 {#if data.blockHeading}

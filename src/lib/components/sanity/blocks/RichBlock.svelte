@@ -15,7 +15,7 @@
 	import H4 from '$lib/components/elements/H4.svelte';
 	import P from '$lib/components/elements/P.svelte'; 
 
-    const images = data.imageGallery.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref)}))
+    const images = data.gallery?.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref)})) ?? []
 
     const layout = 
         data.layout === "carousel-compact" ? 'grid sm:grid-cols-2' 
@@ -44,9 +44,9 @@
         max-w-7xl
         ">
         <div class="max-w-sm">
-            <H4>{data.blockHeading}</H4>
+            <H4>{data.heading}</H4>
             <PortableText
-                value={data.blockBody}
+                value={data.body}
                 components={{}}
             />
         </div>

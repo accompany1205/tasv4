@@ -23,7 +23,7 @@
                 text-fc-[1.3rem_3.5cqw_2.75rem]
         "
         >
-            {heroBlock.richBlock.blockHeading}
+            {heroBlock.heading}
         </h1>
     </div>
         <div class="
@@ -42,13 +42,14 @@
             "
         >
             <div class="left-col mt-3">
-                <ImageCarousel images="{heroBlock.richBlock.imageGallery.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref) }))}" showLogo={true}/>
+                <ImageCarousel images="{heroBlock.gallery?.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref) })) ?? []}" showLogo={true}/>
             </div>
             <div class="right-col grid shrink-0 grid-rows-[1fr_auto] rounded-lg micro:max-sm:text-lg">
                 <div class="w-full  pb-6 @container">
                     <div class="flex">
                         <h2 class="mb-4 max-w-lg font-bold text-fc-[1.5rem_5cqw_8rem]">
-                            {heroBlock.richBlock.subHeading}
+                            <!-- TODO: FIX Schema -->
+                            <!-- {heroBlock.richBlock.subHeading} -->
                         </h2>
                         <div class="hidden lg:flex">
                             {#each heroBlock.featuredTutors as tutor}
@@ -66,16 +67,15 @@
                     </div>
                     <div class="text-left font-normal text-gray-950 micro:max-unfolded:text-lg unfolded:text-xl">
                         <PortableText
-                            value={heroBlock.richBlock.blockBody}
+                            value={heroBlock.body}
                             onMissingComponent={false}
                             components={{}}
                         />
                     </div>
                 </div>
-    
                 <GoogleRatings />
-    
-                <a href="{heroBlock.button.buttonLink}">
+                <!-- TODO: Null Coalesce -->
+                <a href="{heroBlock.button?.enhancedUrl.url}">
                     <button class="
                             w-full
                             items-center
@@ -86,8 +86,9 @@
                             font-bold
                             text-white
                             hover:bg-emerald-300"
-                    >
-                        {heroBlock.button.buttonText}
+                    >   
+                        <!-- TODO: Null Coalesce -->
+                        {heroBlock.button?.buttonText}
                     </button>
                 </a>
             </div>

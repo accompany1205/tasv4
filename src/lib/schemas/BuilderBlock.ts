@@ -1,5 +1,5 @@
 import type FaqBlock from "./FaqBlock";
-import type RichBlock from "./RichBlock";
+import type RichBlockData from "./RichBlock";
 import type TutorBlock from "./TutorBlock";
 import type HeroBlock from "./HeroBlock";
 
@@ -9,7 +9,7 @@ export default interface BuilderBlock {
     layout: string,
     blocks: Array<
         FaqBlock 
-        | RichBlock 
+        | RichBlockData 
         | TutorBlock 
         | HeroBlock
     >

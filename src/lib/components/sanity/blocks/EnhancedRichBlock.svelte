@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type { EnhancedRichBlockData } from '$lib/schemas/RichBlock';
-    export let data: EnhancedRichBlockData
+    import type RichBlockData from '$lib/schemas/RichBlock';
+    export let data: RichBlockData
 
     let _class = '';
 	export { _class as class };

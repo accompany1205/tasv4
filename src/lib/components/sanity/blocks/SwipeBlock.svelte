@@ -38,7 +38,6 @@
 	};
 	let swiper: HTMLElement;
 	onMount(() => {
-		console.log()
 		if (navigator.maxTouchPoints > 0) {
 			Object.assign(swiper, mobile_params)
 		} else {

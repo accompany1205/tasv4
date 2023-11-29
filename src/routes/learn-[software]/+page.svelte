@@ -29,8 +29,11 @@
         {/each}
     </SwipeBlock>
     <TutorCardModal formLink={page_data.formLink}/>
-    <StaticCardGridBlock data={page_data.typesOfServices}/>
+    <StaticCardGridBlock data={page_data.staticCardGridBlock}/>
     <div class=" py-4 text-white">
-        <Builder data={page_data.builderBlock}/>
+        <Builder data={page_data.servicesBlock}/>
+    </div>
+    <div class=" py-4 text-white">
+        <Builder data={page_data.extrasBlock}/>
     </div>
 </main>

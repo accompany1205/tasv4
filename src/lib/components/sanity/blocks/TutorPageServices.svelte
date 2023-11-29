@@ -1,8 +1,8 @@
 <script lang="ts">
     import EnhancedRichBlock from '$sanity/blocks/EnhancedRichBlock.svelte';
-    import type { EnhancedRichBlockData } from '$lib/schemas/RichBlock';
+    import type RichBlockData from '$lib/schemas/RichBlock';
 
-    export let services: EnhancedRichBlockData[]
+    export let services: RichBlockData[]
 </script>
 
 <div class="bg-nile-blue-900">

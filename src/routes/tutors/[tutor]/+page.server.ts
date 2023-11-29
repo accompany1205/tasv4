@@ -5,7 +5,7 @@ import { client } from "$lib/server/sanity"
 import groq from "groq";
 
 export const load: PageServerLoad = async ({ params }) => {
-    console.log(params)
+    // console.log(params)
     const query = groq`*[_type == "tutor" && slug.current == "${params.tutor}"] {
         _id,
         headshot,

@@ -29,7 +29,6 @@
     };
     // @ts-ignore
     const page = rd.defaultPage
-    console.log(tutorData.rate )
 </script>
 
 <svelte:head>

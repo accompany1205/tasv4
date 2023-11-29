@@ -15,8 +15,11 @@ export const load: PageServerLoad = async ({ params }) => {
     const query = groq`*[_type == "service" && slug.current == "sketchup"]{
       ...defaultPage -> {
         pageTitle,
+        openGraphData,
         heroBlock,
-        builderBlock,
+        servicesBlock,
+        extrasBlock,
+        staticCardGridBlock,
         ...,
         "tutorBlock" : tutorBlock {
           ...,
@@ -40,7 +43,7 @@ export const load: PageServerLoad = async ({ params }) => {
     }`
     const data = <ServicePage[]> await client.fetch(query);
 
-    console.log("*************************************")
+    // console.log("*************************************")
     // console.log(data)
     // console.log(data[0].top_block.blurb)
     // console.log(JSON.stringify(data, undefined, 2))
