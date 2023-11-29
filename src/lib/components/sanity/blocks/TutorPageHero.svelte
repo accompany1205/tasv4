@@ -7,7 +7,7 @@
 
     import ImageGridBlock from './ImageGridBlock.svelte';
 
-    import type { EnhancedRichBlockData } from '$lib/schemas/RichBlock';
+    import type EnhancedRichBlockData from '$lib/schemas/RichBlock';
     export let blockData: EnhancedRichBlockData;
     export let tutorData: {
         shortName: string,
@@ -93,7 +93,7 @@
                         text-white
                         hover:bg-emerald-300"
                     >
-                        PLSVHSDKF
+                        {blockData.button?.buttonText}
                     </button>
                 </div>
             </div>

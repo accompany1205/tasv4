@@ -86,9 +86,9 @@
 			.dyntext {
 				font-family: sans-serif;
 				font-weight: 600;
-				font-variant: small-caps;
+				text-transform: uppercase;
 
-				font-size: 45px;
+				font-size: 35px;
 				fill: var(--fill);
 			}
 		</style>

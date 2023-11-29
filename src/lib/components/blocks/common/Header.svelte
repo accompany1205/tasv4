@@ -13,7 +13,7 @@
         z-50
         grid
 		
-        h-[50px]
+        h-[60px]
         max-h-16
         grid-cols-[4fr_auto_4fr]
         items-center
@@ -32,12 +32,12 @@
 >
 	<LogoUnframedDynamicText
 		fill="black"
-		class="font-serif mt-auto h-[40px] max-h-[inherit] max-w-full text-lg pb-[5px]"
+		class="font-serif mt-auto h-[50px] max-h-[inherit] max-w-full text-lg pb-[0px]"
         icon="sketchup"
 	>
-		<text class="dyntext" transform="translate(195 34)"> Sketchup </text>
-		<text class="dyntext" transform="translate(195 76)"> Tutors & </text>
-		<text class="dyntext" transform="translate(195 117)"> Services </text>
+		<text class="dyntext" transform="translate(195 30)"> Sketchup </text>
+		<text class="dyntext" transform="translate(195 70)"> Tutors & </text>
+		<text class="dyntext" transform="translate(195 110)"> Services </text>
 	</LogoUnframedDynamicText>
 
 	<div class="justify-self-center"> </div>
