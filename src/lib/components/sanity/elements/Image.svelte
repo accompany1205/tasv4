@@ -1,3 +1,4 @@
+<!-- NOTE: Unused -->
 <script lang="ts">
 
     interface imageData {

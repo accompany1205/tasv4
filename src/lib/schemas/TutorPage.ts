@@ -1,5 +1,5 @@
 import type RichBlock from "./RichBlock";
-import type { EnhancedRichBlockData } from "./RichBlock";
+import type EnhancedRichBlockData from "./RichBlock";
 import type { InputValue } from "@portabletext/svelte/dist/ptTypes"
 
 export default interface TutorPage {

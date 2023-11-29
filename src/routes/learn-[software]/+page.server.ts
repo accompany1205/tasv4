@@ -12,7 +12,8 @@ const client = createClient({
 
 export const load: PageServerLoad = async ({ params }) => {
     /* groq */
-    const query = groq`*[_type == "service" && slug.current == "sketchup"]{
+    const query = groq`*[_type == "service" && slug.current == "${params.software}"]{
+      formLink,
       ...defaultPage -> {
         pageTitle,
         openGraphData,

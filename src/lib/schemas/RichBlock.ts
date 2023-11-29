@@ -20,7 +20,7 @@ export default interface RichBlockData {
             params: {
                 name: string,
                 value: string
-            }
+            }[]
         }
     },
     layout?: string,

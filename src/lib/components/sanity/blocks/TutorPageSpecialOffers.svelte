@@ -1,6 +1,6 @@
 <script lang="ts">
     import EnhancedRichBlock from '$sanity/blocks/EnhancedRichBlock.svelte';
-    import type { EnhancedRichBlockData } from '$lib/schemas/RichBlock';
+    import type EnhancedRichBlockData from '$lib/schemas/RichBlock';
 
     export let specialOffers: EnhancedRichBlockData[]
 </script>

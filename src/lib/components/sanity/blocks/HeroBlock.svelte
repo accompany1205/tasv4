@@ -1,9 +1,11 @@
 <script lang="ts">
     import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
 	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
-    import {AssetRefToImageURL} from '$sanity/helpers';
+    import { AssetRefToImageURL } from '$sanity/helpers';
 
-    import {PortableText} from '@portabletext/svelte'
+    import EnhancedButton from '$sanity/elements/EnhancedButton.svelte';
+
+    import  {PortableText } from '@portabletext/svelte'
 
     import type HeroBlock from "$lib/schemas/HeroBlock";
     export let heroBlock: HeroBlock;
@@ -74,23 +76,17 @@
                     </div>
                 </div>
                 <GoogleRatings />
-                <!-- TODO: Null Coalesce -->
-                <a href="{heroBlock.button?.enhancedUrl.url}">
-                    <button class="
-                            w-full
-                            items-center
-                            bg-emerald-400
-                            p-3
-                            text-center
-                            text-3xl
-                            font-bold
-                            text-white
-                            hover:bg-emerald-300"
-                    >   
-                        <!-- TODO: Null Coalesce -->
-                        {heroBlock.button?.buttonText}
-                    </button>
-                </a>
+                <EnhancedButton data={heroBlock.button} class="
+                    w-full
+                    items-center
+                    bg-emerald-400
+                    p-3
+                    text-center
+                    text-3xl
+                    font-bold
+                    text-white
+                    hover:bg-emerald-300"
+                />
             </div>
         </div>
 </section>

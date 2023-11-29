@@ -6,8 +6,7 @@
 
 	import '@fontsource-variable/akshar';
 	import ServiceTags from '$lib/components/elements/ServiceTags.svelte';
-	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
-	import {featured_images, headshots} from '$lib/tutors';
+	import { Lightbox } from 'svelte-lightbox';
     import {AssetRefToImageURL} from '$sanity/helpers';
 	
 	import { inview } from 'svelte-inview';
@@ -139,6 +138,7 @@
 				See {tutor.shortName}'s Portfolio
 			</button>
 		{/if}
+		<!-- TODO: Update to EnhancedURL Button -->
 		<FormLinkButton {formLink}/>
 	</div>
 </div>

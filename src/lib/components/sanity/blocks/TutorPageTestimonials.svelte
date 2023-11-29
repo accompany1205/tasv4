@@ -1,8 +1,6 @@
 <script lang="ts">
     import EnhancedRichBlock from '$sanity/blocks/EnhancedRichBlock.svelte';
     import type TestimonialData from '$lib/schemas/TestimonialData';
-    import type { EnhancedRichBlockData } from '$lib/schemas/RichBlock';
-    
 
     export let testimonials: TestimonialData[]
 </script>
