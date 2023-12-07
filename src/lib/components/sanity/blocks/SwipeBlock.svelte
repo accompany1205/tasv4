@@ -52,15 +52,6 @@
 	:global(swiper-container) {
 		--swiper-pagination-padding: 48px;
 	}
-	/* .bshadow {
-		border-right: solid;
-		border-top: 0;
-		border-bottom: 0;
-  		border-image-slice: 1;
-  		border-width: 50px;
-		border-image-source: linear-gradient(to right,  black -20px,  transparent 2px);
-		box-sizing: content-box;
-	} */
 </style>
 
 
@@ -92,9 +83,4 @@
 		</swiper-container>
 	</div>
 </div>
-
-<!-- <swiper-slide class="">
-    <div class="m-auto h-[100cqh] w-96 max-w-2xl flex-shrink-0 p-2">
-    </div>
-</swiper-slide> -->
 

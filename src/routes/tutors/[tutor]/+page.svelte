@@ -11,6 +11,8 @@
     import TutorPageBio from '$sanity/blocks/TutorPageBio.svelte';
     import EnhancedRichBlock from '$sanity/blocks/EnhancedRichBlock.svelte';
 
+    import EnhancedButton from '$sanity/elements/EnhancedButton.svelte';
+
     import GeneralServices from '$lib/components/blocks/frontpage/GeneralServices.svelte';
     import StaticCardGridBlock from '$sanity/blocks/StaticCardGridBlock.svelte';
 	import services from '$lib/services';
@@ -142,8 +144,7 @@
                         {tutorData.longName}
                     </div>
                 </div>
-
-                <button class="
+                <EnhancedButton data={page.richBlock_TutorHero.button} class="
                     w-full
                     items-center
                     bg-emerald-400
@@ -153,9 +154,7 @@
                     font-bold
                     text-white
                     hover:bg-emerald-300"
-                >
-                    PLSVHSDKF
-                </button>
+                />
             </div>
         </div>
     </div>

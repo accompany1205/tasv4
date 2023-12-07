@@ -12,10 +12,10 @@
     import ImageGridBlock from './ImageGridBlock.svelte';
 
 	import H4 from '$lib/components/elements/H4.svelte';
-	import P from '$lib/components/elements/P.svelte'; 
 
     const images = data.gallery?.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref)})) ?? []
 
+    // TODO: Move these out into utility functions.
     const layout = 
         data.layout === "carousel-compact" ? 'grid sm:grid-cols-2' 
         : data.layout === "carousel-hero"  ? 'flex flex-col-reverse'

@@ -9,6 +9,7 @@
 
     let background = "";
     let title = ""
+    // TODO: Move this out into utility function
     switch (data.bg) {
         case "dark-blue":
             background = 'bg-nile-blue-900';

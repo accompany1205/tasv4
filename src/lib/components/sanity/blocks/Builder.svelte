@@ -6,7 +6,8 @@
     import FaqBlock from "./FAQBlock.svelte";
 </script>
 
-{#if data.blockHeading}
+{#if data?.blockHeading}
+    <!-- TODO: Remove Static bg-color assignment. -->
     <div class="bg-nile-blue-900">
         <h2 class=" m-auto max-w-screen-xl border-b-4 border-emerald-400 py-4 pl-4 text-3xl font-black">
             {data.blockHeading}
@@ -14,7 +15,7 @@
     </div>
 {/if}
 
-{#each data.blocks as block}
+{#each data?.blocks ?? [] as block}
     {#if block._type === "richBlock"}
         <RichBlock data={block}/>
     {:else if block._type === "faqBlock"}

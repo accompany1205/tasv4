@@ -1,9 +1,11 @@
 <script lang="ts">
     import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
 	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
-    import {AssetRefToImageURL} from '$sanity/helpers';
+    import { AssetRefToImageURL } from '$sanity/helpers';
 
-    import {PortableText} from '@portabletext/svelte'
+    import EnhancedButton from '$sanity/elements/EnhancedButton.svelte';
+
+    import  {PortableText } from '@portabletext/svelte'
 
     import type HeroBlock from "$lib/schemas/HeroBlock";
     export let heroBlock: HeroBlock;
@@ -23,7 +25,7 @@
                 text-fc-[1.3rem_3.5cqw_2.75rem]
         "
         >
-            {heroBlock.heading}
+            {heroBlock?.heading}
         </h1>
     </div>
         <div class="
@@ -42,7 +44,7 @@
             "
         >
             <div class="left-col mt-3">
-                <ImageCarousel images="{heroBlock.gallery?.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref) })) ?? []}" showLogo={true}/>
+                <ImageCarousel images="{heroBlock?.gallery?.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref) })) ?? []}" showLogo={true}/>
             </div>
             <div class="right-col grid shrink-0 grid-rows-[1fr_auto] rounded-lg micro:max-sm:text-lg">
                 <div class="w-full  pb-6 @container">
@@ -52,7 +54,7 @@
                             <!-- {heroBlock.richBlock.subHeading} -->
                         </h2>
                         <div class="hidden lg:flex">
-                            {#each heroBlock.featuredTutors as tutor}
+                            {#each heroBlock?.featuredTutors ?? [] as tutor}
                                 <div class=" flex-shrink-0">
                                     <img
                                         src="{AssetRefToImageURL(tutor.asset._ref)}"
@@ -67,30 +69,24 @@
                     </div>
                     <div class="text-left font-normal text-gray-950 micro:max-unfolded:text-lg unfolded:text-xl">
                         <PortableText
-                            value={heroBlock.body}
+                            value={heroBlock?.body}
                             onMissingComponent={false}
                             components={{}}
                         />
                     </div>
                 </div>
                 <GoogleRatings />
-                <!-- TODO: Null Coalesce -->
-                <a href="{heroBlock.button?.enhancedUrl.url}">
-                    <button class="
-                            w-full
-                            items-center
-                            bg-emerald-400
-                            p-3
-                            text-center
-                            text-3xl
-                            font-bold
-                            text-white
-                            hover:bg-emerald-300"
-                    >   
-                        <!-- TODO: Null Coalesce -->
-                        {heroBlock.button?.buttonText}
-                    </button>
-                </a>
+                <EnhancedButton data={heroBlock?.button} class="
+                    w-full
+                    items-center
+                    bg-emerald-400
+                    p-3
+                    text-center
+                    text-3xl
+                    font-bold
+                    text-white
+                    hover:bg-emerald-300"
+                />
             </div>
         </div>
 </section>

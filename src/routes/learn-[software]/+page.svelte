@@ -10,17 +10,17 @@
     
     export let data: PageData;
     // @ts-ignore
-    const page_data = data.page[0];
+    const page_data = data.page[0] ?? {};
 </script>
 
 <svelte:head>
-    <title>{page_data.pageTitle}</title>
+    <title>{page_data?.pageTitle ?? ""}</title>
 </svelte:head>
 
 <main >
     <HeroBlock heroBlock={page_data.heroBlock}/>
     <SwipeBlock>
-        {#each page_data.tutorBlock.featuredTutors as tutor}
+        {#each page_data?.tutorBlock?.featuredTutors ?? [] as tutor}
             <swiper-slide class="w-fit">
                 <div class=" h-[100cqh] min-w-[16rem] max-w-sm  flex-shrink-0 p-0">
                     <TutorCard {tutor} formLink={page_data.formLink}/>

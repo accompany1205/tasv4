@@ -1,6 +1,4 @@
 <script lang="ts">
-    import EnhancedRichBlock from '$sanity/blocks/EnhancedRichBlock.svelte';
-    import type { EnhancedRichBlockData } from '$lib/schemas/RichBlock';
     import type { InputValue } from "@portabletext/svelte/dist/ptTypes";
     import { PortableText } from '@portabletext/svelte';
 

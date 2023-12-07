@@ -1,7 +1,6 @@
 <script lang="ts">
-    import { browser, dev, building, version } from '$app/environment';
+    import { browser } from '$app/environment';
     import { onMount } from 'svelte';
-	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage, BodyChild } from 'svelte-lightbox';
 
     import {AssetRefToImageURL} from '$sanity/helpers';
     import ActiveTutor from "$lib/stores/TutorCardModal_ActiveTutor";

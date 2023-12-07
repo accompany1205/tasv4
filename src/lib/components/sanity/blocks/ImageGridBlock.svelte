@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let images: {alt: string, src?: string, srcset?: string}[];
 
-	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
+	import { Lightbox } from 'svelte-lightbox';
 
 </script>
 

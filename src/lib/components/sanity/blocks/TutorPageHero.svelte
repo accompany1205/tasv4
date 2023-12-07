@@ -1,13 +1,11 @@
 <script lang="ts">
-    import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
-	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
     import {AssetRefToImageURL} from '$sanity/helpers';
-
+    import EnhancedButton from '$sanity/elements/EnhancedButton.svelte';
     import {PortableText} from '@portabletext/svelte'
 
     import ImageGridBlock from './ImageGridBlock.svelte';
 
-    import type { EnhancedRichBlockData } from '$lib/schemas/RichBlock';
+    import type EnhancedRichBlockData from '$lib/schemas/RichBlock';
     export let blockData: EnhancedRichBlockData;
     export let tutorData: {
         shortName: string,
@@ -82,7 +80,7 @@
                             components={{}}
                         />
                     </div>
-                    <button class="
+                    <EnhancedButton data={blockData.button} class="
                         w-full
                         items-center
                         bg-emerald-400
@@ -91,10 +89,8 @@
                         text-3xl
                         font-bold
                         text-white
-                        hover:bg-emerald-300"
-                    >
-                        PLSVHSDKF
-                    </button>
+                        hover:bg-emerald-300" 
+                    />
                 </div>
             </div>
             <div class="right-col grid shrink-0 grid-rows-[1fr_auto] rounded-lg micro:max-sm:text-lg">

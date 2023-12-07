@@ -8,13 +8,11 @@
     import { PortableText } from '@portabletext/svelte';
     import {AssetRefToImageURL} from '$sanity/helpers';
 
-	import ServiceCard from '$lib/components/cards/ServiceCard.svelte';
 	import ImageCarouselBlock from './ImageCarouselBlock.svelte';
     import ImageGridBlock from './ImageGridBlock.svelte';
 
 	import H4 from '$lib/components/elements/H4.svelte';
-	import P from '$lib/components/elements/P.svelte'; 
-
+    
     const images = data.gallery?.map(img => ({alt: '', src: AssetRefToImageURL(img.asset._ref)})) ?? []
 
     const layout = 

@@ -1,12 +1,10 @@
 <script lang="ts">
-	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
+	import { Lightbox } from 'svelte-lightbox';
 	import { Carousel } from 'flowbite-svelte';
     export let images: {alt: string, src?: string, srcset?: string}[];
 
 	import { inview } from 'svelte-inview';
-	import type { ObserverEventDetails, Options } from 'svelte-inview';
-
-	import {AssetRefToImageURL} from '$sanity/helpers';
+	import type { ObserverEventDetails } from 'svelte-inview';
 
     // @ts-ignore
 	import sketchup_logo from "$lib/assets/logos/SketchUp-logo_720_cropped.webp?w=400";

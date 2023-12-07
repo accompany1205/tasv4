@@ -13,7 +13,7 @@
         z-50
         grid
 		
-        h-[50px]
+        h-[60px]
         max-h-16
         grid-cols-[4fr_auto_4fr]
         items-center
@@ -29,16 +29,19 @@
         drop-shadow-lg
         lg:max-h-24
         "
->
-	<LogoUnframedDynamicText
-		fill="black"
-		class="font-serif mt-auto h-[40px] max-h-[inherit] max-w-full text-lg pb-[5px]"
-        icon="sketchup"
-	>
-		<text class="dyntext" transform="translate(195 34)"> Sketchup </text>
-		<text class="dyntext" transform="translate(195 76)"> Tutors & </text>
-		<text class="dyntext" transform="translate(195 117)"> Services </text>
-	</LogoUnframedDynamicText>
+>	
+	<!-- TODO: Connect this to a store and have the link be dynamic, based on the user's initial landing page -->
+	<a href="/" class="font-serif mt-auto h-[50px] max-h-[inherit] max-w-full text-lg ">
+		<LogoUnframedDynamicText
+			fill="black"
+			class="font-serif mt-auto h-[50px] max-h-[inherit] max-w-full text-lg pb-[0px]"
+				icon="sketchup"
+		>
+			<text class="dyntext" transform="translate(195 30)"> Sketchup </text>
+			<text class="dyntext" transform="translate(195 70)"> Tutors & </text>
+			<text class="dyntext" transform="translate(195 110)"> Services </text>
+		</LogoUnframedDynamicText>
+	</a>
 
 	<div class="justify-self-center"> </div>
 
