@@ -1,22 +1,24 @@
-<script>
-    import { BottomNav, BottomNavItem, Skeleton, ImagePlaceholder } from 'flowbite-svelte';
-    import { HomeSolid, WalletSolid, AdjustmentsVerticalOutline, UserCircleSolid } from 'flowbite-svelte-icons';
+<script lang="ts">
+    import BottomNav from "$lib/components/backend/nav/BottomNav.svelte";
+    import TutorsBase from "$lib/components/backend/tutors/TutorsBase.svelte";
+
+
+    // BottomNav Event Dispatcher
+    let currentNavIndex = 1;
+
+    function handleNavChange(event: { detail: { optionIndex: number; }; }) {
+      currentNavIndex = event.detail.optionIndex;
+    }
 </script>
-  
-<Skeleton class="py-4" />
-<ImagePlaceholder class="pb-20" />
-  
-<BottomNav position="absolute" classInner="grid-cols-4">
-<BottomNavItem btnName="Home">
-    <HomeSolid class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
-</BottomNavItem>
-<BottomNavItem btnName="Wallet">
-    <WalletSolid class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
-</BottomNavItem>
-<BottomNavItem btnName="Settings">
-    <AdjustmentsVerticalOutline class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
-</BottomNavItem>
-<BottomNavItem btnName="Profile">
-    <UserCircleSolid class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
-</BottomNavItem>
-</BottomNav>
+
+{#if currentNavIndex === 1}
+    <TutorsBase/>
+{:else if currentNavIndex === 2}
+    
+{:else if currentNavIndex === 3}
+
+{:else if currentNavIndex === 4}
+
+{/if}
+
+<BottomNav on:change={handleNavChange}/>
