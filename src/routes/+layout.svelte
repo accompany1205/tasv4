@@ -1,18 +1,26 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import '../app.css';
+  
 	import Header from '$lib/components/blocks/common/Header.svelte';
-	import HeaderFlowBite from '$lib/components/blocks/common/HeaderFlowBite.svelte';
 	import FooterFlowBite from '$lib/components/blocks/common/FooterFlowBite.svelte';
-	import { Button } from 'flowbite-svelte';
 	import FreeConsultationSticky from '$lib/components/blocks/common/FreeConsultationSticky.svelte';
 	import Analytics from '$lib/components/analytics/Analytics.svelte';
-
+  
 	import { register } from 'swiper/element/bundle';
 	register();
-</script>
+  
+	let exclude = ['/backend'];
+	let includeLayout = !exclude.includes($page.url.pathname);
+  </script>
+  
+  <Analytics />
+  {#if includeLayout}
 
-<Analytics />
-<Header />
-<slot />
-<FooterFlowBite />
-<FreeConsultationSticky />
+  {/if}
+  <slot />
+  {#if includeLayout}
+	<FooterFlowBite />
+	<FreeConsultationSticky />
+  {/if}
+  
