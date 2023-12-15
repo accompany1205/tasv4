@@ -1178,8 +1178,8 @@ packages:
       normalize-path: 3.0.0
       picomatch: 2.3.1
 
-  /apexcharts@3.44.2:
-    resolution: {integrity: sha512-QWOFS/SC1TDsuI8VudVuIwLhs1qE6kwixRvmABMUgTVeVzizRWgQh8pdEIgwl+Zvr0TlM3vHPz6Dc5NP1hJ7BA==}
+  /apexcharts@3.45.0:
+    resolution: {integrity: sha512-o+XI4ysvKtt+l+bGbk19s6Y2gFes/7LRLMAonDgcapz4frS0vzTfXiK77QcQc30TMwPiSN9Z8Tv+CBn57x63wg==}
     dependencies:
       '@yr/monotone-cubic-spline': 1.0.3
       svg.draggable.js: 2.2.2
@@ -1662,7 +1662,7 @@ packages:
       svelte: ^4.0.0
     dependencies:
       '@floating-ui/dom': 1.5.3
-      apexcharts: 3.44.2
+      apexcharts: 3.45.0
       flowbite: 2.2.1
       svelte: 4.2.8
       tailwind-merge: 2.1.0
