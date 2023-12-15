@@ -18,16 +18,15 @@ export default {
 		extend: {
 			colors: {
 				primary: {
-					50: '#FFF5F2',
-					100: '#FFF1EE',
-					200: '#FFE4DE',
-					300: '#FFD5CC',
-					400: '#FFBCAD',
-					500: '#FE795D',
-					600: '#EF562F',
-					700: '#EB4F27',
-					800: '#CC4522',
-					900: '#A5371B',
+					100: '#f2fbf3',
+					200: '#e0f8e3',
+					300: '#c2f0c8',
+					400: '#93e29d',
+					500: '#61ce70', //Green
+					600: '#35b247',
+					700: '#279236',
+					800: '#22732e',
+					900: '#1f5c28', // Optimal text contrast on white					
 				},
 
 				emerald: {

@@ -30,9 +30,9 @@
 
 </script>
     
-<Button on:click={() => (defaultModal = true)}>Add Tutor</Button>
+<a href="javascript:void(0);" on:click={() => (defaultModal = true)} class="hover:underline hover:text-primary-700">Edit Tutor</a>
 
-<Modal title="Add Tutor" bind:open={defaultModal} outsideclose class="z-50">  
+<Modal title="Edit Tutor" bind:open={defaultModal} outsideclose class="z-50">  
     <form on:submit={handleSubmit}>
         <div class="grid gap-4 mb-4 sm:grid-cols-2">
             <div>

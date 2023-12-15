@@ -5,6 +5,7 @@
     import paginationData from '../../tutors/tutors.json';
     import { PlusSolid, ChevronDownSolid, FilterSolid, ChevronRightOutline, ChevronLeftOutline } from 'flowbite-svelte-icons';
     import AddTutor from './AddTutor.svelte';
+    import EditTutor from './EditTutor.svelte';
   
     let divClass='bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden';
     let innerDivClass='flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4';
@@ -85,6 +86,7 @@
             <TableHeadCell padding="px-4 py-3" scope="col">Email</TableHeadCell>
             <TableHeadCell padding="px-4 py-3" scope="col">Number</TableHeadCell>
             <TableHeadCell padding="px-4 py-3" scope="col">$/Hour</TableHeadCell>
+            <TableHeadCell padding="px-4 py-3" scope="col">Edit</TableHeadCell>
         </TableHead>
 
         <!-- Body -->
@@ -96,6 +98,7 @@
                     <TableBodyCell tdClass="px-4 py-3">{item.email}</TableBodyCell>
                     <TableBodyCell tdClass="px-4 py-3">{item.number}</TableBodyCell>
                     <TableBodyCell tdClass="px-4 py-3">${item.rate}</TableBodyCell>
+                    <TableBodyCell tdClass="px-4 py-3"><EditTutor/></TableBodyCell>
                 </TableBodyRow>
             {/each}
             {:else}
@@ -105,6 +108,7 @@
                     <TableBodyCell tdClass="px-4 py-3">{item.email}</TableBodyCell>
                     <TableBodyCell tdClass="px-4 py-3">{item.number}</TableBodyCell>
                     <TableBodyCell tdClass="px-4 py-3">${item.rate}</TableBodyCell>
+                    <TableBodyCell tdClass="px-4 py-3"><EditTutor/></TableBodyCell>
                 </TableBodyRow>
             {/each}
             {/if}

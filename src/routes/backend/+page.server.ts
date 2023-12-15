@@ -6,7 +6,7 @@ export const actions: Actions = {
 	default: async ({ request }) => {
 		const formData = await request.formData();
 		console.log(formData); 
-		// Construct an object with the form data
+
 		const formEntry = {
 			first: formData.get('first'),
 			last: formData.get('last'),
