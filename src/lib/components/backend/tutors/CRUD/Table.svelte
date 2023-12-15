@@ -6,70 +6,37 @@
     import { PlusSolid, ChevronDownSolid, FilterSolid, ChevronRightOutline, ChevronLeftOutline } from 'flowbite-svelte-icons';
     import AddTutor from './AddTutor.svelte';
     import EditTutor from './EditTutor.svelte';
-  
+    import { db } from '$lib/firebase';
+    import { collection, getDocs, query, orderBy, startAt, limit } from 'firebase/firestore';
+    import { Spinner } from 'flowbite-svelte';
+
     let divClass='bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden';
     let innerDivClass='flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4';
     let searchClass='w-full md:w-1/2 relative';
-    let svgDivClass='absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none';
     let classInput="text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2  pl-10";
   
     let searchTerm = '';
-    let currentPosition = 0;
-    const itemsPerPage = 10;
-    const showPage = 5;
-    let totalPages = 0;
-    let pagesToShow: any[] = [];
-    let totalItems = paginationData.length;
-    let startPage: number;
-    let endPage: number;
-  
-    const updateDataAndPagination = () => {
-      const currentPageItems = paginationData.slice(currentPosition, currentPosition + itemsPerPage);
-      renderPagination(currentPageItems.length);
-    }
-  
-    const loadNextPage = () => {
-      if (currentPosition + itemsPerPage < paginationData.length) {
-        currentPosition += itemsPerPage;
-        updateDataAndPagination();
-      }
-    }
-  
-    const loadPreviousPage = () => {
-      if (currentPosition - itemsPerPage >= 0) {
-        currentPosition -= itemsPerPage;
-        updateDataAndPagination();
-      }
-    }
-  
-    const renderPagination = (totalItems: any) => {
-      totalPages = Math.ceil(paginationData.length / itemsPerPage);
-      const currentPage = Math.ceil((currentPosition + 1) / itemsPerPage);
-  
-      startPage = currentPage - Math.floor(showPage / 2);
-      startPage = Math.max(1, startPage);
-      endPage = Math.min(startPage + showPage - 1, totalPages);
-  
-      pagesToShow = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
-    }
-  
-    const goToPage = (pageNumber: number) => {
-      currentPosition = (pageNumber - 1) * itemsPerPage;
-      updateDataAndPagination();
-    }
-  
-    $: startRange = currentPosition + 1;
-    $: endRange = Math.min(currentPosition + itemsPerPage, totalItems);
-  
-    onMount(() => {
-      renderPagination(paginationData.length);
+    let tutors: any[] = [];
+    let filteredTutors: any[] = [];
+    let loading = true; 
+
+    onMount(async () => {
+        const tutorsCol = collection(db, 'tutors');
+        const querySnapshot = await getDocs(tutorsCol);
+
+        tutors = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        filteredTutors = tutors;
+        loading = false;
     });
-  
-    $: currentPageItems = paginationData.slice(currentPosition, currentPosition + itemsPerPage);
-    $: filteredItems = paginationData.filter((item: { first: string; last: string }) => {
-        const fullName = item.first.toLowerCase() + " " + item.last.toLowerCase();
-        return fullName.includes(searchTerm.toLowerCase());
-    });
+
+    $: if (searchTerm) {
+        filteredTutors = tutors.filter(tutor => {
+            const fullName = `${tutor.first.toLowerCase()} ${tutor.last.toLowerCase()}`;
+            return fullName.includes(searchTerm.toLowerCase());
+        });
+    } else {
+        filteredTutors = tutors;
+    }
 </script>
 
 <Section classSection='bg-gray-50 dark:bg-gray-900 p-3 sm:p-5'>
@@ -86,50 +53,32 @@
             <TableHeadCell padding="px-4 py-3" scope="col">Email</TableHeadCell>
             <TableHeadCell padding="px-4 py-3" scope="col">Number</TableHeadCell>
             <TableHeadCell padding="px-4 py-3" scope="col">$/Hour</TableHeadCell>
-            <TableHeadCell padding="px-4 py-3" scope="col">Edit</TableHeadCell>
+            <TableHeadCell padding="px-4 py-3" scope="col">Action</TableHeadCell>
         </TableHead>
 
         <!-- Body -->
         <TableBody>
-            {#if searchTerm !== ''}
-            {#each filteredItems as item (item.id)}
+            {#if loading}
                 <TableBodyRow>
-                    <TableBodyCell tdClass="px-4 py-3">{item.first +" " +item.last}</TableBodyCell>
-                    <TableBodyCell tdClass="px-4 py-3">{item.email}</TableBodyCell>
-                    <TableBodyCell tdClass="px-4 py-3">{item.number}</TableBodyCell>
-                    <TableBodyCell tdClass="px-4 py-3">${item.rate}</TableBodyCell>
-                    <TableBodyCell tdClass="px-4 py-3"><EditTutor/></TableBodyCell>
+                    <TableBodyCell tdClass="py-32 text-center" colspan="5">
+                        <Spinner class="m-auto"/>
+                    </TableBodyCell>
                 </TableBodyRow>
-            {/each}
+            {:else if searchTerm !== '' && filteredTutors.length === 0}
+                <TableBodyRow>
+                    <TableBodyCell tdClass="px-4 py-3" colspan="5">No matching tutors found.</TableBodyCell>
+                </TableBodyRow>
             {:else}
-            {#each currentPageItems as item (item.id)}
-                <TableBodyRow>
-                    <TableBodyCell tdClass="px-4 py-3">{item.first +" " +item.last}</TableBodyCell>
-                    <TableBodyCell tdClass="px-4 py-3">{item.email}</TableBodyCell>
-                    <TableBodyCell tdClass="px-4 py-3">{item.number}</TableBodyCell>
-                    <TableBodyCell tdClass="px-4 py-3">${item.rate}</TableBodyCell>
-                    <TableBodyCell tdClass="px-4 py-3"><EditTutor/></TableBodyCell>
-                </TableBodyRow>
-            {/each}
+                {#each (searchTerm !== '' ? filteredTutors : tutors) as tutor (tutor.id)}
+                    <TableBodyRow>
+                        <TableBodyCell tdClass="px-4 py-3">{tutor.first} {tutor.last}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3">{tutor.email}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3">{tutor.phone}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3">${tutor.rate}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3"><EditTutor tutor={tutor}/></TableBodyCell>
+                    </TableBodyRow>
+                {/each}
             {/if}
         </TableBody>
-
-        <!-- Paginate -->
-        <div slot="footer" class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
-            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-                Showing
-                <span class="font-semibold text-gray-900 dark:text-white">{startRange}-{endRange}</span>
-                of
-                <span class="font-semibold text-gray-900 dark:text-white">{totalItems}</span>
-            </span>
-
-            <ButtonGroup>
-                <Button on:click={loadPreviousPage} disabled={currentPosition === 0}><ChevronLeftOutline size='xs' class='m-1.5'/></Button>
-                {#each pagesToShow as pageNumber}
-                    <Button on:click={() => goToPage(pageNumber)}>{pageNumber}</Button>
-                {/each}
-                <Button on:click={loadNextPage} disabled={ totalPages === endPage }><ChevronRightOutline size='xs' class='m-1.5'/></Button>
-            </ButtonGroup>
-        </div>
     </TableSearch>
 </Section>

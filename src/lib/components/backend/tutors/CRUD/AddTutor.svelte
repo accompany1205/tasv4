@@ -1,90 +1,132 @@
 <script lang="ts">
+	import { db } from '$lib/firebase';
+	import { addDoc, collection } from 'firebase/firestore';
     import { Label, Input, Button, Modal, Textarea, Select, DropdownDivider } from 'flowbite-svelte';
+    import { Toast } from 'flowbite-svelte';
+    import { CheckCircleSolid, ExclamationCircleSolid, FireOutline, CloseCircleSolid } from 'flowbite-svelte-icons';
 
     let defaultModal = false;
+    let showToast = false;
 
-    let selected: any;
-    let status = [
+
+    let statusENUM = [
         { value: 'active', name: 'Active' },
         { value: 'full', name: 'Full' },
         { value: 'hold', name: 'On Hold' }
     ];
 
-    async function handleSubmit(event: any) {
-        console.log("Hello");
+    let first = '';
+    let last = '';
+    let email = '';
+    let phone = '';
+    let rate = '';
+    let status = '';
+    let description = '';
 
-        event.preventDefault();
-        const formData = new FormData(event.target as HTMLFormElement);
+    async function addTutor() {
+        try {
 
-        const response = await fetch('/backend', {
-            method: 'POST',
-            body: formData
-        });
 
-        if (response.ok) {
-            console.error('New Tutor Added');
-        } else {
-            console.error('Network response was not ok.');
+            if (!first || !email || !rate || !status) {
+                showToast = true;
+                setTimeout(() => { showToast = false; }, 3000);
+                return;
+            }
+
+
+
+            const docRef = await addDoc(collection(db, 'tutors'), {
+                first,
+                last,
+                email,
+                phone,
+                rate,
+                status,
+                description
+            });
+
+            console.log('New tutor added with ID: ', docRef.id);
+            defaultModal = false; // Close the modal
+
+            window.location.href = "/backend";
+
+        } catch (error) {
+            console.error('Error adding tutor: ', error);
         }
     }
+
 
 </script>
     
 <Button on:click={() => (defaultModal = true)}>Add Tutor</Button>
 
-<Modal title="Add Tutor" bind:open={defaultModal} outsideclose class="z-50">  
-    <form on:submit={handleSubmit}>
-        <div class="grid gap-4 mb-4 sm:grid-cols-2">
-            <div>
-                <Label for="first" class="mt-8 mb-2 text-sm">First
-                    <Input class="mt-2" type="text" name="first" id="first" placeholder="First Name" required autocomplete="on"/>
-                </Label>
-            </div>
-
-            <div>
-                <Label for="last" class="mt-8 mb-2 text-sm">Last
-                    <Input class="mt-2" type="text" name="last" id="last" placeholder="Last Name" required autocomplete="on"/>
-                </Label>
-            </div>
-
-            <div>
-                <Label for="email" class="mt-8 mb-2 text-sm">Email
-                    <Input class="mt-2" type="text" name="email" id="email" placeholder="tutor.tas@gmail.com" required autocomplete="on"/>
-                </Label>
-            </div>
-
-            <div>
-                <Label for="phone" class="mt-8 mb-2 text-sm">Phone
-                    <Input class="mt-2" type="text" name="phone" id="phone" placeholder="123-345-6789" required autocomplete="on"/>
-                </Label>
-            </div>
-        </div>   
-
-        <DropdownDivider class="mt-9"/>
-
-
-        <div class="grid gap-4 mb-4 sm:grid-cols-2">
-            <div>
-                <Label for="rate" class="mt-8 mb-2 text-sm">Rate
-                    <Input class="mt-2" type="text" name="rate" id="rate" placeholder="15 ~ 100" required />
-                </Label>
-            </div>
-
-            <div>
-                <Label class="mt-8 mb-2 text-sm">Status
-                    <Select class="mt-2" name="status" items={status} bind:value={selected} id="select" required />
-                </Label>
-            </div>
-
-            <div class="sm:col-span-2">
-                <Label for="description" class="mt-8 mb-2 text-sm">Notes on Tutor
-                    <Textarea class="mt-2" id="description" name="description" placeholder="Your description here" rows="4" required />
-                </Label>
-            </div>
-
-            <Button type="submit" class="w-52 mt-4">
-                Add New Tutor
-            </Button>
+<Modal title="Add Tutor" bind:open={defaultModal} class="z-50">  
+    <div class="grid gap-4 mb-4 sm:grid-cols-2">
+        <div>
+            <Label for="first" class="mb-2 text-sm">First*
+                <Input bind:value={first} class="mt-2" type="text" name="first" id="first" placeholder="First Name" autocomplete="on"/>
+            </Label>
         </div>
-    </form>
+
+        <div>
+            <Label for="last" class="mb-2 text-sm">Last
+                <Input bind:value={last} class="mt-2" type="text" name="last" id="last" placeholder="Last Name" autocomplete="on"/>
+            </Label>
+        </div>
+
+        <div>
+            <Label for="email" class="mb-2 text-sm">Email*
+                <Input bind:value={email} class="mt-2" type="text" name="email" id="email" placeholder="tutor.tas@gmail.com" autocomplete="on"/>
+            </Label>
+        </div>
+
+        <div>
+            <Label for="phone" class="mb-2 text-sm">Phone
+                <Input bind:value={phone} class="mt-2" type="text" name="phone" id="phone" placeholder="123-345-6789" autocomplete="on"/>
+            </Label>
+        </div>
+    </div>   
+
+    <DropdownDivider class="mt-9"/>
+
+
+    <div class="grid gap-4 mb-4 sm:grid-cols-2">
+        <div>
+            <Label for="rate" class="mb-2 text-sm">Rate*
+                <Input bind:value={rate} class="mt-2" type="text" name="rate" id="rate" placeholder="15 ~ 100" />
+            </Label>
+        </div>
+
+        <div>
+            <Label class="mb-2 text-sm">Status*
+                <Select class="mt-2" name="status" items={statusENUM} bind:value={status} id="select" />
+            </Label>
+        </div>
+
+        <div class="sm:col-span-2">
+            <Label for="description" class="mb-2 text-sm">Notes on Tutor
+                <Textarea bind:value={description} class="mt-2" id="description" name="description" placeholder="Your description here" rows="4" />
+            </Label>
+        </div>
+
+
+
+        <Button on:click={addTutor} class="w-52 mt-4">
+            Add New Tutor
+        </Button>
+
+
+        {#if showToast}
+            <Toast dismissable={false} position="bottom-right" color="red">
+                <svelte:fragment slot="icon">
+                    <CloseCircleSolid class="w-5 h-5" />
+                    <span class="sr-only">Error icon</span>
+                </svelte:fragment>
+                All required fields must be filled
+            </Toast>
+        {/if}
+
+
+
+    </div>
 </Modal>
