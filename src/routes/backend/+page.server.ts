@@ -1,39 +1,44 @@
-import type { Action } from '@sveltejs/kit';
-import { db } from '$lib/firebase'; // Adjust the import path as needed
+import type { Actions } from './$types';
+import { db } from '$lib/firebase'; // Ensure the path is correct
 import { collection, addDoc } from 'firebase/firestore';
 
-console.log("123");
+export const actions: Actions = {
+	default: async ({ request }) => {
+		const formData = await request.formData();
+		console.log(formData); // This will log the form data to your server console
 
-// POST action
-export const actions: Record<string, Action> = {
-    addTutor: async ({ request }) => {
-        try {
-            const form = await request.formData();
-            const firstName = form.get('first');
-            const lastName = form.get('last');
-            const email = form.get('email');
-            const phone = form.get('phone');
-            const rate = form.get('rate');
-            const status = form.get('status'); // Ensure this matches your form field name
-            const description = form.get('description');
+		// Construct an object with the form data
+		const formEntry = {
+			first: formData.get('first'),
+			last: formData.get('last'),
+			email: formData.get('email'),
+			phone: formData.get('phone'),
+			rate: formData.get('rate'),
+			status: formData.get('status'),
+			description: formData.get('description')
+		};
 
-            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH");
+		try {
+			// Add data to Firebase
+			const docRef = await addDoc(collection(db, 'tutors'), formEntry);
 
-            // Add data to Firebase
-            const docRef = await addDoc(collection(db, 'tutors'), {
-                first: firstName,
-                last: lastName,
-                email,
-                phone,
-                rate,
-                status,
-                description,
-            });
+			console.log('Document written with ID: ', docRef.id);
 
-            return { status: 303, headers: { location: '/success' } }; // Redirect to a success page or handle as needed
-        } catch (error) {
-            // Handle error, perhaps return to the form with an error message
-            return { status: 500, errors: { server: 'Failed to add tutor' } };
-        }
-    }
+			// You could return a response here or redirect the user
+			return {
+				status: 303,
+				headers: {
+					location: '/success' // Redirect to a success page
+				}
+			};
+		} catch (e) {
+			console.error('Error adding document: ', e);
+
+			// Handle the error, perhaps return to the form with an error message
+			return {
+				status: 500,
+				errors: { server: 'Failed to add tutor' }
+			};
+		}
+	}
 };
