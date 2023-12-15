@@ -3,6 +3,7 @@
 	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
 	import { headshots} from '$lib/tutors';
 	import { Button } from 'flowbite-svelte';
+	import FormModal from '../FormModal.svelte';
 
 	export let images = [{ alt: '', srcset: '' }];
 	export let featuredTutors = ['']; 
@@ -92,13 +93,8 @@
 
 			<GoogleRatings />
 
-			<Button
-				class="max-w-sm items-center bg-emerald-400 p-3 text-center text-3xl font-bold text-white hover:bg-emerald-300"
-				href="/form?softwarePref=SketchUp"
-				on:click={handleButtonClick}
-			>
-				Get Started Today
-			</Button>
+
+			<FormModal />
 		</div>
 	</div>
 </section>
