@@ -11,8 +11,6 @@
     ];
 
     async function handleSubmit(event: any) {
-        console.log("Hello");
-
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement);
 
@@ -83,7 +81,7 @@
             </div>
 
             <Button type="submit" class="w-52 mt-4">
-                Add New Tutor
+                Edit Tutor
             </Button>
         </div>
     </form>
