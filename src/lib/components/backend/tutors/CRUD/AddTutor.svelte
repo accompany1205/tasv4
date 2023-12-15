@@ -4,10 +4,6 @@
 
     let defaultModal = false;
 
-    const handleSubmit = () => {
-        alert('Form submited.');
-    };
-
     let selected: any;
     let status = [
         { value: 'active', name: 'Active' },
@@ -18,8 +14,8 @@
     
 <Button on:click={() => (defaultModal = true)}>Add Tutor</Button>
 
-<Modal title="Add Product" bind:open={defaultModal} autoclose class="min-w-full" backdropClass="fixed inset-0 z-40 bg-gray-900 bg-opacity-50 dark:bg-opacity-80">
-    <form on:submit={handleSubmit}>
+<Modal title="Add Product" bind:open={defaultModal} autoclose class="min-w-full" backdropClass="fixed m-0 ml-0 p-0 inset-0 z-40 bg-gray-900 bg-opacity-50 dark:bg-opacity-80">
+    <form action="/backend" method="post">
         <div class="grid gap-4 mb-4 sm:grid-cols-2">
             <div>
                 <Label for="first" class="mb-2">First</Label>
