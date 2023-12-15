@@ -18,7 +18,7 @@
     
 <Button on:click={() => (defaultModal = true)}>Add Tutor</Button>
 
-<Modal title="Add Product" bind:open={defaultModal} autoclose class="min-w-full" >
+<Modal title="Add Product" bind:open={defaultModal} autoclose class="min-w-full" backdropClass="fixed inset-0 z-40 bg-gray-900 bg-opacity-50 dark:bg-opacity-80">
     <form on:submit={handleSubmit}>
         <div class="grid gap-4 mb-4 sm:grid-cols-2">
             <div>
