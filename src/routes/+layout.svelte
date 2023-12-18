@@ -10,7 +10,7 @@
 	import { register } from 'swiper/element/bundle';
 	register();
   
-	let exclude = ['/backend'];
+	let exclude = ['/backend', '/login'];
 	let includeLayout = !exclude.includes($page.url.pathname);
   </script>
   

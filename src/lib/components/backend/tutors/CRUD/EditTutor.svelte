@@ -118,8 +118,8 @@
             <Button on:click={editTutor} class="w-52">
                 {#if working}
                     <div class="text-center">
-                        <Spinner size={6}/>
-                    </div>
+                        <Spinner size={"6"}/>
+                    </div>a
                 {:else}
                     Edit Tutor
                 {/if}
