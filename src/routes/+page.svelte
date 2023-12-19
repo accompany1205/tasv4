@@ -6,7 +6,6 @@
 	import SketchupServices from '$lib/components/blocks/frontpage/SketchupServices.svelte';
 	import FAQ from '$lib/components/blocks/frontpage/FAQ.svelte';
 	import TutorV3Swipeblock from '$lib/components/blocks/common/TutorV3Swipeblock.svelte';
-	import ServiceCategories from '$lib/components/blocks/frontpage/ServiceCategories.svelte';
 
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
@@ -48,7 +47,7 @@
 
 <div use:inview="{options}" on:inview_change="{handleChange}"></div>
 <TopHero images="{hero_images_flattened}" featuredTutors="{featuredTutorsHero}" />
-<ServiceCategories />
+
 <TutorV3Swipeblock tutors="{featuredTutorsCards}" />
 <GeneralServices />
 <GeneralServicesDetail />
