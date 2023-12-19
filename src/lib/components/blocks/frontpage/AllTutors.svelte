@@ -1,7 +1,7 @@
 <script lang="ts">
 	import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
 	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
-	import { headshots } from '$lib/tutors';
+	import TutorsHeadImage from '../common/TutorsHeadImage.svelte';
 	import { Button } from 'flowbite-svelte';
 
 	export let images = [{ alt: '', srcset: '' }];
@@ -10,6 +10,22 @@
 	function handleButtonClick() {
 		gtag('event', 'sketchup_form_clicked');
 	}
+
+	let featuredTutorsHero = [
+		'1619',
+		'2515',
+		'2972',
+		'12112',
+		'12113',
+		'18035',
+		'18836',
+		'20684',
+		'22530',
+		'24291',
+		'12081',
+		'12115',
+		'2652',
+	];
 </script>
 
 <section class="overflow-x-hidden bg-[#e8e8e8] dark:bg-gray-900">
@@ -52,22 +68,15 @@
 		<div class="right-col grid shrink-0 grid-rows-[1fr_auto] rounded-lg micro:max-sm:text-lg">
 			<div class="w-full max-w-md pb-6 @container">
 				<div class="flex">
-					<h2 class="mb-4 max-w-lg font-bold text-fc-[1.5rem_5cqw_8rem]">
+					<!-- <h2 class="mb-4 max-w-lg font-bold text-fc-[1.5rem_5cqw_8rem]">
 						Don't Struggle Alone,&nbsp;Get Sketchup Help from a Pro.
-					</h2>
+					</h2> -->
 
 					<div class="hidden lg:flex">
-						{#each featuredTutors as tutorID, index}
-							<div class="-mx-4 flex-shrink-0">
-								<img
-									srcset="{headshots[tutorID]}"
-									alt="Featured Tutor"
-									class="h-20 w-20 flex-shrink-0 rounded-full p-1"
-									width="80"
-									height="80"
-								/>
-							</div>
-						{/each}
+						<TutorsHeadImage
+							featuredTutors="{featuredTutorsHero}"
+							class="flex items-baseline flex-wrap"
+						/>
 					</div>
 				</div>
 
