@@ -1,70 +1,75 @@
 <script lang="ts">
-	import { db } from '$lib/firebase';
-	import { createUserWithEmailAndPassword } from 'firebase/auth';
-	import { addDoc, collection } from 'firebase/firestore';
-    import { Label, Input, Button, Modal, Textarea, Select, DropdownDivider } from 'flowbite-svelte';
+    import { onMount } from 'svelte';
+    import { collection, getDocs } from 'firebase/firestore';
+    import { db } from '$lib/firebase';
+    import { addDoc, doc, updateDoc } from 'firebase/firestore';
+    import { Label, Input, Button, Modal, Textarea, Select, DropdownDivider, Radio, Dropdown } from 'flowbite-svelte';
     import { Toast } from 'flowbite-svelte';
-    import { CheckCircleSolid, ExclamationCircleSolid, FireOutline, CloseCircleSolid } from 'flowbite-svelte-icons';
-    import { firebaseAuth } from "$lib/firebase";
+    import { ChevronDownSolid, CloseCircleSolid } from 'flowbite-svelte-icons';
 
     let defaultModal = false;
     let showToast = false;
 
-
     let statusENUM = [
-        { value: 'active', name: 'Active' },
-        { value: 'full', name: 'Full' },
-        { value: 'hold', name: 'On Hold' }
+        { value: 'new', name: 'New' },
+        { value: 'contacted', name: 'Contacted' },
+        { value: 'qualified', name: 'Qualified' },
     ];
+
+    let tosENUM = [
+        { value: 'both', name: 'Both' },
+        { value: 'tutoring', name: 'Tutoring' },
+        { value: 'services', name: 'Services' },
+    ];   
+
+    let tutorOptions: { value: string; name: string; }[] = [];
+    let assignedTutor = '';
 
     let first = '';
     let last = '';
     let email = '';
     let phone = '';
-    let rate = '';
     let status = '';
     let description = '';
+    let tos = '';
 
-    let password = "mainpassword";
+    onMount(async () => {
+        const querySnapshot = await getDocs(collection(db, 'tutors'));
+        tutorOptions = querySnapshot.docs.map(doc => ({ value: doc.id, name: `${doc.data().first} ${doc.data().last}` }));
+    });
 
-    async function addTutor() {
+    async function addLead() {
         try {
-
-
-            if (!first || !email || !rate || !status) {
+            if (!first || !email) {
                 showToast = true;
                 setTimeout(() => { showToast = false; }, 3000);
                 return;
             }
 
-            const userCredential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
-            const user = userCredential.user;
-
-            await addDoc(collection(db, 'tutors', user.uid), {
+            await addDoc(collection(db, 'leads'), {
                 first,
                 last,
                 email,
                 phone,
-                rate,
                 status,
-                description
+                description,
+                assignedTutor,
+                tos
             });
 
             defaultModal = false; // Close the modal
 
-            window.location.href = "/backend";
+            window.location.href = "/backend"; // Redirect to a different page if necessary
 
         } catch (error) {
-            console.error('Error adding tutor: ', error);
+            console.error('Error adding lead: ', error);
         }
     }
-
-
 </script>
-    
-<Button on:click={() => (defaultModal = true)}>Add Tutor</Button>
 
-<Modal title="Add Tutor" bind:open={defaultModal} class="z-50">  
+<Button on:click={() => (defaultModal = true)}>Add Lead</Button>
+
+<Modal title="Add Lead" bind:open={defaultModal} class="z-50">  
     <div class="grid gap-4 mb-4 sm:grid-cols-2">
         <div>
             <Label for="first" class="mb-2 text-sm">First*
@@ -96,16 +101,23 @@
 
     <div class="grid gap-4 mb-4 sm:grid-cols-2">
         <div>
-            <Label for="rate" class="mb-2 text-sm">Rate*
-                <Input bind:value={rate} class="mt-2" type="text" name="rate" id="rate" placeholder="15 ~ 100" />
-            </Label>
-        </div>
-
-        <div>
             <Label class="mb-2 text-sm">Status*
                 <Select class="mt-2" name="status" items={statusENUM} bind:value={status} id="select" />
             </Label>
         </div>
+
+        <div>
+            <Label class="mb-2 text-sm">Assigned Tutor
+                <Select class="mt-2" bind:value={assignedTutor} name="assignedTutor" items={tutorOptions}/>
+            </Label>
+        </div>
+
+        <div>
+            <Label class="mb-2 text-sm">Type of Services
+                <Select class="mt-2" bind:value={tos} name="tos" items={tosENUM}/>
+            </Label>
+        </div>
+
 
         <div class="sm:col-span-2">
             <Label for="description" class="mb-2 text-sm">Notes on Tutor
@@ -113,10 +125,8 @@
             </Label>
         </div>
 
-
-
-        <Button on:click={addTutor} class="w-52 mt-4">
-            Add New Tutor
+        <Button on:click={addLead} class="w-52 mt-4">
+            Add Lead
         </Button>
 
 

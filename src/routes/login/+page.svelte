@@ -20,7 +20,7 @@
         try {
             await signInWithEmailAndPassword(firebaseAuth, email, password);
             console.log("success"); 
-            goto("/backend");
+            goto("/tas");
         } catch (error:any) {
             errorMessage = error.message;
         }

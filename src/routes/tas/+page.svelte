@@ -1,8 +1,6 @@
 <script lang="ts">
-    import BottomNav from "$lib/components/backend/nav/BottomNav.svelte";
-    import LeadsBase from "$lib/components/backend/leads/LeadsBase.svelte";
-    import TutorsBase from "$lib/components/backend/tutors/TutorsBase.svelte";
-    import ServicesBase from "$lib/components/backend/services/ServicesBase.svelte";
+    import BottomNav from "$lib/components/tutors-backend/nav/BottomNav.svelte";    
+    import LeadTable from "$lib/components/tutors-backend/leads/LeadTable.svelte";
 
     // BottomNav Event Dispatcher
     let currentNavIndex = 1;
@@ -13,11 +11,11 @@
 </script>
 
 {#if currentNavIndex === 1}
-    <LeadsBase/>
+    <LeadTable/>
 {:else if currentNavIndex === 2}
-    <TutorsBase/>
+    
 {:else if currentNavIndex === 3}
-    <ServicesBase/>
+
 {:else if currentNavIndex === 4}
 
 {/if}
