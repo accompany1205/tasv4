@@ -17,12 +17,12 @@
         <ProfileCardOutline class={`w-5 h-5 mb-1 ${optionIndex === 1 ? 'text-primary-600 dark:text-primary-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-primary-600`} />
     </BottomNavItem>
 
-    <BottomNavItem btnName="Tutors" on:click={() => selectOption(2)}>
-        <UserEditOutline class={`w-5 h-5 mb-1 ${optionIndex === 2 ? 'text-primary-600 dark:text-primary-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-primary-600`} />
+    <BottomNavItem btnName="Services" on:click={() => selectOption(2)}>
+        <AtomOutline class={`w-5 h-5 mb-1 ${optionIndex === 2 ? 'text-primary-600 dark:text-primary-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-primary-600`} />
     </BottomNavItem>
 
-    <BottomNavItem btnName="Services" on:click={() => selectOption(3)}>
-        <AtomOutline class={`w-5 h-5 mb-1 ${optionIndex === 3 ? 'text-primary-600 dark:text-primary-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-primary-600`} />
+    <BottomNavItem btnName="Tutors" on:click={() => selectOption(3)}>
+        <UserEditOutline class={`w-5 h-5 mb-1 ${optionIndex === 4 ? 'text-primary-600 dark:text-primary-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-primary-600`} />
     </BottomNavItem>
 
     <BottomNavItem btnName="Settings" on:click={() => selectOption(4)}>

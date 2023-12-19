@@ -15,9 +15,9 @@
 {#if currentNavIndex === 1}
     <LeadsBase/>
 {:else if currentNavIndex === 2}
-    <TutorsBase/>
-{:else if currentNavIndex === 3}
     <ServicesBase/>
+{:else if currentNavIndex === 3}
+    <TutorsBase/>
 {:else if currentNavIndex === 4}
 
 {/if}
