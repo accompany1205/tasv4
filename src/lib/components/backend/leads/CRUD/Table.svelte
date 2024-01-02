@@ -52,8 +52,9 @@
             <TableHeadCell padding="px-4 py-3" scope="col">Phone</TableHeadCell>
             <TableHeadCell padding="px-4 py-3" scope="col">Type of Service</TableHeadCell>
             <TableHeadCell padding="px-4 py-3" scope="col">Description</TableHeadCell>
-            <TableHeadCell padding="px-4 py-3" scope="col">Status</TableHeadCell>
             <TableHeadCell padding="px-4 py-3" scope="col">Assigned</TableHeadCell>
+            <TableHeadCell padding="px-4 py-3" scope="col">Response</TableHeadCell>
+            <TableHeadCell padding="px-4 py-3" scope="col">Status</TableHeadCell>
         </TableHead>
 
         <!-- Table Body -->
@@ -76,8 +77,10 @@
                         <TableBodyCell tdClass="px-4 py-3">{lead.phone}</TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3">{lead.tos}</TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3">{lead.description}</TableBodyCell>
-                        <TableBodyCell tdClass="px-4 py-3">{lead.status}</TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3"><AssignLead assigned={lead.assigned} leadID={lead.id}/></TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3">{lead.response}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3">{lead.status}</TableBodyCell>
+
                     </TableBodyRow>
                 {/each}
             {/if}

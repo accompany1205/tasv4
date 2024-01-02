@@ -30,4 +30,4 @@
     }
 </script>
 
-<Select class="mt-2" bind:value={assignedTutor} name="assignedTutor" items={tutorOptions} on:change={handleSelectChange}/>
+<Select class="mt-2" bind:value={assignedTutor} name="assignedTutor" items={tutorOptions} on:change={handleSelectChange} placeholder=""/>

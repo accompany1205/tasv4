@@ -28,7 +28,6 @@ export default {
 					800: '#22732e',
 					900: '#1f5c28', // Optimal text contrast on white					
 				},
-
 				emerald: {
 					50: '#f2fbf3',
 					100: '#e0f8e3',
@@ -54,6 +53,19 @@ export default {
 					800: '#1e476e',
 					900: '#1b3652', //Dark Blue
 					950: '#14273d',
+				},
+				ecstasy: { //Orange
+					50: '#fff8ed',
+					100: '#ffefd4',
+					200: '#ffdaa8',
+					300: '#ffc071',
+					400: '#ff9a38',
+					500: '#fe780b',
+					600: '#ef5f07',
+					700: '#c64608',
+					800: '#9d380f',
+					900: '#7e3010',
+					950: '#441506',
 				},
 				'bay-of-many': {
 					50: '#f3f7fc',

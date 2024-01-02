@@ -8,6 +8,11 @@
 	import AddService from './AddService.svelte';
     import EditService from './EditService.svelte';
 
+    let divClass='bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden';
+    let innerDivClass='flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4';
+    let searchClass='w-full md:w-1/2 relative';
+    let classInput="text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2  pl-10";
+
     let searchTerm = '';
     let services: any[] = [];
     let filteredServices: any[] = [];
@@ -46,7 +51,7 @@
 </script>
 
 <Section classSection='bg-gray-50 dark:bg-gray-900 p-3 sm:p-5'>
-    <TableSearch placeholder="Search" hoverable={true} bind:inputValue={searchTerm}>
+    <TableSearch placeholder="Search" hoverable={true} bind:inputValue={searchTerm} {divClass} {innerDivClass} {searchClass} {classInput}>
 
         <div slot="header" class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
             <AddService/>

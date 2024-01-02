@@ -1,6 +1,6 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
-    import { BottomNav, BottomNavItem } from 'flowbite-svelte';
+    import { BottomNav, BottomNavItem, DarkMode } from 'flowbite-svelte';
     import { ProfileCardOutline, AtomOutline, UserEditOutline, AdjustmentsVerticalOutline } from 'flowbite-svelte-icons';
   
     const dispatch = createEventDispatcher();
@@ -29,3 +29,4 @@
         <AdjustmentsVerticalOutline class={`w-5 h-5 mb-1 ${optionIndex === 4 ? 'text-primary-600 dark:text-primary-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-primary-600`} />
     </BottomNavItem>
 </BottomNav>
+

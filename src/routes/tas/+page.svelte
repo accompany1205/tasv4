@@ -13,7 +13,7 @@
 {#if currentNavIndex === 1}
     <LeadTable/>
 {:else if currentNavIndex === 2}
-    
+
 {:else if currentNavIndex === 3}
 
 {:else if currentNavIndex === 4}
