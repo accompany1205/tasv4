@@ -1,15 +1,15 @@
 <script lang="ts">
+	import H3 from '$lib/components/elements/H3.svelte';
+
 	export let title: string;
 </script>
 
 <section class="bg-nile-blue-900 p-4 text-white">
-	<h3
-		class="m-auto max-w-screen-xl border-b-4 border-emerald-400 py-4 pl-4 text-3xl font-black break-words"
-	>
-		{title}
-	</h3>
+	<div class="m-auto max-w-screen-xl">
+		<H3 class="break-words">{title}</H3>
 
-	<div class="m-2 mx-auto flex max-w-screen-xl flex-wrap gap-4 text-white">
-		<slot />
+		<div class="m-2 flex flex-wrap gap-4 text-white">
+			<slot />
+		</div>
 	</div>
 </section>

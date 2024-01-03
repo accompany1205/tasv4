@@ -36,5 +36,5 @@
 <GeneralServices />
 <CompanyPhilosophy />
 <Advantages />
-<!-- <GoogleReviews />
-<SpecialOffer /> -->
+<GoogleReviews />
+<SpecialOffer />
