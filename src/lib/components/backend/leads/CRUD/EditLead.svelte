@@ -1,12 +1,13 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { collection, getDocs } from 'firebase/firestore';
+    import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
     import { db } from '$lib/firebase';
     import { addDoc } from 'firebase/firestore';
     import { Label, Input, Button, Modal, Textarea, Select, DropdownDivider} from 'flowbite-svelte';
     import { Toast } from 'flowbite-svelte';
     import { CloseCircleSolid } from 'flowbite-svelte-icons';
 
+    export let lead:any;
 
     let defaultModal = false;
     let showToast = false;
@@ -32,26 +33,27 @@
 
 
     let tutorOptions: { value: string; name: string; }[] = [];
-    let assigned = '';
+    
 
-    let first = '';
-    let last = '';
-    let email = '';
-    let phone = '';
-    let status = '';
-    let description = '';
-    let tos = '';
-    let response = '';
-    let subject = '';
+    let first = lead.first || '';
+    let last = lead.last || '';
+    let email = lead.email || '';
+    let phone = lead.phone || '';
+    let status = lead.status || '';
+    let description = lead.description || '';
+    let tos = lead.tos || '';
+    let response = lead.response || '';
+    let subject = lead.subject || '';
+    let assigned = lead.assigned || '';
 
     onMount(async () => {
         const querySnapshot = await getDocs(collection(db, 'tutors'));
         tutorOptions = querySnapshot.docs.map(doc => ({ value: doc.id, name: `${doc.data().first} ${doc.data().last}` }));
-        response = "No Response";
-        status = "New";
+        response = lead.response || "No Response";
+        status = lead.status || "New";
     });
 
-    async function addLead() {
+    async function updateLead() {
         try {
             if (!first || (!email && !phone)) {
                 showToast = true;
@@ -59,7 +61,9 @@
                 return;
             }
 
-            await addDoc(collection(db, 'leads'), {
+            const leadRef = doc(db, 'leads', lead.id);
+
+            await updateDoc(leadRef, {
                 first,
                 last,
                 email,
@@ -72,18 +76,17 @@
                 subject
             });
 
-            defaultModal = false;
-
-            window.location.href = "/backend";
+        defaultModal = false;
+        window.location.href = "/backend";       
 
         } catch (error) {
-            console.error('Error adding lead: ', error);
+            console.error('Error updating lead: ', error);
         }
     }
 </script>
 
 
-<Button on:click={() => (defaultModal = true)}>Add Lead</Button>
+<Button on:click={() => (defaultModal = true)} color="alternative">Edit</Button>
 
 <Modal title="Add Lead" bind:open={defaultModal} class="z-50">  
 
@@ -170,8 +173,8 @@
 
 <!-- Add Lead -->
     <svelte:fragment slot="footer">
-        <Button on:click={addLead} class="w-52">
-            Add Lead
+        <Button on:click={updateLead} class="w-52">
+            Edit Lead
         </Button>
 
         {#if showToast}

@@ -3,6 +3,7 @@
     import { TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, TableSearch} from 'flowbite-svelte';
     import { Section } from 'flowbite-svelte-blocks';
     import AssignLead from './AssignLead.svelte';
+    import EditLead from './EditLead.svelte';
 
     import { db } from '$lib/firebase';
     import { collection, getDocs, query, orderBy, startAt, limit } from 'firebase/firestore';
@@ -55,6 +56,7 @@
             <TableHeadCell padding="px-4 py-3" scope="col">Assigned</TableHeadCell>
             <TableHeadCell padding="px-4 py-3" scope="col">Response</TableHeadCell>
             <TableHeadCell padding="px-4 py-3" scope="col">Status</TableHeadCell>
+            <TableHeadCell padding="px-4 py-3" scope="col">Edit</TableHeadCell>
         </TableHead>
 
         <!-- Table Body -->
@@ -80,6 +82,7 @@
                         <TableBodyCell tdClass="px-4 py-3"><AssignLead assigned={lead.assigned} leadID={lead.id}/></TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3">{lead.response}</TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3">{lead.status}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3"><EditLead lead={lead}/></TableBodyCell>
 
                     </TableBodyRow>
                 {/each}

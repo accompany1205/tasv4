@@ -6,6 +6,7 @@
     import { collection, getDocs} from 'firebase/firestore';
     import { Spinner } from 'flowbite-svelte';
     import Response from './Response.svelte';
+    import EditLead from './EditLead.svelte';
 
     let divClass='bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden';
     let innerDivClass='flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4';
@@ -13,26 +14,26 @@
     let classInput="text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2  pl-10";
   
     let searchTerm = '';
-    let tutors: any[] = [];
+    let leads: any[] = [];
     let filteredLeads: any[] = [];
     let loading = true; 
 
     onMount(async () => {
-        const tutorsCol = collection(db, 'leads');
-        const querySnapshot = await getDocs(tutorsCol);
+        const leadsCol = collection(db, 'leads');
+        const querySnapshot = await getDocs(leadsCol);
 
-        tutors = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        filteredLeads = tutors;
+        leads = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        filteredLeads = leads;
         loading = false;
     });
 
     $: if (searchTerm) {
-        filteredLeads = tutors.filter(tutor => {
-            const fullName = `${tutor.first.toLowerCase()} ${tutor.last.toLowerCase()}`;
+        filteredLeads = leads.filter(lead => {
+            const fullName = `${lead.first.toLowerCase()} ${lead.last.toLowerCase()}`;
             return fullName.includes(searchTerm.toLowerCase());
         });
     } else {
-        filteredLeads = tutors;
+        filteredLeads = leads;
     }
 </script>
 
@@ -46,6 +47,7 @@
             <TableHeadCell padding="px-4 py-3" scope="col">Email</TableHeadCell>
             <TableHeadCell padding="px-4 py-3" scope="col">Number</TableHeadCell>
             <TableHeadCell padding="px-4 py-3" scope="col">Description</TableHeadCell>
+            <TableHeadCell padding="px-4 py-3" scope="col">Edit Lead</TableHeadCell>
         </TableHead>
 
         <!-- Body -->
@@ -58,17 +60,18 @@
                 </TableBodyRow>
             {:else if searchTerm !== '' && filteredLeads.length === 0}
                 <TableBodyRow>
-                    <TableBodyCell tdClass="px-4 py-3" colspan="5">No matching tutors found.</TableBodyCell>
+                    <TableBodyCell tdClass="px-4 py-3" colspan="5">No matching leads found.</TableBodyCell>
                 </TableBodyRow>
             {:else}
-                {#each (searchTerm !== '' ? filteredLeads : tutors) as tutor (tutor.id)}
+                {#each (searchTerm !== '' ? filteredLeads : leads) as lead (lead.id)}
                     <TableBodyRow>
-                        <TableBodyCell tdClass="px-4 py-3"><Response leadID={tutor.id} response={tutor.response}/></TableBodyCell>
-                        <TableBodyCell tdClass="px-4 py-3">{tutor.status}</TableBodyCell>
-                        <TableBodyCell tdClass="px-4 py-3">{tutor.first} {tutor.last}</TableBodyCell>
-                        <TableBodyCell tdClass="px-4 py-3">{tutor.email}</TableBodyCell>
-                        <TableBodyCell tdClass="px-4 py-3">{tutor.phone}</TableBodyCell>
-                        <TableBodyCell tdClass="px-4 py-3">{tutor.description}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3"><Response leadID={lead.id} response={lead.response}/></TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3">{lead.status}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3">{lead.first} {lead.last}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3">{lead.email}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3">{lead.phone}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3">{lead.description}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3"><EditLead lead={lead}/></TableBodyCell>
                     </TableBodyRow>
                 {/each}
             {/if}
