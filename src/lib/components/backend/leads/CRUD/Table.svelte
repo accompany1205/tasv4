@@ -4,6 +4,8 @@
     import { Section } from 'flowbite-svelte-blocks';
     import AssignLead from './AssignLead.svelte';
     import EditLead from './EditLead.svelte';
+    import { Popover } from 'flowbite-svelte';
+
 
     import { db } from '$lib/firebase';
     import { collection, getDocs, query, orderBy, startAt, limit } from 'firebase/firestore';
@@ -102,9 +104,12 @@
                         <TableBodyCell tdClass="px-4 py-3">{lead.email}</TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3">{lead.phone}</TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3">{lead.tos}</TableBodyCell>
-                        <TableBodyCell tdClass="px-4 py-3">{lead.description}</TableBodyCell>
-                        <TableBodyCell tdClass="px-4 py-3">{formatDate(lead.dateCreated)}</TableBodyCell>
-                        
+                        <TableBodyCell tdClass="px-4 py-3" id="desc{lead.id}">{lead.description}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3">
+                            {formatDate(lead.dateCreated)}
+                            <!-- <Popover class="w-64 text-sm font-light z-50" title="Lead Description" triggeredBy="desc{lead.id}">{lead.description}</Popover> -->
+                        </TableBodyCell>
+
                         <TableBodyCell tdClass="px-4 py-3"><AssignLead assigned={lead.assigned} leadID={lead.id}/></TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3">{lead.response}</TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3">{lead.status}</TableBodyCell>
@@ -115,3 +120,4 @@
         </TableBody>
     </TableSearch>
 </div>
+
