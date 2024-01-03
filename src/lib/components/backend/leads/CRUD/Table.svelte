@@ -10,8 +10,8 @@
     import { Spinner } from 'flowbite-svelte';
 	import AddLead from './AddLead.svelte';
 
-    let divClass='bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden';
-    let innerDivClass='flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4';
+    let divClass='w-full max-w-full bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden';
+    let innerDivClass='flex flex-col max-w-full md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4';
     let searchClass='w-full md:w-1/2 relative';
     let classInput="text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2  pl-10";
   
@@ -22,7 +22,9 @@
 
     onMount(async () => {
         const leadsCol = collection(db, 'leads');
-        const querySnapshot = await getDocs(leadsCol);
+        const leadsQuery = query(leadsCol, orderBy('dateCreated', 'desc'));
+
+        const querySnapshot = await getDocs(leadsQuery);
 
         leads = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         filteredLeads = leads;
@@ -37,10 +39,30 @@
     } else {
         filteredLeads = leads;
     }
+
+
+    function formatDate(firestoreTimestamp: { toDate: () => any; }) {
+        if (firestoreTimestamp && firestoreTimestamp.toDate) {
+            const date = firestoreTimestamp.toDate();
+            
+            const options: Intl.DateTimeFormatOptions = { 
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit', 
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true 
+            };
+
+            return new Intl.DateTimeFormat('en-US', options).format(date);
+        }
+        return '';
+    }
+
 </script>
 
-<Section classSection='bg-gray-50 dark:bg-gray-900 p-3 sm:p-5'>
-    <TableSearch placeholder="Search" hoverable={true} bind:inputValue={searchTerm} {divClass} {innerDivClass} {searchClass} {classInput}>
+<div class="bg-gray-100 dark:bg-gray-900 px-12 pt-12 pb-28">
+    <TableSearch placeholder="Search" hoverable={true}  bind:inputValue={searchTerm} {divClass} {innerDivClass} {searchClass} {classInput}>
 
         <div slot="header" class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
             <AddLead/>
@@ -48,15 +70,17 @@
 
         <!-- Table Header -->
         <TableHead>
-            <TableHeadCell padding="px-4 py-3" scope="col">Name</TableHeadCell>
-            <TableHeadCell padding="px-4 py-3" scope="col">Email</TableHeadCell>
-            <TableHeadCell padding="px-4 py-3" scope="col">Phone</TableHeadCell>
-            <TableHeadCell padding="px-4 py-3" scope="col">Type of Service</TableHeadCell>
-            <TableHeadCell padding="px-4 py-3" scope="col">Description</TableHeadCell>
-            <TableHeadCell padding="px-4 py-3" scope="col">Assigned</TableHeadCell>
-            <TableHeadCell padding="px-4 py-3" scope="col">Response</TableHeadCell>
-            <TableHeadCell padding="px-4 py-3" scope="col">Status</TableHeadCell>
-            <TableHeadCell padding="px-4 py-3" scope="col">Edit</TableHeadCell>
+            <TableHeadCell class="bg-orange-100" padding="px-4 py-3" scope="col">Name</TableHeadCell>
+            <TableHeadCell class="bg-orange-100" padding="px-4 py-3" scope="col">Email</TableHeadCell>
+            <TableHeadCell class="bg-orange-100" padding="px-4 py-3" scope="col">Phone</TableHeadCell>
+            <TableHeadCell class="bg-orange-100" padding="px-4 py-3" scope="col">Type of Service</TableHeadCell>
+            <TableHeadCell class="bg-orange-100" padding="px-4 py-3" scope="col">Description</TableHeadCell>
+            <TableHeadCell class="bg-orange-100" padding="px-4 py-3" scope="col">Date</TableHeadCell>
+
+            <TableHeadCell class="bg-blue-50" padding="px-4 py-3" scope="col">Assigned</TableHeadCell>
+            <TableHeadCell class="bg-blue-50" padding="px-4 py-3" scope="col">Response</TableHeadCell>
+            <TableHeadCell class="bg-blue-50" padding="px-4 py-3" scope="col">Status</TableHeadCell>
+            <TableHeadCell class="bg-blue-50" padding="px-4 py-3" scope="col">Edit</TableHeadCell>
         </TableHead>
 
         <!-- Table Body -->
@@ -79,14 +103,15 @@
                         <TableBodyCell tdClass="px-4 py-3">{lead.phone}</TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3">{lead.tos}</TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3">{lead.description}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3">{formatDate(lead.dateCreated)}</TableBodyCell>
+                        
                         <TableBodyCell tdClass="px-4 py-3"><AssignLead assigned={lead.assigned} leadID={lead.id}/></TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3">{lead.response}</TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3">{lead.status}</TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3"><EditLead lead={lead}/></TableBodyCell>
-
                     </TableBodyRow>
                 {/each}
             {/if}
         </TableBody>
     </TableSearch>
-</Section>
+</div>

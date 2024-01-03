@@ -76,7 +76,7 @@
             });
 
         defaultModal = false;
-        window.location.href = "/backend";       
+        window.location.href = "/tas";       
 
         } catch (error) {
             console.error('Error updating lead: ', error);
@@ -87,7 +87,7 @@
 
 <Button on:click={() => (defaultModal = true)} color="alternative">Edit</Button>
 
-<Modal title="Add Lead" bind:open={defaultModal} class="z-50">  
+<Modal title="Edit Lead" bind:open={defaultModal} class="z-50">  
 
 <!-- Form Body -->
     <div>

@@ -33,6 +33,7 @@
 
 
     let tutorOptions: { value: string; name: string; }[] = [];
+
     
 
     let first = lead.first || '';
@@ -49,6 +50,8 @@
     onMount(async () => {
         const querySnapshot = await getDocs(collection(db, 'tutors'));
         tutorOptions = querySnapshot.docs.map(doc => ({ value: doc.id, name: `${doc.data().first} ${doc.data().last}` }));
+        tutorOptions = [{ value: '', name: 'Unassigned' }, ...tutorOptions];
+
         response = lead.response || "No Response";
         status = lead.status || "New";
     });
@@ -85,10 +88,11 @@
     }
 </script>
 
-
+<!-- <a class="font-medium text-red-600 hover:underline dark:text-primary-500" on:click={() => (defaultModal = true)}>Edit</a> -->
 <Button on:click={() => (defaultModal = true)} color="alternative">Edit</Button>
 
-<Modal title="Add Lead" bind:open={defaultModal} class="z-50">  
+
+<Modal title="Edit Lead" bind:open={defaultModal} class="z-50">  
 
 <!-- Form Body -->
     <div>

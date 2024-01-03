@@ -13,6 +13,9 @@
         const querySnapshot = await getDocs(collection(db, 'tutors'));
         tutorOptions = querySnapshot.docs.map(doc => ({ value: doc.id, name: `${doc.data().first} ${doc.data().last}` }));
 
+        tutorOptions = [{ value: '', name: 'Unassigned' }, ...tutorOptions];
+
+
         // Find the assigned tutor's name based on the assigned ID
         const assignedTutorObj = tutorOptions.find(tutor => tutor.value === assigned);
         if (assignedTutorObj) {
