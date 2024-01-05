@@ -9,7 +9,7 @@
 	<div class="max-w-sm">
 		<slot />
 	</div>
-	<div class="slider ">
-		<ImageCarousel images="{images}" />
+	<div class="slider">
+		<ImageCarousel images="{images}" indicatorInside />
 	</div>
 </div>
