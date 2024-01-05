@@ -61,8 +61,8 @@
 	<div class="m-auto max-w-screen-xl">
 		<H3 class="break-words">Google Reviews</H3>
 
-		<div class="text-white">
-			<div class="swiper">
+		<div class="text-white grid items-center gap-5">
+			<div class="">
 				<div
 					class="m-auto mx-auto h-[320px] max-w-full xl:max-w-screen-xl"
 					style="container-type: size;"
@@ -77,14 +77,13 @@
 						{/each}
 					</SwiperSlider>
 				</div>
-
-				<div class=""
-					><LinkButton
-						title="Read All Reviews"
-						class="mt-4 bg-emerald-400 text-white text-xl font-medium hover:bg-emerald-500"
-					/></div
-				>
 			</div>
+			<div class="text-center lg:text-left"
+				><LinkButton
+					title="Read All Reviews"
+					class="mt-4 bg-emerald-400 text-white text-xl font-medium hover:bg-emerald-500"
+				/></div
+			>
 		</div>
 	</div>
 </section>

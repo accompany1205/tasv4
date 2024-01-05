@@ -1,6 +1,3 @@
-<style>
-</style>
-
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { SwiperContainer } from 'swiper/element';
@@ -26,23 +23,23 @@
 		// );
 		let bullets = '';
 
-		for (let index = 1; index <= total; index++) {
+		for (let index = 0; index < total; index++) {
 			bullets += `<span class='relative flex h-4 w-4 cursor-pointer'>
 				<span
 					class="${
-						current === index ? 'animate-ping bg-nile-blue-500' : ''
+						index === swiper.realIndex ? 'animate-ping bg-nile-blue-500' : ''
 					} absolute inline-flex h-full w-full rounded-full bg-nile-blue-500 opacity-75"
 				></span>
 				<span
           data-slide="${index}"
 					class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 ${
-						current === index ? 'bg-nile-blue-500' : ''
+						index === swiper.realIndex ? 'bg-nile-blue-500' : ''
 					}"
 				></span>
 			</span>`;
 		}
 
-		return `<div class='w-full flex items-center justify-center gap-3'>
+		return `<div class='max-w-max bg-white/80 p-2 rounded-full flex items-center justify-center gap-3'>
 				${bullets}
 			</div>`;
 	}
@@ -59,7 +56,7 @@
 		// 	slideShadows: true,
 		// },
 		loop: true,
-		// centeredSlides: true,
+		centeredSlides: true,
 
 		autoplay: {
 			enabled: true,
@@ -110,19 +107,20 @@
 			console.log('slide: ', slide);
 
 			if (slide) {
-				swiper.swiper.slideTo(slide, 200, true);
+				swiper.swiper.slideToLoop(slide);
 			}
 		});
 	});
 </script>
 
-<div class="">
-	<swiper-container bind:this="{swiper}" init="false">
-		<slot />
-	</swiper-container>
+<!-- <div class=""> -->
+<swiper-container bind:this="{swiper}" init="false">
+	<slot />
+</swiper-container>
 
-	<div bind:this="{carouselPagination}"></div>
-</div>
+<div class="hidden lg:flex lg:items-center lg:justify-center" bind:this="{carouselPagination}"
+></div>
+<!-- </div> -->
 
 <div class="hidden xl:block">
 	<div
