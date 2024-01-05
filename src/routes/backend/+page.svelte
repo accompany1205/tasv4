@@ -3,23 +3,39 @@
     import LeadsBase from "$lib/components/backend/leads/LeadsBase.svelte";
     import TutorsBase from "$lib/components/backend/tutors/TutorsBase.svelte";
     import ServicesBase from "$lib/components/backend/services/ServicesBase.svelte";
+    import Settings from "$lib/components/backend/settings/Settings.svelte";
+    import { writable } from "svelte/store";
+    import { onMount } from 'svelte';
 
-    // BottomNav Event Dispatcher
-    let currentNavIndex = 1;
+
+    // Create a writable store for the current navigation index
+    const currentNavIndex = writable(1);
+
+    // Load the stored index from localStorage when the component mounts
+    onMount(() => {
+        const storedIndex = localStorage.getItem('currentNavIndex');
+        if (storedIndex) {
+            currentNavIndex.set(parseInt(storedIndex, 10)); // Update the store's value
+        }
+    });
 
     function handleNavChange(event: { detail: { optionIndex: number; }; }) {
-      currentNavIndex = event.detail.optionIndex;
+        currentNavIndex.set(event.detail.optionIndex); // Update the store value
+        localStorage.setItem('currentNavIndex', event.detail.optionIndex.toString()); // Update the local storage
     }
 </script>
 
-{#if currentNavIndex === 1}
-    <LeadsBase/>
-{:else if currentNavIndex === 2}
-    <ServicesBase/>
-{:else if currentNavIndex === 3}
-    <TutorsBase/>
-{:else if currentNavIndex === 4}
+<div class="bg-gray-50 h-screen w-screen fixed top-0 left-0 z-[-999]">
+</div>
 
+{#if $currentNavIndex === 1}
+    <LeadsBase/>
+{:else if $currentNavIndex === 2}
+    <ServicesBase/>
+{:else if $currentNavIndex === 3}
+    <TutorsBase/>
+{:else if $currentNavIndex === 4}
+    <Settings/>
 {/if}
 
-<BottomNav on:change={handleNavChange}/>
+<BottomNav on:change={handleNavChange} optionIndex={$currentNavIndex}/>
