@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { TabItem, Img } from 'flowbite-svelte';
+	import { flip } from 'svelte/animate';
+	import { quintOut, sineIn } from 'svelte/easing';
+	import { slide } from 'svelte/transition';
 
 	export let open: boolean = false;
 	export let title: string;
@@ -7,9 +10,14 @@
 </script>
 
 <TabItem open="{open}" title="{title}" on:click>
-	<div class="flex items-center flex-wrap flex-row justify-center gap-4">
-		{#each images as image}
-			<div class="cursor-pointer overflow-hidden rounded-lg">
+	<div class="flex items-start flex-wrap flex-row justify-center gap-4">
+		{#each images as image (image)}
+			<div
+				class="cursor-pointer overflow-hidden rounded-lg"
+				animate:flip="{{ duration: 800 }}"
+				in:slide="{{ duration: 400, delay: 200, easing: sineIn }}"
+				out:slide="{{ duration: 400, easing: quintOut }}"
+			>
 				<Img
 					srcset="{image}"
 					alt="Matthew W"
