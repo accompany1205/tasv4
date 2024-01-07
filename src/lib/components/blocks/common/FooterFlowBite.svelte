@@ -87,15 +87,42 @@
 					<h2 class="my-6 text-2xl font-bold text-white">Top Classes</h2>
 					<div class="grid grid-cols-1 text-base">
 						<FooterLinkGroup ulClass="list-disc list-inside">
-							<FooterLink href="#" liClass="mb-1">AutoCAD</FooterLink>
-							<FooterLink href="#" liClass="mb-1">Blender</FooterLink>
-							<FooterLink href="#" liClass="mb-1">Cinema 4D</FooterLink>
-							<FooterLink href="#" liClass="mb-1">Fusion 360</FooterLink>
-							<FooterLink href="#" liClass="mb-1">Revit</FooterLink>
-							<FooterLink href="#" liClass="mb-1">Rhino</FooterLink>
-							<FooterLink href="#" liClass="mb-1">Sketchup</FooterLink>
-							<FooterLink href="#" liClass="mb-1">Solidworks</FooterLink>
-							<FooterLink href="#" liClass="mb-1">Unreal Engine</FooterLink>
+							<FooterLink
+								href="https://www.tutorsandservices.com/autocad/"
+								liClass="mb-1">AutoCAD</FooterLink
+							>
+							<FooterLink
+								href="https://www.tutorsandservices.com/blender/"
+								liClass="mb-1">Blender</FooterLink
+							>
+							<FooterLink
+								href="https://www.tutorsandservices.com/cinema-4d/"
+								liClass="mb-1">Cinema 4D</FooterLink
+							>
+							<FooterLink
+								href="https://www.tutorsandservices.com/fusion-360/"
+								liClass="mb-1">Fusion 360</FooterLink
+							>
+							<FooterLink
+								href="https://www.tutorsandservices.com/revit/"
+								liClass="mb-1">Revit</FooterLink
+							>
+							<FooterLink
+								href="https://www.tutorsandservices.com/rhino-grasshopper/"
+								liClass="mb-1">Rhino</FooterLink
+							>
+							<FooterLink
+								href="https://www.tutorsandservices.com/sketchup/"
+								liClass="mb-1">Sketchup</FooterLink
+							>
+							<FooterLink
+								href="https://tutorsandservices.com/solidworks/"
+								liClass="mb-1">Solidworks</FooterLink
+							>
+							<FooterLink
+								href="https://www.tutorsandservices.com/unreal-engine/"
+								liClass="mb-1">Unreal Engine</FooterLink
+							>
 						</FooterLinkGroup>
 					</div>
 				</div>
@@ -104,17 +131,42 @@
 					<h2 class="my-6 text-2xl font-bold text-white">Top Services</h2>
 					<div class="grid grid-cols-1 text-base">
 						<FooterLinkGroup ulClass="list-disc list-inside">
-							<FooterLink href="#" liClass="mb-1">3D Print Modeling</FooterLink>
-							<FooterLink href="#" liClass="mb-1">Architectural Rendering</FooterLink>
-							<FooterLink href="#" liClass="mb-1"
-								>Construction Documentation</FooterLink
+							<FooterLink
+								href="https://www.tutorsandservices.com/3d-print-modeling/"
+								liClass="mb-1">3D Print Modeling</FooterLink
 							>
-							<FooterLink href="#" liClass="mb-1">Furniture Modeling</FooterLink>
-							<FooterLink href="#" liClass="mb-1">Interior Modeling</FooterLink>
-							<FooterLink href="#" liClass="mb-1">Interior Rendering</FooterLink>
-							<FooterLink href="#" liClass="mb-1">Mechanical Modeling</FooterLink>
-							<FooterLink href="#" liClass="mb-1">Product Rendering</FooterLink>
-							<FooterLink href="#" liClass="mb-1">Virtual Tours</FooterLink>
+							<FooterLink
+								href="https://www.tutorsandservices.com/architectural-rendering/"
+								liClass="mb-1">Architectural Rendering</FooterLink
+							>
+							<FooterLink
+								href="https://www.tutorsandservices.com/construction-documentation/"
+								liClass="mb-1">Construction Documentation</FooterLink
+							>
+							<FooterLink
+								href="https://www.tutorsandservices.com/furniture-modeling/"
+								liClass="mb-1">Furniture Modeling</FooterLink
+							>
+							<FooterLink
+								href="https://www.tutorsandservices.com/interior-modeling/"
+								liClass="mb-1">Interior Modeling</FooterLink
+							>
+							<FooterLink
+								href="https://www.tutorsandservices.com/interior-rendering/"
+								liClass="mb-1">Interior Rendering</FooterLink
+							>
+							<FooterLink
+								href="https://www.tutorsandservices.com/mechanical-modeling/"
+								liClass="mb-1">Mechanical Modeling</FooterLink
+							>
+							<FooterLink
+								href="https://www.tutorsandservices.com/product-rendering/"
+								liClass="mb-1">Product Rendering</FooterLink
+							>
+							<FooterLink
+								href="https://www.tutorsandservices.com/virtual-tours/"
+								liClass="mb-1">Virtual Tours</FooterLink
+							>
 						</FooterLinkGroup>
 					</div>
 				</div>
