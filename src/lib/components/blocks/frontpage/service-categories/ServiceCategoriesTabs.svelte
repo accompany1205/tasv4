@@ -6,7 +6,7 @@
 	let flattened: string[] = [];
 
 	const getCategoryImages = () => {
-		const pictures = import.meta.glob('$lib/assets/sketchup/main/*.webp', {
+		const pictures = import.meta.glob('$lib/assets/sketchup/services/**/*.webp', {
 			query: {
 				format: 'webp;jpeg',
 				w: '256;', //120;240;480;
