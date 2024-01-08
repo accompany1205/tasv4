@@ -6,7 +6,7 @@
 	let flattened: string[] = [];
 
 	const getCategoryImages = () => {
-		const pictures = import.meta.glob('$lib/assets/sketchup/main/*.webp', {
+		const pictures = import.meta.glob('$lib/assets/sketchup/services/**/*.webp', {
 			query: {
 				format: 'webp;jpeg',
 				w: '256;', //120;240;480;
@@ -31,7 +31,8 @@
 	defaultClass="flex flex-wrap justify-start space-x-2 py-2 px-4 text-2xl text-gray-900 first:pl-0"
 	activeClasses="bg-emerald-400 py-2 px-4 text-2xl text-white rounded"
 	inactiveClasses="py-2 px-4 text-2xl text-gray-900 hover:bg-emerald-400 hover:text-white hover:rounded"
-	contentClass="p-0 transition-all duration-300 ease-linear"
+	contentClass="flex item-start p-0 transition-all duration-300 ease-linear"
+	divider="{false}"
 >
 	<CategoriesTabItems open title="All" on:click="{getCategoryImages}" images="{flattened}" />
 
