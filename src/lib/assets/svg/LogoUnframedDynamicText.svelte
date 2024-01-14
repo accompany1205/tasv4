@@ -157,6 +157,7 @@
 		</g>
 
 		<slot name="logo-icon" />
+
 		<g id="Wordmark">
 			<slot>
 				<text class="cls-18" transform="translate(195 44.36)"> Tutors And </text>
