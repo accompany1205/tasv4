@@ -1,6 +1,8 @@
 <script lang="ts">
     import { Button } from "flowbite-svelte";
+
     let droppedFiles: FileList | null = null;
+    let imagePreviews: string[] = [];
 
     function handleDragOver(event: DragEvent) {
         event.preventDefault();
@@ -12,7 +14,15 @@
         event.stopPropagation();
         if (event.dataTransfer?.files) {
             droppedFiles = event.dataTransfer.files;
+            generateImagePreviews();
         }
+    }
+
+    function generateImagePreviews() {
+        if (!droppedFiles) return;
+        imagePreviews = Array.from(droppedFiles).map(file =>
+            URL.createObjectURL(file)
+        );
     }
 
     const accessKey = import.meta.env.VITE_BUNNY_API;
@@ -42,6 +52,7 @@
 
             if (response.ok) {
                 console.log('File uploaded successfully');
+                window.location.href = "/backend";
             } else {
                 console.error('Upload failed', response.status, await response.text());
             }
@@ -57,22 +68,20 @@
     on:drop={handleDrop}
     class="p-10 max-w-4xl mt-10 rounded-xl m-auto text-center border-2 border-dashed border-gray-500"
 >
-
     {#if !droppedFiles}
         <div class="font-bold text-emerald-500">
             Drop files here
         </div>
     {:else}
         <div class="flex flex-col gap-4">
-                <p class="font-bold text-emerald-500">Files loaded:</p>
+            <p class="font-bold text-emerald-500">Files loaded:</p>
 
-                <ul class="w-full grid grid-cols-3">
-                    {#each Array.from(droppedFiles) as file (file.name)}
-                        <li>{file.name} - {file.size} bytes</li>
-                    {/each}
-                </ul>
-                <Button class="m-auto" on:click={uploadFiles}>Add Images</Button>
+            <div class="grid grid-cols-3 gap-4">
+                {#each imagePreviews as preview (preview)}
+                    <!-- svelte-ignore a11y-img-redundant-alt -->
+                    <img src={preview} alt="Image preview" class="w-full h-auto"/>
+                {/each}
+            </div>
         </div>
     {/if}
-    
 </div>

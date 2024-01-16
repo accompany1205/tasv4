@@ -1,12 +1,14 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import AddMedia from "./CRUD/AddMedia.svelte";
-    import { Gallery } from 'flowbite-svelte';
+    import DelMedia from "./CRUD/DelMedia.svelte";
+    import { Gallery} from 'flowbite-svelte';
+    import { CloseOutline } from 'flowbite-svelte-icons';
 
-    let images: never[] = [];
+    let images: any[]= [];
 
     const accessKey = import.meta.env.VITE_BUNNY_API;
-    const region = 'ny'; // e.g., 'ny' for New York
+    const region = 'ny';
     const storageZoneName = 'tasv4/frontend';
     const apiHostname = region ? `${region}.storage.bunnycdn.com` : 'storage.bunnycdn.com';
     const pullZoneHostname = 'tas4.b-cdn.net/frontend'; // Pull zone base URL
@@ -37,4 +39,16 @@
 </script>
 
 <AddMedia/>
-<Gallery items={images} class="max-w-4xl m-auto my-20 gap-4 grid-cols-2 md:grid-cols-3" />
+
+
+
+<div class="grid gap-4 grid-cols-3 max-w-4xl m-auto my-12">
+    {#each images as image}
+        <div class="relative inline-block group">
+            <DelMedia/>
+            <img src={image.src} alt={image.alt} class="h-auto max-w-full rounded-xl" />
+        </div>
+    {/each}
+</div>
+
+
