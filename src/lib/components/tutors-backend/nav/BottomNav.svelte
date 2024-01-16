@@ -10,7 +10,7 @@
       optionIndex = index;
       dispatch('change', { optionIndex }); // Dispatch the change event with the current optionIndex
     }
-  </script>
+</script>
   
 <BottomNav position="fixed" classInner="grid-cols-4" outerClass="z-30 w-full">
     <BottomNavItem btnName="Leads" on:click={() => selectOption(1)}>
