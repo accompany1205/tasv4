@@ -4,6 +4,7 @@
     import TutorsBase from "$lib/components/backend/tutors/TutorsBase.svelte";
     import ServicesBase from "$lib/components/backend/services/ServicesBase.svelte";
     import Settings from "$lib/components/backend/settings/Settings.svelte";
+    import MediaBase from "$lib/components/backend/media/MediaBase.svelte";
     import { writable } from "svelte/store";
     import { onMount } from 'svelte';
 
@@ -35,6 +36,8 @@
 {:else if $currentNavIndex === 3}
     <TutorsBase/>
 {:else if $currentNavIndex === 4}
+    <MediaBase/>
+{:else if $currentNavIndex === 5}
     <Settings/>
 {/if}
 

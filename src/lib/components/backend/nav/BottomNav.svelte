@@ -1,7 +1,7 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
     import { BottomNav, BottomNavItem } from 'flowbite-svelte';
-    import { ProfileCardOutline, AtomOutline, DrawSquareOutline, AdjustmentsVerticalOutline, UserEditOutline } from 'flowbite-svelte-icons';
+    import { ProfileCardOutline, AtomOutline, DrawSquareOutline, AdjustmentsVerticalOutline, UserEditOutline, ImageOutline } from 'flowbite-svelte-icons';
   
     const dispatch = createEventDispatcher();
     export let optionIndex = 1;
@@ -13,7 +13,7 @@
 </script>
 
 
-<BottomNav position="fixed" classInner="grid-cols-4" outerClass="z-30 w-full">
+<BottomNav position="fixed" classInner="grid-cols-5" outerClass="z-30 w-full">
     <BottomNavItem btnName="Leads" on:click={() => selectOption(1)}>
         <ProfileCardOutline class={`w-5 h-5 mb-1 ${optionIndex === 1 ? 'text-primary-600 dark:text-primary-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-primary-600`} />
     </BottomNavItem>
@@ -26,7 +26,11 @@
         <UserEditOutline class={`w-5 h-5 mb-1 ${optionIndex === 3 ? 'text-primary-600 dark:text-primary-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-primary-600`} />
     </BottomNavItem>
 
-    <BottomNavItem btnName="Settings" on:click={() => selectOption(4)}>
-        <AdjustmentsVerticalOutline class={`w-5 h-5 mb-1 ${optionIndex === 4 ? 'text-primary-600 dark:text-primary-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-primary-600`} />
+    <BottomNavItem btnName="Media" on:click={() => selectOption(4)}>
+        <ImageOutline class={`w-5 h-5 mb-1 ${optionIndex === 4 ? 'text-primary-600 dark:text-primary-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-primary-600`} />
+    </BottomNavItem>
+
+    <BottomNavItem btnName="Settings" on:click={() => selectOption(5)}>
+        <AdjustmentsVerticalOutline class={`w-5 h-5 mb-1 ${optionIndex === 5 ? 'text-primary-600 dark:text-primary-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-primary-600`} />
     </BottomNavItem>
 </BottomNav>
