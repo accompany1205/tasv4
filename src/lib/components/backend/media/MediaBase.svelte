@@ -5,13 +5,14 @@
 
     let images: never[] = [];
 
-    const accessKey = 'YOUR_BUNNY_STORAGE_API_KEY';
-    const region = 'YOUR_REGION'; // e.g., 'ny' for New York
-    const storageZoneName = 'YOUR_STORAGE_ZONE_NAME';
-    const hostname = region ? `${region}.storage.bunnycdn.com` : 'storage.bunnycdn.com';
+    const accessKey = import.meta.env.VITE_BUNNY_API;
+    const region = 'ny'; // e.g., 'ny' for New York
+    const storageZoneName = 'tasv4/frontend';
+    const apiHostname = region ? `${region}.storage.bunnycdn.com` : 'storage.bunnycdn.com';
+    const pullZoneHostname = 'tas4.b-cdn.net/frontend'; // Pull zone base URL
+    const apiEndpoint = `https://${apiHostname}/${storageZoneName}/`;
 
     onMount(async () => {
-        const apiEndpoint = `https://${hostname}/${storageZoneName}/`;
         try {
             const response = await fetch(apiEndpoint, {
                 method: 'GET',
@@ -22,9 +23,9 @@
 
             if (response.ok) {
                 const fileList = await response.json();
-                images = fileList.map(file => ({
+                images = fileList.map((file: { ObjectName: string; }) => ({
                     alt: file.ObjectName, 
-                    src: `${apiEndpoint}${encodeURIComponent(file.ObjectName)}`
+                    src: `https://${pullZoneHostname}/${encodeURIComponent(file.ObjectName)}`
                 }));
             } else {
                 console.error('Failed to load images', response.status);

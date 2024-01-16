@@ -1,26 +1,33 @@
 <script lang="ts">
-    let files: FileList | null = null;
+    import { Button } from "flowbite-svelte";
+    let droppedFiles: FileList | null = null;
 
     function handleDragOver(event: DragEvent) {
         event.preventDefault();
         event.stopPropagation();
     }
 
-    async function handleDrop(event: DragEvent) {
+    function handleDrop(event: DragEvent) {
         event.preventDefault();
         event.stopPropagation();
         if (event.dataTransfer?.files) {
-            files = event.dataTransfer.files;
-            await uploadFile(files[0]); // Example: Uploading the first file
+            droppedFiles = event.dataTransfer.files;
         }
     }
-  
-    const accessKey = '8104dfe1-44ca-47cf-b7a9c151b06a-b048-4847';
+
+    const accessKey = import.meta.env.VITE_BUNNY_API;
     const region = 'ny'; // e.g., 'ny' for New York
     const storageZoneName = 'tasv4/frontend';
-
     const hostname = region ? `${region}.storage.bunnycdn.com` : 'storage.bunnycdn.com';
     const apiEndpoint = `https://${hostname}/${storageZoneName}/`;
+
+    async function uploadFiles() {
+        if (!droppedFiles) return;
+
+        for (let i = 0; i < droppedFiles.length; i++) {
+            await uploadFile(droppedFiles[i]);
+        }
+    }
 
     async function uploadFile(file: File) {
         try {
@@ -44,19 +51,28 @@
     }
 </script>
 
+<!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
     on:dragover={handleDragOver}
     on:drop={handleDrop}
-    class="p-12 max-w-xs m-auto text-center border-2 border-dashed border-gray-500"
+    class="p-10 max-w-4xl mt-10 rounded-xl m-auto text-center border-2 border-dashed border-gray-500"
 >
 
-    Drop files here
-    {#if files}
-        <p>Files:</p>
-        <ul>
-        {#each Array.from(files) as file (file.name)}
-            <li>{file.name} - {file.size} bytes</li>
-        {/each}
-        </ul>
+    {#if !droppedFiles}
+        <div class="font-bold text-emerald-500">
+            Drop files here
+        </div>
+    {:else}
+        <div class="flex flex-col gap-4">
+                <p class="font-bold text-emerald-500">Files loaded:</p>
+
+                <ul class="w-full grid grid-cols-3">
+                    {#each Array.from(droppedFiles) as file (file.name)}
+                        <li>{file.name} - {file.size} bytes</li>
+                    {/each}
+                </ul>
+                <Button class="m-auto" on:click={uploadFiles}>Add Images</Button>
+        </div>
     {/if}
+    
 </div>
