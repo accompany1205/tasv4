@@ -1,11 +1,37 @@
-<script>
+<script lang='ts'>
     import { Button, Modal } from 'flowbite-svelte';
     import { CloseOutline, ExclamationCircleOutline } from 'flowbite-svelte-icons';
 
-    let popupModal = false;
+    export let imagePath:any;
 
-    function confirmDeletion() {
-        console.log("Media deleted");
+    let popupModal = false;
+    const accessKey = import.meta.env.VITE_BUNNY_API;
+    const region = 'ny';
+    const storageZoneName = 'tasv4/frontend';
+    const apiHostname = region ? `${region}.storage.bunnycdn.com` : 'storage.bunnycdn.com';
+
+    async function confirmDeletion() {
+        const encodedPath = encodeURIComponent(imagePath);
+        const deleteEndpoint = `https://${apiHostname}/${storageZoneName}/${encodedPath}`;
+
+        try {
+            const response = await fetch(deleteEndpoint, {
+                method: 'DELETE',
+                headers: {
+                    'AccessKey': accessKey,
+                }
+            });
+
+            if (response.ok) {
+                console.log('Image deleted successfully');
+                window.location.href = "/backend";
+            } else {
+                console.error('Failed to delete image', response.status);
+            }
+        } catch (error) {
+            console.error('Error deleting image', error);
+        }
+
         popupModal = false;
     }
 
@@ -14,10 +40,8 @@
     }
 </script>
 
-<!-- Icon to open the modal -->
 <CloseOutline on:click={() => (popupModal = true)} class="hidden m-2 p-2 bg-white w-10 h-10 rounded-full absolute top-0 right-0 group-hover:block hover:bg-red-500"/>
 
-<!-- Modal for deletion confirmation -->
 <Modal bind:open={popupModal} size="xs" autoclose title="Delete File">
     <div class="text-center">
         <ExclamationCircleOutline class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" />

@@ -1,5 +1,8 @@
 <script lang="ts">
-    import { Button } from "flowbite-svelte";
+    import { Button, Modal } from 'flowbite-svelte';
+    let defaultModal = false;
+
+
 
     let droppedFiles: FileList | null = null;
     let imagePreviews: string[] = [];
@@ -63,25 +66,34 @@
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div
-    on:dragover={handleDragOver}
-    on:drop={handleDrop}
-    class="p-10 max-w-4xl mt-10 rounded-xl m-auto text-center border-2 border-dashed border-gray-500"
->
-    {#if !droppedFiles}
-        <div class="font-bold text-emerald-500">
-            Drop files here
-        </div>
-    {:else}
-        <div class="flex flex-col gap-4">
-            <p class="font-bold text-emerald-500">Files loaded:</p>
 
-            <div class="grid grid-cols-3 gap-4">
-                {#each imagePreviews as preview (preview)}
-                    <!-- svelte-ignore a11y-img-redundant-alt -->
-                    <img src={preview} alt="Image preview" class="w-full h-auto"/>
-                {/each}
+<Button on:click={() => (defaultModal = true)}>Add Files</Button>
+
+<Modal title="Add Files to Media" bind:open={defaultModal} autoclose>
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div
+        on:dragover={handleDragOver}
+        on:drop={handleDrop}
+        class="p-10 max-w-4xl mx-10 rounded-xl m-auto text-center border-2 border-dashed border-gray-500"
+    >
+        {#if !droppedFiles}
+            <div class="font-bold text-emerald-500">
+                Drop files here
             </div>
-        </div>
-    {/if}
-</div>
+        {:else}
+            <div class="flex flex-col gap-4">
+                <p class="font-bold text-emerald-500">Files loaded:</p>
+
+                <div class="grid grid-cols-3 gap-4">
+                    {#each imagePreviews as preview (preview)}
+                        <!-- svelte-ignore a11y-img-redundant-alt -->
+                        <img src={preview} alt="Image preview" class="w-full h-auto"/>
+                    {/each}
+                </div>
+                
+
+            </div>
+        {/if}
+    </div>
+</Modal>
+
