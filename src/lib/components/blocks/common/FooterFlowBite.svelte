@@ -17,6 +17,7 @@
 		LinkedinSolid,
 	} from 'flowbite-svelte-icons';
 	import LogoUnframedDynamicText from '$lib/assets/svg/LogoUnframedDynamicText.svelte';
+	import HomeLogoIcon from '$lib/assets/svg/logo-types/HomeLogoIcon.svelte';
 </script>
 
 <Footer footerType="sitemap" class="bg-nile-blue-900 text-white ">
@@ -26,6 +27,7 @@
 				fill="white"
 				class="font-serif mt-auto  max-h-[inherit] text-lg max-w-lg"
 			>
+				<svelte:component this="{HomeLogoIcon}" slot="logo-icon" />
 				<text class="dyntext" transform="translate(195 76)"> Tutors & </text>
 				<text class="dyntext" transform="translate(195 117)"> Services </text>
 			</LogoUnframedDynamicText>

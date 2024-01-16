@@ -3,9 +3,9 @@
 </script>
 
 <SectionBlue title="Company Philosophy">
-	<div class="max-w-sm">
-		<div class="pl-4">
-			<h4 class="py-4 pt-0 text-2xl">Don't Learn Alone</h4>
+	<div class="m-2 mx-auto flex max-w-screen-xl flex-wrap gap-4">
+		<div class="card w-full max-w-sm flex-shrink-0 pl-4">
+			<h4 class="py-4 text-2xl">Don't Learn Alone</h4>
 			<p>
 				Professionals these days are sitting alone and staring at their computers. They
 				spend years searching online for tools that will increase their workplace
@@ -17,7 +17,7 @@
 			</p>
 		</div>
 
-		<div class="pl-4">
+		<div class="card w-full max-w-sm flex-shrink-0 pl-4">
 			<h4 class="py-4 text-2xl">Bring Back the Human Connection</h4>
 			<p>
 				We strive to bring human connection back to the work environment. Our tutors work
@@ -29,7 +29,7 @@
 			</p>
 		</div>
 
-		<div class="pl-4">
+		<div class="card w-full max-w-sm flex-shrink-0 pl-4">
 			<h4 class="py-4 text-2xl">Tutors, Services, or Both</h4>
 			<p>
 				Sometimes our clients want to learn a program from beginning to end, sometimes they

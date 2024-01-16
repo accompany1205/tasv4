@@ -4,6 +4,16 @@
 	import LogoUnframedDynamicText from '$lib/assets/svg/LogoUnframedDynamicText.svelte';
 
 	import { BarsSolid } from 'flowbite-svelte-icons';
+	import headerLogo from '$lib/stores/header_logo';
+	import { LogoType } from '$lib/constant';
+	import HomeLogoIcon from '$lib/assets/svg/logo-types/HomeLogoIcon.svelte';
+	import SketchupLogoIcon from '$lib/assets/svg/logo-types/SketchupLogoIcon.svelte';
+	import Renderer from '$lib/components/blocks/common/Renderer.svelte';
+
+	const logos = {
+		[LogoType.GLOBE]: HomeLogoIcon,
+		[LogoType.SKETCHUP]: SketchupLogoIcon,
+	};
 </script>
 
 <header
@@ -36,6 +46,11 @@
 			fill="black"
 			class="font-serif mt-auto h-[50px] max-h-[inherit] max-w-full text-lg pb-[0px]"
 		>
+			<Renderer
+				component="{logos[$headerLogo]}"
+				props="{{ isHeader: true }}"
+				slotName="logo-icon"
+			/>
 			<text class="dyntext" transform="translate(195 76)"> Tutors & </text>
 			<text class="dyntext" transform="translate(195 117)"> Services </text>
 		</LogoUnframedDynamicText>
