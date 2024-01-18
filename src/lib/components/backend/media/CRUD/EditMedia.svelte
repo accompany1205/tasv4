@@ -12,7 +12,7 @@
     <div class="flex">
 
         <div class="w-1/2">
-            <img src={image.url} alt={image.alt} class="object-cover sticky top-0"/>
+            <img src={image.url} alt={image.alt} class="object-cover sticky top-0 rounded-xl shadow-lg"/>
         </div>
 
         <div class="grid gap-4 sm:grid-cols-1 px-10 w-1/2 overflow-y-auto">
