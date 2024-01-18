@@ -34,6 +34,20 @@
     const hostname = region ? `${region}.storage.bunnycdn.com` : 'storage.bunnycdn.com';
     const apiEndpoint = `https://${hostname}/${storageZoneName}/`;
 
+
+    function handleFileSelect(event) {
+        const files = event.target.files;
+        if (files) {
+            droppedFiles = files;
+            generateImagePreviews();
+        }
+    }
+
+    function openFileExplorer() {
+        document.getElementById('fileInput').click();
+    }
+
+
     async function uploadFiles() {
         if (!droppedFiles) return;
 
@@ -65,11 +79,11 @@
     }
 </script>
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-
 <Button on:click={() => (defaultModal = true)}>Add Files</Button>
 
-<Modal title="Add Files to Media" bind:open={defaultModal} autoclose>
+<Modal title="Add Files to Media" bind:open={defaultModal}>
+    <input type="file" id="fileInput" class="hidden" on:change={handleFileSelect} multiple />
+
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div
         on:dragover={handleDragOver}
@@ -78,7 +92,8 @@
     >
         {#if !droppedFiles}
             <div class="font-bold text-emerald-500">
-                Drop files here
+                Drop files here or
+                <Button on:click={openFileExplorer} class="mb-0 ml-2" color="alternative">Choose Files</Button>
             </div>
         {:else}
             <div class="flex flex-col gap-4">
@@ -90,10 +105,15 @@
                         <img src={preview} alt="Image preview" class="w-full h-auto"/>
                     {/each}
                 </div>
-                
-
             </div>
         {/if}
     </div>
+
+    {#if droppedFiles}
+        <div class="flex justify-evenly mt-4">
+            <Button on:click={openFileExplorer} class="mb-0 ml-2" color="alternative">Choose Files</Button>
+            <Button on:click={uploadFiles}>Upload Files</Button>
+        </div>
+    {/if}
 </Modal>
 
