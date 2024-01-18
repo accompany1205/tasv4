@@ -1,5 +1,6 @@
 <script lang="ts">
     import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, Checkbox } from 'flowbite-svelte';
+    import EditMedia from './EditMedia.svelte';
     
     export let zoomIndex:any;
     export let images: any = [];
@@ -44,7 +45,7 @@
 
                 <TableBodyCell>{formatDate(image.uploadDate)}</TableBodyCell>
                 <TableBodyCell>
-                    <a href="/tables" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Edit</a>
+                    <EditMedia image={image}/>
                 </TableBodyCell>
             </TableBodyRow>
         {/each}
