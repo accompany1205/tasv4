@@ -1,35 +1,22 @@
 <script lang='ts'>
     import { Button, Modal } from 'flowbite-svelte';
     import { CloseOutline, ExclamationCircleOutline } from 'flowbite-svelte-icons';
+    import { getFirestore, deleteDoc, doc } from 'firebase/firestore';
 
-    export let imagePath:any;
+    export let image: string;
 
     let popupModal = false;
-    const accessKey = import.meta.env.VITE_BUNNY_API;
-    const region = 'ny';
-    const storageZoneName = 'tasv4/frontend';
-    const apiHostname = region ? `${region}.storage.bunnycdn.com` : 'storage.bunnycdn.com';
 
     async function confirmDeletion() {
-        const encodedPath = encodeURIComponent(imagePath);
-        const deleteEndpoint = `https://${apiHostname}/${storageZoneName}/${encodedPath}`;
-
         try {
-            const response = await fetch(deleteEndpoint, {
-                method: 'DELETE',
-                headers: {
-                    'AccessKey': accessKey,
-                }
-            });
+            // Delete from Firestore
+            const db = getFirestore();
+            await deleteDoc(doc(db, 'media', image.id));
+            console.log('Image document deleted from Firestore');
 
-            if (response.ok) {
-                console.log('Image deleted successfully');
-                window.location.href = "/backend";
-            } else {
-                console.error('Failed to delete image', response.status);
-            }
+            // You might want to update your application state or UI here
         } catch (error) {
-            console.error('Error deleting image', error);
+            console.error('Error deleting image document from Firestore', error);
         }
 
         popupModal = false;

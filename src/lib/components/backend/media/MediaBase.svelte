@@ -6,51 +6,38 @@
     import { CloseOutline } from 'flowbite-svelte-icons';
     import {Button} from 'flowbite-svelte';
     import { Toggle } from 'flowbite-svelte';
+    import Table from './CRUD/Table.svelte';
+    import GalleryView from './CRUD/Gallery.svelte';
 
+    import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
     let images: any[]= [];
-    let gridCols = 3;
-    let isGallery = true;
-
-    const accessKey = import.meta.env.VITE_BUNNY_API;
-    const region = 'ny';
-    const storageZoneName = 'tasv4/frontend';
-    const apiHostname = region ? `${region}.storage.bunnycdn.com` : 'storage.bunnycdn.com';
-    const pullZoneHostname = 'tas4.b-cdn.net/frontend'; // Pull zone base URL
-    const apiEndpoint = `https://${apiHostname}/${storageZoneName}/`;
+    let zoomIndex = 3; // 1 to 5
+    let isGallery = false;
 
     onMount(async () => {
-        try {
-            const response = await fetch(apiEndpoint, {
-                method: 'GET',
-                headers: {
-                    'AccessKey': accessKey,
-                }
-            });
+        const db = getFirestore();
 
-            if (response.ok) {
-                const fileList = await response.json();
-                images = fileList.map((file: { ObjectName: string; }) => ({
-                    alt: file.ObjectName, 
-                    src: `https://${pullZoneHostname}/${encodeURIComponent(file.ObjectName)}`
-                }));
-            } else {
-                console.error('Failed to load images', response.status);
-            }
+        try {
+            const mediaCollection = collection(db, 'media');
+            const querySnapshot = await getDocs(mediaCollection);
+
+            images = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            console.log(images);
+
         } catch (error) {
-            console.error('Error fetching images', error);
+            console.error('Error fetching images from Firestore', error);
         }
     });
 
-
     function zoomOut() {
-        if (gridCols < 5) 
-            gridCols++;
+        if (zoomIndex < 5) 
+            zoomIndex++;
     }
 
     function zoomIn() {
-        if (gridCols > 1) 
-            gridCols--;
+        if (zoomIndex > 1) 
+            zoomIndex--;
     }
 
     function toggleView() {
@@ -59,7 +46,7 @@
 
 </script>
 
-<div class="max-w-4xl bg-white rounded-3xl h-24 m-auto mt-12 flex justify-evenly items-center gap-4">
+<div class="max-w-4xl bg-white rounded-3xl border-2 border-emerald-200 border-solid h-24 m-auto my-12 flex justify-evenly items-center gap-4 ">
     <ButtonGroup>
         <Button on:click={zoomIn}>Zoom In</Button>
         <Button on:click={zoomOut}>Zoom Out</Button>
@@ -75,14 +62,7 @@
 
 
 {#if isGallery}
-    <div class={`grid gap-4 grid-cols-${gridCols} max-w-4xl m-auto mt-12 mb-20`}>
-        {#each images as image}
-            <div class="relative inline-block group">
-                <DelMedia imagePath={image.alt}/>
-                <img src={image.src} alt={image.alt} class="h-auto max-w-full rounded-xl" />
-            </div>
-        {/each}
-    </div>
+    <GalleryView images={images} zoomIndex={zoomIndex}/>
 {:else}
-    List here
+    <Table images={images} zoomIndex={zoomIndex}/>
 {/if}

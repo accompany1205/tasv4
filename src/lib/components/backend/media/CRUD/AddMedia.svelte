@@ -1,11 +1,16 @@
 <script lang="ts">
-    import { Button, Modal } from 'flowbite-svelte';
+	import { db } from '$lib/firebase';
+	import { addDoc, collection } from 'firebase/firestore';
+    import { Button, Modal, Progressbar } from 'flowbite-svelte';
     let defaultModal = false;
+    import { sineOut } from 'svelte/easing';
+
 
 
 
     let droppedFiles: FileList | null = null;
     let imagePreviews: string[] = [];
+    let uploadProgress = 0;
 
     function handleDragOver(event: DragEvent) {
         event.preventDefault();
@@ -30,12 +35,13 @@
 
     const accessKey = import.meta.env.VITE_BUNNY_API;
     const region = 'ny'; // e.g., 'ny' for New York
-    const storageZoneName = 'tasv4/frontend';
+    const storageZoneName = 'tasv4/media';
     const hostname = region ? `${region}.storage.bunnycdn.com` : 'storage.bunnycdn.com';
     const apiEndpoint = `https://${hostname}/${storageZoneName}/`;
+    const pullZone = 'https://tas4.b-cdn.net/media'
 
 
-    function handleFileSelect(event) {
+    function handleFileSelect(event: { target: { files: any; }; }) {
         const files = event.target.files;
         if (files) {
             droppedFiles = files;
@@ -44,19 +50,33 @@
     }
 
     function openFileExplorer() {
-        document.getElementById('fileInput').click();
+        const fileInput = document.getElementById('fileInput');
+        if (fileInput) {
+            fileInput.click();
+        } else {
+            console.error('File input element not found');
+        }
     }
+
 
 
     async function uploadFiles() {
         if (!droppedFiles) return;
 
-        for (let i = 0; i < droppedFiles.length; i++) {
+        uploadProgress = 0;
+        const totalFiles = droppedFiles.length;
+
+        for (let i = 0; i < totalFiles; i++) {
             await uploadFile(droppedFiles[i]);
+            uploadProgress = ((i + 1) / totalFiles) * 100; // Update progress
         }
+
+        window.location.href = "/backend";
     }
 
     async function uploadFile(file: File) {
+        const fileUrl = apiEndpoint + encodeURIComponent(file.name);
+
         try {
             const response = await fetch(apiEndpoint + encodeURIComponent(file.name), {
                 method: 'PUT',
@@ -69,13 +89,31 @@
 
             if (response.ok) {
                 console.log('File uploaded successfully');
-                window.location.href = "/backend";
+                createMediaDocument(file, fileUrl);
             } else {
                 console.error('Upload failed', response.status, await response.text());
             }
         } catch (error) {
             console.error('Error uploading file', error);
         }
+    }
+
+    async function createMediaDocument(file: File, fileUrl: any) {
+        const title = file.name.replace(/\.[^/.]+$/, "");
+
+        const mediaDoc = {
+            alt: "",
+            name: file.name,
+            owner: "", // UID of the logged in user
+            show: true,
+            tags: [],
+            uploadDate: new Date(),
+            url: `${pullZone}/${encodeURIComponent(file.name)}`,
+            title
+        };
+
+        await addDoc(collection(db, 'media'), mediaDoc);
+        console.log('Media document created:', mediaDoc);
     }
 </script>
 
@@ -108,6 +146,9 @@
             </div>
         {/if}
     </div>
+
+    <Progressbar progress={uploadProgress} class={uploadProgress > 0 ? '' : 'hidden'} animate labelInside tweenDuration={1500} easing={sineOut} size="h-4"/>
+
 
     {#if droppedFiles}
         <div class="flex justify-evenly mt-4">
