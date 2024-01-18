@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import AddMedia from "./CRUD/AddMedia.svelte";
     import DelMedia from "./CRUD/DelMedia.svelte";
-    import { ButtonGroup, Gallery} from 'flowbite-svelte';
+    import { ButtonGroup, Gallery, Input} from 'flowbite-svelte';
     import { CloseOutline } from 'flowbite-svelte-icons';
     import {Button} from 'flowbite-svelte';
     import { Toggle } from 'flowbite-svelte';
@@ -14,6 +14,7 @@
     let images: any[]= [];
     let zoomIndex = 3; // 1 to 5
     let isGallery = false;
+    let imageSearch = '';
 
     onMount(async () => {
         const db = getFirestore();
@@ -46,7 +47,9 @@
 
 </script>
 
-<div class="max-w-4xl bg-white rounded-3xl border-2 border-emerald-200 border-solid h-24 m-auto my-12 flex justify-evenly items-center gap-4 ">
+<div class="max-w-4xl bg-white rounded-3xl border-2 border-emerald-200 border-solid shadow-lg h-24 m-auto my-12 flex justify-evenly items-center gap-4">
+    <Input placeholder="Search Images" bind:value={imageSearch} class="max-w-xs"/>
+
     <ButtonGroup>
         <Button on:click={zoomIn}>Zoom In</Button>
         <Button on:click={zoomOut}>Zoom Out</Button>
@@ -62,7 +65,7 @@
 
 
 {#if isGallery}
-    <GalleryView images={images} zoomIndex={zoomIndex}/>
+    <GalleryView images={images} zoomIndex={zoomIndex} filterText={imageSearch}/>
 {:else}
-    <Table images={images} zoomIndex={zoomIndex}/>
+    <Table images={images} zoomIndex={zoomIndex} filterText={imageSearch}/>
 {/if}

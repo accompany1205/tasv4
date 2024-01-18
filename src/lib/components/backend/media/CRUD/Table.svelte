@@ -3,7 +3,7 @@
     
     export let zoomIndex:any;
     export let images: any = [];
-    let filterText = '';
+    export let filterText:string;
 
     function formatDate(firestoreTimestamp: { toDate: () => any; }) {
         if (firestoreTimestamp && firestoreTimestamp.toDate) {
@@ -22,7 +22,7 @@
 </script>
 
 
-<Table hoverable={true} class="max-w-4xl m-auto mb-20">
+<Table hoverable={true} class="max-w-4xl m-auto mb-20 shadow">
     <TableHead>
         <TableHeadCell class="!p-4"><Checkbox /></TableHeadCell>
         <TableHeadCell>Image</TableHeadCell>
@@ -36,7 +36,9 @@
             <TableBodyRow>
                 <TableBodyCell class="!p-4"><Checkbox /></TableBodyCell>
                 <TableBodyCell>
-                    <img src={image.url} alt={image.alt} class="w-20 h-20 object-cover rounded" />
+                    <img src={image.url} alt={image.alt} 
+                    style="width: {300 - zoomIndex * 50}px; height: {300 - zoomIndex * 50}px;" 
+                    class="object-cover rounded" />
                 </TableBodyCell>
                 <TableBodyCell>{image.title}</TableBodyCell>
 
