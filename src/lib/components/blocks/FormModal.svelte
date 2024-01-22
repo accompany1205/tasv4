@@ -7,8 +7,9 @@
 
     export let butClass = "max-w-sm items-center bg-emerald-400 p-3 text-center text-3xl font-bold text-white hover:bg-emerald-300";
     export let butTitle = "Get Started Today";
+    export let showBtn = true;
 
-    let clickOutsideModal = false;
+    export let clickOutsideModal = false;
     let type1 = '';
     let type2 = '';
     let type3 = '';
@@ -70,12 +71,14 @@ async function handleSubmit(event: any) {
 }
 </script>
 
-<Button
-    class={butClass}
-    on:click={() => (clickOutsideModal = true)}
->
-    {butTitle}
-</Button>
+{#if showBtn}
+    <Button
+        class={butClass}
+        on:click={() => (clickOutsideModal = true)}
+    >
+        {butTitle}
+    </Button>
+{/if}
 
 <Modal title="Information Form" bind:open={clickOutsideModal} outsideclose class="z-50">  
     <form class="p-5 overflow-auto" on:submit={handleSubmit}>

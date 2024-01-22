@@ -14,9 +14,11 @@
 	import TutorCardV3 from '$lib/components/cards/TutorCardV3.svelte';
 	import { AngleRightSolid, AngleLeftSolid } from 'flowbite-svelte-icons';
 	import type { SwiperContainer } from 'swiper/element';
+	import FormModal from '../FormModal.svelte';
 
 	export let tutors: string[];
 	let featuredTutors = getTutors(tutors);
+	let openForm = false;
 
 	const params = {
 		slidesPerView: 1,
@@ -66,6 +68,13 @@
 			swiper.swiper.slidePrev();
 		});
 	});
+
+    function onConsultationClick(event: { detail: { tutorId: any; }; }) {
+		console.log("hello");
+        const tutorId = event.detail.tutorId;
+		openForm = true;
+    }
+
 </script>
 
 <div class="swiper block overflow-hidden bg-nile-blue-900 px-0 pb-16 pt-8">
@@ -83,11 +92,11 @@
 			{#each featuredTutors as tutor}
 				<swiper-slide class="">
 					<div class="m-auto h-[100cqh] w-96 max-w-2xl flex-shrink-0 p-2">
-						<TutorCardV3 tutor="{tutor}" class="mx-auto h-full self-stretch" />
+						<TutorCardV3 tutor="{tutor}" class="mx-auto h-full self-stretch" on:consultationClick={onConsultationClick}/>
 					</div>
 				</swiper-slide>
 			{/each}
-		</swiper-container>
+		</swiper-container> 
 
 		<div class="hidden xl:block">
 			<div
@@ -111,3 +120,5 @@
 		</div>
 	</div>
 </div>
+
+<FormModal showBtn={false} clickOutsideModal={openForm}/>
