@@ -1,8 +1,10 @@
 import type { Actions } from './$types';
-import { JOTFORM_API } from '$env/static/private';
+import { VITE_JOTFORM_API } from '$env/static/private';
 
 export const actions = {
 	default: async ({ cookies , request }) => {
+		console.log("hello");
+
 		const formData = await request.formData();
 		console.log(formData);
 
@@ -21,7 +23,7 @@ export const actions = {
 
 		console.log(body);
 
-		const url2 = `https://api.jotform.com/form/213494772938167/submissions?apiKey=${JOTFORM_API}`;
+		const url2 = `https://api.jotform.com/form/213494772938167/submissions?apiKey=${VITE_JOTFORM_API}`;
 
 		const response2 = await fetch(url2, {
 			method: 'POST',
