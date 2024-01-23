@@ -1,8 +1,8 @@
 <script lang="ts">
     import { Button, Modal } from 'flowbite-svelte';
     import { Label, Input } from 'flowbite-svelte';
-    import TagManager from './TagManager.svelte';
-    import { fetchServicesAndTutors } from './tagManager';
+    import TagManager from './tags/TagManager.svelte';
+    import { fetchServicesAndTutors } from './tags/tagManager';
 
     export let image: any;
     let defaultModal = true;
@@ -65,8 +65,6 @@
                 <Label for="input-group-1" class="block mb-2">Tags</Label>
                 <TagManager image={image}/>
             </div>
-
-            {tags}
 
             <!-- Static -->
             <div class="flex">
