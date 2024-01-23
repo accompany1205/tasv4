@@ -58,7 +58,7 @@
 
             <div class="mb-6">
                 <Label for="input-group-1" class="block mb-2">Uploaded</Label>
-                <Input id="uploadDate" type="date" value={image.uploadDate}/>
+                <Input id="uploadDate" type="date" value={image.uploadDate}/>{image.uploadDate}
             </div>
 
             <div class="mb-6">
