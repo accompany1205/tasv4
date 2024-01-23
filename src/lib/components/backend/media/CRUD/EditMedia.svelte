@@ -1,6 +1,8 @@
 <script lang="ts">
     import { Button, Modal } from 'flowbite-svelte';
     import { Label, Input } from 'flowbite-svelte';
+    import TagManager from './TagManager.svelte';
+    import { fetchServicesAndTutors } from './tagManager';
 
     export let image: any;
     let defaultModal = true;
@@ -8,7 +10,28 @@
     let title = image.title;
     let altText = image.alt;
     let published = image.published;
-    let tags = image.tags;    
+    let tags = image.tags;
+    let newTags: any[] = [];
+
+    console.log(image);
+    
+    function formatDate(firestoreTimestamp: { toDate: () => any; }) {
+        if (firestoreTimestamp && firestoreTimestamp.toDate) {
+            const date = firestoreTimestamp.toDate();
+            const options: Intl.DateTimeFormatOptions = { 
+                year: 'numeric', month: '2-digit', day: '2-digit'
+            };
+            return new Intl.DateTimeFormat('en-US', options).format(date);
+        }
+        return '';
+    } 
+
+    async function loadTags() {
+        const { services, tutors } = await fetchServicesAndTutors();
+        newTags = [...services, ...tutors];
+    }
+    loadTags();
+
 </script>
 
 <Button color="alternative" on:click={() => (defaultModal = true)}>Edit</Button>
@@ -40,30 +63,50 @@
 
             <div class="mb-6">
                 <Label for="input-group-1" class="block mb-2">Tags</Label>
-                <Input id="tags" type="text" bind:value={tags} />
+                <TagManager image={image}/>
             </div>
 
+            {tags}
 
             <!-- Static -->
-            <div class="mb-6">
-                <Label for="input-group-1" class="block mb-2">File Name</Label>
-                <Input id="name" type="text" value={image.name}/>
+            <div class="flex">
+                <div class="text-gray-900 font-semibold">
+                    Name:&nbsp;
+                </div>
+
+                <div class="font-medium text-gray-500">
+                    {image.name}
+                </div>            
             </div>
 
-            <div class="mb-6">
-                <Label for="input-group-1" class="block mb-2">Owner</Label>
-                <Input id="owner" type="text" value={image.owner}/>
+            <div class="flex">
+                <div class="text-gray-900 font-semibold">
+                    Owner:&nbsp;
+                </div>
+
+                <div class="font-medium text-gray-500">
+                    {image.owner}
+                </div>            
             </div>
 
+            <div class="flex">
+                <div class="text-gray-900 font-semibold">
+                    Uploaded:&nbsp;
+                </div>
 
-            <div class="mb-6">
-                <Label for="input-group-1" class="block mb-2">Uploaded</Label>
-                <Input id="uploadDate" type="date" value={image.uploadDate}/>{image.uploadDate}
+                <div class="font-medium text-gray-500">
+                    {formatDate(image.uploadDate)}
+                </div>            
             </div>
 
-            <div class="mb-6">
-                <Label for="input-group-1" class="block mb-2">Url</Label>
-                <Input id="url" type="text" value={image.url}/>
+            <div class="flex">
+                <div class="text-gray-900 font-semibold">
+                    Url:&nbsp;
+                </div>
+
+                <div class="font-medium text-gray-500">
+                    {image.url}
+                </div>            
             </div>
 
         </div>
