@@ -5,7 +5,8 @@
     import { fetchServicesAndTutors } from './tags/tagManager';
 
     export let image: any;
-    let defaultModal = true;
+    export let btnClass: string;
+    let defaultModal = false;
 
     let title = image.title;
     let altText = image.alt;
@@ -13,8 +14,6 @@
     let tags = image.tags;
     let newTags: any[] = [];
 
-    console.log(image);
-    
     function formatDate(firestoreTimestamp: { toDate: () => any; }) {
         if (firestoreTimestamp && firestoreTimestamp.toDate) {
             const date = firestoreTimestamp.toDate();
@@ -34,7 +33,7 @@
 
 </script>
 
-<Button color="alternative" on:click={() => (defaultModal = true)}>Edit</Button>
+<Button color="alternative" class="{btnClass}" on:click={() => (defaultModal = true)}>Edit</Button>
 
 <Modal title="Edit Media" bind:open={defaultModal} size="xl" autoclose class="max-h-[80vh] overflow-y-auto">
     <div class="flex">

@@ -38,8 +38,8 @@
                 <TableBodyCell class="!p-4"><Checkbox /></TableBodyCell>
                 <TableBodyCell>
                     <img src={image.url} alt={image.alt} 
-                    style="width: {300 - zoomIndex * 50}px; height: {300 - zoomIndex * 50}px;" 
-                    class="object-cover rounded" />
+                    style="width: {450 - zoomIndex * 50}px; height: {300 - zoomIndex * 50}px;" 
+                    class="object-cover rounded-xl" />
                 </TableBodyCell>
                 <TableBodyCell>{image.title}</TableBodyCell>
 
