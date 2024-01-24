@@ -1,6 +1,6 @@
 <script lang='ts'>
     import { Button, Modal } from 'flowbite-svelte';
-    import { CloseOutline, ExclamationCircleOutline } from 'flowbite-svelte-icons';
+    import { TrashBinOutline, ExclamationCircleOutline } from 'flowbite-svelte-icons';
     import { getFirestore, deleteDoc, doc } from 'firebase/firestore';
 
     export let image: string;
@@ -22,14 +22,18 @@
         popupModal = false;
     }
 
-    function cancelDeletion() {
-        popupModal = false;
+    function cancelDeletion(event: MouseEvent) {
+        event.preventDefault();
+        event.stopPropagation();
+        popupModal = true;
     }
 </script>
 
-<CloseOutline on:click={() => (popupModal = true)} class="hidden m-2 p-2 bg-white w-10 h-10 rounded-full absolute top-0 right-0 group-hover:block hover:bg-red-500"/>
+<Button on:click={(event) => cancelDeletion(event)} class="mt-4 hover:border-red-400 hover:text-red-400" color="alternative">
+    <TrashBinOutline/>
+</Button>
 
-<Modal bind:open={popupModal} size="xs" autoclose title="Delete File">
+<Modal bind:open={popupModal} size="xs" autoclose title="Delete File" class="z-50">
     <div class="text-center">
         <ExclamationCircleOutline class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" />
         <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this file?</h3>

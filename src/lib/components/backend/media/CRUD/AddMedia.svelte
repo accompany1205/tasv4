@@ -104,7 +104,7 @@
         const mediaDoc = {
             alt: "",
             name: file.name,
-            owner: "", // UID of the logged in user
+            owner: "Admin", // UID of the logged in user
             show: true,
             tags: [],
             uploadDate: new Date(),

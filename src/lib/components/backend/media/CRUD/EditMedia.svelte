@@ -1,8 +1,10 @@
 <script lang="ts">
     import { Button, Modal } from 'flowbite-svelte';
-    import { Label, Input } from 'flowbite-svelte';
+    import { Label, Input, Toggle} from 'flowbite-svelte';
     import TagManager from './tags/TagManager.svelte';
-    import { fetchServicesAndTutors } from './tags/tagManager';
+    import DelMedia from './DelMedia.svelte';
+    import { doc, updateDoc } from 'firebase/firestore';
+    import { db } from '$lib/firebase';
 
     export let image: any;
     export let btnClass: string;
@@ -10,9 +12,16 @@
 
     let title = image.title;
     let altText = image.alt;
-    let published = image.published;
-    let tags = image.tags;
-    let newTags: any[] = [];
+    let published = image.show;
+
+    $: title, updateFirebase();
+    $: altText, updateFirebase();
+    $: published, updateFirebase();
+
+    function handlePublishedChange() {
+        published = !published;
+        updateFirebase();
+    }
 
     function formatDate(firestoreTimestamp: { toDate: () => any; }) {
         if (firestoreTimestamp && firestoreTimestamp.toDate) {
@@ -25,11 +34,25 @@
         return '';
     } 
 
-    async function loadTags() {
-        const { services, tutors } = await fetchServicesAndTutors();
-        newTags = [...services, ...tutors];
+    function saveChanges() {
+        updateFirebase();
     }
-    loadTags();
+
+    async function updateFirebase() {
+        const imageRef = doc(db, 'media', image.id);
+
+        try {
+            await updateDoc(imageRef, {
+                title: title,
+                alt: altText,
+                show: published
+            });
+            console.log('Image updated successfully');
+        } catch (error) {
+            console.error('Error updating image:', error);
+        }
+    }
+
 
 </script>
 
@@ -40,6 +63,7 @@
 
         <div class="w-1/2">
             <img src={image.url} alt={image.alt} class="object-cover sticky top-0 rounded-xl shadow-lg"/>
+            <DelMedia image={image}/>
         </div>
 
         <div class="grid gap-4 sm:grid-cols-1 px-10 w-1/2 overflow-y-auto">
@@ -57,7 +81,7 @@
 
             <div class="mb-6">
                 <Label for="input-group-1" class="block mb-2">Published</Label>
-                <Input id="published" type="text" bind:value={published} />
+                <Toggle checked={published} on:click={() => published = !published}/>
             </div>
 
             <div class="mb-6">
@@ -109,8 +133,8 @@
         </div>
     </div>
 
-    <div class="flex gap-4 sticky left-0 bottom-0">
-        <Button>Save</Button>
+    <div class="flex gap-4 sticky left-0 bottom-0 mt-0">
+        <Button on:click={saveChanges}>Save</Button>
         <Button color="alternative">Close</Button>
     </div>
 </Modal>
