@@ -58,8 +58,6 @@
         }
     }
 
-
-
     async function uploadFiles() {
         if (!droppedFiles) return;
 
@@ -75,10 +73,15 @@
     }
 
     async function uploadFile(file: File) {
-        const fileUrl = apiEndpoint + encodeURIComponent(file.name);
+        // Generate a timestamp
+        const timestamp = new Date().getTime();
+        // Append the timestamp to the file name
+        const fileNameWithTimestamp = `${file.name.split('.').slice(0, -1).join('.')}_${timestamp}.${file.name.split('.').pop()}`;
+
+        const fileUrl = apiEndpoint + encodeURIComponent(fileNameWithTimestamp);
 
         try {
-            const response = await fetch(apiEndpoint + encodeURIComponent(file.name), {
+            const response = await fetch(fileUrl, {
                 method: 'PUT',
                 headers: {
                     'AccessKey': accessKey,
@@ -89,7 +92,7 @@
 
             if (response.ok) {
                 console.log('File uploaded successfully');
-                createMediaDocument(file, fileUrl);
+                createMediaDocument(file, fileUrl, fileNameWithTimestamp);
             } else {
                 console.error('Upload failed', response.status, await response.text());
             }
@@ -98,17 +101,17 @@
         }
     }
 
-    async function createMediaDocument(file: File, fileUrl: any) {
+    async function createMediaDocument(file: File, fileUrl: any, fileNameWithTimestamp: string) {
         const title = file.name.replace(/\.[^/.]+$/, "");
 
         const mediaDoc = {
             alt: "",
-            name: file.name,
-            owner: "Admin", // UID of the logged in user
+            name: fileNameWithTimestamp,
+            owner: "Admin", // Replace with actual user UID if needed
             show: true,
             tags: [],
             uploadDate: new Date(),
-            url: `${pullZone}/${encodeURIComponent(file.name)}`,
+            url: `${pullZone}/${encodeURIComponent(fileNameWithTimestamp)}`,
             title
         };
 
