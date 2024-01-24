@@ -45,7 +45,7 @@
 
                 <TableBodyCell>{formatDate(image.uploadDate)}</TableBodyCell>
                 <TableBodyCell>
-                    <EditMedia image={image}/>
+                    <EditMedia image={image} btnClass={""}/>
                 </TableBodyCell>
             </TableBodyRow>
         {/each}
