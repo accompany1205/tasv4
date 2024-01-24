@@ -1,9 +1,10 @@
 <script lang="ts">
     import { fetchServicesAndTutors } from './tagManager';
-    import { Button, Dropdown, DropdownItem } from 'flowbite-svelte';
+    import { Button, Dropdown, DropdownItem, Popover } from 'flowbite-svelte';
     import { PlusSolid } from 'flowbite-svelte-icons';
     import { createEventDispatcher } from 'svelte';
-
+    
+    export let image: any;
     export let currentTags: any[] = [];
     let tagOptions: any[] = [];
     let availableTags: any[] = [];
@@ -34,12 +35,16 @@
 
 </script>
 
-<Button on:click={handleClick} color="alternative" class="rounded-xl border-dashed bg-transparent hover:text-emerald-400">
+<Button on:click={handleClick} id="error-{image.id}" color="alternative" class="rounded-xl border-dashed bg-transparent hover:text-emerald-400">
     Add Tag &nbsp;<PlusSolid size="xs" class="text-gray-900"/>
 </Button>
 
-<Dropdown>
-    {#each availableTags as tag (tag.id)}
-        <DropdownItem on:click={(event) => onAddTag(tag, event)}>{tag.name}</DropdownItem>
-    {/each}
-</Dropdown>
+{#if availableTags.length === 0}
+    <Popover class="w-fit text-sm font-light text-center" triggeredBy="#error-{image.id}">No More Tags Available</Popover>
+{:else}
+    <Dropdown>
+        {#each availableTags as tag (tag.id)}
+            <DropdownItem on:click={(event) => onAddTag(tag, event)} triggeredBy="#error-{image.id}">{tag.name}</DropdownItem>
+        {/each}
+    </Dropdown>
+{/if}

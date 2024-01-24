@@ -39,5 +39,5 @@
         <Tag tag={tag}/>
     {/each}
 
-    <AddTags on:addTag={addTagToImage} currentTags={tags}/>
+    <AddTags on:addTag={addTagToImage} currentTags={tags} image={image}/>
 </div>
