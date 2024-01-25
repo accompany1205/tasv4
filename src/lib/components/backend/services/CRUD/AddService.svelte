@@ -23,29 +23,16 @@
     let subServices = writable([{ name: '', description: '' }]);
 
     function addFAQ() {
-        faqs.update(currentFaqs => {
-            return [...currentFaqs, { question: '', answer: '' }];
-        });
+        faqs.update(currentFaqs => [...currentFaqs, { question: '', answer: '' }]);
     }
 
     function addSubService() {
-        subServices.update(currentSubServices => {
-            return [...currentSubServices, { name: '', description: '' }];
-        });
+        subServices.update(currentSubServices => [...currentSubServices, { name: '', description: '' }]);
     }
 
     async function addService() {
         const currentFAQs = get(faqs);
         const currentSubServices = get(subServices);
-
-        const faqsData = {
-            question: currentFAQs.map(faq => faq.question),
-            answer: currentFAQs.map(faq => faq.answer)
-        };
-        const subServicesData = {
-            name: currentSubServices.map(sub => sub.name),
-            description: currentSubServices.map(sub => sub.description)
-        };
 
         try {
             if (!name || !title || !about || !tos) {
@@ -54,18 +41,17 @@
                 return;
             }
 
-
             await addDoc(collection(db, 'services'), {
                 name,
                 title,
                 about,
                 tos,
-                faq: faqsData,
-                subServices: subServicesData
+                faq: currentFAQs,
+                subServices: currentSubServices
             });
 
-            defaultModal = false; // Close the modal
-            window.location.href = "/backend"; // Redirect to a different page if necessary
+            defaultModal = false;
+            window.location.href = "/backend";
         } catch (error) {
             console.error('Error adding service: ', error);
         }

@@ -1,50 +1,9 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, TableSearch } from 'flowbite-svelte';
-    import { db } from '$lib/firebase';
-    import { collection, getDocs } from 'firebase/firestore';
-    import { Spinner } from 'flowbite-svelte';
-	import { Section } from 'flowbite-svelte-blocks';
-	import AddService from './AddService.svelte';
     import EditService from './EditService.svelte';
 
-    let searchTerm = '';
-    let services: any[] = [];
-    let filteredServices: any[] = [];
-    let loading = true; 
-
-    onMount(async () => {
-        const servicesCol = collection(db, 'services');
-        const querySnapshot = await getDocs(servicesCol);
-
-        services = querySnapshot.docs.map(doc => {
-            const data = doc.data();
-            return {
-                id: doc.id,
-                name: data.name,
-                about: data.about,
-                faq: data.faq,
-                subServices: data.subServices,
-                title: data.title,
-                tos: data.tos
-            };
-        });
-
-        console.log(services);
-        filteredServices = services;
-        loading = false;
-    });
-
-    $: if (searchTerm) {
-        filteredServices = services.filter(service => {
-            return service.name.toLowerCase().includes(searchTerm.toLowerCase());
-        });
-    } else {
-        filteredServices = services;
-    }
-
+    export let services: any[] = [];
 </script>
-
 
 <Table hoverable={true} class="max-w-7xl m-auto mb-20 shadow">
     <!-- Table Header -->
@@ -58,18 +17,12 @@
 
     <!-- Table Body -->
     <TableBody>
-        {#if loading}
-            <TableBodyRow>
-                <TableBodyCell tdClass="py-32 text-center" colspan="6">
-                    <Spinner class="m-auto"/>
-                </TableBodyCell>
-            </TableBodyRow>
-        {:else if searchTerm !== '' && filteredServices.length === 0}
+        {#if services.length === 0}
             <TableBodyRow>
                 <TableBodyCell tdClass="px-4 py-3" colspan="6">No matching services found.</TableBodyCell>
             </TableBodyRow>
         {:else}
-            {#each filteredServices as service (service.id)}
+            {#each services as service (service.id)}
                 <TableBodyRow>
                     <TableBodyCell tdClass="px-4 py-3">{service.name}</TableBodyCell>
                     <TableBodyCell tdClass="px-4 py-3">{service.title}</TableBodyCell>
