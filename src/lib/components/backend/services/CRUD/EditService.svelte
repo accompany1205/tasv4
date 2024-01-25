@@ -7,6 +7,7 @@
     import { CloseCircleSolid } from 'flowbite-svelte-icons';
     import { get, writable } from 'svelte/store';
 
+
     export let service:any;
 
     let defaultModal = false;
@@ -22,35 +23,26 @@
     let title = service.title;
     let about = service.about;
     let tos = service.tos;
-    let faqs = writable(service.faq.question.map((q: any, i: string | number) => ({ question: q, answer: service.faq.answer[i] })));
-    let subServices = writable(service.subServices.name.map((n: any, i: string | number) => ({ name: n, description: service.subServices.description[i] })));
-
+    let faqs = writable(service.faq || []);
+    let subServices = writable(service.subServices || []);
 
     function addFAQ() {
-        faqs.update(currentFaqs => {
-            return [...currentFaqs, { question: '', answer: '' }];
-        });
+        if ($faqs.length < 2) {
+            faqs.update(currentFaqs => {
+                return [...currentFaqs, { question: '', answer: '' }];
+            });
+        }
     }
 
     function addSubService() {
-        subServices.update(currentSubServices => {
-            return [...currentSubServices, { name: '', description: '' }];
-        });
+        if ($subServices.length < 5) {
+            subServices.update(currentSubServices => {
+                return [...currentSubServices, { name: '', description: '' }];
+            });
+        }
     }
 
-    async function addService() {
-        const currentFAQs = get(faqs);
-        const currentSubServices = get(subServices);
-
-        const faqsData = {
-            question: currentFAQs.map((faq: { question: any; }) => faq.question),
-            answer: currentFAQs.map((faq: { answer: any; }) => faq.answer)
-        };
-        const subServicesData = {
-            name: currentSubServices.map((sub: { name: any; }) => sub.name),
-            description: currentSubServices.map((sub: { description: any; }) => sub.description)
-        };
-
+    async function editService() {
         try {
             if (!name || !title || !about || !tos) {
                 showToast = true;
@@ -65,14 +57,14 @@
                 title,
                 about,
                 tos,
-                faq: faqsData,
-                subServices: subServicesData
+                faq: get(faqs),
+                subServices: get(subServices)
             });
 
             defaultModal = false;
             window.location.href = "/backend";
         } catch (error) {
-            console.error('Error adding service: ', error);
+            console.error('Error editing service: ', error);
         }
     }
 </script>
@@ -114,7 +106,8 @@
             </Label>
         </div>
     {/each}
-    <Button on:click={addFAQ} class="mb-4 w-full" color="alternative">Add FAQ</Button>
+    <Button on:click={addFAQ} class="mb-4 w-full" color="alternative" disabled={$faqs.length >= 2}>Add FAQ</Button>
+
     
     <DropdownDivider class="mt-9"/>
 
@@ -130,13 +123,14 @@
             </Label>
         </div>
     {/each}
-    <Button on:click={addSubService} class="mb-4 w-full" color="alternative">Add SubService</Button>
+    <Button on:click={addSubService} class="mb-4 w-full" color="alternative" disabled={$subServices.length >= 5}>Add SubService</Button>
+
 
     <DropdownDivider class="mt-9"/>
 
 
     <div class="flex justify-evenly">
-        <Button on:click={addService} class="w-52">
+        <Button on:click={editService} class="w-52">
             Edit Service
         </Button>
 

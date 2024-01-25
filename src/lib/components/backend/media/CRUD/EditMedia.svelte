@@ -52,9 +52,26 @@
             console.error('Error updating image:', error);
         }
     }
-
-
 </script>
+
+<style>
+    .scrollbar::-webkit-scrollbar {
+        height: 4px !important;
+        border-radius: 20px;
+    }
+
+    .scrollbar::-webkit-scrollbar-track {
+        background: #f9fafb;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        background: #b1b1b1;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #dcdcdc ;
+    }
+</style>
 
 <Button color="alternative" class="{btnClass}" on:click={() => (defaultModal = true)}>Edit</Button>
 
@@ -125,7 +142,7 @@
                     Url:&nbsp;
                 </div>
 
-                <div class="font-medium text-gray-500">
+                <div class="font-medium text-gray-500 overflow-x-auto scrollbar">
                     {image.url}
                 </div>            
             </div>

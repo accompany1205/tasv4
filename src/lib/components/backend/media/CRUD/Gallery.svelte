@@ -10,7 +10,7 @@
     );
 </script>
 
-<div class={`grid gap-4 grid-cols-${zoomIndex} max-w-4xl m-auto mt-12 mb-20`}>
+<div class={`grid gap-4 grid-cols-${zoomIndex} max-w-7xl m-auto mt-12 mb-20`}>
     {#each filteredImages as image}
         <div class="relative inline-block group">
             <EditMedia image={image} btnClass="text-white absolute z-30 hover:bg-transparent hover:text-white bg-opacity-25 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-100 right-0 m-1"/>

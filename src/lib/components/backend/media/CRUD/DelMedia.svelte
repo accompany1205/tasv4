@@ -9,12 +9,9 @@
 
     async function confirmDeletion() {
         try {
-            // Delete from Firestore
             const db = getFirestore();
             await deleteDoc(doc(db, 'media', image.id));
             console.log('Image document deleted from Firestore');
-
-            // You might want to update your application state or UI here
         } catch (error) {
             console.error('Error deleting image document from Firestore', error);
         }
@@ -29,7 +26,7 @@
     }
 </script>
 
-<Button on:click={(event) => cancelDeletion(event)} class="mt-4 hover:border-red-400 hover:text-red-400" color="alternative">
+<Button on:click={(event) => cancelDeletion(event)} class="mt-4 sticky hover:border-red-400 hover:text-red-400" color="alternative">
     <TrashBinOutline/>
 </Button>
 

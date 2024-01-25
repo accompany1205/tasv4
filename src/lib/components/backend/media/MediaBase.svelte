@@ -45,7 +45,7 @@
 
 </script>
 
-<div class="max-w-4xl bg-white rounded-3xl border-2 border-emerald-200 border-solid shadow-lg h-24 m-auto my-12 flex justify-evenly items-center gap-4">
+<div class="max-w-7xl bg-white rounded-3xl border-2 border-emerald-200 border-solid shadow-lg h-24 m-auto my-12 flex justify-evenly items-center gap-4">
     <Input placeholder="Search Images" bind:value={imageSearch} class="max-w-xs"/>
 
     <ButtonGroup>

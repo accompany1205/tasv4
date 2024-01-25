@@ -23,7 +23,7 @@
 </script>
 
 
-<Table hoverable={true} class="max-w-4xl m-auto mb-20 shadow">
+<Table hoverable={true} class="max-w-7xl m-auto mb-20 shadow">
     <TableHead>
         <TableHeadCell class="!p-4"><Checkbox /></TableHeadCell>
         <TableHeadCell>Image</TableHeadCell>
