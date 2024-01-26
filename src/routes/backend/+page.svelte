@@ -7,7 +7,7 @@
     import MediaBase from "$lib/components/backend/media/MediaBase.svelte";
     import { writable } from "svelte/store";
     import { onMount } from 'svelte';
-
+    import { collectionsStore, fetchAllCollections } from '$lib/stores/collections';
 
     // Create a writable store for the current navigation index
     const currentNavIndex = writable(1);
@@ -18,6 +18,8 @@
         if (storedIndex) {
             currentNavIndex.set(parseInt(storedIndex, 10)); // Update the store's value
         }
+
+        fetchAllCollections();
     });
 
     function handleNavChange(event: { detail: { optionIndex: number; }; }) {

@@ -87,8 +87,8 @@
                 </div>
 
                 <div class="w-3/5">
-                    <!-- <div class="w-full h-[1000px] bg-red-200 object-cover rounded-xl shadow-lg text-center">Iframe goes Here</div> -->
-                    <iframe src="/" class="w-full h-[1000px] object-cover rounded-xl shadow-lg" title="Website Preview"></iframe>
+                    <div class="w-full h-[1000px] bg-red-200 object-cover rounded-xl shadow-lg text-center">Iframe goes Here</div>
+                    <!-- <iframe src="/" class="w-full h-[1000px] object-cover rounded-xl shadow-lg" title="Website Preview"></iframe> -->
                 </div>
       
             {/if}

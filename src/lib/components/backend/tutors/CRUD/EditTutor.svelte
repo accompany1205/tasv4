@@ -1,9 +1,22 @@
 <script lang="ts">
 	import { db } from '$lib/firebase';
-	import { doc, updateDoc } from 'firebase/firestore';
+	import { doc, updateDoc} from 'firebase/firestore';
     import { Label, Input, Button, Modal, Textarea, Select, DropdownDivider } from 'flowbite-svelte';
     import DelTutor from './DelTutor.svelte';
     import { Spinner } from 'flowbite-svelte';
+    import { derived } from 'svelte/store';
+	import { onDestroy } from 'svelte';
+    import { collectionsStore, fetchAllCollections } from '$lib/stores/collections';
+
+
+    let collectionsData;
+    const unsubscribe = collectionsStore.subscribe((value: any) => {
+        collectionsData = value;
+    });
+
+    onDestroy(() => {
+        unsubscribe();
+    });
 
 
     let defaultModal = false;
@@ -16,16 +29,7 @@
         { value: 'new', name: 'New' }
     ];
 
-    export let tutor = {
-        id: '',
-        first: '',
-        last: '',
-        email: '',
-        phone: '',
-        rate: '',
-        status: '',
-        description: ''
-    };
+    export let tutor:any;
 
     let selectedStatus = tutor.status;
 
@@ -63,17 +67,15 @@
 <Button on:click={() => {defaultModal = true}} color="alternative" size="xs">Edit</Button>
 
 <Modal title="Edit Tutor" bind:open={defaultModal} class="z-50" >  
-        <input type="hidden" name="id" value={tutor.id} />
-
         <div class="grid gap-4 mb-4 sm:grid-cols-2">
             <div>
-                <Label for="first" class="mt-2 mb-2 text-sm">First
+                <Label for="first" class="mb-2 text-sm">First
                     <Input bind:value={tutor.first} class="mt-2" type="text" name="first" id="first" placeholder="First Name" autocomplete="on"/>
                 </Label>
             </div>
 
             <div>
-                <Label for="last" class="mt-2 mb-2 text-sm">Last
+                <Label for="last" class="mb-2 text-sm">Last
                     <Input bind:value={tutor.last} class="mt-2" type="text" name="last" id="last" placeholder="Last Name" autocomplete="on"/>
                 </Label>
             </div>
