@@ -1,17 +1,16 @@
 <script lang="ts">
 	import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
 	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
-	import { headshots} from '$lib/tutors';
+	import { headshots } from '$lib/tutors';
 	import { Button } from 'flowbite-svelte';
 	import FormModal from '../FormModal.svelte';
 
 	export let images = [{ alt: '', srcset: '' }];
-	export let featuredTutors = ['']; 
+	export let featuredTutors = [''];
 
-    function handleButtonClick() {
-        gtag('event', 'sketchup_form_clicked');
-    }
-
+	function handleButtonClick() {
+		gtag('event', 'sketchup_form_clicked');
+	}
 </script>
 
 <section class="overflow-x-hidden bg-[#e8e8e8] dark:bg-gray-900">
@@ -52,7 +51,7 @@
 			"
 	>
 		<div class="left-col mt-3">
-			<ImageCarousel images="{images}" showLogo={true}/>
+			<ImageCarousel images="{images}" showLogo="{false}" />
 		</div>
 
 		<div class="right-col grid shrink-0 grid-rows-[1fr_auto] rounded-lg micro:max-sm:text-lg">
@@ -92,7 +91,6 @@
 			</div>
 
 			<GoogleRatings />
-
 
 			<FormModal />
 		</div>

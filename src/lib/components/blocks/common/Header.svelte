@@ -25,11 +25,12 @@
 
     h-[60px]
     max-h-16
-    grid-cols-[4fr_auto_4fr]
+    grid-cols-[3fr_auto_4fr]
+    md:grid-cols-[4fr_auto_4fr]
     items-center
     
     justify-between
-    gap-4
+    md:gap-4
     overflow-hidden
     border-t-4
     border-emerald-500
@@ -41,10 +42,10 @@
     "
 >
 	<!-- TODO: Connect this to a store and have the link be dynamic, based on the user's initial landing page -->
-	<a href="/" class="font-serif mt-auto h-[50px] max-h-[inherit] max-w-full text-lg">
+	<a href="/" class="font-serif h-[50px] max-h-[inherit] max-w-max text-lg">
 		<LogoUnframedDynamicText
 			fill="black"
-			class="font-serif mt-auto h-[50px] max-h-[inherit] max-w-full text-lg pb-[0px]"
+			class="font-serif h-[50px] max-h-[inherit] max-w-full text-lg pb-[0px]"
 		>
 			<Renderer
 				component="{logos[$headerLogo]}"

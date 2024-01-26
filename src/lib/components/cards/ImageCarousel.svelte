@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { Carousel, Indicator, Button } from 'flowbite-svelte';
 	import { AngleRightSolid, AngleLeftSolid } from 'flowbite-svelte-icons';
+	import type { HTMLImgAttributes } from 'svelte/elements';
 	interface imageAttributes {
 		alt?: string;
 		srcset?: string;
 		src?: string;
 	}
-	export let images: imageAttributes[];
+	export let images: HTMLImgAttributes[];
 
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
@@ -63,16 +64,16 @@
 					</span>
 				</Indicator>
 			</Indicators>
-			<Controls class="text-emerald-500" let:changeSlide let:ControlButton>
+			<Controls class="text-emerald-500" let:changeSlide>
 				<Button
 					pill
 					class="p-2 absolute top-1/2 -translate-y-1/2 start-4 font-bold bg-emerald-400 hover:bg-emerald-500"
-					on:click="{changeSlide(false)}"><AngleLeftSolid /></Button
+					on:click="{() => changeSlide(false)}"><AngleLeftSolid /></Button
 				>
 				<Button
 					pill
 					class="p-2 absolute top-1/2 -translate-y-1/2 end-4 font-bold bg-emerald-400 hover:bg-emerald-500"
-					on:click="{changeSlide(true)}"><AngleRightSolid /></Button
+					on:click="{() => changeSlide(true)}"><AngleRightSolid /></Button
 				>
 			</Controls>
 		</Carousel>

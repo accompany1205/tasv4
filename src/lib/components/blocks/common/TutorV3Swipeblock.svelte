@@ -34,7 +34,7 @@
 		},
 
 		touchStartPreventDefault: false,
-		pagination: { enabled: true, clickable: true },
+		pagination: { enabled: true, clickable: true, dynamicBullets: true },
 
 		breakpoints: {
 			640: {
@@ -98,24 +98,28 @@
 			{/each}
 		</swiper-container> 
 
-		<div class="hidden xl:block">
+		<div class="block">
 			<div
 				bind:this="{swiperPrevElem}"
-				class="absolute inset-y-0 -left-3 z-50 flex items-center justify-center"
+				class="absolute left-2 -bottom-11 xl:inset-y-0 xl:-left-3 lg:left-16 z-50 flex items-center justify-center"
 			>
 				<span
-					class="p-2 font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
-					><AngleLeftSolid class="outline-none" /></span
+					class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
 				>
+					<AngleLeftSolid class="outline-none hidden xl:block" />
+					<div class="block xl:hidden">Prev Tutor</div>
+				</span>
 			</div>
 			<div
 				bind:this="{swiperNextElem}"
-				class="absolute inset-y-0 z-50 -right-3 flex items-center justify-center"
+				class="absolute right-2 -bottom-11 xl:inset-y-0 z-50 xl:-right-3 lg:right-16 flex items-center justify-center"
 			>
 				<span
-					class="p-2 font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
-					><AngleRightSolid class="outline-none" /></span
+					class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
 				>
+					<AngleRightSolid class="outline-none hidden xl:block" />
+					<div class="block xl:hidden">Next Tutor</div>
+				</span>
 			</div>
 		</div>
 	</div>

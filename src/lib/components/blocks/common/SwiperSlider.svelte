@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { SwiperContainer } from 'swiper/element';
+	import type { SwiperOptions, Swiper } from 'swiper/types';
 	import { AngleRightSolid, AngleLeftSolid } from 'flowbite-svelte-icons';
 
 	let swiper: SwiperContainer;
@@ -8,32 +9,20 @@
 	let swiperPrevElem: HTMLElement;
 	let carouselPagination: HTMLElement;
 
-	function renderCarouselPaginationBullets(swiper, current, total) {
-		// console.log(
-		// 	'swiper: ',
-		// 	swiper,
-		// 	' activeIndex: ',
-		// 	swiper.activeIndex,
-		// 	' realIndex: ',
-		// 	swiper.realIndex,
-		// 	' current: ',
-		// 	current,
-		// 	' total: ',
-		// 	total,
-		// );
+	function renderCarouselPaginationBullets(swiper: Swiper, current: number, total: number) {
 		let bullets = '';
 
 		for (let index = 0; index < total; index++) {
 			bullets += `<span class='relative flex h-4 w-4 cursor-pointer'>
 				<span
 					class="${
-						index === swiper.realIndex ? 'animate-ping bg-nile-blue-500' : ''
+						index === swiper?.realIndex ? 'animate-ping bg-nile-blue-500' : ''
 					} absolute inline-flex h-full w-full rounded-full bg-nile-blue-500 opacity-75"
 				></span>
 				<span
           data-slide="${index}"
 					class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 ${
-						index === swiper.realIndex ? 'bg-nile-blue-500' : ''
+						index === swiper?.realIndex ? 'bg-nile-blue-500' : ''
 					}"
 				></span>
 			</span>`;
@@ -44,7 +33,7 @@
 			</div>`;
 	}
 
-	const params = {
+	const params: SwiperOptions = {
 		slidesPerView: 1,
 		// loopAddBlankSlides: 3,
 		// slidesPerGroup: 1,
@@ -59,7 +48,6 @@
 		centeredSlides: true,
 
 		autoplay: {
-			enabled: true,
 			delay: 3000,
 			pauseOnMouseEnter: true,
 			disableOnInteraction: true,
@@ -102,12 +90,11 @@
 			swiper.swiper.slidePrev();
 		});
 
-		carouselPagination.addEventListener('click', function (e) {
-			const { slide } = e.target.dataset;
-			console.log('slide: ', slide);
+		carouselPagination.addEventListener('click', function (e: Event) {
+			const { slide } = (e.target as HTMLButtonElement).dataset;
 
 			if (slide) {
-				swiper.swiper.slideToLoop(slide);
+				swiper.swiper.slideToLoop(Number(slide));
 			}
 		});
 	});
