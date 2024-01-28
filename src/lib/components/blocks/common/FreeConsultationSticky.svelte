@@ -2,47 +2,39 @@
 	import { Button } from 'flowbite-svelte';
 	import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
 	import GoogleRatingsCompact from '$lib/components/cards/GoogleRatingsCompact.svelte';
-    import CTAVisibility from "$lib/stores/cta_visibility_anchor";
-    import FormModal from '../FormModal.svelte';
+	import CTAVisibility from '$lib/stores/cta_visibility_anchor';
+	import FormModal from '../FormModal.svelte';
 
-    let viz_state = false; 
-    let viz_class = "";
-    $: viz_class = viz_state ? "folded:inline-flex" : "folded:hidden"
-    const visibility = CTAVisibility.subscribe((value) => {
-        viz_state = !value
-    })
+	let viz_state = false;
+	let viz_class = '';
+	$: viz_class = viz_state ? 'folded:inline-flex' : 'folded:hidden';
+	const visibility = CTAVisibility.subscribe((value) => {
+		viz_state = !value;
+	});
 </script>
 
 <div
 	class="
-    lg:flex-column
-    
+    grid
+    grid-cols-1
+    items-start
+    justify-between
     bottom-0
     z-30
-    flex
     h-36
     w-full
-    flex-row
-    flex-wrap
-    content-stretch
-    items-start
-    justify-stretch
-    justify-items-stretch
-    gap-0
-    bg-gray-700
-
+    bg-nile-blue-900
     text-white
+    lg:pl-6
+    lg:grid-cols-3
+    lg:gap-7
     sm:gap-4
     lg:sticky
     lg:h-12
-    lg:flex-wrap
-    lg:gap-0
-    lg:p-0
     text-fc-[0.5rem_15cqw_1.5rem]"
 >
 	<div
 		class="
-        mx-auto
         flex
         h-12
         flex-grow-[2]
@@ -52,21 +44,17 @@
         align-middle
         
         font-bold
-        
+        lg:text-xl
+        micro:max-md:text-lg
         "
 	>
-		<span class="ml-2">Call Anytime:</span>
-        <a
-        class="  block w-fit font-bold text-white "
-        href="tel: 720-335-5282"
-    >
-        720-335-5282
-    </a>
+		<span class="micro:max-lg:ml-2">Call Anytime:</span>
+		<a class="  block w-fit font-bold text-white" href="tel: 720-335-5282"> 720-335-5282 </a>
 	</div>
 	<GoogleRatingsCompact />
 
-    <FormModal 
-        butClass="            
+	<FormModal
+		butClass="            
             bottom-4
             right-4
             h-12
@@ -84,7 +72,6 @@
             lg:right-[unset]
             {viz_class}
             lg:inline-flex"
-
-        butTitle="Free Consultation"
-    />
+		butTitle="Free Consultation"
+	/>
 </div>
