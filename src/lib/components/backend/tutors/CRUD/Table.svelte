@@ -37,6 +37,7 @@
     } else {
         filteredTutors = tutors;
     }
+
 </script>
 
 <Section classSection='bg-gray-50 dark:bg-gray-900 p-3 sm:p-5'>
