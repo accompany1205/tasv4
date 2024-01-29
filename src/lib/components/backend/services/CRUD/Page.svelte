@@ -1,8 +1,12 @@
 <script lang="ts">
-	import { Button, Input, Select, Textarea  } from "flowbite-svelte";
+	import { Button, Input, Select, Textarea, DropdownDivider  } from "flowbite-svelte";
 	import { onMount } from "svelte";
     import { Tooltip } from 'flowbite-svelte';
     import { Radio } from 'flowbite-svelte';
+    import EditSub from "./CRUD-subservices/EditSub.svelte";
+    import EditFAQ from "./CRUD-faq/EditFAQ.svelte";
+    import { DeviceMockup } from 'flowbite-svelte';
+
 
     let tos = [
         { value: 'T', name: 'Tutoring' },
@@ -11,6 +15,8 @@
     ];
     export let services: any[] = [];
     export let tutors: any[] = [];
+    let selectedDevice = 'desktop';
+
 
     let current:string;
     let tooltipClass="py-2 px-3 text-sm font-medium mx-[-20px] z-50"
@@ -81,6 +87,12 @@
                             {/each}
                         </div>
 
+                        <DropdownDivider class="my-9"/>
+                        <EditSub initialSubServices={service.subServices} serviceId={service.id} />
+                        <DropdownDivider class="my-9"/>
+                        <EditFAQ initialFaqs={service.faq} serviceId={service.id} />
+
+
                     <!-- Tooltips -->
                         <Tooltip type="auto" triggeredBy="[id^='name-{service.id}']" placement='left' defaultClass={tooltipClass}>Service Name</Tooltip>
                         <Tooltip type="auto" triggeredBy="[id^='title-{service.id}']" placement='left' defaultClass={tooltipClass}>Service Title</Tooltip>
@@ -92,7 +104,18 @@
                 </div>
 
                 <div class="w-3/5">
-                    <div class="w-full h-[1000px] bg-red-200 object-cover rounded-xl shadow-lg text-center">Iframe goes Here</div>
+                    <div class="w-full flex gap-4 justify-center mb-10">
+                        <Button on:click={() => selectedDevice = 'desktop'} color="alternative">Desktop</Button>
+                        <Button on:click={() => selectedDevice = 'laptop'} color="alternative">Laptop</Button>
+                        <Button on:click={() => selectedDevice = 'android'} color="alternative">Android</Button>
+                        <Button on:click={() => selectedDevice = 'ios'} color="alternative">iOS</Button>
+                    </div>
+
+                    <DeviceMockup device="{selectedDevice}" class="max-w-[800px] h-[500px]" classInner="h-[480px]">
+                        <iframe src="/" class="w-full h-full" title="Website Preview"></iframe>
+                    </DeviceMockup>
+
+                    <!-- <div class="w-full h-[1000px] bg-red-200 object-cover rounded-xl shadow-lg text-center">Iframe goes Here</div> -->
                     <!-- <iframe src="/" class="w-full h-[1000px] object-cover rounded-xl shadow-lg" title="Website Preview"></iframe> -->
                 </div>
       
