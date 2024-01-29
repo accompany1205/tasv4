@@ -1,6 +1,6 @@
 import type { Actions } from './$types';
 import { db } from '$lib/firebase'; 
-import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, doc  } from 'firebase/firestore';
 
 export const actions: Actions = {
 	addTutor: async ({ request }) => {

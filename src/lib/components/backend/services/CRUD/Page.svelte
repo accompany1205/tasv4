@@ -71,9 +71,13 @@
                         >
                         </Textarea>
                         <Select id="tos-{service.id}" class="mt-2" items={tos} />
-                        <div class="flex gap-2">
+                        <div class="flex gap-2" id="tutors-{service.id}">
                             {#each tutors as tutor (tutor.id)}
-                                <img src="{tutor.headshot}" alt="" class="rounded-full max-w-16">
+                                <img 
+                                    src="{tutor.headshot}"
+                                    alt="{tutor.name}"
+                                    class="rounded-full max-w-16"
+                                >
                             {/each}
                         </div>
 
@@ -82,6 +86,7 @@
                         <Tooltip type="auto" triggeredBy="[id^='title-{service.id}']" placement='left' defaultClass={tooltipClass}>Service Title</Tooltip>
                         <Tooltip type="auto" triggeredBy="[id^='about-{service.id}']" placement='left' defaultClass={tooltipClass}>About Service</Tooltip>
                         <Tooltip type="auto" triggeredBy="[id^='tos-{service.id}']" placement='left' defaultClass={tooltipClass}>Type of Service</Tooltip>
+                        <Tooltip type="auto" triggeredBy="[id^='tutors-{service.id}']" placement='left' defaultClass={tooltipClass}>Tutors</Tooltip>
 
 
                 </div>

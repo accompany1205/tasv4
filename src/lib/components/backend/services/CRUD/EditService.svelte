@@ -71,7 +71,7 @@
 
 <Button on:click={() => (defaultModal = true)} color="alternative">Edit</Button>
 
-<Modal title="Add Service" bind:open={defaultModal} class="z-50">
+<Modal title="Edit Service" bind:open={defaultModal} class="z-50">
 
     <div class="grid gap-4 mb-4 sm:grid-cols-2">
         <Label for="first" class="mb-2 text-sm">Name
@@ -94,25 +94,10 @@
     <DropdownDivider class="mt-9"/>
 
 
-    <!-- FAQs -->
-    {#each $faqs as faq, i}
-        <div class="grid gap-4 mb-4 sm:grid-cols-2">
-            <Label for={`faqQuestion${i}`} class="mb-2 text-sm">FAQ Question
-                <Textarea bind:value={faq.question} class="mt-2" name={`faqQuestion${i}`} placeholder="FAQ Question" rows="2" />
-            </Label>
-
-            <Label for={`faqAnswer${i}`} class="mb-2 text-sm">FAQ Answer
-                <Textarea bind:value={faq.answer} class="mt-2" name={`faqAnswer${i}`} placeholder="FAQ Answer" rows="2" />
-            </Label>
-        </div>
-    {/each}
-    <Button on:click={addFAQ} class="mb-4 w-full" color="alternative" disabled={$faqs.length >= 2}>Add FAQ</Button>
-
-    
-    <DropdownDivider class="mt-9"/>
 
     <!-- SubServices -->
-    {#each $subServices as subService, i}
+
+    <!-- {#each $subServices as subService, i}
         <div class="grid gap-4 mb-4 sm:grid-cols-2">
             <Label for={`subServiceName${i}`} class="mb-2 text-sm">Sub-service Name
                 <Textarea bind:value={subService.name} class="mt-2" name={`subServiceName${i}`} placeholder="SubService Name" rows="1" />
@@ -125,8 +110,26 @@
     {/each}
     <Button on:click={addSubService} class="mb-4 w-full" color="alternative" disabled={$subServices.length >= 5}>Add SubService</Button>
 
+    <DropdownDivider class="mt-9"/> -->
 
-    <DropdownDivider class="mt-9"/>
+    <!-- FAQs -->
+
+    <!-- {#each $faqs as faq, i}
+        <div class="grid gap-4 mb-4 sm:grid-cols-2">
+            <Label for={`faqQuestion${i}`} class="mb-2 text-sm">FAQ Question
+                <Textarea bind:value={faq.question} class="mt-2" name={`faqQuestion${i}`} placeholder="FAQ Question" rows="2" />
+            </Label>
+
+            <Label for={`faqAnswer${i}`} class="mb-2 text-sm">FAQ Answer
+                <Textarea bind:value={faq.answer} class="mt-2" name={`faqAnswer${i}`} placeholder="FAQ Answer" rows="2" />
+            </Label>
+        </div>
+    {/each}
+    <Button on:click={addFAQ} class="mb-4 w-full" color="alternative" disabled={$faqs.length >= 2}>Add FAQ</Button> -->
+
+
+
+    <!-- <DropdownDivider class="mt-9"/> -->
 
 
     <div class="flex justify-evenly">
