@@ -69,8 +69,8 @@
         });
     }
     
-    let activeAspectRatio = 'square'; // Default aspect ratio
-    let columnsCount = 3; // Default number of columns
+    let activeAspectRatio = 'square';
+    let columnsCount = 5;
 
     function handleZoomChange(change) {
         event.preventDefault();
@@ -98,7 +98,7 @@
         {/each}
     {/if}
 
-    <Button on:click={() => { showModal = true; prepareImagesForModal(); }} class="aspect-square rounded-xl bg-transparent text-gray-700 border-2 border-gray-200 border-dotted hover:bg-gray-100">Add Images</Button>
+    <Button on:click={() => { showModal = true; prepareImagesForModal(); }} class="aspect-square rounded-xl bg-transparent text-gray-700 border-2 border-gray-200 border-dotted hover:bg-gray-50">Add Images</Button>
 </div>
 
 <Modal title="Select an Image" bind:open={showModal} autoclose size="lg">
