@@ -68,7 +68,7 @@
                 {/if}
 
                 {#if activeSection === 'preview'}
-                    <Preview />
+                    <Preview source={service.name}/>
                 {/if}
 
 

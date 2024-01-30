@@ -1,6 +1,7 @@
 <script>
     import { Button, Spinner } from "flowbite-svelte";
     import { DesktopPcSolid, MobilePhoneSolid } from 'flowbite-svelte-icons';
+    export let source = '';
     
     let selectedDevice = 'desktop';
     let loading = true;
@@ -28,9 +29,11 @@
         </Button>
     </div>
     
+    <div class="text-center font-bold m-10 text-emerald-400">~ Now, to style ~</div>
+
     {#if selectedDevice == 'desktop'}
-        <iframe src="/" class="w-[1200px] h-[675px] m-auto rounded-xl shadow-xl" title="Website Preview" on:load={handleIframeLoad}></iframe>
+        <iframe src="/services/{source}" class="w-[1200px] h-[675px] m-auto rounded-xl shadow-xl" title="Website Preview" on:load={handleIframeLoad}></iframe>
     {:else}
-        <iframe src="/" class="w-[400px] h-[800px] m-auto rounded-xl shadow-xl" title="Website Preview" on:load={handleIframeLoad}></iframe>
+        <iframe src="/services/{source}" class="w-[400px] h-[800px] m-auto rounded-xl shadow-xl" title="Website Preview" on:load={handleIframeLoad}></iframe>
     {/if}
 </div>

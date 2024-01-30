@@ -98,10 +98,10 @@
         {/each}
     {/if}
 
-    <Button on:click={() => { showModal = true; prepareImagesForModal(); }} class="aspect-square rounded-xl bg-transparent text-gray-700 border-2 border-gray-200 border-dotted hover:bg-gray-50">Add Images</Button>
+    <Button on:click={() => { showModal = true; prepareImagesForModal(); }} class="aspect-square rounded-xl bg-transparent text-gray-700 border-2 border-gray-200 border-dotted hover:bg-gray-50">Edit Images</Button>
 </div>
 
-<Modal title="Select an Image" bind:open={showModal} autoclose size="lg">
+<Modal title="Select Images" bind:open={showModal} autoclose size="lg">
     <div class="w-full">
         <ButtonGroup>
             <Button on:click={() => handleZoomChange(1)} disabled={columnsCount === 5}>Zoom Out</Button>
