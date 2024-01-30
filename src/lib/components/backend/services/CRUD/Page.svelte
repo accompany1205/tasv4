@@ -3,7 +3,7 @@
 	import { onMount } from "svelte";
     import { Tooltip } from 'flowbite-svelte';
     import { Radio, Label } from 'flowbite-svelte';
-    import EditSub from "./page-sections/EditSub.svelte";
+    import EditSub from "./page-sections/edit-sub-services/EditSub.svelte";
     import EditFAQ from "./page-sections/EditFAQ.svelte";
     import General from "./page-sections/General.svelte";
     import Preview from "./page-sections/Preview.svelte";
@@ -47,9 +47,9 @@
         {#each services as service (service.id)}
             {#if service.id === current}
 
-                <div class="flex justify-center gap-4 mb-4">
+                <div class="flex justify-left gap-4 mb-4">
                     <Button color="alternative" on:click={() => activeSection = 'general'} class="{activeSection === 'general' ? 'border-emerald-300 border-2' : ''}">General</Button>
-                    <Button color="alternative" on:click={() => activeSection = 'subservices'} class="{activeSection === 'subservices' ? 'border-emerald-300 border-2' : ''}">Subservices</Button>
+                    <Button color="alternative" on:click={() => activeSection = 'subservices'} class="{activeSection === 'subservices' ? 'border-emerald-300 border-2' : ''}">Sub-Services</Button>
                     <Button color="alternative" on:click={() => activeSection = 'faq'} class="{activeSection === 'faq' ? 'border-emerald-300 border-2' : ''}">FAQ</Button>
                     <Button color="alternative" on:click={() => activeSection = 'preview'} class="{activeSection === 'preview' ? 'border-emerald-300 border-2' : ''}">Preview</Button>
                 </div>

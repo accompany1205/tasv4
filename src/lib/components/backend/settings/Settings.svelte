@@ -1,5 +1,5 @@
 <script>
-    import { AccordionItem, Accordion, Button } from 'flowbite-svelte';
+    import { AccordionItem, Accordion, Button, DarkMode } from 'flowbite-svelte';
     import LeadOptions from './lead-options/LeadOptions.svelte';
     const items = Array(3);
 
@@ -36,6 +36,9 @@
             </AccordionItem>
 
         </Accordion>
+
+        <DarkMode />
+
     </div>
 </div>
 

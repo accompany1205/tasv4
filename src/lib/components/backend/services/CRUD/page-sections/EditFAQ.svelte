@@ -10,7 +10,7 @@
     let faqs = writable(initialFaqs);
 
     function addFAQ() {
-        if ($faqs.length < 10) { // Adjust limit as needed
+        if ($faqs.length < 4) { // Adjust limit as needed
             faqs.update(currentFaqs => {
                 return [...currentFaqs, { question: '', answer: '' }];
             });
@@ -45,4 +45,4 @@
         </Label>
     </div>
 {/each}
-<Button on:click={addFAQ} class="mb-4 w-full" color="alternative" disabled={$faqs.length >= 10}>Add FAQ</Button>
+<Button on:click={addFAQ} class="max-w-sm" color="alternative" disabled={$faqs.length >= 10}>Add FAQ</Button>

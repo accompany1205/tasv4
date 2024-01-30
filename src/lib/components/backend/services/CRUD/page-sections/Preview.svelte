@@ -7,8 +7,8 @@
 
 <div class="w-full mt-10">
     <div class="w-full flex gap-4 justify-center mb-10">
-        <Button on:click={() => setSelectedDevice('desktop')} color="alternative" class={selectedDevice === 'desktop' ? 'border-emerald-300 border-2' : ''}><DesktopPcSolid/></Button>
-        <Button on:click={() => setSelectedDevice('phone')} color="alternative" class={selectedDevice === 'phone' ? 'border-emerald-300 border-2' : ''}><MobilePhoneSolid/></Button>
+        <Button on:click={() => selectedDevice = 'desktop'} color="alternative" class={selectedDevice === 'desktop' ? 'border-emerald-300 border-2' : ''}><DesktopPcSolid/></Button>
+        <Button on:click={() => selectedDevice = 'phone'} color="alternative" class={selectedDevice === 'phone' ? 'border-emerald-300 border-2' : ''}><MobilePhoneSolid/></Button>
     </div>
     
     {#if selectedDevice == 'desktop'}

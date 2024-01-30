@@ -8,7 +8,7 @@ const collectionsStore = writable<Record<string, any[]> | null>(null);
 async function fetchAllCollections() {
     let currentData = get(collectionsStore);
     if (!currentData) {
-        const collectionNames = ['collection1', 'collection2', 'collection3'];
+        const collectionNames = ['media', 'services', 'tutors'];
         const collections: Record<string, any[]> = {};
 
         for (const name of collectionNames) {
