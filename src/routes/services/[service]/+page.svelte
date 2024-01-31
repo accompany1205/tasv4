@@ -3,13 +3,13 @@
     import { onMount } from 'svelte';
     import { getFirestore, collection, getDocs, type DocumentData } from 'firebase/firestore';
     import { db } from '$lib/firebase';
-    
-	import TopHero from '$lib/components/blocks/frontpage/TopHero.svelte';
-	import GeneralServices from '$lib/components/blocks/frontpage/GeneralServices.svelte';
-	import GeneralServicesDetail from '$lib/components/blocks/frontpage/GeneralServicesDetail.svelte';
-	import SketchupServices from '$lib/components/blocks/frontpage/SketchupServices.svelte';
-	import FAQ from '$lib/components/blocks/frontpage/FAQ.svelte';
-	import TutorV3Swipeblock from '$lib/components/blocks/common/TutorV3Swipeblock.svelte'; 
+
+    import TopHero from '$lib/components/services-template/TopHero.svelte';
+    import Tutors from '$lib/components/services-template/Tutors.svelte';
+    import GeneralServices from '$lib/components/services-template/GeneralServices.svelte';
+    import GeneralServicesDetail from '$lib/components/services-template/GeneralServicesDetail.svelte';
+    import SubServices from '$lib/components/services-template/SubServices.svelte';
+    import FAQ from '$lib/components/services-template/FAQ.svelte';
 
     export let params = $page.params;
     let serviceName = params.service.toLowerCase();
@@ -42,9 +42,9 @@
 </svelte:head>
 
 
-<TopHero images="{hero_images_flattened}" featuredTutors="{featuredTutorsHero}" />
-<TutorV3Swipeblock tutors="{featuredTutorsCards}" />
+<TopHero />
+<!-- <Tutors /> -->
 <GeneralServices />
 <GeneralServicesDetail />
-<SketchupServices />
+<SubServices />
 <FAQ />
