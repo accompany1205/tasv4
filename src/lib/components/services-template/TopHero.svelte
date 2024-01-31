@@ -1,16 +1,23 @@
 <script lang="ts">
-	import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
-	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
-	import { headshots } from '$lib/tutors';
-	import { Button } from 'flowbite-svelte';
-	import FormModal from '../FormModal.svelte';
+    import { onMount } from 'svelte';
+    import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
+    import { db } from '$lib/firebase';
 
-	export let images = [{ alt: '', srcset: '' }];
-	export let featuredTutors = [''];
+    import GoogleRatings from '$lib/components/cards/GoogleRatings.svelte';
+    import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
+    import { headshots } from '$lib/tutors';
+    import { Button } from 'flowbite-svelte';
+    import FormModal from '../blocks/FormModal.svelte';
 
-	function handleButtonClick() {
-		gtag('event', 'sketchup_form_clicked');
-	}
+    export let service: any;
+    export let featuredTutors = [''];
+	console.log(service.title);
+
+    export let images: { alt: any; srcset: any; title: any; }[] = [];
+
+    function handleButtonClick() {
+        gtag('event', 'sketchup_form_clicked');
+    }
 </script>
 
 <section class="overflow-x-hidden bg-[#e8e8e8] dark:bg-gray-900">
@@ -30,7 +37,7 @@
 			text-fc-[1.3rem_3.5cqw_2.75rem]
            "
 		>
-			Online&nbsp;Sketchup&nbsp;Classes, Zoom&nbsp;Tutors<wbr /> &&nbsp;Professional&nbsp;Services
+			{service.title}
 		</h1>
 	</div>
 
@@ -51,7 +58,7 @@
 			"
 	>
 		<div class="left-col mt-3">
-			<ImageCarousel images="{images}" showLogo="{false}" />
+			<ImageCarousel images={images} showLogo="{false}" />
 		</div>
 
 		<div class="right-col grid shrink-0 grid-rows-[1fr_auto] rounded-lg micro:max-sm:text-lg">
@@ -62,7 +69,7 @@
 					</h2>
 
 					<div class="hidden lg:flex">
-						{#each featuredTutors as tutorID, index}
+						<!-- {#each featuredTutors as tutorID, index}
 							<div class="-mx-4 flex-shrink-0">
 								<img
 									srcset="{headshots[tutorID]}"
@@ -72,7 +79,7 @@
 									height="80"
 								/>
 							</div>
-						{/each}
+						{/each} -->
 					</div>
 				</div>
 

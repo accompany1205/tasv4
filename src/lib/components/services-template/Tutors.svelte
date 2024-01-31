@@ -9,15 +9,15 @@
 
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { getTutors, type Tutor } from '$lib/tutors';
-	import TutorCard from '$lib/components/cards/TutorCard.svelte';
-	import TutorCardV3 from '$lib/components/cards/TutorCardV3.svelte';
+
+    import TutorCard from '$lib/components/services-template/TutorCard.svelte';
+
 	import { AngleRightSolid, AngleLeftSolid } from 'flowbite-svelte-icons';
 	import type { SwiperContainer } from 'swiper/element';
-	import FormModal from '../FormModal.svelte';
+	import FormModal from '../blocks/FormModal.svelte';
 
-	export let tutors: string[];
-	let featuredTutors = getTutors(tutors);
+	export let tutors:any[] = [];
+	console.log("Tutors", tutors);
 	let openForm = false;
 
 	const params = {
@@ -89,10 +89,10 @@
 		style="container-type: size;"
 	>
 		<swiper-container bind:this="{swiper}" init="false">
-			{#each featuredTutors as tutor}
+			{#each tutors as tutor}
 				<swiper-slide class="">
 					<div class="m-auto h-[100cqh] w-96 max-w-2xl flex-shrink-0 p-2">
-						<TutorCardV3 tutor="{tutor}" class="mx-auto h-full self-stretch" on:consultationClick={onConsultationClick}/>
+						<TutorCard tutor={tutor} class="mx-auto h-full self-stretch" on:consultationClick={onConsultationClick}/>
 					</div>
 				</swiper-slide>
 			{/each}

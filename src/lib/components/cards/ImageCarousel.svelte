@@ -33,7 +33,7 @@
 >
 	{#if isInView}
 		<Carousel
-			images="{images}"
+			images={images}
 			let:Indicators
 			let:Controls
 			duration="{7000}"
