@@ -4,42 +4,56 @@
 	import LogoUnframedDynamicText from '$lib/assets/svg/LogoUnframedDynamicText.svelte';
 
 	import { BarsSolid } from 'flowbite-svelte-icons';
+	import headerLogo from '$lib/stores/header_logo';
+	import { LogoType } from '$lib/constant';
+	import HomeLogoIcon from '$lib/assets/svg/logo-types/HomeLogoIcon.svelte';
+	import SketchupLogoIcon from '$lib/assets/svg/logo-types/SketchupLogoIcon.svelte';
+	import Renderer from '$lib/components/blocks/common/Renderer.svelte';
+
+	const logos = {
+		[LogoType.GLOBE]: HomeLogoIcon,
+		[LogoType.SKETCHUP]: SketchupLogoIcon,
+	};
 </script>
 
 <header
 	class="
-        sticky
-        top-0
-        z-50
-        grid
-		
-        h-[60px]
-        max-h-16
-        grid-cols-[4fr_auto_4fr]
-        items-center
-        
-        justify-between
-        gap-4
-        overflow-hidden
-        border-t-4
-        border-emerald-500
-        bg-white
-        px-2
-        py-0
-        drop-shadow-lg
-        lg:max-h-24
-        "
->	
+    sticky
+    top-0
+    z-50
+    grid
+
+    h-[60px]
+    max-h-16
+    grid-cols-[3fr_auto_4fr]
+    md:grid-cols-[4fr_auto_4fr]
+    items-center
+    
+    justify-between
+    md:gap-4
+    overflow-hidden
+    border-t-4
+    border-emerald-500
+    bg-white
+    px-2
+    py-0
+    drop-shadow-lg
+    lg:max-h-24
+    "
+>
 	<!-- TODO: Connect this to a store and have the link be dynamic, based on the user's initial landing page -->
-	<a href="/" class="font-serif mt-auto h-[50px] max-h-[inherit] max-w-full text-lg ">
+	<a href="/" class="font-serif h-[50px] max-h-[inherit] max-w-max text-lg">
 		<LogoUnframedDynamicText
 			fill="black"
-			class="font-serif mt-auto h-[50px] max-h-[inherit] max-w-full text-lg pb-[0px]"
-				icon="sketchup"
+			class="font-serif h-[50px] max-h-[inherit] max-w-full text-lg pb-[0px]"
 		>
-			<text class="dyntext" transform="translate(195 30)"> Sketchup </text>
-			<text class="dyntext" transform="translate(195 70)"> Tutors & </text>
-			<text class="dyntext" transform="translate(195 110)"> Services </text>
+			<Renderer
+				component="{logos[$headerLogo]}"
+				props="{{ isHeader: true }}"
+				slotName="logo-icon"
+			/>
+			<text class="dyntext" transform="translate(195 76)"> Tutors & </text>
+			<text class="dyntext" transform="translate(195 117)"> Services </text>
 		</LogoUnframedDynamicText>
 	</a>
 

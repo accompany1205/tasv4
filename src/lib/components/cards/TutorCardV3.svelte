@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
+
 	import '@fontsource-variable/akshar';
 	import ServiceTags from '../elements/ServiceTags.svelte';
 	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
@@ -21,6 +23,13 @@
 	export { _class as class };
 	export let tutor: Tutor;
 	
+    const dispatch = createEventDispatcher();
+
+    function handleConsultationClick() {
+        dispatch('consultationClick', { tutorId: tutor.id });
+    }
+
+
 </script>
 
 <div
@@ -102,7 +111,8 @@
 		
 		<Button
 			class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300"
-			href="/form/?specificPerson={tutor.first}&softwarePref=SketchUp&cameFrom={tutor.first}"
+			on:click={handleConsultationClick}
+
 			>Book A Free Consultation
 		</Button
 		>

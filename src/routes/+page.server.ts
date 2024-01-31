@@ -3,6 +3,8 @@ import { VITE_JOTFORM_API } from '$env/static/private';
 
 export const actions = {
 	default: async ({ cookies , request }) => {
+		console.log("hello");
+
 		const formData = await request.formData();
 		console.log(formData);
 

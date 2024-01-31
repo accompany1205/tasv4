@@ -7,6 +7,13 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 	}
+	type GoogleReviewRating = {
+		name: string;
+		image: string;
+		comment: string;
+		rating: number;
+		date: string;
+	};
 }
 
 export {};
