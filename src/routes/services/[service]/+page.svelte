@@ -3,11 +3,18 @@
     import { onMount } from 'svelte';
     import { getFirestore, collection, getDocs, type DocumentData } from 'firebase/firestore';
     import { db } from '$lib/firebase';
+    
+	import TopHero from '$lib/components/blocks/frontpage/TopHero.svelte';
+	import GeneralServices from '$lib/components/blocks/frontpage/GeneralServices.svelte';
+	import GeneralServicesDetail from '$lib/components/blocks/frontpage/GeneralServicesDetail.svelte';
+	import SketchupServices from '$lib/components/blocks/frontpage/SketchupServices.svelte';
+	import FAQ from '$lib/components/blocks/frontpage/FAQ.svelte';
+	import TutorV3Swipeblock from '$lib/components/blocks/common/TutorV3Swipeblock.svelte'; 
 
     export let params = $page.params;
     let serviceName = params.service.toLowerCase();
 
-    let serviceData: DocumentData | null = null;
+    let serviceData:any;
 
     onMount(async () => {
         try {
@@ -34,42 +41,10 @@
     <title>{serviceName.charAt(0).toUpperCase() + serviceName.slice(1)}</title>
 </svelte:head>
 
-{#if serviceData}
-    <h1>{serviceData.name}</h1>
-    <h2>{serviceData.title}</h2>
-    <p>{serviceData.about}</p>
 
-    <!-- Displaying FAQs -->
-    {#if serviceData.faq && serviceData.faq.length}
-        <h3>FAQs</h3>
-        <ul>
-            {#each serviceData.faq as faq}
-                <li>
-                    <strong>{faq.question}</strong>: {faq.answer}
-                </li>
-            {/each}
-        </ul>
-    {/if}
-
-    <!-- Displaying Sub Services -->
-    {#if serviceData.subServices && serviceData.subServices.length}
-        <h3>Sub Services</h3>
-        {#each serviceData.subServices as subService}
-            <div>
-                <h4>{subService.name}</h4>
-                <p>{subService.description}</p>
-                {#if subService.images && subService.images.length}
-                    <div>
-                        {#each subService.images as image}
-                            <img src={image} alt={`Image for ${subService.name}`} />
-                        {/each}
-                    </div>
-                {/if}
-            </div>
-        {/each}
-    {/if}
-
-    <p>Type of Service: {serviceData.tos}</p>
-{:else}
-    <p>Loading service data...</p>
-{/if}
+<TopHero images="{hero_images_flattened}" featuredTutors="{featuredTutorsHero}" />
+<TutorV3Swipeblock tutors="{featuredTutorsCards}" />
+<GeneralServices />
+<GeneralServicesDetail />
+<SketchupServices />
+<FAQ />
