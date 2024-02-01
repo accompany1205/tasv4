@@ -1,17 +1,17 @@
 <script lang="ts">
-    import BottomNav from "$lib/components/tutors-backend/nav/BottomNav.svelte";    
-    import LeadTable from "$lib/components/tutors-backend/leads/LeadTable.svelte";
+    // import BottomNav from "$lib/components/tutors-backend/nav/BottomNav.svelte";    
+    // import LeadTable from "$lib/components/tutors-backend/leads/LeadTable.svelte";
 
 
-    // BottomNav Event Dispatcher
-    let currentNavIndex = 1;
+    // // BottomNav Event Dispatcher
+    // let currentNavIndex = 1;
 
-    function handleNavChange(event: { detail: { optionIndex: number; }; }) {
-      currentNavIndex = event.detail.optionIndex;
-    }
+    // function handleNavChange(event: { detail: { optionIndex: number; }; }) {
+    //   currentNavIndex = event.detail.optionIndex;
+    // }
 </script>
 
-{#if currentNavIndex === 1}
+<!-- {#if currentNavIndex === 1}
     <LeadTable/>
 {:else if currentNavIndex === 2}
 
@@ -19,6 +19,6 @@
     
 {:else if currentNavIndex === 4}
     
-{/if}
+{/if} -->
 
-<BottomNav on:change={handleNavChange}/>
+<!-- <BottomNav on:change={handleNavChange}/> -->
