@@ -3,7 +3,7 @@
     import {TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, TableSearch } from 'flowbite-svelte';
     import { Section } from 'flowbite-svelte-blocks';
     import { db } from '$lib/firebase';
-    import { collection, getDocs} from 'firebase/firestore';
+    import { collection, getDocs, query, where} from 'firebase/firestore';
     import { Spinner } from 'flowbite-svelte';
     import Response from './Response.svelte';
     import EditLead from './EditLead.svelte';
@@ -11,16 +11,17 @@
     let divClass='bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden';
     let innerDivClass='flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4';
     let searchClass='w-full md:w-1/2 relative';
-    let classInput="text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2  pl-10";
+    let classInput="text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2 pl-10";
   
     let searchTerm = '';
     let leads: any[] = [];
     let filteredLeads: any[] = [];
     let loading = true; 
+    export let tutor:any;
 
     onMount(async () => {
-        const leadsCol = collection(db, 'leads');
-        const querySnapshot = await getDocs(leadsCol);
+        const leadsQuery = query(collection(db, 'leads'), where('assigned', '==', tutor.id));
+        const querySnapshot = await getDocs(leadsQuery);
 
         leads = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         filteredLeads = leads;
