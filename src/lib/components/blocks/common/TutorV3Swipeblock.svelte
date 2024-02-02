@@ -15,6 +15,7 @@
 	import { AngleRightSolid, AngleLeftSolid } from 'flowbite-svelte-icons';
 	import type { SwiperContainer } from 'swiper/element';
 	import FormModal from '../FormModal.svelte';
+	import TutorV3SwipeControls from './TutorV3SwipeControls.svelte';
 
 	export let tutors: string[];
 	let featuredTutors = getTutors(tutors);
@@ -54,27 +55,18 @@
 	const autoplay = '{delay:3000}';
 	const coverflow = '{depth:32, rotate:0, slideShows:false, scale:0.5}';
 	let swiper: SwiperContainer;
-	let swiperNextElem: HTMLElement;
-	let swiperPrevElem: HTMLElement;
+
 	onMount(() => {
 		Object.assign(swiper, params);
 		// @ts-ignore
 		swiper.initialize();
-
-		swiperNextElem.addEventListener('click', () => {
-			swiper.swiper.slideNext();
-		});
-		swiperPrevElem.addEventListener('click', () => {
-			swiper.swiper.slidePrev();
-		});
 	});
 
-    function onConsultationClick(event: { detail: { tutorId: any; }; }) {
-		console.log("hello");
-        const tutorId = event.detail.tutorId;
+	function onConsultationClick(event: { detail: { tutorId: any } }) {
+		console.log('hello');
+		const tutorId = event.detail.tutorId;
 		openForm = true;
-    }
-
+	}
 </script>
 
 <div class="swiper block overflow-hidden bg-nile-blue-900 px-0 pb-16 pt-8">
@@ -88,41 +80,57 @@
 		class="m-auto mx-auto h-[625px] max-w-full xl:max-w-screen-xl"
 		style="container-type: size;"
 	>
-		<swiper-container bind:this="{swiper}" init="false">
-			{#each featuredTutors as tutor}
-				<swiper-slide class="">
-					<div class="m-auto h-[100cqh] w-96 max-w-2xl flex-shrink-0 p-2">
-						<TutorCardV3 tutor="{tutor}" class="mx-auto h-full self-stretch" on:consultationClick={onConsultationClick}/>
-					</div>
-				</swiper-slide>
-			{/each}
-		</swiper-container> 
-
-		<div class="block">
-			<div
-				bind:this="{swiperPrevElem}"
-				class="absolute left-2 -bottom-11 xl:inset-y-0 xl:-left-3 lg:left-16 z-50 flex items-center justify-center"
-			>
+		<TutorV3SwipeControls topControl swiper="{swiper}" class="block xl:hidden">
+			<svelte:fragment slot="swiper-prev">
 				<span
 					class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
 				>
 					<AngleLeftSolid class="outline-none hidden xl:block" />
 					<div class="block xl:hidden">Prev Tutor</div>
 				</span>
-			</div>
-			<div
-				bind:this="{swiperNextElem}"
-				class="absolute right-2 -bottom-11 xl:inset-y-0 z-50 xl:-right-3 lg:right-16 flex items-center justify-center"
-			>
+			</svelte:fragment>
+			<svelte:fragment slot="swiper-next">
 				<span
 					class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
 				>
 					<AngleRightSolid class="outline-none hidden xl:block" />
 					<div class="block xl:hidden">Next Tutor</div>
 				</span>
-			</div>
-		</div>
+			</svelte:fragment>
+		</TutorV3SwipeControls>
+		<swiper-container bind:this="{swiper}" init="false">
+			{#each featuredTutors as tutor}
+				<swiper-slide class="">
+					<div class="m-auto h-[100cqh] w-96 max-w-2xl flex-shrink-0 p-2">
+						<TutorCardV3
+							tutor="{tutor}"
+							class="mx-auto h-full self-stretch"
+							on:consultationClick="{onConsultationClick}"
+						/>
+					</div>
+				</swiper-slide>
+			{/each}
+		</swiper-container>
+
+		<TutorV3SwipeControls swiper="{swiper}">
+			<svelte:fragment slot="swiper-prev">
+				<span
+					class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
+				>
+					<AngleLeftSolid class="outline-none hidden xl:block" />
+					<div class="block xl:hidden">Prev Tutor</div>
+				</span>
+			</svelte:fragment>
+			<svelte:fragment slot="swiper-next">
+				<span
+					class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
+				>
+					<AngleRightSolid class="outline-none hidden xl:block" />
+					<div class="block xl:hidden">Next Tutor</div>
+				</span>
+			</svelte:fragment>
+		</TutorV3SwipeControls>
 	</div>
 </div>
 
-<FormModal showBtn={false} clickOutsideModal={openForm}/>
+<FormModal showBtn="{false}" clickOutsideModal="{openForm}" />
