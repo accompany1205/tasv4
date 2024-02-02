@@ -125,7 +125,11 @@
 				<span
 					class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
 				>
-					<AngleRightSolid class="outline-none hidden xl:block" />
+					<span class="hidden xl:flex xl:flex-col xl:items-center xl:gap-1">
+						<AngleRightSolid class="outline-none" />
+						<span class="text-xs leading-none">More</span>
+						<span class="text-sm leading-none">Tutor</span>
+					</span>
 					<div class="block xl:hidden">Next Tutor</div>
 				</span>
 			</svelte:fragment>
