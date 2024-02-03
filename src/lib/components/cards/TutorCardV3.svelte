@@ -3,14 +3,14 @@
 
 	import '@fontsource-variable/akshar';
 	import ServiceTags from '../elements/ServiceTags.svelte';
-	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
-	import type { Tutor } from '$lib/tutors.ts'; 
-	import {featured_images, headshots} from '$lib/tutors';
-	
+	import type { Tutor } from '$lib/tutors.ts';
+	import { featured_images, headshots } from '$lib/tutors';
+
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
 	import { Button } from 'flowbite-svelte';
-	
+	import ImageLightBoxGallery from '../blocks/common/ImageLightBoxGallery.svelte';
+
 	let isInView: boolean;
 	const options = {
 		rootMargin: '50px',
@@ -18,18 +18,16 @@
 	};
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) =>
 		(isInView = detail.inView);
-		
+
 	let _class = '';
 	export { _class as class };
 	export let tutor: Tutor;
-	
-    const dispatch = createEventDispatcher();
 
-    function handleConsultationClick() {
-        dispatch('consultationClick', { tutorId: tutor.id });
-    }
+	const dispatch = createEventDispatcher();
 
-
+	function handleConsultationClick() {
+		dispatch('consultationClick', { tutorId: tutor.id });
+	}
 </script>
 
 <div
@@ -41,23 +39,16 @@
 		<!-- Image -->
 		<div class="block aspect-[21/9] w-full overflow-hidden bg-gray-200">
 			{#if isInView}
-				<Lightbox>
-					<img
-						srcset="{featured_images[tutor.id]}"
-						alt="Matthew W"
-						class="min-h-full min-w-full object-cover object-center"
-						width="512"
-						height="230"
-						decoding="async"
-						loading="lazy"
-					/>
-				</Lightbox>
+				<ImageLightBoxGallery
+					thumbnail="{featured_images[tutor.id]}"
+					featuredImages="{featured_images}"
+				/>
 			{/if}
 		</div>
 		<!-- Tutor Info -->
 		<div class="flex overflow-x-clip">
 			<!-- Headshot -->
-			<div class="-ml-4 -mt-10 flex-shrink-0">
+			<div class="-ml-4 -mt-10 flex-shrink-0 z-10">
 				<img
 					srcset="{headshots[tutor.id]}"
 					alt="Matthew W"
@@ -108,13 +99,11 @@
 			href="https://www.tutorsandservices.com/{tutor.first}-{tutor.id}/"
 			>Learn More About {tutor.first}
 		</Button>
-		
+
 		<Button
 			class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300"
-			on:click={handleConsultationClick}
-
+			on:click="{handleConsultationClick}"
 			>Book A Free Consultation
-		</Button
-		>
+		</Button>
 	</div>
 </div>
