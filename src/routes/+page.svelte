@@ -6,6 +6,7 @@
 	import SketchupServices from '$lib/components/blocks/frontpage/SketchupServices.svelte';
 	import FAQ from '$lib/components/blocks/frontpage/FAQ.svelte';
 	import TutorV3Swipeblock from '$lib/components/blocks/common/TutorV3Swipeblock.svelte';
+	import SpecialOffer from '$lib/components/blocks/frontpage/SpecialOffer.svelte';
 
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
@@ -53,3 +54,4 @@
 <GeneralServicesDetail />
 <SketchupServices />
 <FAQ />
+<SpecialOffer />
