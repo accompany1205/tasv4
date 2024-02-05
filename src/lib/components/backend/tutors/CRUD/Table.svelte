@@ -1,14 +1,12 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, TableSearch, Button, Dropdown, DropdownItem, Checkbox, ButtonGroup } from 'flowbite-svelte';
     import { Section } from 'flowbite-svelte-blocks';
-    import paginationData from '../../tutors/tutors.json';
-    import { PlusSolid, ChevronDownSolid, FilterSolid, ChevronRightOutline, ChevronLeftOutline } from 'flowbite-svelte-icons';
     import AddTutor from './AddTutor.svelte';
     import EditTutor from './EditTutor.svelte';
-    import { db } from '$lib/firebase';
-    import { collection, getDocs, query, orderBy, startAt, limit } from 'firebase/firestore';
     import { Spinner } from 'flowbite-svelte';
+    import { tutors } from '../../stores/tutorStore';
+
+    console.log(tutors);
 
     let divClass='bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden';
     let innerDivClass='flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4';
@@ -16,27 +14,15 @@
     let classInput="text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2  pl-10";
   
     let searchTerm = '';
-    let tutors: any[] = [];
     let filteredTutors: any[] = [];
     let loading = true; 
 
-    onMount(async () => {
-        const tutorsCol = collection(db, 'tutors');
-        const querySnapshot = await getDocs(tutorsCol);
-
-        tutors = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        filteredTutors = tutors;
-        loading = false;
+    $: filteredTutors = $tutors.filter(tutor => {
+        const fullName = `${tutor.first?.toLowerCase()} ${tutor.last?.toLowerCase()}`;
+        return fullName.includes(searchTerm.toLowerCase());
     });
 
-    $: if (searchTerm) {
-        filteredTutors = tutors.filter(tutor => {
-            const fullName = `${tutor.first.toLowerCase()} ${tutor.last.toLowerCase()}`;
-            return fullName.includes(searchTerm.toLowerCase());
-        });
-    } else {
-        filteredTutors = tutors;
-    }
+    $: loading = $tutors.length === 0;
 
 </script>
 
@@ -70,7 +56,7 @@
                     <TableBodyCell tdClass="px-4 py-3" colspan="5">No matching tutors found.</TableBodyCell>
                 </TableBodyRow>
             {:else}
-                {#each (searchTerm !== '' ? filteredTutors : tutors) as tutor (tutor.id)}
+                {#each $tutors as tutor (tutor.id)}
                     <TableBodyRow>
                         <TableBodyCell tdClass="px-4 py-3">{tutor.first} {tutor.last}</TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3">{tutor.email}</TableBodyCell>
