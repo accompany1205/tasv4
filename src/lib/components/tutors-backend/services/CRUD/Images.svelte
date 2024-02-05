@@ -121,7 +121,7 @@
             <img
                 src={image.url}
                 alt={image.alt}
-                class="cursor-pointer rounded-xl shadow-md {activeAspectRatio === 'square' ? 'aspect-square' : activeAspectRatio === 'sixteenNine' ? 'aspect-video' : 'aspect-auto'} object-cover {service.images.includes(image.url) ? 'border-4 border-yellow-200' : ''}"
+                class="cursor-pointer rounded-xl shadow-md {activeAspectRatio === 'square' ? 'aspect-square' : activeAspectRatio === 'sixteenNine' ? 'aspect-video' : 'aspect-auto'} object-cover {service.images.includes(image.url) ? 'border-4 border-emerald-400' : ''}"
                 on:click={() => handleImageSelect(image.url)}
             />
         {/each}
