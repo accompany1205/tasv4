@@ -29,8 +29,6 @@
         </Button>
     </div>
     
-    <div class="text-center font-bold m-10 text-emerald-400">~ Now, to style ~</div>
-
     {#if selectedDevice == 'desktop'}
         <iframe src="/services/{source}" class="w-[1200px] h-[675px] m-auto rounded-xl shadow-xl" title="Website Preview" on:load={handleIframeLoad}></iframe>
     {:else}

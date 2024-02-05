@@ -89,11 +89,11 @@ function handleDrop(event: DragEvent & { currentTarget: EventTarget & HTMLDivEle
         on:drop={(event) => handleDrop(event, i)}
     >
         <div class="mb-2 text-sm w-2/12">Sub-service Name
-            <Textarea bind:value={subService.name} class="mt-2 h-auto" placeholder="SubService Name"/>
+            <Textarea bind:value={subService.name} class="mt-2 h-auto"/>
         </div>
 
         <div class="mb-2 text-sm w-3/12">SubService Description
-            <Textarea bind:value={subService.description} class="mt-2 " placeholder="SubService Description" rows="5" />
+            <Textarea bind:value={subService.description} class="mt-2 " rows="5" />
         </div>
 
         <div class="mb-2 text-sm w-6/12">Images

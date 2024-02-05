@@ -9,6 +9,7 @@
     import Preview from "./page-sections/Preview.svelte";
     import { DeviceMockup } from 'flowbite-svelte';
     import { DesktopPcSolid, WindowSolid, MobilePhoneSolid } from 'flowbite-svelte-icons';
+    import Images from "./page-sections/Images.svelte";
  
 
     let tos = [
@@ -49,6 +50,7 @@
 
                 <div class="flex justify-left gap-4 mb-4">
                     <Button color="alternative" on:click={() => activeSection = 'general'} class="{activeSection === 'general' ? 'border-emerald-300 border-2' : ''}">General</Button>
+                    <Button color="alternative" on:click={() => activeSection = 'images'} class="{activeSection === 'images' ? 'border-emerald-300 border-2' : ''}">Images</Button>
                     <Button color="alternative" on:click={() => activeSection = 'subservices'} class="{activeSection === 'subservices' ? 'border-emerald-300 border-2' : ''}">Sub-Services</Button>
                     <Button color="alternative" on:click={() => activeSection = 'faq'} class="{activeSection === 'faq' ? 'border-emerald-300 border-2' : ''}">FAQ</Button>
                     <Button color="alternative" on:click={() => activeSection = 'preview'} class="{activeSection === 'preview' ? 'border-emerald-300 border-2' : ''}">Preview</Button>
@@ -57,6 +59,10 @@
 
                 {#if activeSection === 'general'}
                     <General service={service} tutors={tutors} tos={tos} />
+                {/if}
+
+                {#if activeSection === 'images'}
+                    <Images service={service}/>
                 {/if}
 
                 {#if activeSection === 'subservices'}
