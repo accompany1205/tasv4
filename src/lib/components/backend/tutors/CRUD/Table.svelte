@@ -1,71 +1,106 @@
 <script lang="ts">
-    import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, TableSearch, Button, Dropdown, DropdownItem, Checkbox, ButtonGroup } from 'flowbite-svelte';
-    import { Section } from 'flowbite-svelte-blocks';
-    import AddTutor from './AddTutor.svelte';
+    import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell} from 'flowbite-svelte';
     import EditTutor from './EditTutor.svelte';
-    import { Spinner } from 'flowbite-svelte';
     import { tutors } from '../../stores/tutorStore';
+    import { writable, derived } from 'svelte/store';
+    import { ArrowDownSolid, ArrowUpSolid } from 'flowbite-svelte-icons';
 
-    console.log(tutors);
+    export let searchTerm = writable('');
+    let sortKey = writable('id');
+    let sortDirection = writable(1);
 
-    let divClass='bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden';
-    let innerDivClass='flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4';
-    let searchClass='w-full md:w-1/2 relative';
-    let classInput="text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2  pl-10";
-  
-    let searchTerm = '';
-    let filteredTutors: any[] = [];
-    let loading = true; 
+    const filteredAndSortedTutors = derived(
+        [tutors, sortKey, sortDirection, searchTerm], 
+        ([$tutors, $sortKey, $sortDirection, $searchTerm]) => {
+            return $tutors
+                .filter(tutor => {
+                    const fullName = `${tutor.first?.toLowerCase()} ${tutor.last?.toLowerCase()}`;
+                    return fullName.includes($searchTerm.toLowerCase());
+                })
+                .sort((a, b) => {
+                    const aVal = a[$sortKey];
+                    const bVal = b[$sortKey];
+                    return (aVal < bVal ? -1 : 1) * $sortDirection;
+                });
+        }
+    );
 
-    $: filteredTutors = $tutors.filter(tutor => {
-        const fullName = `${tutor.first?.toLowerCase()} ${tutor.last?.toLowerCase()}`;
-        return fullName.includes(searchTerm.toLowerCase());
-    });
-
-    $: loading = $tutors.length === 0;
-
+    function sortTable(key: string) {
+        sortKey.update(n => {
+            if (n === key) {
+                sortDirection.update(m => -m);
+                return n;
+            } else {
+                sortDirection.set(1);
+                return key;
+            }
+        });
+    }
 </script>
 
-<Section classSection='bg-gray-50 dark:bg-gray-900 p-3 sm:p-5'>
-    <TableSearch placeholder="Search" hoverable={true} bind:inputValue={searchTerm} {divClass} {innerDivClass} {searchClass} {classInput} >
-
-        <!-- Add Tutor -->
-        <div slot="header" class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-            <AddTutor/>
-        </div>
-
-        <!-- Header -->
-        <TableHead>
-            <TableHeadCell padding="px-4 py-3" scope="col">Name</TableHeadCell>
-            <TableHeadCell padding="px-4 py-3" scope="col">Email</TableHeadCell>
-            <TableHeadCell padding="px-4 py-3" scope="col">Number</TableHeadCell>
-            <TableHeadCell padding="px-4 py-3" scope="col">$/Hour</TableHeadCell>
-            <TableHeadCell padding="px-4 py-3" scope="col">Action</TableHeadCell>
-        </TableHead>
-
-        <!-- Body -->
-        <TableBody>
-            {#if loading}
-                <TableBodyRow>
-                    <TableBodyCell tdClass="py-32 text-center" colspan="5">
-                        <Spinner class="m-auto"/>
-                    </TableBodyCell>
-                </TableBodyRow>
-            {:else if searchTerm !== '' && filteredTutors.length === 0}
-                <TableBodyRow>
-                    <TableBodyCell tdClass="px-4 py-3" colspan="5">No matching tutors found.</TableBodyCell>
-                </TableBodyRow>
-            {:else}
-                {#each $tutors as tutor (tutor.id)}
-                    <TableBodyRow>
-                        <TableBodyCell tdClass="px-4 py-3">{tutor.first} {tutor.last}</TableBodyCell>
-                        <TableBodyCell tdClass="px-4 py-3">{tutor.email}</TableBodyCell>
-                        <TableBodyCell tdClass="px-4 py-3">{tutor.phone}</TableBodyCell>
-                        <TableBodyCell tdClass="px-4 py-3">${tutor.rate}</TableBodyCell>
-                        <TableBodyCell tdClass="px-4 py-3"><EditTutor tutor={tutor}/></TableBodyCell>
-                    </TableBodyRow>
-                {/each}
-            {/if}
-        </TableBody>
-    </TableSearch>
-</Section>
+<Table class="max-w-7xl m-auto border-2 dark:border-gray-600">
+    <TableHead>
+        <TableHeadCell>Headshot</TableHeadCell>
+        <TableHeadCell on:click={() => sortTable('first')}>
+            <div class="flex items-center gap-3">
+                Name
+                {#if $sortKey === 'first'}
+                    {#if $sortDirection === 1}
+                        <ArrowUpSolid class="w-3 h-3"/>
+                    {:else}
+                        <ArrowDownSolid class="w-3 h-3"/>
+                    {/if}
+                {/if}
+            </div>
+        </TableHeadCell>
+        <TableHeadCell on:click={() => sortTable('email')}>
+            <div class="flex items-center gap-3">
+                Email
+                {#if $sortKey === 'email'}
+                    {#if $sortDirection === 1}
+                        <ArrowUpSolid class="w-3 h-3"/>
+                    {:else}
+                        <ArrowDownSolid class="w-3 h-3"/>
+                    {/if}
+                {/if}
+            </div>
+        </TableHeadCell>
+        <TableHeadCell on:click={() => sortTable('phone')}>
+            <div class="flex items-center gap-3">
+                Number
+                {#if $sortKey === 'phone'}
+                    {#if $sortDirection === 1}
+                        <ArrowUpSolid class="w-3 h-3"/>
+                    {:else}
+                        <ArrowDownSolid class="w-3 h-3"/>
+                    {/if}
+                {/if}
+            </div>
+        </TableHeadCell>
+        <TableHeadCell on:click={() => sortTable('rate')}>
+            <div class="flex items-center gap-3">
+                Rate
+                {#if $sortKey === 'rate'}
+                    {#if $sortDirection === 1}
+                        <ArrowUpSolid class="w-3 h-3"/>
+                    {:else}
+                        <ArrowDownSolid class="w-3 h-3"/>
+                    {/if}
+                {/if}
+            </div>    
+        </TableHeadCell>
+        <TableHeadCell>Action</TableHeadCell>
+    </TableHead>
+    <TableBody>
+        {#each $filteredAndSortedTutors as tutor (tutor.id)}
+            <TableBodyRow>
+                <TableBodyCell><img src={tutor.headshot} class="w-14 rounded-xl" alt={tutor.name}/></TableBodyCell>
+                <TableBodyCell>{tutor.first} {tutor.last}</TableBodyCell>
+                <TableBodyCell>{tutor.email}</TableBodyCell>
+                <TableBodyCell>{tutor.phone}</TableBodyCell>
+                <TableBodyCell>${tutor.rate}</TableBodyCell>
+                <TableBodyCell><EditTutor tutor={tutor}/></TableBodyCell>
+            </TableBodyRow>
+        {/each}
+    </TableBody>
+</Table>

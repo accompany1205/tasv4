@@ -67,53 +67,53 @@
 <Button on:click={() => {defaultModal = true}} color="alternative" size="xs">Edit</Button>
 
 <Modal title="Edit Tutor" bind:open={defaultModal} class="z-50" >  
-        <div class="grid gap-4 mb-4 sm:grid-cols-2">
+
+        <img src={tutor.headshot} alt={tutor.name} class="rounded-xl w-40 m-auto"/>
+
+        <div class="grid gap-4 mb-5 sm:grid-cols-2">
             <div>
-                <Label for="first" class="mb-2 text-sm">First
-                    <Input bind:value={tutor.first} class="mt-2" type="text" name="first" id="first" placeholder="First Name" autocomplete="on"/>
-                </Label>
+                First
+                <Input bind:value={tutor.first} class="mt-2" type="text" name="first" id="first" autocomplete="on"/>
             </div>
 
             <div>
-                <Label for="last" class="mb-2 text-sm">Last
-                    <Input bind:value={tutor.last} class="mt-2" type="text" name="last" id="last" placeholder="Last Name" autocomplete="on"/>
-                </Label>
+                Last
+                <Input bind:value={tutor.last} class="mt-2" type="text" name="last" id="last" autocomplete="on"/>
             </div>
 
             <div>
-                <Label for="email" class="mt-2 mb-2 text-sm">Email
-                    <Input bind:value={tutor.email} class="mt-2" type="text" name="email" id="email" placeholder="tutor.tas@gmail.com" autocomplete="on"/>
-                </Label>
+                Email
+                <Input bind:value={tutor.email} class="mt-2" type="text" name="email" id="email" autocomplete="on"/>
             </div>
 
             <div>
-                <Label for="phone" class="mt-2 mb-2 text-sm">Phone
-                    <Input bind:value={tutor.phone} class="mt-2" type="text" name="phone" id="phone" placeholder="123-345-6789" autocomplete="on"/>
-                </Label>
+                Phone
+                <Input bind:value={tutor.phone} class="mt-2" type="text" name="phone" id="phone" autocomplete="on"/>
             </div>
         </div>   
 
-        <DropdownDivider class="mt-9"/>
-
+        <DropdownDivider/>
 
         <div class="grid gap-4 mb-4 sm:grid-cols-2">
             <div>
-                <Label for="rate" class="mt-2 mb-2 text-sm">Rate
-                    <Input bind:value={tutor.rate} class="mt-2" type="text" name="rate" id="rate" placeholder="15 ~ 100" />
-                </Label>
+                Rate
+                <Input bind:value={tutor.rate} class="mt-2" type="text" name="rate" id="rate"/>
             </div>
 
             <div>
-                <Label class="mt-2 mb-2 text-sm">Status
-                    <Select class="mt-2" name="status" bind:value={selectedStatus} items={statusENUM} />
-                </Label>
+                Status
+                <Select class="mt-2" name="status" bind:value={selectedStatus} items={statusENUM} />
             </div>
+        </div>
 
-            <div class="sm:col-span-2">
-                <Label for="description" class="mt-2 mb-2 text-sm">Notes on Tutor
-                    <Textarea bind:value={tutor.description} class="mt-2" id="description" name="description" placeholder="Your description here" rows="4" />
-                </Label>
-            </div>
+        <div class="flex flex-col w-full">
+            Title
+            <Textarea bind:value={tutor.title} class="mt-2" id="description" name="description" rows="2" />
+        </div>
+
+        <div class="flex flex-col">
+            Description
+            <Textarea bind:value={tutor.description} class="mt-2" id="description" name="description"  rows="4" />
         </div>
 
         <div class="flex justify-evenly">
