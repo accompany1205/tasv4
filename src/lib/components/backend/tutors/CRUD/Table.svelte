@@ -36,6 +36,24 @@
             }
         });
     }
+
+    function statusClass(status: string): string {
+        switch (status) {
+            case 'Active':
+                return 'text-green-400';
+            case 'Hold':
+                return 'text-red-600';
+            case 'Full':
+                return 'text-blue-400';
+            case 'New':
+                return 'text-yellow-300';
+            default:
+                return 'text-gray-400';
+        }
+    }
+
+
+
 </script>
 
 <Table class="max-w-7xl m-auto border-2 dark:border-gray-600">
@@ -77,6 +95,7 @@
                 {/if}
             </div>
         </TableHeadCell>
+
         <TableHeadCell on:click={() => sortTable('rate')}>
             <div class="flex items-center gap-3">
                 Rate
@@ -89,6 +108,25 @@
                 {/if}
             </div>    
         </TableHeadCell>
+
+        <TableHeadCell on:click={() => sortTable('status')}>
+            <div class="flex items-center gap-3">
+                Status
+                {#if $sortKey === 'status'}
+                    {#if $sortDirection === 1}
+                        <ArrowUpSolid class="w-3 h-3"/>
+                    {:else}
+                        <ArrowDownSolid class="w-3 h-3"/>
+                    {/if}
+                {/if}
+            </div>
+        </TableHeadCell>
+
+
+
+
+
+
         <TableHeadCell>Action</TableHeadCell>
     </TableHead>
     <TableBody>
@@ -99,7 +137,8 @@
                 <TableBodyCell>{tutor.email}</TableBodyCell>
                 <TableBodyCell>{tutor.phone}</TableBodyCell>
                 <TableBodyCell>${tutor.rate}</TableBodyCell>
-                <TableBodyCell><EditTutor tutor={tutor}/></TableBodyCell>
+                <TableBodyCell class={statusClass(tutor.status)}>{tutor.status}</TableBodyCell>
+                <TableBodyCell><EditTutor tutorId={tutor.id}/></TableBodyCell>
             </TableBodyRow>
         {/each}
     </TableBody>

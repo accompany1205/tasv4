@@ -8,6 +8,7 @@
 - **Tailwind**
 - **Vite**
 - **Firebase**
+- **Bunny.cdn**
 
 # create-svelte
 

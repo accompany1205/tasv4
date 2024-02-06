@@ -7,19 +7,17 @@
     import MediaBase from "$lib/components/backend/media/MediaBase.svelte";
     import { writable } from "svelte/store";
     import { onMount } from 'svelte';
-    import { collectionsStore, fetchAllCollections } from '$lib/stores/collections';
+	import { Spinner } from "flowbite-svelte";
 
-    // Create a writable store for the current navigation index
+    let initialized = false;
     const currentNavIndex = writable(1);
 
-    // Load the stored index from localStorage when the component mounts
     onMount(() => {
         const storedIndex = localStorage.getItem('currentNavIndex');
         if (storedIndex) {
             currentNavIndex.set(parseInt(storedIndex, 10)); // Update the store's value
         }
-
-        fetchAllCollections();
+        initialized = true;
     });
 
     function handleNavChange(event: { detail: { optionIndex: number; }; }) {
@@ -31,16 +29,22 @@
 <div class="bg-gray-50 h-screen w-screen fixed top-0 left-0 z-[-999] dark:bg-gray-700">
 </div>
 
-{#if $currentNavIndex === 1}
-    <LeadsBase/>
-{:else if $currentNavIndex === 2}
-    <ServicesBase/>
-{:else if $currentNavIndex === 3}
-    <TutorsBase/>
-{:else if $currentNavIndex === 4}
-    <MediaBase/>
-{:else if $currentNavIndex === 5}
-    <Settings/>
+{#if initialized}
+    {#if $currentNavIndex === 1}
+        <LeadsBase/>
+    {:else if $currentNavIndex === 2}
+        <ServicesBase/>
+    {:else if $currentNavIndex === 3}
+        <TutorsBase/>
+    {:else if $currentNavIndex === 4}
+        <MediaBase/>
+    {:else if $currentNavIndex === 5}
+        <Settings/>
+    {/if}
+{:else}
+    <div class="w-screen h-screen flex justify-center items-center">
+        <Spinner class="m-auto"/>
+    </div>
 {/if}
 
 <BottomNav on:change={handleNavChange} optionIndex={$currentNavIndex}/>

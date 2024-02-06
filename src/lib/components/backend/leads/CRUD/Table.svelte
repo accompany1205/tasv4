@@ -6,7 +6,6 @@
     import EditLead from './EditLead.svelte';
     import { Popover } from 'flowbite-svelte';
 
-
     import { db } from '$lib/firebase';
     import { collection, getDocs, query, orderBy, startAt, limit } from 'firebase/firestore';
     import { Spinner } from 'flowbite-svelte';
