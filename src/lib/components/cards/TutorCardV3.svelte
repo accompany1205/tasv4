@@ -9,7 +9,7 @@
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
 	import { Button } from 'flowbite-svelte';
-	import ImageLightBoxGallery from '../blocks/common/ImageLightBoxGallery.svelte';
+	import PortfolioThumbnail from '../blocks/common/PortfolioThumbnail.svelte';
 
 	let isInView: boolean;
 	const options = {
@@ -37,14 +37,13 @@
 >
 	<div>
 		<!-- Image -->
-		<div class="block aspect-[21/9] w-full overflow-hidden bg-gray-200">
-			{#if isInView}
-				<ImageLightBoxGallery
-					thumbnail="{featured_images[tutor.id]}"
-					featuredImages="{featured_images}"
-				/>
-			{/if}
-		</div>
+		{#if isInView}
+			<PortfolioThumbnail
+				thumbnail="{featured_images[tutor.id]}"
+				featuredImages="{featured_images}"
+			/>
+		{/if}
+
 		<!-- Tutor Info -->
 		<div class="flex overflow-x-clip">
 			<!-- Headshot -->
@@ -56,38 +55,41 @@
 				/>
 			</div>
 			<!-- Name -->
-			<div class="p-2">
-				<div class="text-4xl font-bold">{tutor.name}</div>
-				{#if tutor?.ratingCount ?? 0 >= 5}
+			<div class="flex items-center justify-center gap-2 mx-2">
+				<!-- <div class="text-4xl font-bold shrink break-words">Shanthihanssd S</div> -->
+				<div class="text-4xl font-bold inline-block">{tutor.name}</div>
+				<!-- {#if tutor?.ratingCount ?? 0 >= 5}
 					<span class="font-medium text-yellow-300"
 						>{tutor?.ratingScore?.toFixed(1)}⭐ {tutor.ratingCount} Reviews</span
 					>
 				{:else}
 					<span class="font-medium text-yellow-300">New</span>
-				{/if}
-				<span class="font-medium text-gray-500">• Expert • ${tutor.hourlyRate}/hr</span>
+				{/if} -->
+				<span class="font-medium text-gray-500 w-11">${tutor.hourlyRate}/hr</span>
 			</div>
 		</div>
 
+		<!-- Title -->
+		<div class="mx-3 my-2 text-left text-xl font-medium">{tutor?.title}</div>
+
 		<!-- Software Tags -->
 		<div class="mx-3 py-1">
+			<span class="font-semibold">Tutoring:</span>
 			<ServiceTags keywords="{tutor?.software?.slice(0, 8)}" />
 		</div>
 	</div>
 
 	<div>
-		<!-- Title -->
-		<div class="mx-3 mb-1 text-left text-xl font-medium">{tutor?.title}</div>
-
 		<!-- Services -->
 		{#if tutor?.services?.length ?? 0 > 0}
 			<div class="mx-2 mb-2 p-1">
-				<div class="font-semibold">Services I Provide:</div>
-				<ul class="mt-2 list-disc pl-5 text-gray-500">
-					{#each tutor?.services?.slice(0, 3) ?? [] as service}
+				<div class="font-semibold">Services:</div>
+				<div class=" text-gray-500">
+					<ServiceTags keywords="{tutor?.services?.slice(0, 3)}" />
+					<!-- {#each tutor?.services?.slice(0, 3) ?? [] as service}
 						<li>{service}</li>
-					{/each}
-				</ul>
+					{/each} -->
+				</div>
 			</div>
 		{/if}
 	</div>
@@ -97,13 +99,13 @@
 		<Button
 			class="text-md mx-4 rounded bg-alabaster-300 p-2 font-medium text-white hover:bg-alabaster-200"
 			href="https://www.tutorsandservices.com/{tutor.first}-{tutor.id}/"
-			>Learn More About {tutor.first}
+			>See My work
 		</Button>
 
 		<Button
 			class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300"
 			on:click="{handleConsultationClick}"
-			>Book A Free Consultation
+			>Free Consultation
 		</Button>
 	</div>
 </div>
