@@ -40,7 +40,7 @@
 		breakpoints: {
 			640: {
 				slidesPerView: 2,
-				spaceBetween: 20,
+				spaceBetween: 1,
 			},
 			1200: {
 				slidesPerView: 3,
@@ -102,7 +102,9 @@
 		<swiper-container bind:this="{swiper}" init="false">
 			{#each featuredTutors as tutor}
 				<swiper-slide class="">
-					<div class="m-auto h-[100cqh] w-96 max-w-2xl flex-shrink-0 p-2">
+					<div
+						class="m-auto h-[100cqh] w-96 micro:max-[375px]:w-80 max-w-2xl flex-shrink-0 p-2"
+					>
 						<TutorCardV3
 							tutor="{tutor}"
 							class="mx-auto h-full self-stretch"
