@@ -24,6 +24,7 @@
             const querySnapshot = await getDocs(mediaCollection);
 
             images = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            console.log(images)
         } catch (error) {
             console.error('Error fetching images from Firestore', error);
         }

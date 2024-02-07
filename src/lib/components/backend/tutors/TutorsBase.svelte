@@ -3,9 +3,22 @@
    import { tutors } from '../stores/tutorStore';
    import { Spinner, Input } from "flowbite-svelte";
    import AddTutor from "./CRUD/AddTutor.svelte";
-   import { writable } from 'svelte/store';
+   import { writable, derived } from 'svelte/store';
 
    let searchTerm = writable('');
+   let showNoTutorsMessage = writable(false);
+
+   const noTutorsAfterDelay = derived(tutors, $tutors => {
+      if ($tutors.length === 0) {
+         setTimeout(() => {
+            showNoTutorsMessage.set(true);
+         }, 5000);
+         return false;
+      } else {
+         showNoTutorsMessage.set(false);
+         return true;
+      }
+   });
 
    function handleInput(event) {
       searchTerm.set(event.target.value);
@@ -17,9 +30,12 @@
    <AddTutor/>
 </div>
 
-
-{#if $tutors.length === 0}
-   <Spinner class="m-auto w-full h-12 my-20"/>
-{:else}
+{#if $noTutorsAfterDelay}
    <Table searchTerm={searchTerm}/>
+{:else if $showNoTutorsMessage}
+   <div class="text-center py-10">
+      No tutors found, refresh page or contact admin.
+   </div>
+{:else}
+   <Spinner class="m-auto w-full h-12 my-20"/>
 {/if}

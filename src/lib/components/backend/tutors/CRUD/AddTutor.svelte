@@ -1,93 +1,58 @@
-<script lang="ts">
-	import { db } from '$lib/firebase';
-	import { createUserWithEmailAndPassword } from 'firebase/auth';
-	import { addDoc, collection } from 'firebase/firestore';
-    import { Label, Input, Button, Modal, Textarea, Select, DropdownDivider } from 'flowbite-svelte';
-    import { Toast } from 'flowbite-svelte';
-    import { CheckCircleSolid, ExclamationCircleSolid, FireOutline, CloseCircleSolid } from 'flowbite-svelte-icons';
-    import { firebaseAuth } from "$lib/firebase";
+<script>
+    import { Button, Modal, Input, Select, Textarea, Toggle, DropdownDivider, Toast } from 'flowbite-svelte';
+    import { addTutor } from '../../stores/tutorStore';
+    import { tutorStatusOptions } from '../../stores/settingsStore';
+    import { derived } from 'svelte/store';
+	import { CloseCircleSolid } from 'flowbite-svelte-icons';
 
-    let defaultModal = false;
+    let modal = false;
     let showToast = false;
+    let options = derived(tutorStatusOptions, $tutorStatusOptions => $tutorStatusOptions.map(option => ({ value: option, name: option })));
 
+    let tutorDetails = {
+        first: '', 
+        last: '', 
+        email: '', 
+        phone: '', 
+        rate: '', 
+        status: '', 
+        description: '', 
+        visible: true,
+        headshot: '', 
+        title: '', 
+        name: '',
+    };
 
-    let statusENUM = [
-        { value: 'active', name: 'Active' },
-        { value: 'full', name: 'Full' },
-        { value: 'hold', name: 'On Hold' }
-    ];
-
-    let first = '';
-    let last = '';
-    let email = '';
-    let phone = '';
-    let rate = '';
-    let status = '';
-    let description = '';
-
-    let password = "mainpassword";
-
-    async function addTutor() {
-        try {
-
-
-            if (!first || !email || !rate || !status) {
-                showToast = true;
-                setTimeout(() => { showToast = false; }, 3000);
-                return;
-            }
-
-            const userCredential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
-            const user = userCredential.user;
-
-            await addDoc(collection(db, 'tutors', user.uid), {
-                first,
-                last,
-                email,
-                phone,
-                rate,
-                status,
-                description
-            });
-
-            defaultModal = false; // Close the modal
-
-            window.location.href = "/backend";
-
-        } catch (error) {
-            console.error('Error adding tutor: ', error);
-        }
+    async function saveChanges() {
+        await addTutor(tutorDetails);
+        modal = false;
     }
-
-
 </script>
-    
-<Button on:click={() => (defaultModal = true)}>Add Tutor</Button>
 
-<Modal title="Add Tutor" bind:open={defaultModal} class="z-50">  
+<Button on:click={() => (modal = true)}>Add Tutor</Button>
+
+<Modal title="Add Tutor" bind:open={modal} class="z-50">  
     <div class="grid gap-4 mb-4 sm:grid-cols-2">
         <div>
-            <Label for="first" class="mb-2 text-sm">First*
-                <Input bind:value={first} class="mt-2" type="text" name="first" id="first" placeholder="First Name" autocomplete="on"/>
-            </Label>
+            First*
+            <Input bind:value={tutorDetails.first} class="mt-2" type="text" name="first" id="first" placeholder="First Name" autocomplete="on"/>
         </div>
 
         <div>
-            <Label for="last" class="mb-2 text-sm">Last
-                <Input bind:value={last} class="mt-2" type="text" name="last" id="last" placeholder="Last Name" autocomplete="on"/>
-            </Label>
+            Last*
+            <Input bind:value={tutorDetails.last} class="mt-2" type="text" name="last" id="last" placeholder="Last Name" autocomplete="on"/>
         </div>
 
         <div>
-            <Label for="email" class="mb-2 text-sm">Email*
-                <Input bind:value={email} class="mt-2" type="text" name="email" id="email" placeholder="tutor.tas@gmail.com" autocomplete="on"/>
-            </Label>
+            Email*
+            <Input bind:value={tutorDetails.email} class="mt-2" type="text" name="email" id="email" placeholder="tutor.tas@gmail.com" autocomplete="on"/>
+           
         </div>
 
         <div>
-            <Label for="phone" class="mb-2 text-sm">Phone
-                <Input bind:value={phone} class="mt-2" type="text" name="phone" id="phone" placeholder="123-345-6789" autocomplete="on"/>
-            </Label>
+            Phone
+            <Input bind:value={tutorDetails.phone} class="mt-2" type="text" name="phone" id="phone" placeholder="123-345-6789" autocomplete="on"/>
+      
         </div>
     </div>   
 
@@ -96,29 +61,23 @@
 
     <div class="grid gap-4 mb-4 sm:grid-cols-2">
         <div>
-            <Label for="rate" class="mb-2 text-sm">Rate*
-                <Input bind:value={rate} class="mt-2" type="text" name="rate" id="rate" placeholder="15 ~ 100" />
-            </Label>
+            Rate*
+            <Input bind:value={tutorDetails.rate} class="mt-2" type="text" name="rate" id="rate" placeholder="15 ~ 100" />
         </div>
 
         <div>
-            <Label class="mb-2 text-sm">Status*
-                <Select class="mt-2" name="status" items={statusENUM} bind:value={status} id="select" />
-            </Label>
+            Status*
+            <Select class="mt-2" name="status" items={$options} bind:value={tutorDetails.status} id="select" />
         </div>
 
         <div class="sm:col-span-2">
-            <Label for="description" class="mb-2 text-sm">Notes on Tutor
-                <Textarea bind:value={description} class="mt-2" id="description" name="description" placeholder="Your description here" rows="4" />
-            </Label>
+            Tutor Title
+            <Textarea bind:value={tutorDetails.title} class="mt-2" id="description" name="description" placeholder="Your description here" rows="4" />
         </div>
 
-
-
-        <Button on:click={addTutor} class="w-52 mt-4">
+        <Button on:click={saveChanges} class="w-52 mt-4">
             Add New Tutor
         </Button>
-
 
         {#if showToast}
             <Toast dismissable={false} position="bottom-right" color="red">
@@ -129,8 +88,5 @@
                 All required fields must be filled
             </Toast>
         {/if}
-
-
-
     </div>
 </Modal>

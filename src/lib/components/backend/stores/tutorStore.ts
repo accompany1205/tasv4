@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { collection, doc, updateDoc } from 'firebase/firestore';
+import { collection, doc, updateDoc, deleteDoc, addDoc } from 'firebase/firestore';
 import { db } from '$lib/firebase';
 import { query, onSnapshot } from 'firebase/firestore';
 
@@ -71,4 +71,27 @@ function sanitizeForFirestore(obj: Record<string, any>): Record<string, any> {
         }
     });
     return sanitizedObj;
+}
+
+
+export async function deleteTutor(tutorId: string) {
+    const tutorRef = doc(db, 'tutors', tutorId);
+
+    try {
+        await deleteDoc(tutorRef);
+        console.log('Tutor deleted successfully from Firestore');
+    } catch (error) {
+        console.error('Error deleting tutor:', error);
+        throw error;
+    }
+}
+
+export async function addTutor(newTutor: any) {
+    try {
+        await addDoc(collection(db, 'tutors'), newTutor);
+        console.log('Tutor added successfully to Firestore');
+    } catch (error) {
+        console.error('Error adding new tutor:', error);
+        throw error;
+    }
 }

@@ -1,39 +1,27 @@
 <script lang="ts">
-	import { db } from '$lib/firebase';
-	import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
-    import { Button, Modal } from 'flowbite-svelte';
+    import { Button, Modal, Input  } from 'flowbite-svelte';
     import { ExclamationCircleOutline } from 'flowbite-svelte-icons';
+    import { deleteTutor } from '../../stores/tutorStore'; // Adjust the path as necessary
 
     let popupModal = false;
 
-    export let tutor = {
-        id: '',
-        first: '',
-        last: '',
-        email: '',
-        phone: '',
-        rate: '',
-        status: '',
-        description: ''
-    };
+    export let tutor:any;
 
-    async function deleteTutor() {
-        await deleteDoc(doc(db, 'tutors', tutor.id));
-        window.location.href = "/backend";
+    async function confirmDeletion() {
+        await deleteTutor(tutor.id);
+        popupModal = false;
     }
-
-
-
 </script>
 
-<Button class="w-52" on:click={() => (popupModal = true)} color="alternative">Delete Tutor</Button>
+<Button on:click={() => (popupModal = true)} color="alternative" class="w-1/2">Delete Tutor</Button>
 
-<Modal title="Deleting {tutor.first} {tutor.last}" bind:open={popupModal} size="xs" autoclose>
+<Modal title="Confirm Deletion" bind:open={popupModal} size="xs">
     <div class="text-center">
-        <ExclamationCircleOutline class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" />
-        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete {tutor.first} {tutor.last} from the system?</h3>
+        <ExclamationCircleOutline class="mx-auto mb-4 w-14 h-14 text-red-500" />
+        <div class="text-lg font-normal text-gray-500">Are you sure you want to delete</div>
+        <div class="font-bold text-lg text-red-500 mb-5">{tutor.name}</div>
 
-        <Button color="red" class="me-2" on:click={deleteTutor}>Yes, I'm sure</Button>
-        <Button color="alternative">No, cancel</Button>
+        <Button color="red" on:click={confirmDeletion}>Yes, delete</Button>
+        <Button color="alternative" on:click={() => (popupModal = false)}>Cancel</Button>
     </div>
 </Modal>
