@@ -72,7 +72,7 @@
 			expensive fees for redrawing or changing plans.
 		</P>
 	</ServiceCard>
-	<Hr classHr="m-0 mb-14 mx-auto max-w-7xl" />
+	<Hr classHr="m-0 my-14 mx-auto max-w-7xl" />
 
 	<ServiceCard images="{interior_design_flattened}">
 		<H4>Interior Design</H4>
@@ -82,7 +82,7 @@
 			customizable. There are no limitations to what you can create.
 		</P>
 	</ServiceCard>
-	<Hr classHr="m-0 mb-14 mx-auto max-w-7xl" />
+	<Hr classHr="m-0 my-14 mx-auto max-w-7xl" />
 
 	<ServiceCard images="{product_design_flattened}">
 		<H4>Product Design</H4>
@@ -91,7 +91,8 @@
 			conduct rapid prototyping.
 		</P>
 	</ServiceCard>
-	<Hr classHr="m-0 mb-14 mx-auto max-w-7xl" />
+
+	<Hr classHr="m-0 my-14 mx-auto max-w-7xl" />
 
 	<div class="card mx-auto grid max-w-7xl flex-shrink-0 gap-4 p-4 sm:grid-cols-2">
 		<div class="order-1 sm:-order-1">

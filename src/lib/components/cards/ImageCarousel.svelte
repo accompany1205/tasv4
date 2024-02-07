@@ -29,7 +29,7 @@
 <div
 	use:inview="{options}"
 	on:inview_change="{handleChange}"
-	class="max-w-7xl w-full aspect-video relative mb-14"
+	class="max-w-7xl w-full aspect-video relative"
 >
 	{#if isInView}
 		<Carousel

@@ -21,7 +21,7 @@
 </script>
 
 <SectionWhite title="About Us">
-	<div class="card mx-auto grid max-w-screen-xl gap-4 p-4 sm:grid-cols-2 text-gray-500">
+	<div class="card mx-auto grid max-w-screen-xl gap-4 sm:grid-cols-2 text-gray-500">
 		<div class="max-w">
 			<div>
 				<h4 class="py-4 pt-0 text-2xl text-gray-900">ON-DEMAND PROFESSIONALS</h4>

@@ -23,7 +23,7 @@
 </script>
 
 <SectionWhite title="Don't struggle alone, Get help from a professional.">
-	<div class="flex flex-col items-start justify-start max-w-screen-xl gap-4 p-4">
+	<div class="flex flex-col items-start justify-start max-w-screen-xl gap-4">
 		<H4 class="tracking-widest text-center">START A CONVERSATION</H4>
 		<TutorsHeadImage
 			featuredTutors="{featuredTutorsHero}"

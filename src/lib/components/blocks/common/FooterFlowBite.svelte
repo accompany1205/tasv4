@@ -31,7 +31,7 @@
 				<text class="dyntext" transform="translate(195 76)"> Tutors & </text>
 				<text class="dyntext" transform="translate(195 117)"> Services </text>
 			</LogoUnframedDynamicText>
-			<div class="text-white">
+			<div class="text-white pt-4">
 				<FooterCopyright
 					spanClass="text-sm text-gray-300 sm:text-center"
 					href="/"
