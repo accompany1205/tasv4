@@ -80,71 +80,65 @@
 		class="m-auto mx-auto h-[735px] max-w-full xl:max-w-screen-xl"
 		style="container-type: size;"
 	>
-		{#if swiper}
-			<TutorV3SwipeControls topControl swiper="{swiper}" class="block xl:hidden">
-				<svelte:fragment slot="swiper-prev">
-					<span
-						class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
-					>
-						<AngleLeftSolid class="outline-none hidden xl:block" />
-						<div class="block xl:hidden">Prev Tutor</div>
-					</span>
-				</svelte:fragment>
-				<svelte:fragment slot="swiper-next">
-					<span
-						class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
-					>
-						<AngleRightSolid class="outline-none hidden xl:block" />
-						<div class="block xl:hidden">Next Tutor</div>
-					</span>
-				</svelte:fragment>
-			</TutorV3SwipeControls>
-		{/if}
+		<TutorV3SwipeControls topControl swiper="{swiper}" class="block xl:hidden">
+			<svelte:fragment slot="swiper-prev">
+				<span
+					class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
+				>
+					<AngleLeftSolid class="outline-none hidden xl:block" />
+					<div class="block xl:hidden">Prev Tutor</div>
+				</span>
+			</svelte:fragment>
+			<svelte:fragment slot="swiper-next">
+				<span
+					class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
+				>
+					<AngleRightSolid class="outline-none hidden xl:block" />
+					<div class="block xl:hidden">Next Tutor</div>
+				</span>
+			</svelte:fragment>
+		</TutorV3SwipeControls>
 
 		<swiper-container bind:this="{swiper}" init="false">
-			{#if swiper}
-				{#each featuredTutors as tutor}
-					<swiper-slide class="">
-						<div class="m-auto h-[100cqh] w-96 max-w-2xl flex-shrink-0 p-2">
-							<TutorCardV3
-								tutor="{tutor}"
-								class="mx-auto h-full self-stretch"
-								on:consultationClick="{onConsultationClick}"
-							/>
-						</div>
-					</swiper-slide>
-				{/each}
-			{/if}
+			{#each featuredTutors as tutor}
+				<swiper-slide class="">
+					<div class="m-auto h-[100cqh] w-96 max-w-2xl flex-shrink-0 p-2">
+						<TutorCardV3
+							tutor="{tutor}"
+							class="mx-auto h-full self-stretch"
+							on:consultationClick="{onConsultationClick}"
+						/>
+					</div>
+				</swiper-slide>
+			{/each}
 		</swiper-container>
 
-		{#if swiper}
-			<TutorV3SwipeControls swiper="{swiper}">
-				<svelte:fragment slot="swiper-prev">
-					<span
-						class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
-					>
-						<span class="hidden xl:flex xl:flex-col xl:items-center xl:gap-1">
-							<AngleLeftSolid class="outline-none hidden xl:block" />
-							<span class="text-xs leading-none">Prev</span>
-							<span class="text-sm leading-none">Pros</span>
-						</span>
-						<div class="block xl:hidden">Prev Tutor</div>
+		<TutorV3SwipeControls swiper="{swiper}">
+			<svelte:fragment slot="swiper-prev">
+				<span
+					class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
+				>
+					<span class="hidden xl:flex xl:flex-col xl:items-center xl:gap-1">
+						<AngleLeftSolid class="outline-none hidden xl:block" />
+						<span class="text-xs leading-none">Prev</span>
+						<span class="text-sm leading-none">Pros</span>
 					</span>
-				</svelte:fragment>
-				<svelte:fragment slot="swiper-next">
-					<span
-						class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
-					>
-						<span class="hidden xl:flex xl:flex-col xl:items-center xl:gap-1">
-							<AngleRightSolid class="outline-none" />
-							<span class="text-xs leading-none">More</span>
-							<span class="text-sm leading-none">Pros</span>
-						</span>
-						<div class="block xl:hidden">Next Tutor</div>
+					<div class="block xl:hidden">Prev Tutor</div>
+				</span>
+			</svelte:fragment>
+			<svelte:fragment slot="swiper-next">
+				<span
+					class="p-1 xl:p-2 font-base xl:font-bold bg-emerald-400 hover:bg-emerald-500 text-white cursor-pointer rounded"
+				>
+					<span class="hidden xl:flex xl:flex-col xl:items-center xl:gap-1">
+						<AngleRightSolid class="outline-none" />
+						<span class="text-xs leading-none">More</span>
+						<span class="text-sm leading-none">Pros</span>
 					</span>
-				</svelte:fragment>
-			</TutorV3SwipeControls>
-		{/if}
+					<div class="block xl:hidden">Next Tutor</div>
+				</span>
+			</svelte:fragment>
+		</TutorV3SwipeControls>
 	</div>
 </div>
 
