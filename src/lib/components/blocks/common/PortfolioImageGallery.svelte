@@ -38,19 +38,19 @@
 	import { CloseOutline } from 'flowbite-svelte-icons';
 	import H4 from '$lib/components/elements/H4.svelte';
 
-	export let showModal: boolean;
+	export let OpenGallery: boolean;
 	export let title: string = '';
 	export let description: string = '';
 
 	let dialog: HTMLDialogElement;
 
-	$: if (dialog && showModal) dialog.showModal();
+	$: if (dialog && OpenGallery) dialog.showModal();
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
 <dialog
 	bind:this="{dialog}"
-	on:close="{() => (showModal = false)}"
+	on:close="{() => (OpenGallery = false)}"
 	on:click|self="{() => dialog.close()}"
 	class="w-full lg:w-1/2 m-auto outline-none"
 >
@@ -58,7 +58,7 @@
 	<div on:click|stopPropagation class="relative outline-none">
 		<header class="flex items-center justify-between p-1 mb-2">
 			<H4 class="!p-0">{title}</H4>
-			<span class="p-2 hover:bg-slate-300 rounded-full cursor-pointer">
+			<span class="p-2 hover:bg-alabaster-200 rounded-full cursor-pointer">
 				<CloseOutline
 					class="w-4 h-4 text-black-400 dark:text-gray-500 dark:hover:text-white outline-none"
 					on:click="{() => dialog.close()}"

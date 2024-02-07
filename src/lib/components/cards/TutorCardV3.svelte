@@ -23,6 +23,8 @@
 	export { _class as class };
 	export let tutor: Tutor;
 
+	let openWorkGallery: boolean = false;
+
 	const dispatch = createEventDispatcher();
 
 	function handleConsultationClick() {
@@ -41,6 +43,7 @@
 			<PortfolioThumbnail
 				thumbnail="{featured_images[tutor.id]}"
 				featuredImages="{featured_images}"
+				bind:openWorkGallery="{openWorkGallery}"
 			/>
 		{/if}
 
@@ -96,14 +99,19 @@
 
 	<!-- Buttons -->
 	<div class="m-2 flex justify-between p-1">
-		<Button
+		<!-- <Button
 			class="text-md mx-4 rounded bg-alabaster-300 p-2 font-medium text-white hover:bg-alabaster-200"
 			href="https://www.tutorsandservices.com/{tutor.first}-{tutor.id}/"
+			>See My work
+		</Button> -->
+		<Button
+			class="text-md mx-4 rounded bg-alabaster-300 p-2 font-medium text-white hover:bg-alabaster-200 outline-none !ring-0"
+			on:click="{() => (openWorkGallery = true)}"
 			>See My work
 		</Button>
 
 		<Button
-			class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300"
+			class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300 outline-none !ring-0"
 			on:click="{handleConsultationClick}"
 			>Free Consultation
 		</Button>
