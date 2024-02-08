@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { collection, query, onSnapshot } from 'firebase/firestore';
+import { collection, query, onSnapshot, doc, updateDoc } from 'firebase/firestore';
 import { db } from '$lib/firebase';
 
 interface Media {
@@ -40,6 +40,17 @@ function fetchMedia() {
         console.error("Error fetching media from Firestore:", error);
         loadingMedia.set(false);
     });
+}
+
+
+export async function updateMedia(updatedMedia:any) {
+    const mediaRef = doc(db, 'media', updatedMedia.id);
+    try {
+        await updateDoc(mediaRef, updatedMedia);
+        console.log('Media updated successfully');
+    } catch (error) {
+        console.error('Error updating media:', error);
+    }
 }
 
 fetchMedia();

@@ -1,10 +1,8 @@
 <script lang="ts">
-    import { Button, Modal } from 'flowbite-svelte';
-    import { Label, Input, Toggle} from 'flowbite-svelte';
+    import { Button, Modal, Label, Input, Toggle } from 'flowbite-svelte';
     import TagManager from './tags/TagManager.svelte';
     import DelMedia from './DelMedia.svelte';
-    import { doc, updateDoc } from 'firebase/firestore';
-    import { db } from '$lib/firebase';
+    import { updateMedia } from '../../stores/mediaStore';
 
     export let image: any;
     export let btnClass: string;
@@ -13,15 +11,6 @@
     let title = image.title;
     let altText = image.alt;
     let published = image.show;
-
-    $: title, updateFirebase();
-    $: altText, updateFirebase();
-    $: published, updateFirebase();
-
-    function handlePublishedChange() {
-        published = !published;
-        updateFirebase();
-    }
 
     function formatDate(firestoreTimestamp: { toDate: () => any; }) {
         if (firestoreTimestamp && firestoreTimestamp.toDate) {
@@ -34,23 +23,15 @@
         return '';
     } 
 
-    function saveChanges() {
-        updateFirebase();
-    }
-
-    async function updateFirebase() {
-        const imageRef = doc(db, 'media', image.id);
-
-        try {
-            await updateDoc(imageRef, {
-                title: title,
-                alt: altText,
-                show: published
-            });
-            console.log('Image updated successfully');
-        } catch (error) {
-            console.error('Error updating image:', error);
-        }
+    async function saveChanges() {
+        const updatedMedia = {
+            ...image,
+            title,
+            alt: altText,
+            show: published,
+        };
+        await updateMedia(updatedMedia);
+        defaultModal = false;
     }
 </script>
 
@@ -72,6 +53,8 @@
         background: #dcdcdc ;
     }
 </style>
+
+
 
 <Button color="alternative" class="{btnClass}" on:click={() => (defaultModal = true)}>Edit</Button>
 
