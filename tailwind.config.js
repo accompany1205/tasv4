@@ -16,6 +16,23 @@ export default {
 			akshar: ['Akshar Variable', 'Arial', 'sans-serif'],
 		},
 		extend: {
+			keyframes: {
+				fadeOut: {
+				  from: { opacity: 1 },
+				  to: { opacity: 0 },
+				},
+
+				fadeIn: {
+					from: { opacity: 0 },
+					to: { opacity: 1 },
+				}
+			},
+
+			animation: {
+				fadeOut: 'fadeOut 1s ease-in-out forwards',
+				fadeIn: 'fadeIn 1s ease-in-out forwards',
+			},
+
 			colors: {
 				primary: {
 					100: '#f2fbf3',
@@ -94,6 +111,7 @@ export default {
 					950: '#292929',
 				},
 			},
+
 			aspectRatio: {
 				'4/3': '4 / 3',
 				tarot: '11 / 19',

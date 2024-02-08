@@ -65,7 +65,7 @@
             {:else}
                 <img src='/default_user.jpg' alt="Tutor headshot" class="rounded-xl w-40 border-2 border-dashed p-2"/>
             {/if}
-            <GetMedia btnTitle="Edit" modalTitle="Select A Headshot" currentlySelectedImageUrl={tutorDetails.headshot} on:select={handleImageSelect} btnClass="bg-gray-100 bg-opacity-80 backdrop-blur-m text-gray-700 absolute top-0 right-0 p-2 m-2 hover:bg-gray-200"/>
+            <GetMedia modalTitle="Select A Headshot" currentlySelectedImageUrl={tutorDetails.headshot} on:select={handleImageSelect} btnClass="bg-gray-100 bg-opacity-80 backdrop-blur-m text-gray-700 absolute top-0 right-0 p-2 m-2 hover:bg-gray-200"/>
         </div>
     </div>
 

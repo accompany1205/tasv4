@@ -17,7 +17,7 @@
                     const fullName = `${tutor.first?.toLowerCase()} ${tutor.last?.toLowerCase()}`;
                     return fullName.includes($searchTerm.toLowerCase());
                 })
-                .sort((a, b) => {
+                .sort((a:any, b:any) => {
                     const aVal = a[$sortKey];
                     const bVal = b[$sortKey];
                     return (aVal < bVal ? -1 : 1) * $sortDirection;
@@ -56,14 +56,14 @@
 
 </script>
 
-<Table class="max-w-7xl m-auto border-2 dark:border-gray-600">
+<Table class="max-w-7xl m-auto border-2 dark:border-gray-600 mb-20">
     <TableHead>
         <TableHeadCell>Headshot</TableHeadCell>
         <TableHeadCell on:click={() => sortTable('first')}>
             <div class="flex items-center gap-3">
                 Name
                 {#if $sortKey === 'first'}
-                    {#if $sortDirection === 1}
+                    {#if $sortDirection === -1}
                         <ArrowUpSolid class="w-3 h-3"/>
                     {:else}
                         <ArrowDownSolid class="w-3 h-3"/>
@@ -75,7 +75,7 @@
             <div class="flex items-center gap-3">
                 Email
                 {#if $sortKey === 'email'}
-                    {#if $sortDirection === 1}
+                    {#if $sortDirection === -1}
                         <ArrowUpSolid class="w-3 h-3"/>
                     {:else}
                         <ArrowDownSolid class="w-3 h-3"/>
@@ -87,7 +87,7 @@
             <div class="flex items-center gap-3">
                 Number
                 {#if $sortKey === 'phone'}
-                    {#if $sortDirection === 1}
+                    {#if $sortDirection === -1}
                         <ArrowUpSolid class="w-3 h-3"/>
                     {:else}
                         <ArrowDownSolid class="w-3 h-3"/>
@@ -100,7 +100,7 @@
             <div class="flex items-center gap-3">
                 Rate
                 {#if $sortKey === 'rate'}
-                    {#if $sortDirection === 1}
+                    {#if $sortDirection === -1}
                         <ArrowUpSolid class="w-3 h-3"/>
                     {:else}
                         <ArrowDownSolid class="w-3 h-3"/>
@@ -113,7 +113,7 @@
             <div class="flex items-center gap-3">
                 Status
                 {#if $sortKey === 'status'}
-                    {#if $sortDirection === 1}
+                    {#if $sortDirection === -1}
                         <ArrowUpSolid class="w-3 h-3"/>
                     {:else}
                         <ArrowDownSolid class="w-3 h-3"/>

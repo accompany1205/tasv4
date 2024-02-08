@@ -26,7 +26,7 @@
 </script>
 
 <div class="max-w-7xl bg-white rounded-xl border-2 border-emerald-200 dark:border-gray-600 border-solid shadow-lg h-24 m-auto my-10 flex justify-between px-8 items-center gap-10 dark:bg-gray-800">
-   <Input on:input={handleInput} class="w-1/2 h-10" placeholder="Search Tutor"/>
+   <Input on:input={handleInput} class="w-1/2" placeholder="Search Tutor"/>
    <AddTutor/>
 </div>
 

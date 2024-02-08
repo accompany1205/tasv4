@@ -10,11 +10,12 @@
     import GalleryView from './CRUD/Gallery.svelte';
 
     import { getFirestore, collection, getDocs } from 'firebase/firestore';
+	import { writable } from 'svelte/store';
 
     let images: any[]= [];
     let zoomIndex = 3; // 1 to 5
     let isGallery = false;
-    let imageSearch = '';
+    let filterText = writable('');
 
     onMount(async () => {
         const db = getFirestore();
@@ -46,12 +47,12 @@
 
 </script>
 
-<div class="max-w-7xl bg-white rounded-3xl border-2 border-emerald-200 border-solid shadow-lg h-24 m-auto my-12 flex justify-evenly items-center gap-4">
-    <Input placeholder="Search Images" bind:value={imageSearch} class="max-w-xs"/>
+<div class="max-w-7xl bg-white rounded-xl border-2 border-emerald-200 dark:border-gray-600 border-solid shadow-lg h-24 m-auto my-10 flex justify-between px-8 items-center gap-10 dark:bg-gray-800">
+    <Input placeholder="Search Images" bind:value={$filterText} class="max-w-xs"/>
 
     <ButtonGroup>
-        <Button on:click={zoomIn}>Zoom In</Button>
         <Button on:click={zoomOut}>Zoom Out</Button>
+        <Button on:click={zoomIn}>Zoom In</Button>
     </ButtonGroup>
 
     <ButtonGroup>
@@ -64,7 +65,7 @@
 
 
 {#if isGallery}
-    <GalleryView images={images} zoomIndex={zoomIndex} filterText={imageSearch}/>
+    <!-- <GalleryView images={images} zoomIndex={zoomIndex} filterText={filterText}/> -->
 {:else}
-    <Table images={images} zoomIndex={zoomIndex} filterText={imageSearch}/>
+    <Table zoomIndex={zoomIndex} filterText={filterText}/>
 {/if}
