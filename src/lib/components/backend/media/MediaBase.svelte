@@ -13,7 +13,7 @@
 	import { writable } from 'svelte/store';
 
     let images: any[]= [];
-    let zoomIndex = 3; // 1 to 5
+    let zoomIndex = 5;
     let isGallery = false;
     let filterText = writable('');
 
@@ -32,7 +32,7 @@
     });
 
     function zoomOut() {
-        if (zoomIndex < 5) 
+        if (zoomIndex < 7) 
             zoomIndex++;
     }
 
@@ -65,7 +65,7 @@
 
 
 {#if isGallery}
-    <!-- <GalleryView images={images} zoomIndex={zoomIndex} filterText={filterText}/> -->
+    <GalleryView zoomIndex={zoomIndex} filterText={filterText}/>
 {:else}
     <Table zoomIndex={zoomIndex} filterText={filterText}/>
 {/if}

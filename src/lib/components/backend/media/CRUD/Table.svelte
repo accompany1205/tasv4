@@ -4,7 +4,6 @@
     import { ArrowDownSolid, ArrowUpSolid, FileCopyOutline } from 'flowbite-svelte-icons';
     import { media } from '../../stores/mediaStore';
 	import EditMedia from './EditMedia.svelte';
-	import { stringify } from 'postcss';
 
     let sortKey = writable('title'); // Default sort key
     let sortDirection = writable(1); // 1 for ascending, -1 for descending
@@ -36,7 +35,7 @@
         if (firestoreTimestamp && firestoreTimestamp.toDate) {
             const date = firestoreTimestamp.toDate();
             const options: Intl.DateTimeFormatOptions = { 
-                year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'
+                year: 'numeric', month: '2-digit', day: '2-digit'
             };
             return new Intl.DateTimeFormat('en-US', options).format(date);
         }
@@ -104,7 +103,7 @@
                 <!-- <TableBodyCell class="!p-4"><Checkbox /></TableBodyCell> -->
                 <TableBodyCell>
                     <img src={mediaItem.url} alt={mediaItem.alt} 
-                    style="width: {300 - zoomIndex * 50}px; height: {300 - zoomIndex * 50}px;" 
+                    style="width: {400 - zoomIndex * 50}px; height: {400 - zoomIndex * 50}px;" 
                     class="object-cover rounded-xl" />
                 </TableBodyCell>
                 <TableBodyCell>{mediaItem.title}</TableBodyCell>
@@ -116,7 +115,7 @@
                 </TableBodyCell>
 
                 <TableBodyCell>
-                    <EditMedia image={mediaItem} btnClass={""}/>
+                    <EditMedia imageId={mediaItem.id} btnClass={""}/>
                 </TableBodyCell>
             </TableBodyRow>
         {/each}
@@ -127,3 +126,6 @@
 <Alert color="blue" class="fixed bottom-5 right-5 z-50 p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg border border-blue-200 shadow-md {hidden}">
     URL Copied to Clipboard
 </Alert>
+
+
+<!-- FIX Unsynced Images on delete!!! -->
