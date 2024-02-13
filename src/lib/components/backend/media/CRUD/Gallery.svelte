@@ -13,7 +13,7 @@
     );
 </script>
 
-<div class="max-w-7xl m-auto mt-17 mb-20 bg-white rounded-xl border-2 p-4">
+<div class="max-w-7xl m-auto mt-17 mb-20 bg-white rounded-xl border-2 p-4 dark:bg-gray-800 dark:border-gray-600">
     <div class={`grid gap-4 grid-cols-${zoomIndex}`}>
         {#each $filteredImages as image}
             <div class="relative inline-block group">
