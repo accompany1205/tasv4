@@ -35,7 +35,7 @@
 <div
 	use:inview="{options}"
 	on:inview_change="{handleChange}"
-	class="grid max-h-full flex-shrink grid-rows-[auto_1fr_auto] overflow-clip rounded bg-white font-akshar shadow-lg {_class}"
+	class="grid max-h-full flex-shrink grid-rows-[1fr_auto] overflow-clip overflow-y-auto rounded bg-white font-akshar shadow-lg {_class}"
 >
 	<div>
 		<!-- Image -->
@@ -50,7 +50,7 @@
 		<!-- Tutor Info -->
 		<div class="flex overflow-x-clip">
 			<!-- Headshot -->
-			<div class="-ml-4 -mt-10 flex-shrink-0 z-10">
+			<div class="-ml-4 -mt-10 micro:max-[480px]:-mt-20 flex-shrink-0 z-10">
 				<img
 					srcset="{headshots[tutor.id]}"
 					alt="Matthew W"
@@ -58,9 +58,13 @@
 				/>
 			</div>
 			<!-- Name -->
-			<div class="flex items-center justify-center gap-2 mx-2">
+			<div
+				class="flex flex-1 items-center justify-center gap-2 mx-3 ml-0 sm:ml-2 micro:max-[480px]:mt-1"
+			>
 				<!-- <div class="text-4xl font-bold shrink break-words">Shanthihanssd S</div> -->
-				<div class="text-4xl font-bold inline-block">{tutor.name}</div>
+				<div class="text-4xl flex-1 micro:max-[480px]:text-2xl font-bold inline-block"
+					>{tutor.name}</div
+				>
 				<!-- {#if tutor?.ratingCount ?? 0 >= 5}
 					<span class="font-medium text-yellow-300"
 						>{tutor?.ratingScore?.toFixed(1)}⭐ {tutor.ratingCount} Reviews</span
@@ -80,38 +84,38 @@
 			<span class="font-semibold">Tutoring:</span>
 			<ServiceTags keywords="{tutor?.software?.slice(0, 8)}" />
 		</div>
-	</div>
 
-	<div>
-		<!-- Services -->
-		{#if tutor?.services?.length ?? 0 > 0}
-			<div class="mx-2 mb-2 p-1">
-				<div class="font-semibold">Services:</div>
-				<div class=" text-gray-500">
-					<ServiceTags keywords="{tutor?.services?.slice(0, 3)}" />
-					<!-- {#each tutor?.services?.slice(0, 3) ?? [] as service}
-						<li>{service}</li>
-					{/each} -->
+		<div>
+			<!-- Services -->
+			{#if tutor?.services?.length ?? 0 > 0}
+				<div class="mx-2 mb-2 p-1">
+					<div class="font-semibold">Services:</div>
+					<div class=" text-gray-500">
+						<ServiceTags keywords="{tutor?.services?.slice(0, 3)}" />
+						<!-- {#each tutor?.services?.slice(0, 3) ?? [] as service}
+              <li>{service}</li>
+            {/each} -->
+					</div>
 				</div>
-			</div>
-		{/if}
+			{/if}
+		</div>
 	</div>
 
 	<!-- Buttons -->
-	<div class="m-2 flex justify-between p-1">
+	<div class="m-2 flex justify-between p-1 h-min">
 		<!-- <Button
 			class="text-md mx-4 rounded bg-alabaster-300 p-2 font-medium text-white hover:bg-alabaster-200"
 			href="https://www.tutorsandservices.com/{tutor.first}-{tutor.id}/"
 			>See My work
 		</Button> -->
 		<Button
-			class="text-md mx-4 rounded bg-alabaster-300 p-2 font-medium text-white hover:bg-alabaster-200 outline-none !ring-0"
+			class="text-sm md:text-base mx-4 rounded bg-alabaster-300 p-2 font-medium text-white hover:bg-alabaster-200 outline-none !ring-0"
 			on:click="{() => (openWorkGallery = true)}"
 			>See My work
 		</Button>
 
 		<Button
-			class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300 outline-none !ring-0"
+			class="text-sm md:text-base mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300 outline-none !ring-0"
 			on:click="{handleConsultationClick}"
 			>Free Consultation
 		</Button>

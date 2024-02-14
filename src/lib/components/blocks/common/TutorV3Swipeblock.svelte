@@ -77,7 +77,7 @@
 	</h2>
 
 	<div
-		class="m-auto mx-auto h-[735px] max-w-full xl:max-w-screen-xl"
+		class="m-auto mx-auto h-[550px] md:h-[700px] max-w-full xl:max-w-screen-xl"
 		style="container-type: size;"
 	>
 		<TutorV3SwipeControls topControl swiper="{swiper}" class="block xl:hidden">
