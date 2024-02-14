@@ -40,7 +40,6 @@
 
 	export let OpenGallery: boolean;
 	export let title: string = '';
-	export let description: string = '';
 
 	let dialog: HTMLDialogElement;
 
@@ -66,6 +65,5 @@
 			</span>
 		</header>
 		<slot />
-		<p class="mt-4">{description}</p>
 	</div>
 </dialog>

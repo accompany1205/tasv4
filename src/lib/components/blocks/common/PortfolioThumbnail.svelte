@@ -6,8 +6,10 @@
 	export let featuredImages: Record<string, string>;
 	export let openWorkGallery: boolean = false;
 
+	let randNumber: number = 1;
+
 	const hero_images_flattened = Object.values(featuredImages)
-		.map((url) => ({ alt: '', srcset: url }))
+		.map((url) => ({ alt: `Description ${randNumber++}`, srcset: url }))
 		.slice(0, 8);
 </script>
 
@@ -39,11 +41,12 @@
 </div>
 
 {#if openWorkGallery}
-	<PortfolioImageGallery
-		bind:OpenGallery="{openWorkGallery}"
-		title="My work"
-		description="I can teach you the basics of Sketchup and Layout. I can help you all the way from drawing your first lines and shapes in Sketchup to making entire floor plans."
-	>
-		<ImageCarousel images="{hero_images_flattened}" showLogo="{false}" indicatorInside />
+	<PortfolioImageGallery bind:OpenGallery="{openWorkGallery}" title="My work">
+		<ImageCarousel
+			images="{hero_images_flattened}"
+			showLogo="{false}"
+			indicatorInside
+			showAlt
+		/>
 	</PortfolioImageGallery>
 {/if}
