@@ -35,7 +35,7 @@
 <div
 	use:inview="{options}"
 	on:inview_change="{handleChange}"
-	class="grid max-h-full flex-shrink grid-rows-[1fr_auto] overflow-clip overflow-y-auto rounded bg-white font-akshar shadow-lg {_class}"
+	class="grid max-h-full flex-shrink grid-rows-[1fr_auto] overflow-clip rounded bg-white font-akshar shadow-lg {_class}"
 >
 	<div>
 		<!-- Image -->
@@ -76,28 +76,30 @@
 			</div>
 		</div>
 
-		<!-- Title -->
-		<div class="mx-3 my-2 text-left text-xl font-medium">{tutor?.title}</div>
+		<div class="h-auto max-h-[330px] overflow-y-auto">
+			<!-- Title -->
+			<div class="mx-3 my-2 text-left text-xl font-medium">{tutor?.title}</div>
 
-		<!-- Software Tags -->
-		<div class="mx-3 py-1">
-			<span class="font-semibold">Tutoring:</span>
-			<ServiceTags keywords="{tutor?.software?.slice(0, 8)}" />
-		</div>
+			<!-- Software Tags -->
+			<div class="mx-3 py-1">
+				<span class="font-semibold">Tutoring:</span>
+				<ServiceTags keywords="{tutor?.software?.slice(0, 8)}" />
+			</div>
 
-		<div>
-			<!-- Services -->
-			{#if tutor?.services?.length ?? 0 > 0}
-				<div class="mx-2 mb-2 p-1">
-					<div class="font-semibold">Services:</div>
-					<div class=" text-gray-500">
-						<ServiceTags keywords="{tutor?.services?.slice(0, 3)}" />
-						<!-- {#each tutor?.services?.slice(0, 3) ?? [] as service}
+			<div>
+				<!-- Services -->
+				{#if tutor?.services?.length ?? 0 > 0}
+					<div class="mx-2 mb-2 p-1">
+						<div class="font-semibold">Services:</div>
+						<div class=" text-gray-500">
+							<ServiceTags keywords="{tutor?.services?.slice(0, 3)}" />
+							<!-- {#each tutor?.services?.slice(0, 3) ?? [] as service}
               <li>{service}</li>
             {/each} -->
+						</div>
 					</div>
-				</div>
-			{/if}
+				{/if}
+			</div>
 		</div>
 	</div>
 
