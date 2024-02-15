@@ -30,7 +30,7 @@
 			loading="lazy"
 		/>
 
-		<div class="absolute top-0 left-0 p-4">
+		<div class="absolute top-0 left-0 p-4 hidden lg:block">
 			<div
 				class="transition-all transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0"
 			>
