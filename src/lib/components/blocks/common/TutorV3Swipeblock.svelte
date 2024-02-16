@@ -26,6 +26,7 @@
 		spaceBetween: 300,
 		effect: 'slides',
 		loop: true,
+		noSwiping: true,
 
 		autoplay: {
 			enabled: true,

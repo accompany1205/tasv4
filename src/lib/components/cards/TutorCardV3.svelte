@@ -11,6 +11,12 @@
 	import { Button } from 'flowbite-svelte';
 	import PortfolioThumbnail from '../blocks/common/PortfolioThumbnail.svelte';
 
+	let _class = '';
+	export { _class as class };
+	export let tutor: Tutor;
+
+	let openWorkGallery: boolean = false;
+
 	let isInView: boolean;
 	const options = {
 		rootMargin: '50px',
@@ -19,23 +25,19 @@
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) =>
 		(isInView = detail.inView);
 
-	let _class = '';
-	export { _class as class };
-	export let tutor: Tutor;
-
-	let openWorkGallery: boolean = false;
-
 	const dispatch = createEventDispatcher();
 
 	function handleConsultationClick() {
 		dispatch('consultationClick', { tutorId: tutor.id });
 	}
+
+	$: noSwiping = openWorkGallery ? 'swiper-no-swiping' : '';
 </script>
 
 <div
 	use:inview="{options}"
 	on:inview_change="{handleChange}"
-	class="grid max-h-full flex-shrink grid-rows-[1fr_auto] overflow-clip rounded bg-white font-akshar shadow-lg {_class}"
+	class="{noSwiping} grid max-h-full flex-shrink grid-rows-[1fr_auto] overflow-clip rounded bg-white font-akshar shadow-lg {_class}"
 >
 	<div>
 		<!-- Image -->
