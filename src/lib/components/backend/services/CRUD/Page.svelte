@@ -10,7 +10,10 @@
     import { DeviceMockup } from 'flowbite-svelte';
     import { DesktopPcSolid, WindowSolid, MobilePhoneSolid } from 'flowbite-svelte-icons';
     import Images from "./page-sections/Images.svelte";
- 
+	import { writable } from "svelte/store";
+
+    export let filterText = writable('');
+
 
     let tos = [
         { value: 'T', name: 'Tutoring' },

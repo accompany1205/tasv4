@@ -1,35 +1,14 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import AddMedia from "./CRUD/AddMedia.svelte";
-    import DelMedia from "./CRUD/DelMedia.svelte";
-    import { ButtonGroup, Gallery, Input} from 'flowbite-svelte';
-    import { CloseOutline } from 'flowbite-svelte-icons';
+    import { ButtonGroup, Input} from 'flowbite-svelte';
     import {Button} from 'flowbite-svelte';
-    import { Toggle } from 'flowbite-svelte';
     import Table from './CRUD/Table.svelte';
     import GalleryView from './CRUD/Gallery.svelte';
-
-    import { getFirestore, collection, getDocs } from 'firebase/firestore';
 	import { writable } from 'svelte/store';
 
-    let images: any[]= [];
     let zoomIndex = 5;
     let isGallery = false;
     let filterText = writable('');
-
-    onMount(async () => {
-        const db = getFirestore();
-
-        try {
-            const mediaCollection = collection(db, 'media');
-            const querySnapshot = await getDocs(mediaCollection);
-
-            images = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            console.log(images)
-        } catch (error) {
-            console.error('Error fetching images from Firestore', error);
-        }
-    });
 
     function zoomOut() {
         if (zoomIndex < 7) 

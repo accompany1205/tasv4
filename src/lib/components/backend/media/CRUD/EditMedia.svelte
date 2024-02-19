@@ -115,16 +115,17 @@
                     <Label for="show">Published</Label>
                     <Toggle bind:checked={show} />
                 </div>
-                <div class="mb-6">
+
+                <!-- <div class="mb-6">
                     <Label for="tags">Tags</Label>
-                    <!-- <TagManager tags={$mediaDetails.tags}/> -->
-                </div>
+                    <TagManager tags={$mediaDetails.tags}/>
+                </div> -->
 
                 
                 <!-- Static -->
                 <div class="flex">
                     <div class="text-gray-900 font-semibold">
-                        Name:&nbsp;
+                        File Name:&nbsp;
                     </div>
 
                     <div class="font-medium text-gray-500">
