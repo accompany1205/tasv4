@@ -10,7 +10,7 @@
     let selectedImageId = '';
     let selectedImageUrl = '';
     let activeAspectRatio = 'square';
-    let columnsCount = 8;
+    let columnsCount = 5;
     export let modalTitle = 'Select an Image';
     export let btnClass = "";
     export let btnTitle = "";

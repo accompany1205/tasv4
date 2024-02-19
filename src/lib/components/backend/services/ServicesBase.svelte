@@ -14,7 +14,7 @@
     }
 </script>
 
-<div class="max-w-7xl bg-white rounded-3xl border-2 border-emerald-200 border-solid shadow-lg h-24 m-auto mt-12 mb-4 flex justify-evenly items-center gap-4">
+<div class="max-w-7xl bg-white rounded-xl border-2 border-emerald-200 dark:border-gray-600 border-solid shadow-lg h-24 m-auto my-10 flex justify-between px-8 items-center gap-10 dark:bg-gray-800">
     <Input placeholder="Search Service" bind:value={searchText} class="max-w-xs"/>
 
     <ButtonGroup>

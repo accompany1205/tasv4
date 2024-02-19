@@ -3,7 +3,7 @@ import { collection, doc, updateDoc, deleteDoc, addDoc, query, onSnapshot } from
 import { db } from '$lib/firebase';
 
 
-interface Service {
+export interface Service {
     id: string;
     name: string;
     about: string;
@@ -22,6 +22,9 @@ interface Service {
     hero: string;
     logo: string;
 }
+
+export type {Service as ServiceInterface}
+
 
 export const filterText = writable('');
 export const services = writable<Service[]>([])

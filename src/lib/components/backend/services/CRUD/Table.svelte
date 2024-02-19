@@ -23,7 +23,7 @@
                 <TableBodyCell>{service.title}</TableBodyCell>
                 <TableBodyCell>{service.tos}</TableBodyCell>
                 <TableBodyCell>
-                    <EditService service={service}/>
+                    <EditService serviceId={service.id}/>
                 </TableBodyCell>
             </TableBodyRow>
         {/each}

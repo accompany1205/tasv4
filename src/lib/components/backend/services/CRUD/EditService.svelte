@@ -1,143 +1,100 @@
 <script lang="ts">
-	import DelService from './DelService.svelte';
-    import { db } from '$lib/firebase';
-    import { doc, updateDoc } from 'firebase/firestore';
-    import { Label, Input, Button, Modal, Textarea, Select, DropdownDivider } from 'flowbite-svelte';
-    import { Toast } from 'flowbite-svelte';
-    import { CloseCircleSolid } from 'flowbite-svelte-icons';
-    import { get, writable } from 'svelte/store';
+    import { services, updateService } from '../../stores/servicesStore';
+    import { writable, derived } from 'svelte/store';
+    import { Button, Modal, Input, Textarea, Select, DropdownDivider, Toast } from 'flowbite-svelte';
+    import DelService from './DelService.svelte';
+    import GetMedia from '../../media/GetMedia.svelte';
+	import { CloseCircleSolid } from 'flowbite-svelte-icons';
+    import { serviceTypeOptions } from '../../stores/settingsStore';
 
+    let options = derived(serviceTypeOptions, $serviceTypeOptions => {
+        return $serviceTypeOptions.map(option => ({
+            value: option,
+            name: option,
+        }));
+    });
 
-    export let service:any;
+    export let serviceId: string;
+    let modal = false;
+    const service = derived(services, $services => $services.find(s => s.id === serviceId));
 
-    let defaultModal = false;
+    let serviceDetails;
+
+    service.subscribe($service => {
+        if ($service) {
+            serviceDetails = {...$service};
+        }
+    });
+
     let showToast = false;
 
-    let tosENUM = [
-        { value: 'both', name: 'Both' },
-        { value: 'software', name: 'Software' },
-        { value: 'services', name: 'Services' },
-    ];  
-
-    let name = service.name;
-    let title = service.title;
-    let about = service.about;
-    let tos = service.tos;
-    let faqs = writable(service.faq || []);
-    let subServices = writable(service.subServices || []);
-
-    function addFAQ() {
-        if ($faqs.length < 2) {
-            faqs.update(currentFaqs => {
-                return [...currentFaqs, { question: '', answer: '' }];
-            });
+    async function saveChanges() {
+        if (!serviceDetails.name || !serviceDetails.title || !serviceDetails.about || !serviceDetails.tos) {
+            showToast = true;
+            setTimeout(() => showToast = false, 3000);
+            return;
         }
+        updateService(serviceDetails);
+        modal = false;
     }
 
-    function addSubService() {
-        if ($subServices.length < 5) {
-            subServices.update(currentSubServices => {
-                return [...currentSubServices, { name: '', description: '' }];
-            });
-        }
+    function handleImageSelect(event: { detail: { url: any; }; }) {
+        serviceDetails.logo = event.detail.url;
     }
 
-    async function editService() {
-        try {
-            if (!name || !title || !about || !tos) {
-                showToast = true;
-                setTimeout(() => { showToast = false; }, 3000);
-                return;
-            }
-
-            const serviceRef = doc(db, 'services', service.id);
-
-            await updateDoc(serviceRef, {
-                name,
-                title,
-                about,
-                tos,
-                faq: get(faqs),
-                subServices: get(subServices)
-            });
-
-            defaultModal = false;
-            window.location.href = "/backend";
-        } catch (error) {
-            console.error('Error editing service: ', error);
-        }
-    }
 </script>
 
-<Button on:click={() => (defaultModal = true)} color="alternative">Edit</Button>
 
-<Modal title="Edit Service" bind:open={defaultModal} class="z-50">
+<Button on:click={() => (modal = true)} color="alternative">Edit</Button>
+
+<Modal title="Edit Service" bind:open={modal} class="z-50">
+
+    <div class="flex justify-center">
+        <div class="relative inline-block m-auto"> 
+            {#if serviceDetails.logo}
+                <img src={serviceDetails.logo} alt="Tutor headshot" class="rounded-xl w-40"/>
+            {:else}
+                <img src='/default_service.png' alt="Tutor headshot" class="rounded-xl w-40 border-2 border-dashed p-2"/>
+            {/if}
+            <GetMedia modalTitle="Select A Logo" on:select={handleImageSelect} btnClass="bg-gray-100 bg-opacity-80 backdrop-blur-m text-gray-700 absolute top-0 right-0 p-2 m-2 hover:bg-gray-200"/>
+        </div>
+    </div>
+
 
     <div class="grid gap-4 mb-4 sm:grid-cols-2">
-        <Label for="first" class="mb-2 text-sm">Name
-            <Input bind:value={name} class="mt-2" type="text" name="first" id="first" placeholder="Name" autocomplete="on"/>
-        </Label>
+        <div>
+            Name
+            <Input bind:value={serviceDetails.name} class="mt-2" type="text" name="first" id="first" placeholder="Name" autocomplete="on"/>
+        </div>
+        
+        <div>
+            Type of Service
+            <Select class="mt-2" name="status" items={$options} bind:value={serviceDetails.tos}/>
+        </div>
+    </div> 
 
-        <Label class="mb-2 text-sm">Type of Service*
-            <Select class="mt-2" name="status" items={tosENUM} bind:value={tos}/>
-        </Label>
-    </div>   
+    <div class="flex flex-col gap-5">
+        <div>
+            Page Title
+            <Input bind:value={serviceDetails.title} class="mt-2" type="text" name="title" id="title" placeholder="Page Title" autocomplete="on"/>
+        </div>
 
-    <Label for="title" class="mb-2 text-sm">Page Title
-        <Input bind:value={title} class="mt-2" type="text" name="title" id="title" placeholder="Page Title" autocomplete="on"/>
-    </Label>
-
-    <Label for="about" class="mb-2 text-sm">About
-        <Textarea bind:value={about} class="mt-2" id="about" name="about" placeholder="About the service" rows="4" />
-    </Label>
+        <div>
+            <div>
+                About
+            </div>
+            <Textarea bind:value={serviceDetails.about} class="mt-2 w-full" id="about" name="about" placeholder="About the service" rows="4" />
+        </div>
+    </div>
 
     <DropdownDivider class="mt-9"/>
 
-
-
-    <!-- SubServices -->
-
-    <!-- {#each $subServices as subService, i}
-        <div class="grid gap-4 mb-4 sm:grid-cols-2">
-            <Label for={`subServiceName${i}`} class="mb-2 text-sm">Sub-service Name
-                <Textarea bind:value={subService.name} class="mt-2" name={`subServiceName${i}`} placeholder="SubService Name" rows="1" />
-            </Label>
-
-            <Label for={`subServiceDesc${i}`} class="mb-2 text-sm">SubService Description
-                <Textarea bind:value={subService.description} class="mt-2" name={`subServiceDesc${i}`} placeholder="SubService Description" rows="2" />
-            </Label>
-        </div>
-    {/each}
-    <Button on:click={addSubService} class="mb-4 w-full" color="alternative" disabled={$subServices.length >= 5}>Add SubService</Button>
-
-    <DropdownDivider class="mt-9"/> -->
-
-    <!-- FAQs -->
-
-    <!-- {#each $faqs as faq, i}
-        <div class="grid gap-4 mb-4 sm:grid-cols-2">
-            <Label for={`faqQuestion${i}`} class="mb-2 text-sm">FAQ Question
-                <Textarea bind:value={faq.question} class="mt-2" name={`faqQuestion${i}`} placeholder="FAQ Question" rows="2" />
-            </Label>
-
-            <Label for={`faqAnswer${i}`} class="mb-2 text-sm">FAQ Answer
-                <Textarea bind:value={faq.answer} class="mt-2" name={`faqAnswer${i}`} placeholder="FAQ Answer" rows="2" />
-            </Label>
-        </div>
-    {/each}
-    <Button on:click={addFAQ} class="mb-4 w-full" color="alternative" disabled={$faqs.length >= 2}>Add FAQ</Button> -->
-
-
-
-    <!-- <DropdownDivider class="mt-9"/> -->
-
-
     <div class="flex justify-evenly">
-        <Button on:click={editService} class="w-52">
+        <Button on:click={saveChanges} class="w-52">
             Edit Service
         </Button>
 
-        <DelService service={service}/>
+        <DelService serviceId={serviceId}/>
     </div>
 
     {#if showToast}

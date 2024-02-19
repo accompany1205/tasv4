@@ -45,14 +45,10 @@
         }
     }
 
-    function handleImageSelect(event) {
+    function handleImageSelect(event: { detail: { url: string; }; }) {
         tutorDetails.headshot = event.detail.url;
         console.log('Selected image URL:', event.detail.url);
     }
-
-
-
-
 </script>
 
 <Button on:click={() => {modal = true}} color="alternative" size="xs">Edit</Button>
@@ -65,7 +61,7 @@
             {:else}
                 <img src='/default_user.jpg' alt="Tutor headshot" class="rounded-xl w-40 border-2 border-dashed p-2"/>
             {/if}
-            <GetMedia modalTitle="Select A Headshot" currentlySelectedImageUrl={tutorDetails.headshot} on:select={handleImageSelect} btnClass="bg-gray-100 bg-opacity-80 backdrop-blur-m text-gray-700 absolute top-0 right-0 p-2 m-2 hover:bg-gray-200"/>
+            <GetMedia modalTitle="Select A Headshot" on:select={handleImageSelect} btnClass="bg-gray-100 bg-opacity-80 backdrop-blur-m text-gray-700 absolute top-0 right-0 p-2 m-2 hover:bg-gray-200"/>
         </div>
     </div>
 
