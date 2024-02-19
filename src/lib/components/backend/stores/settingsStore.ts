@@ -33,7 +33,7 @@ async function fetchServiceTypeOptions() {
             const data = docSnap.data();
 
             if (data.options && Array.isArray(data.options)) {
-                tutorStatusOptions.set(data.options);
+                serviceTypeOptions.set(data.options);
             } else {
                 console.warn('No options array found or it is not an array');
             }

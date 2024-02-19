@@ -1,6 +1,7 @@
 <script lang="ts">
     import { derived, get } from 'svelte/store';
     import { tutors, updateTutor } from '../../stores/tutorStore';
+    import type { Tutor } from '../../stores/tutorStore';
     import { tutorStatusOptions } from '../../stores/settingsStore';
     import { Button, Modal, Input, Select, Textarea, Toggle, Spinner, DropdownDivider } from 'flowbite-svelte';
     import DelTutor from './DelTutor.svelte';
@@ -17,20 +18,7 @@
     let modal = false;
     const tutor = derived(tutors, $tutors => $tutors.find(t => t.id === tutorId));
 
-    let tutorDetails = {
-        id: tutorId,
-        first: '', 
-        last: '', 
-        email: '', 
-        phone: '', 
-        rate: '', 
-        status: '', 
-        description: '', 
-        visible: true, 
-        headshot: '', 
-        title: '', 
-        name: '', 
-    };
+    let tutorDetails:Tutor;
 
     tutor.subscribe($tutor => {
         if ($tutor) {

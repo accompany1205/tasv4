@@ -1,5 +1,6 @@
 <script lang="ts">
     import { services, updateService } from '../../stores/servicesStore';
+    import type { Service } from '../../stores/servicesStore';
     import { writable, derived } from 'svelte/store';
     import { Button, Modal, Input, Textarea, Select, DropdownDivider, Toast } from 'flowbite-svelte';
     import DelService from './DelService.svelte';
@@ -18,7 +19,7 @@
     let modal = false;
     const service = derived(services, $services => $services.find(s => s.id === serviceId));
 
-    let serviceDetails;
+    let serviceDetails:Service;
 
     service.subscribe($service => {
         if ($service) {

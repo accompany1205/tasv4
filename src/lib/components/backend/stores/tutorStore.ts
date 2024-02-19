@@ -7,7 +7,7 @@ interface Service {
     [key: string]: any;
 }
 
-interface Tutor {
+export interface Tutor {
     description: string;
     email: string;
     first: string;
