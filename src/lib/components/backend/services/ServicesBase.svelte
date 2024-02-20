@@ -25,11 +25,10 @@
     <AddService/>
 </div>
 
-
 {#if $loading}
     <Spinner class="m-auto w-full h-12 my-20"/>
 {:else if isTable}
     <Table />
 {:else}
-    <!-- <Page filterText={$filterText}/> -->
+    <Page/>
 {/if}

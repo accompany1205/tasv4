@@ -23,9 +23,6 @@ export interface Service {
     logo: string;
 }
 
-export type {Service as ServiceInterface}
-
-
 export const filterText = writable('');
 export const services = writable<Service[]>([])
 export let loading = writable(true);
@@ -51,8 +48,7 @@ function fetchServices() {
         });
         services.set(servicesArray);
         loading.set(false);
-        console.log(get(services));
-
+        // console.log(get(services));
     }, 
     (error) => {
         console.error("Error fetching services from Firestore:", error);
@@ -60,11 +56,14 @@ function fetchServices() {
     });
 }
 
+fetchServices();
+
 export async function updateService(updatedService: Service) {
-    const serviceRef = doc(db, 'services', updatedService.id);
-    
+    const sanitizedService = sanitizeForFirestore(updatedService);
+    const serviceRef = doc(db, 'services', sanitizedService.id);
+
     try {
-        await updateDoc(serviceRef, updatedService);
+        await updateDoc(serviceRef, sanitizedService);
         console.log('Service updated successfully in Firestore');
     } catch (error) {
         console.error('Error updating service:', error);
@@ -73,8 +72,11 @@ export async function updateService(updatedService: Service) {
 }
 
 export async function deleteService(serviceId: string) {
+    if (!serviceId) {
+        console.error('Service ID is invalid:', serviceId);
+        return;
+    }
     const serviceRef = doc(db, 'services', serviceId);
-
     try {
         await deleteDoc(serviceRef);
         console.log('Service deleted successfully from Firestore');
@@ -84,14 +86,24 @@ export async function deleteService(serviceId: string) {
     }
 }
 
-export async function addService(newService: Service) {
+
+export async function addService(newService:Service) {
     try {
-        await addDoc(collection(db, 'services'), newService);
-        console.log('Service added successfully to Firestore');
+        const docRef = await addDoc(collection(db, 'services'), newService);
+        console.log('Service added successfully to Firestore with ID:', docRef.id);
+        await updateDoc(doc(db, 'services', docRef.id), { id: docRef.id });
     } catch (error) {
         console.error('Error adding new service:', error);
         throw error;
     }
 }
 
-fetchServices();
+function sanitizeForFirestore(obj: Record<string, any>): Record<string, any> {
+    const sanitizedObj = { ...obj };
+    Object.keys(sanitizedObj).forEach(key => {
+        if (sanitizedObj[key] === undefined) {
+            sanitizedObj[key] = null;
+        }
+    });
+    return sanitizedObj;
+}

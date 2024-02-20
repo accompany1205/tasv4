@@ -80,9 +80,6 @@
                     <Preview source={service.name}/>
                 {/if}
 
-
-
-
             {/if}
         {/each}
     {/if}

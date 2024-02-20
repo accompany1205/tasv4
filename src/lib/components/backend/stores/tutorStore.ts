@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { derived, writable } from 'svelte/store';
 import { collection, doc, updateDoc, deleteDoc, addDoc } from 'firebase/firestore';
 import { db } from '$lib/firebase';
 import { query, onSnapshot } from 'firebase/firestore';
@@ -23,8 +23,19 @@ export interface Tutor {
     visible: boolean;
 }
 
+export const filterText = writable('');
 export const tutors = writable<Tutor[]>([]);
 export let loading = writable(true);
+
+export const filteredTutors = derived(
+    [tutors, filterText],
+    ([$tutors, $filterText]) => {
+        return $tutors.filter(tutor =>
+            tutor.name.toLowerCase().includes($filterText.toLowerCase()) ||
+            tutor.email.toLowerCase().includes($filterText.toLowerCase())
+        );
+    }
+);
 
 function fetchTutors() {
     const tutorsCollectionRef = collection(db, 'tutors');
@@ -49,7 +60,6 @@ fetchTutors();
 
 export async function updateTutor(updatedTutor: Tutor) {
     const sanitizedTutor = sanitizeForFirestore(updatedTutor);
-    
     const tutorRef = doc(db, 'tutors', sanitizedTutor.id);
     
     try {
@@ -88,8 +98,9 @@ export async function deleteTutor(tutorId: string) {
 
 export async function addTutor(newTutor: any) {
     try {
-        await addDoc(collection(db, 'tutors'), newTutor);
+        const docRef = await addDoc(collection(db, 'tutors'), newTutor);
         console.log('Tutor added successfully to Firestore');
+        await updateDoc(doc(db, 'tutors', docRef.id), { id: docRef.id });
     } catch (error) {
         console.error('Error adding new tutor:', error);
         throw error;

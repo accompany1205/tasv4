@@ -17,7 +17,7 @@
 
     export let serviceId: string;
     let modal = false;
-    const service = derived(services, $services => $services.find(s => s.id === serviceId));
+    let service = derived(services, $services => $services.find(s => s.id === serviceId));
 
     let serviceDetails:Service;
 
@@ -48,12 +48,12 @@
 
 <Button on:click={() => (modal = true)} color="alternative">Edit</Button>
 
-<Modal title="Edit Service" bind:open={modal} class="z-50">
+<Modal title="Edit Service - {serviceId}" bind:open={modal} class="z-50">
 
     <div class="flex justify-center">
         <div class="relative inline-block m-auto"> 
             {#if serviceDetails.logo}
-                <img src={serviceDetails.logo} alt="Tutor headshot" class="rounded-xl w-40"/>
+                <img src={serviceDetails.logo} alt="Tutor headshot" class="rounded-xl w-40 border-2 border-dashed p-2"/>
             {:else}
                 <img src='/default_service.png' alt="Tutor headshot" class="rounded-xl w-40 border-2 border-dashed p-2"/>
             {/if}
@@ -94,7 +94,6 @@
         <Button on:click={saveChanges} class="w-52">
             Edit Service
         </Button>
-
         <DelService serviceId={serviceId}/>
     </div>
 

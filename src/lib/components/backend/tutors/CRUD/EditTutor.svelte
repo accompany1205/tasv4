@@ -39,13 +39,13 @@
     }
 </script>
 
-<Button on:click={() => {modal = true}} color="alternative" size="xs">Edit</Button>
+<Button on:click={() => {modal = true}} color="alternative">Edit</Button>
 
-<Modal title="Edit Tutor" bind:open={modal} class="z-50">
+<Modal title="Edit Tutor - {tutorDetails.id}" bind:open={modal} class="z-50">
     <div class="flex justify-center">
         <div class="relative inline-block m-auto"> 
             {#if tutorDetails.headshot}
-                <img src={tutorDetails.headshot} alt="Tutor headshot" class="rounded-xl w-40"/>
+                <img src={tutorDetails.headshot} alt="Tutor headshot" class="rounded-xl w-40 border-2 border-dashed p-2"/>
             {:else}
                 <img src='/default_user.jpg' alt="Tutor headshot" class="rounded-xl w-40 border-2 border-dashed p-2"/>
             {/if}
