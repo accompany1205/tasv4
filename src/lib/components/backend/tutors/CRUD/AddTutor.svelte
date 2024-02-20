@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
     import { Button, Modal, Input, Select, Textarea, Toggle, DropdownDivider, Toast } from 'flowbite-svelte';
     import { addTutor } from '../../stores/tutorStore';
+    import type { Tutor } from '../../stores/tutorStore';
     import { tutorStatusOptions } from '../../stores/settingsStore';
     import { derived } from 'svelte/store';
 	import { CloseCircleSolid } from 'flowbite-svelte-icons';
@@ -9,19 +10,7 @@
     let showToast = false;
     let options = derived(tutorStatusOptions, $tutorStatusOptions => $tutorStatusOptions.map(option => ({ value: option, name: option })));
 
-    let tutorDetails = {
-        first: '', 
-        last: '', 
-        email: '', 
-        phone: '', 
-        rate: '', 
-        status: '', 
-        description: '', 
-        visible: true,
-        headshot: '', 
-        title: '', 
-        name: '',
-    };
+    let tutorDetails:Tutor;
 
     async function saveChanges() {
         await addTutor(tutorDetails);

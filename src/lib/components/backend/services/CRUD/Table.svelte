@@ -29,7 +29,7 @@
     }
 </script>
 
-<Table hoverable={true} class="max-w-7xl m-auto border-2 dark:border-gray-600 mb-20">
+<Table hoverable={true} class="max-w-7xl m-auto border-2 dark:border-gray-600 mb-20 mt-10">
     <TableHead>
         <TableHeadCell>Logo</TableHeadCell>
         <TableHeadCell on:click={() => sortTable('name')}>

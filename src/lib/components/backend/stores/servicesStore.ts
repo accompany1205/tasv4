@@ -21,11 +21,13 @@ export interface Service {
     description: string;
     hero: string;
     logo: string;
+    images:[];
 }
 
 export const filterText = writable('');
 export const services = writable<Service[]>([])
 export let loading = writable(true);
+export let currentPageServiceId = writable('');
 
 export const filteredServices = derived(
     [services, filterText],

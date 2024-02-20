@@ -8,9 +8,9 @@
     let showToast = false;
 
     let tosENUM = [
-        { value: 'both', name: 'Both' },
-        { value: 'software', name: 'Software' },
-        { value: 'services', name: 'Services' },
+        { value: 'Both', name: 'Both' },
+        { value: 'Software', name: 'Software' },
+        { value: 'Services', name: 'Services' },
     ];  
 
     let name = '';
