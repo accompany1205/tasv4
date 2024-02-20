@@ -13,7 +13,9 @@
 		.slice(0, 8);
 </script>
 
-<div class="block aspect-[16/9] w-full overflow-hidden bg-gray-200">
+<div
+	class="block aspect-[16/9] micro:max-[375px]:aspect-[21/9] micro:max-sm:aspect-[21/7] w-full overflow-hidden bg-gray-200"
+>
 	<!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
 	<div
 		class="relative group h-[-webkit-fill-available] cursor-pointer"

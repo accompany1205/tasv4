@@ -78,7 +78,7 @@
 			</div>
 		</div>
 
-		<div class="h-auto max-h-[330px] overflow-y-auto">
+		<div class="h-auto max-h-[400px] micro:max-[375px]:max-h-[330px] overflow-y-auto">
 			<!-- Title -->
 			<div class="mx-3 my-2 text-left text-xl font-medium">{tutor?.title}</div>
 
