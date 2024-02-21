@@ -36,7 +36,8 @@
 				subServices: [],
 				description: '',
 				hero: '',
-				logo: ''
+				logo: '',
+				images: []
 			});
 
             defaultModal = false;

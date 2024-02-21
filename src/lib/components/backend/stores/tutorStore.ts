@@ -3,10 +3,6 @@ import { collection, doc, updateDoc, deleteDoc, addDoc } from 'firebase/firestor
 import { db } from '$lib/firebase';
 import { query, onSnapshot } from 'firebase/firestore';
 
-interface Service {
-    [key: string]: any;
-}
-
 export interface Tutor {
     description: string;
     email: string;
@@ -17,10 +13,11 @@ export interface Tutor {
     name: string;
     phone: string;
     rate: string;
-    // services: Service[];
+    services: string[];
     status: string;
     title: string;
     visible: boolean;
+    images: string[];
 }
 
 export const filterText = writable('');
