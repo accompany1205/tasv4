@@ -15,8 +15,8 @@ dependencies:
     specifier: ^2.1.5
     version: 2.1.5(svelte@4.2.11)
   '@sanity/client':
-    specifier: ^6.14.0
-    version: 6.14.0
+    specifier: ^6.14.2
+    version: 6.14.2
   '@sanity/image-url':
     specifier: ^1.0.2
     version: 1.0.2
@@ -971,13 +971,13 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@sanity/client@6.14.0:
-    resolution: {integrity: sha512-bDyA6F0TDPtWxmV1nKMSSRjMcyHzkIne51PReIYYNoNCA2R59DP3M4Vg5xV14OlhxoaQ7pSccpbAsIKF/yQIkQ==}
+  /@sanity/client@6.14.2:
+    resolution: {integrity: sha512-n5SamauuV9CaC9lM8cRQ+33oOcJixbSHMuxg7HJ34P3nNiJw+t0dSpV8WDfC1UW3t/fVLxt7XfO6vIvNPJv1oQ==}
     engines: {node: '>=14.18'}
     dependencies:
       '@sanity/eventsource': 5.0.1
       '@vercel/stega': 0.1.0
-      get-it: 8.4.7
+      get-it: 8.4.9
       rxjs: 7.8.1
     transitivePeerDependencies:
       - supports-color
@@ -1839,8 +1839,8 @@ packages:
     engines: {node: 6.* || 8.* || >= 10.*}
     dev: true
 
-  /get-it@8.4.7:
-    resolution: {integrity: sha512-asHfvEjoDsV1nocKFY0izD6i8HwNg2akROX+YOjLAk1Kvck/s/X6B9kgOwjBFDEiGWmwVSGEZ/WsqWgYurSkIg==}
+  /get-it@8.4.9:
+    resolution: {integrity: sha512-C6AC03pqD5QAHKrS1kivcMs3w7n8RyH8G1GUX1VoEUnzUnTE+FjgV5g38ghJBml4sHcUVQuWCj9vg9GnugKrBw==}
     engines: {node: '>=14.0.0'}
     dependencies:
       debug: 4.3.4

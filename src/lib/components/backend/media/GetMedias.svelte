@@ -6,34 +6,58 @@
 
     const dispatch = createEventDispatcher();
     let showModal = false;
+    let hasSorted = false;
     let images: any[] = [];
-    let selectedImages = new Map(); // Changed to Map for easy access & manipulation
-    let activeAspectRatio = 'square';
-    let columnsCount = 5;
-    export let modalTitle = 'Select Images'; // Changed to plural
-    export let btnClass = "";
-    export let btnTitle = "Select Images"; // Default button title
-    export let showIcon = true;
+    let selectedUrls = new Set<string>();
+    export let currentImages: string[] = [];
 
-    // Changed to react on selectedImages changes
-    $: displayedImages = images.map(image => ({
-        ...image,
-        selected: selectedImages.has(image.id)
-    }));
 
-    function toggleImageSelection(imageId: string, imageUrl: string) {
-        if (selectedImages.has(imageId)) {
-            selectedImages.delete(imageId);
+    $: selectedUrls = new Set(currentImages);
+
+    $: if (showModal && !hasSorted) {
+        sortImagesOnce();
+        hasSorted = true;
+    }
+
+    $: if (!showModal) {
+        hasSorted = false;
+    }
+
+    function sortImagesOnce() {
+        let tempImages = [...images];
+            tempImages.sort((a, b) => {
+                if(selectedUrls.has(b.url) && !selectedUrls.has(a.url)) return 1;
+                if(selectedUrls.has(a.url) && !selectedUrls.has(b.url)) return -1;
+                return 0;
+            });
+            images = tempImages;   
+     }
+
+    function toggleImageSelection(imageUrl: string) {
+        if (selectedUrls.has(imageUrl)) {
+            selectedUrls.delete(imageUrl);
         } else {
-            selectedImages.set(imageId, imageUrl);
+            selectedUrls.add(imageUrl);
         }
+        selectedUrls = new Set(selectedUrls);
     }
 
     function handleConfirmSelection() {
-        const selectedUrls = Array.from(selectedImages.values());
-        dispatch('select', { urls: selectedUrls });
+        dispatch('select', { urls: Array.from(selectedUrls) });
         showModal = false;
     }
+
+    media.subscribe($media => {
+        images = $media;
+    });
+
+    // Viewing
+    let activeAspectRatio = 'square';
+    let columnsCount = 5;
+    export let modalTitle = 'Select Images';
+    export let btnClass = "";
+    export let btnTitle = "Select Images";
+    export let showIcon = true;
 
     function handleZoomChange(change: number, event: any) {
         event.preventDefault();
@@ -46,12 +70,8 @@
         event.stopPropagation();
         activeAspectRatio = aspectRatio;
     }
-
-    media.subscribe($media => {
-        images = $media;
-    });
-
 </script>
+
 
 <Button on:click={() => (showModal = true)} class='{btnClass}'>{btnTitle}
     {#if showIcon}
@@ -61,29 +81,30 @@
 
 <Modal title="{modalTitle}" bind:open={showModal} size="xl">
     <div class="w-full">
-    <ButtonGroup id="zoomMenu">
-        <Button on:click={(event) => handleZoomChange(1, event)} disabled={columnsCount === 12}>Zoom Out</Button>
-        <Button on:click={(event) => handleZoomChange(-1, event)} disabled={columnsCount === 1}>Zoom In</Button>
-    </ButtonGroup>
+        <ButtonGroup id="zoomMenu">
+            <Button on:click={(event) => handleZoomChange(1, event)} disabled={columnsCount === 12}>Zoom Out</Button>
+            <Button on:click={(event) => handleZoomChange(-1, event)} disabled={columnsCount === 1}>Zoom In</Button>
+        </ButtonGroup>
 
-    <Tooltip type='light' triggeredBy="[id^='zoomMenu']">{columnsCount} Columns</Tooltip>
+        <Tooltip type='light' triggeredBy="[id^='zoomMenu']">{columnsCount} Columns</Tooltip>
 
 
-    <ButtonGroup>
-        <Button on:click={(event) => handleAspectRatioChange('square', event)} disabled={activeAspectRatio === 'square'}>Square</Button>
-        <Button on:click={(event) => handleAspectRatioChange('sixteenNine', event)} disabled={activeAspectRatio === 'sixteenNine'}>16/9</Button>
-        <Button on:click={(event) => handleAspectRatioChange('masonry', event)} disabled={activeAspectRatio === 'masonry'}>Full</Button>
-    </ButtonGroup>
+        <ButtonGroup>
+            <Button on:click={(event) => handleAspectRatioChange('square', event)} disabled={activeAspectRatio === 'square'}>Square</Button>
+            <Button on:click={(event) => handleAspectRatioChange('sixteenNine', event)} disabled={activeAspectRatio === 'sixteenNine'}>16/9</Button>
+            <Button on:click={(event) => handleAspectRatioChange('masonry', event)} disabled={activeAspectRatio === 'masonry'}>Full</Button>
+        </ButtonGroup>
     </div>
+
     <div class={`grid gap-10 grid-cols-${columnsCount} overflow-y-auto max-h-[600px] p-10 bg-gray-100 rounded-xl border-2 border-dashed dark:bg-gray-700 dark:border-gray-500`}>
-        {#each displayedImages as { id, url, alt, selected }}
+        {#each images as { id, url, alt }}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
             <img
-            src={url}
-            alt={alt}
-            class="cursor-pointer rounded-xl shadow-md object-cover {activeAspectRatio === 'square' ? 'aspect-square' : activeAspectRatio === 'sixteenNine' ? 'aspect-video' : 'aspect-auto'} {selected ? 'border-4 border-emerald-500' : ''}"
-            on:click={() => toggleImageSelection(id, url)}
+                src={url}
+                alt={alt}
+                class="cursor-pointer rounded-xl shadow-md object-cover {activeAspectRatio === 'square' ? 'aspect-square' : activeAspectRatio === 'sixteenNine' ? 'aspect-video' : 'aspect-auto'} {selectedUrls.has(url) ? 'border-4 border-emerald-500 p-2' : ''}"
+                on:click={() => toggleImageSelection(url)}
             />
         {/each}
     </div>

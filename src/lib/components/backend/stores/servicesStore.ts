@@ -21,7 +21,7 @@ export interface Service {
     description: string;
     hero: string;
     logo: string;
-    images:[];
+    images: string[];
 }
 
 export const filterText = writable('');
