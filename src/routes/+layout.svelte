@@ -6,7 +6,7 @@
 	import FooterFlowBite from '$lib/components/blocks/common/FooterFlowBite.svelte';
 	import FreeConsultationSticky from '$lib/components/blocks/common/FreeConsultationSticky.svelte';
 	import Analytics from '$lib/components/analytics/Analytics.svelte';
-  
+
 	import { register } from 'swiper/element/bundle';
 	register();
   

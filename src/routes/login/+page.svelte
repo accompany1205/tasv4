@@ -2,7 +2,7 @@
     import { db } from "$lib/firebase";
     import { collection, getDocs } from "firebase/firestore";
     import { onMount } from "svelte";
-
+    import { singIn } from "$lib/auth";
     import { firebaseAuth } from "$lib/firebase";
     import { signInWithEmailAndPassword } from "firebase/auth";
     import { goto } from '$app/navigation';
@@ -14,11 +14,13 @@
     import { Section, Register } from 'flowbite-svelte-blocks';
     import { Button, Checkbox, Label, Input } from 'flowbite-svelte';
 
+
     import Logo from "$lib/assets/logos/logo.webp";
 
     async function login() {
         try {
-            await signInWithEmailAndPassword(firebaseAuth, email, password);
+            const user = await signInWithEmailAndPassword(firebaseAuth, email, password);
+            singIn(user);
             console.log("success"); 
             goto("/tas");
         } catch (error:any) {

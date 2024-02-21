@@ -8,11 +8,18 @@
     import { writable } from "svelte/store";
     import { onMount } from 'svelte';
 	import { Spinner } from "flowbite-svelte";
+    import { requireAuth } from "$lib/auth";
+    import { beforeNavigate } from "$app/navigation";
+
+    // check auth status before navigate
+    // beforeNavigate(requireAuth);
 
     let initialized = false;
     const currentNavIndex = writable(1);
 
     onMount(() => {
+        // temperarily use
+        requireAuth();
         const storedIndex = localStorage.getItem('currentNavIndex');
         if (storedIndex) {
             currentNavIndex.set(parseInt(storedIndex, 10)); // Update the store's value
