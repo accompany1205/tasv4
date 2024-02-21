@@ -40,7 +40,7 @@
 
 <div class="flex gap-10 text-gray-800 font-semibold dark:text-gray-100">
     Logo
-    <div class="w-1/3">
+    <div class="w-1/5">
         <div class="relative inline-block m-auto"> 
             {#if serviceDetails.logo}
                 <img src={serviceDetails.logo} alt="Tutor headshot" class="rounded-xl w-40 border-2 border-dashed p-2"/>
@@ -52,7 +52,7 @@
     </div>
 
     Images
-    <div class="w-2/3 grid grid-cols-4 p-5 bg-gray-100 rounded-xl border-2 border-dashed justify-items-center gap-5 dark:bg-gray-700">
+    <div class="w-4/5 grid grid-cols-4 p-5 bg-gray-100 rounded-xl border-2 border-dashed justify-items-center gap-5 dark:bg-gray-700">
 
         {#each serviceDetails.images as image}
             <div class="relative inline-block group">

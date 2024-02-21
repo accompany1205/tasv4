@@ -1,118 +1,79 @@
 <script lang="ts">
-    import { Button, Label, Textarea, Popover, ButtonGroup  } from 'flowbite-svelte';
-    import { writable } from 'svelte/store';
-    import { doc, updateDoc } from 'firebase/firestore';
-    import { db } from '$lib/firebase';
-    import Images from './Images.svelte';
-    import { TrashBinOutline, BarsSolid } from 'flowbite-svelte-icons';
+    import { currentPageServiceId, services, updateService, type Service } from '../../../../stores/servicesStore';
+    import GetMedias from '$lib/components/backend/media/GetMedias.svelte';
+    import { Button, Label, Textarea } from 'flowbite-svelte';
+    import { TrashBinOutline } from 'flowbite-svelte-icons';
+    import { derived, get } from 'svelte/store';
 
-    // Receive the initial sub-services and the service ID as props
-    export let initialSubServices: any[] | undefined = [];
-    export let serviceId:any;
+    let serviceDetails:Service;
+    
+    let service = derived([services, currentPageServiceId], ([$services, $currentPageServiceId]) =>
+        $services.find(s => s.id === $currentPageServiceId)
+    );
 
-    let subServices = writable(initialSubServices);
+    service.subscribe($service => {
+        if ($service) {
+            serviceDetails = {...$service};
+        }
+    });
 
     function addSubService() {
-        if ($subServices.length < 5) {
-            subServices.update(currentSubServices => {
-                return [...currentSubServices, { name: '', description: '', images:[] }];
-            });
-        }
-    }
-
-    async function updateSubServices() {
-        const serviceRef = doc(db, 'services', serviceId);
-
-        try {
-            await updateDoc(serviceRef, {
-                subServices: $subServices
-            });
-        } catch (error) {
-            console.error('Error updating sub-services: ', error);
-        }
-    }
-
-    async function deleteSubService(index: number) {
-        subServices.update(currentSubServices => {
-            return currentSubServices.filter((_, i) => i !== index);
+        serviceDetails.subServices.push({
+            name: '',
+            description: '',
+            images: []
         });
-
-        updateSubServices();
+        serviceDetails = { ...serviceDetails };
     }
 
-    subServices.subscribe(() => {
-        updateSubServices();
-    });
-
-    let draggedItem: number | null = null;
-
-
-function handleDragStart(event: DragEvent & { currentTarget: EventTarget & HTMLDivElement; }, index: number | null) {
-    draggedItem = index;
-    event.dataTransfer.effectAllowed = 'move';
-}
-
-function handleDragOver(event: DragEvent & { currentTarget: EventTarget & HTMLDivElement; }, index: number) {
-    event.preventDefault();
-    event.dataTransfer.dropEffect = 'move';
-}
-
-function handleDrop(event: DragEvent & { currentTarget: EventTarget & HTMLDivElement; }, index: number) {
-    event.preventDefault();
-
-    if (draggedItem === null || draggedItem === index) {
-        return;
+    function handleImagesSelect(index: number, event: { detail: { urls: string[]; }; }) {
+        serviceDetails.subServices[index].images = event.detail.urls;
     }
 
-    subServices.update(currentSubServices => {
-        const draggedSubService = currentSubServices[draggedItem];
-        let newSubServices = currentSubServices.filter((_, i) => i !== draggedItem);
-        newSubServices.splice(index, 0, draggedSubService);
-        return newSubServices;
-    });
+    function deleteImage(index: number, imageUrl: string) {
+        serviceDetails.subServices[index].images = serviceDetails.subServices[index].images.filter(url => url !== imageUrl);
+    }
 
-    draggedItem = null;
-    updateSubServices();
-}
+    function deleteSubService(index: number) {
+        serviceDetails.subServices.splice(index, 1);
+        serviceDetails = { ...serviceDetails };
+    }
 
-
-
+    async function saveChanges() {
+        await updateService(serviceDetails);
+    }
 </script>
 
-{#each $subServices as subService, i}
-    <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div 
-        class="flex gap-10 mb-20 text-gray-800 font-semibold"
-        draggable="true"
-        on:dragstart={(event) => handleDragStart(event, i)}
-        on:dragover={(event) => handleDragOver(event, i)}
-        on:drop={(event) => handleDrop(event, i)}
-    >
-        <div class="mb-2 text-sm w-2/12">Sub-service Name
-            <Textarea bind:value={subService.name} class="mt-2 h-auto"/>
+
+{#each serviceDetails.subServices as subService, index}
+    <div class="flex gap-10 mb-20">
+
+        <div class="w-2/5">
+            <Label>Name</Label>
+            <Textarea bind:value={subService.name} class="mt-2 w-1/2" rows="1"/>
+            
+            <Label>Description</Label>
+            <Textarea bind:value={subService.description} class="mt-2" rows="3" />
         </div>
 
-        <div class="mb-2 text-sm w-3/12">SubService Description
-            <Textarea bind:value={subService.description} class="mt-2 " rows="5" />
+        <div class="w-4/5 grid grid-cols-4 p-5 bg-gray-100 rounded-xl border-2 border-dashed justify-items-center gap-5 dark:bg-gray-700">
+            {#each subService.images as image (image)}
+                <div class="relative inline-block group">
+                    <!-- svelte-ignore a11y-img-redundant-alt -->
+                    <img src={image} alt="Sub-service image" class="rounded-xl w-40 aspect-square object-cover"/>
+
+                    <Button on:click={() => deleteImage(index, image)} color="alternative" class="absolute right-0 top-0 p-2 m-2 bg-gray-50 opacity-0 group-hover:opacity-100 invisible group-hover:visible">
+                        <TrashBinOutline/>
+                    </Button> 
+                </div>
+            {/each}
+            <GetMedias on:select={(event) => handleImagesSelect(index, event)} currentImages={subService.images} btnClass="text-gray-700 rounded-xl w-40 h-40 bg-transparent border-4 border-dotted hover:bg-gray-50 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-500" btnTitle="Add Images" showIcon={false}/>
         </div>
 
-        <div class="mb-2 text-sm w-6/12">Images
-            <Images subService={subService} serviceId={serviceId} subServiceIndex={i} divClass="mt-2"/>
-        </div>
-
-        <div class="flex flex-col">
-            <div class="mb-2 text-sm">Actions</div>
-
-            <Button color="alternative" class="mb-2">
-                <BarsSolid/>
-            </Button>
-
-            <Button color="alternative" on:click={() => deleteSubService(i)}>
-                <TrashBinOutline/>
-            </Button>      
-        </div>
-        
+        <Button on:click={() => deleteSubService(index)} color="alternative"><TrashBinOutline/></Button>
     </div>
 {/each}
-
-<Button on:click={addSubService} class="max-w-sm" color="alternative" disabled={$subServices.length >= 5}>Add SubService</Button>
+<div class="flex gap-4">
+    <Button on:click={saveChanges}>Save Changes</Button>
+    <Button on:click={addSubService} color="alternative" disabled={serviceDetails.subServices.length >= 5}>Add SubService</Button>
+</div>

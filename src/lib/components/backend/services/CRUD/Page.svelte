@@ -21,7 +21,7 @@
     {/each}
 </div>
 
-<div class="m-auto max-w-7xl bg-white rounded-xl border-2 border-gray-200 p-4 overflow-x-auto mt-4 block gap-10 mb-20 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100">
+<div class="m-auto max-w-7xl bg-white rounded-xl border-2 border-gray-200 p-4 overflow-x-auto mt-4 block gap-10 mb-20 dark:bg-gray-800 dark:border-gray-600">
     <!-- Page View -->
         <div class="flex justify-left gap-4 mb-4">
             <Button color="alternative" on:click={() => activeSection = 'general'} class="{activeSection === 'general' ? selected : ''}">General</Button>
@@ -45,16 +45,16 @@
                 <Images/>
             {/if}
 
-            <!-- {#if activeSection === 'subservices'}
+            {#if activeSection === 'subservices'}
                 <EditSub/>
-            {/if} -->
+            {/if}
 
-            <!-- {#if activeSection === 'faq'}
+            {#if activeSection === 'faq'}
                 <EditFAQ/>
-            {/if} -->
+            {/if}
 
-            <!-- {#if activeSection === 'preview'}
+            {#if activeSection === 'preview'}
                 <Preview/>
-            {/if} -->
+            {/if}
         {/if}
 </div>

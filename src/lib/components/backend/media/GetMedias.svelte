@@ -97,7 +97,7 @@
     </div>
 
     <div class={`grid gap-10 grid-cols-${columnsCount} overflow-y-auto max-h-[600px] p-10 bg-gray-100 rounded-xl border-2 border-dashed dark:bg-gray-700 dark:border-gray-500`}>
-        {#each images as { id, url, alt }}
+        {#each images as { url, alt }}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
             <img
