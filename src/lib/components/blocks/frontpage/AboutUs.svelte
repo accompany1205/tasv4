@@ -1,6 +1,6 @@
 <script lang="ts">
 	import SectionWhite from '$lib/components/blocks/common/SectionWhite.svelte';
-	import LinkButton from '../common/LinkButton.svelte';
+	import FormModal from '../FormModal.svelte';
 	import TutorsHeadImage from '../common/TutorsHeadImage.svelte';
 
 	let featuredTutorsHero = [
@@ -44,10 +44,9 @@
 				</p>
 			</div>
 
-			<LinkButton
-				class="mt-4 bg-emerald-400 text-white hover:bg-emerald-500"
-				title="Get a Free Consultation"
-				href="https://www.tutorsandservices.com/form/?specificPerson=&softwarePref=&cameFrom="
+			<FormModal
+				butClass="mt-4 bg-emerald-400 text-white hover:bg-emerald-500 text-sm lg:text-3xl font-bold"
+				butTitle="Get a Free Consultation"
 			/>
 		</div>
 

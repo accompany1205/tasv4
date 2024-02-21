@@ -26,6 +26,7 @@
 		spaceBetween: 300,
 		effect: 'slides',
 		loop: true,
+		noSwiping: true,
 
 		autoplay: {
 			enabled: true,
@@ -77,7 +78,7 @@
 	</h2>
 
 	<div
-		class="m-auto mx-auto h-[735px] max-w-full xl:max-w-screen-xl"
+		class="m-auto mx-auto micro:max-[375px]:h-[590px] h-[680px] md:h-[700px] max-w-full xl:max-w-screen-xl"
 		style="container-type: size;"
 	>
 		<TutorV3SwipeControls topControl swiper="{swiper}" class="block xl:hidden">
@@ -102,9 +103,7 @@
 		<swiper-container bind:this="{swiper}" init="false">
 			{#each featuredTutors as tutor}
 				<swiper-slide class="">
-					<div
-						class="m-auto h-[100cqh] w-96 micro:max-[375px]:w-80 max-w-2xl flex-shrink-0 p-2"
-					>
+					<div class="m-auto h-[100cqh] w-full lg:w-96 flex-shrink-0 p-4 lg:p-2">
 						<TutorCardV3
 							tutor="{tutor}"
 							class="mx-auto h-full self-stretch"

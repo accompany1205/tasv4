@@ -6,12 +6,16 @@
 	export let featuredImages: Record<string, string>;
 	export let openWorkGallery: boolean = false;
 
+	let randNumber: number = 1;
+
 	const hero_images_flattened = Object.values(featuredImages)
-		.map((url) => ({ alt: '', srcset: url }))
+		.map((url) => ({ alt: `Description ${randNumber++}`, srcset: url }))
 		.slice(0, 8);
 </script>
 
-<div class="block aspect-[16/9] w-full overflow-hidden bg-gray-200">
+<div
+	class="block aspect-[16/9] micro:max-[375px]:aspect-[21/9] micro:max-sm:aspect-[21/7] w-full overflow-hidden bg-gray-200"
+>
 	<!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
 	<div
 		class="relative group h-[-webkit-fill-available] cursor-pointer"
@@ -28,7 +32,7 @@
 			loading="lazy"
 		/>
 
-		<div class="absolute top-0 left-0 p-4">
+		<div class="absolute top-0 left-0 p-4 hidden lg:block">
 			<div
 				class="transition-all transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0"
 			>
@@ -39,11 +43,12 @@
 </div>
 
 {#if openWorkGallery}
-	<PortfolioImageGallery
-		bind:OpenGallery="{openWorkGallery}"
-		title="My work"
-		description="I can teach you the basics of Sketchup and Layout. I can help you all the way from drawing your first lines and shapes in Sketchup to making entire floor plans."
-	>
-		<ImageCarousel images="{hero_images_flattened}" showLogo="{false}" indicatorInside />
+	<PortfolioImageGallery bind:OpenGallery="{openWorkGallery}" title="My work">
+		<ImageCarousel
+			images="{hero_images_flattened}"
+			showLogo="{false}"
+			indicatorInside
+			showAlt
+		/>
 	</PortfolioImageGallery>
 {/if}
