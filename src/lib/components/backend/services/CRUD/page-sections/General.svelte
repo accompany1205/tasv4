@@ -24,6 +24,11 @@
         }
     });
 
+
+    let qualifiedTutors = derived([tutors, service], ([$tutors, $service]) => {
+        return $tutors.filter(tutor => tutor.services.includes($service.name));
+    });
+
     async function saveChanges() {
         updateService(serviceDetails);
     }
@@ -52,14 +57,9 @@
     <div class="w-1/2">
         <Label class="block text-sm font-medium text-gray-700">Qualified Tutors</Label>
         <div class="flex gap-2 mt-2">
-            {#each $tutors as tutor (tutor.id)}
+            {#each $qualifiedTutors as tutor (tutor.id)}
                 <img src={tutor.headshot} alt={tutor.name} class="rounded-full max-w-16" />
             {/each}
-        </div>
-
-        <Label class="mt-12 block text-sm font-medium text-gray-700">Force Tutors</Label>
-        <div class="flex gap-2 mt-2">
-            Force tutors to be in a service
         </div>
     </div>
 </div>

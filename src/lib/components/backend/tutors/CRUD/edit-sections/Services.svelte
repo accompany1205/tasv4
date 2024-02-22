@@ -53,31 +53,33 @@
 
 </script>
 
-<div class="flex gap-4 h-96">
+<div class="flex gap-6 h-96">
     <!-- Add Service Input -->
-    <div class="flex w-1/3">
+    <div class="block w-1/3">
         <Input bind:value={$newService} placeholder="Add service" class="w-full h-10" on:keyup={handleKeyup} />
 
-        
-        <Dropdown class="w-full max-h-80 overflow-y-auto" placement="bottom-start">
+
+        <div class="mt-5 border-2 rounded-md bg-gray-50 max-h-80 overflow-auto">
             {#if newService}
                     {#each $filteredServices as { name }, index}
-                        <DropdownItem class="flex items-center text-base font-semibold gap-2" on:click={() => addService(name)}>
+                        <!-- svelte-ignore a11y-click-events-have-key-events -->
+                        <!-- svelte-ignore a11y-no-static-element-interactions -->
+                        <div class="flex items-center text-base font-semibold gap-2 p-2 hover:bg-gray-200" on:click={() => addService(name)}>
                             {name}
-                        </DropdownItem>
+                        </div>
 
                         {#if $filteredServices.length != index + 1}
-                            <DropdownDivider/>
+                            <div class="border-[1px]"/>
                         {/if}
                     {/each}
                     
                     {#if $filteredServices.length === 0}
-                        <DropdownItem class="flex items-center text-base font-semibold gap-2" on:click={() => addService($newService)}>
-                            Adding New Service "{$newService}"
-                        </DropdownItem>
+                        <div class="flex items-center text-base font-semibold gap-2 p-2">
+                            No Matches
+                        </div>
                     {/if}
             {/if}
-        </Dropdown>
+        </div>
     </div>
 
    <!-- Service Pills -->
