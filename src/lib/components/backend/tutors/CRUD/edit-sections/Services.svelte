@@ -2,8 +2,9 @@
     import { writable, derived } from 'svelte/store';
     import { tutors, updateTutor, type Tutor } from '../../../stores/tutorStore';
     import { services } from '../../../stores/servicesStore';
-    import { Dropdown, DropdownDivider, DropdownItem, Input, Popover } from 'flowbite-svelte';
+    import { Button, Dropdown, DropdownDivider, DropdownItem, Input, Popover } from 'flowbite-svelte';
     import { TrashBinOutline } from 'flowbite-svelte-icons'; // Ensure this is imported
+	import DelTutor from '../DelTutor.svelte';
 
 
     export let tutorId: any;
@@ -25,14 +26,12 @@
     function addService(serviceName: string) {
         if (serviceName && !tutorDetails.services.includes(serviceName)) {
             tutorDetails.services = [...tutorDetails.services, serviceName];
-            updateTutor(tutorDetails);
             newService.set('');
         }
     }
 
     function removeService(serviceName: string) {
         tutorDetails.services = tutorDetails.services.filter(service => service !== serviceName);
-        updateTutor(tutorDetails);
     }
 
     function getServiceType(serviceName: string) {
@@ -46,7 +45,11 @@
         }
     }
 
-
+    function saveChanges() {
+        if (tutorId) {
+            updateTutor(tutorDetails);
+        }
+    }
 
 </script>
 
@@ -94,4 +97,9 @@
             </Popover>
         {/each}
     </div>
+</div>
+
+<div class="flex justify-evenly gap-10">
+    <Button on:click={saveChanges} class="w-1/2">Save</Button>
+    <DelTutor tutor={tutorDetails}/>
 </div>

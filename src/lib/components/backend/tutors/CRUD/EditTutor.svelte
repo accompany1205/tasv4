@@ -60,9 +60,4 @@
     {#if activeSection === 'Page'}
         <Page tutorId={tutorId}/>
     {/if}
-
-    <div class="flex justify-evenly gap-10">
-        <Button on:click={saveChanges} class="w-1/2">Save</Button>
-        <DelTutor tutor={tutorDetails}/>
-    </div>
 </Modal>

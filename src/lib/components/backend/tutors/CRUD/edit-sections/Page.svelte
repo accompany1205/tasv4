@@ -24,6 +24,11 @@
         }
     });
 
+    function saveChanges() {
+        if (tutorId) {
+            updateTutor(tutorDetails);
+        }
+    }
 </script>
 
 
@@ -38,3 +43,9 @@
 </div>
 
 <Toggle bind:checked={tutorDetails.visible}>Published</Toggle>
+
+
+<div class="flex justify-evenly gap-10">
+    <Button on:click={saveChanges} class="w-1/2">Save</Button>
+    <DelTutor tutor={tutorDetails}/>
+</div>
