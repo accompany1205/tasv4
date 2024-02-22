@@ -72,7 +72,12 @@
 
 <DropdownDivider/>
 
-<div class="grid gap-4 sm:grid-cols-2">
+<div class="grid gap-4 sm:grid-cols-3">
+    <div>
+        Name
+        <Input bind:value={tutorDetails.name} class="mt-2 mb-4" name="name" />
+    </div>
+
     <div>
         Rate
         <Input bind:value={tutorDetails.rate} class="mt-2" type="text" name="rate" id="rate"/>

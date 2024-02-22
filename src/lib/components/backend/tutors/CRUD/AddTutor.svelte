@@ -26,6 +26,9 @@
 		services: []
 	};
 
+    $: tutorDetails.name = `${tutorDetails.first} ${tutorDetails.last ? tutorDetails.last[0] + '.' : ''}`;
+
+
     async function saveChanges() {
         await addTutor(tutorDetails);
         modal = false;
