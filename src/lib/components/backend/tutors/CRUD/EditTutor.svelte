@@ -37,7 +37,7 @@
 
 <Button on:click={() => {modal = true}} color="alternative">Edit</Button>
 
-<Modal title="Edit Tutor - {tutorDetails.id}" bind:open={modal} class="z-50">
+<Modal title="Edit Tutor - {tutorDetails.name}" bind:open={modal} class="z-50">
     <ButtonGroup>
         <Button on:click={() => setActiveSection('General')} class="{activeSection === 'General' ? selected : ''}">General</Button>
         <Button on:click={() => setActiveSection('Services')} class="{activeSection === 'Services' ? selected : ''}">Services</Button>

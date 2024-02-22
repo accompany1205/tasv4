@@ -38,7 +38,7 @@
 
     {#each tutorDetails?.images as image (image)}
         <div class="relative inline-block group">
-            <img src={image} alt={image} class="rounded-xl w-40 aspect-square object-cover"/>
+            <img src={image} alt={image} class="rounded-xl w-32 aspect-square object-cover"/>
             
             <Button on:click={() => deleteImage(image)}  color="alternative" class="absolute right-0 top-0 p-2 m-2 bg-gray-50 opacity-0 group-hover:opacity-100 invisible group-hover:visible">
                 <TrashBinOutline/>
@@ -46,7 +46,7 @@
         </div>
     {/each}
 
-    <GetMedias on:select={handleImagesSelect} currentImages={tutorDetails?.images || []} btnClass="text-gray-700 rounded-xl w-40 h-40 bg-transparent border-4 border-dotted hover:bg-gray-50 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-500" btnTitle="Add Images" showIcon={false}/>
+    <GetMedias on:select={handleImagesSelect} currentImages={tutorDetails?.images || []} btnClass="text-gray-700 rounded-xl w-32 h-32 bg-transparent border-4 border-dotted hover:bg-gray-50 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-500" btnTitle="Add Images" showIcon={false}/>
 </div>
 
 
