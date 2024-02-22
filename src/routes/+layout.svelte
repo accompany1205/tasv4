@@ -13,13 +13,9 @@
 	let includeLayout = !exclude.includes($page.url.pathname);
 </script>
   
-  <Analytics />
-  {#if includeLayout}
+<slot />
 
-  {/if}
-  <slot />
-  {#if includeLayout}
+{#if includeLayout}
 	<FooterFlowBite />
 	<FreeConsultationSticky />
-  {/if}
-  
+{/if}
