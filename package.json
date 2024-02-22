@@ -49,7 +49,6 @@
 		"@tailwindcss/container-queries": "^0.1.1",
 		"deepmerge": "^4.3.1",
 		"groq": "^3.30.0",
-		"sharp": "^0.33.2",
 		"svelte-inview": "^4.0.2",
 		"svelte-preprocess": "^5.1.3",
 		"swiper": "^10.3.1"

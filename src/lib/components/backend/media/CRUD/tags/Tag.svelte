@@ -3,7 +3,6 @@
     import { TrashBinOutline } from 'flowbite-svelte-icons';
     import { createEventDispatcher } from 'svelte';
 
-    export let image: any;
     export let tag: any;
 
     let type = tag.type; // Tutor or Service
