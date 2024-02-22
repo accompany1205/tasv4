@@ -4,12 +4,24 @@
 	import { headshots } from '$lib/tutors';
 	import { Button } from 'flowbite-svelte';
 	import FormModal from '../FormModal.svelte';
+	import { currentUser } from '$lib/stores/sessions';
+	import { logout } from '$lib/api/auth';
+	import { goto } from '$app/navigation';
+	import { get } from 'svelte/store';
 
 	export let images = [{ alt: '', srcset: '' }];
 	export let featuredTutors = [''];
 
 	function handleButtonClick() {
 		gtag('event', 'sketchup_form_clicked');
+	}
+
+	console.log({currentUser: get(currentUser)});
+	function handleLoginClick(){
+		goto("/login");
+	}
+	async function  handleLogoutClick(){
+		await logout();
 	}
 </script>
 
@@ -32,6 +44,17 @@
 		>
 			Online&nbsp;Sketchup&nbsp;Classes, Zoom&nbsp;Tutors<wbr /> &&nbsp;Professional&nbsp;Services
 		</h1>
+		<div class="relative">
+			<div class="absolute right-2 top-[-40px] flex w-full justify-end">
+				<div class="border px-8 py-2 rounded-lg flex items-center justify-center text-white cursor-pointer font-bold">
+					{#if $currentUser}
+						<span on:click = {handleLogoutClick}>Log Out</span>
+					{:else}
+						<span on:click = {handleLoginClick}>Log In</span>
+					{/if}
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div

@@ -1,6 +1,6 @@
 // src/lib/auth.js
 import { writable } from 'svelte/store';
-// import { redirect } from '@sveltejs/kit';
+import { goto } from '$app/navigation';
 
 export const auth = writable(null);
 
@@ -20,7 +20,7 @@ export function requireAuth() {
 		const unsubscribe = subscribe((value: any) => {
 			console.log({ auth: value });
 			if (!value) {
-				window.location.href = '/login';
+				goto('/login');
 			}
 		});
 		unsubscribe();

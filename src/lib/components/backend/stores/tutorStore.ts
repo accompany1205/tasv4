@@ -1,36 +1,9 @@
 import { writable } from 'svelte/store';
-import { collection, doc, updateDoc, deleteDoc, addDoc, setDoc } from 'firebase/firestore';
-import { sendPasswordResetEmail, createUserWithEmailAndPassword } from 'firebase/auth';
-import { firebaseAuth } from '$lib/firebase';
+import { collection, doc, updateDoc, deleteDoc, addDoc } from 'firebase/firestore';
 import { db } from '$lib/firebase';
 import { query, onSnapshot } from 'firebase/firestore';
-
-console.log(firebaseAuth.currentUser);
-
-// Function to send password reset email
-function sendPasswordReset(userEmail: string): void {
-	sendPasswordResetEmail(firebaseAuth, userEmail)
-		.then(() => {
-			// Password reset email sent successfully
-			console.log('Password reset email sent to', userEmail);
-		})
-		.catch((error) => {
-			// Error occurred while sending password reset email
-			console.error('Error sending password reset email:', error);
-		});
-}
-
-async function signUp(email: string, password: string) {
-	try {
-		const userCredential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
-		const user = userCredential.user;
-		console.log('User signed up successfully:', user);
-		return user;
-	} catch (error) {
-		console.error('Error signing up:', error);
-		throw error;
-	}
-}
+import { signup, sendPasswordResetEmailToUser, _addDoc, _updateDoc, _deleteDoc } from '$lib/api';
+// import { send } from 'vite';
 
 interface Service {
 	[key: string]: any;
@@ -118,9 +91,9 @@ export async function deleteTutor(tutorId: string) {
 
 export async function addTutor(newTutor: any) {
 	try {
-        const user = await signUp(newTutor.email, "123456");
-		await addDoc(collection(db, 'tutors'), {...newTutor, userUID: user.uid});
-		sendPasswordReset(newTutor.email);
+        const userUID: string | undefined = await signup(newTutor.email, "123456");
+		await _addDoc('tutors', {...newTutor, userUID: userUID ?? ""});
+		await sendPasswordResetEmailToUser(newTutor.email);
 		console.log('Tutor added successfully to Firestore');
 	} catch (error) {
 		console.error('Error adding new tutor:', error);

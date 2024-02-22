@@ -1,11 +1,8 @@
 <script lang="ts">
-    import { db } from "$lib/firebase";
-    import { collection, getDocs } from "firebase/firestore";
     import { onMount } from "svelte";
-    import { singIn } from "$lib/auth";
-    import { firebaseAuth } from "$lib/firebase";
-    import { signInWithEmailAndPassword } from "firebase/auth";
+    import { login } from "$lib/api";
     import { goto } from '$app/navigation';
+    import { currentUser } from "$lib/stores/sessions";
 
     let email = '';
     let password = '';
@@ -17,16 +14,30 @@
 
     import Logo from "$lib/assets/logos/logo.webp";
 
-    async function login() {
+    async function signIn() {
         try {
-            const user = await signInWithEmailAndPassword(firebaseAuth, email, password);
-            singIn(user);
-            console.log("success"); 
-            goto("/tas");
+            const user = await login(email, password);
+            console.log("success", user); 
+            goto("/");
         } catch (error:any) {
             errorMessage = error.message;
         }
     }
+
+    onMount(()=>{
+        // console.log({currentUser});
+        const { subscribe } = currentUser;
+		const unsubscribe = subscribe((value: any) => {
+			console.log({ auth: value });
+			if (value) {
+				// goto('/');
+			}
+		});
+        
+        
+        return unsubscribe;
+        // if(currentUser) goto("/")
+    })
 </script>
 
 <Section name="login">
@@ -54,7 +65,7 @@
                 <a href="/" class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500">Forgot password?</a> -->
 
                 </div>
-                <Button class="w-full" on:click={login}>Sign in</Button>
+                <Button class="w-full" on:click={signIn}>Sign in</Button>
             </div>
 
             {#if errorMessage}
