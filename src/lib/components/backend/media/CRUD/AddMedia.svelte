@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { db } from '$lib/firebase';
-	import { addDoc, collection } from 'firebase/firestore';
+	// import { db } from '$lib/firebase';
+    import { _addDoc } from '$lib/api';
+	// import { addDoc, collection } from 'firebase/firestore';
     import { Button, Modal, Progressbar } from 'flowbite-svelte';
     let defaultModal = false;
     import { sineOut } from 'svelte/easing';
@@ -115,7 +116,8 @@
             title
         };
 
-        await addDoc(collection(db, 'media'), mediaDoc);
+        // await addDoc(collection(db, 'media'), mediaDoc);
+        await _addDoc('media', mediaDoc);
         console.log('Media document created:', mediaDoc);
     }
 </script>
@@ -123,7 +125,7 @@
 <Button on:click={() => (defaultModal = true)}>Add Files</Button>
 
 <Modal title="Add Files to Media" bind:open={defaultModal}>
-    <input type="file" id="fileInput" class="hidden" on:change={handleFileSelect} multiple />
+    <input type="file" id="fileInput" class="hidden" on:change={()=>handleFileSelect} multiple />
 
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div

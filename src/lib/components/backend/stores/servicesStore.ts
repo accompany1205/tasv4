@@ -1,5 +1,6 @@
 import { writable, derived, get } from 'svelte/store';
-import { collection, doc, updateDoc, deleteDoc, addDoc, query, onSnapshot } from 'firebase/firestore';
+import { _addDoc, _updateDoc, _deleteDoc } from '$lib/api';
+import { collection, query, onSnapshot } from 'firebase/firestore';
 import { db } from '$lib/firebase';
 
 
@@ -61,10 +62,11 @@ function fetchServices() {
 }
 
 export async function updateService(updatedService: Service) {
-    const serviceRef = doc(db, 'services', updatedService.id);
+    // const serviceRef = doc(db, 'services', updatedService.id);
     
     try {
-        await updateDoc(serviceRef, updatedService);
+        // await updateDoc(serviceRef, updatedService);
+        await _updateDoc("services", updatedService);
         console.log('Service updated successfully in Firestore');
     } catch (error) {
         console.error('Error updating service:', error);
@@ -73,10 +75,11 @@ export async function updateService(updatedService: Service) {
 }
 
 export async function deleteService(serviceId: string) {
-    const serviceRef = doc(db, 'services', serviceId);
+    // const serviceRef = doc(db, 'services', serviceId);
 
     try {
-        await deleteDoc(serviceRef);
+        // await deleteDoc(serviceRef);
+        await _deleteDoc('services', serviceId);
         console.log('Service deleted successfully from Firestore');
     } catch (error) {
         console.error('Error deleting service:', error);
@@ -86,7 +89,8 @@ export async function deleteService(serviceId: string) {
 
 export async function addService(newService: Service) {
     try {
-        await addDoc(collection(db, 'services'), newService);
+        // await addDoc(collection(db, 'services'), newService);
+        await _addDoc('services', newService);
         console.log('Service added successfully to Firestore');
     } catch (error) {
         console.error('Error adding new service:', error);

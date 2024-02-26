@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
     import { db } from '$lib/firebase';
-    import { addDoc } from 'firebase/firestore';
+    // import { addDoc } from 'firebase/firestore';
     import { Label, Input, Button, Modal, Textarea, Select, DropdownDivider} from 'flowbite-svelte';
     import { Toast } from 'flowbite-svelte';
     import { CloseCircleSolid } from 'flowbite-svelte-icons';

@@ -1,4 +1,5 @@
 import type { Actions } from './$types';
+import { _addDoc, _updateDoc } from '$lib/api';
 import { db } from '$lib/firebase'; 
 import { collection, addDoc, updateDoc, doc  } from 'firebase/firestore';
 
@@ -19,9 +20,10 @@ export const actions: Actions = {
 
 		try {
 		
-			const docRef = await addDoc(collection(db, 'tutors'), formEntry);
+			// const docRef = await addDoc(collection(db, 'tutors'), formEntry);
+			await _addDoc("tutors", formEntry);
 
-			console.log('Document written with ID: ', docRef.id);
+			// console.log('Document written with ID: ', docRef.id);
 
 	
 			return {
@@ -63,7 +65,8 @@ export const actions: Actions = {
 
         try {
             const tutorDocRef = doc(db, 'tutors', tutorId);
-            await updateDoc(tutorDocRef, updateEntry);
+            // await updateDoc(tutorDocRef, updateEntry);
+            await _updateDoc('tutors', updateEntry);
 
             return {
                 status: 303,

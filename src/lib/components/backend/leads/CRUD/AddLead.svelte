@@ -1,8 +1,9 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { _addDoc } from '$lib/api';
     import { collection, getDocs } from 'firebase/firestore';
     import { db } from '$lib/firebase';
-    import { addDoc } from 'firebase/firestore';
+    // import { addDoc } from 'firebase/firestore';
     import { Label, Input, Button, Modal, Textarea, Select, DropdownDivider} from 'flowbite-svelte';
     import { Toast } from 'flowbite-svelte';
     import { CloseCircleSolid } from 'flowbite-svelte-icons';
@@ -62,8 +63,20 @@
                 return;
             }
 
-            await addDoc(collection(db, 'leads'), {
-                first,
+            // await addDoc(collection(db, 'leads'), {
+            //     first,
+            //     last,
+            //     email,
+            //     phone,
+            //     status,
+            //     description,
+            //     assigned,
+            //     tos,
+            //     response,
+            //     subject
+            // });
+
+            await _addDoc("leads", {
                 last,
                 email,
                 phone,
@@ -72,8 +85,7 @@
                 assigned,
                 tos,
                 response,
-                subject
-            });
+                subject})
 
             defaultModal = false;
 

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { _addDoc, _updateDoc } from '$lib/api';
     import { collection, addDoc } from 'firebase/firestore';
     import { db } from '$lib/firebase';
 
@@ -25,7 +26,8 @@
         for (let i = 0; i < DUMMY_LEADS_COUNT; i++) {
             const dummyLead = generateDummyLead();
             try {
-                await addDoc(collection(db, 'leads'), dummyLead);
+                // await addDoc(collection(db, 'leads'), dummyLead);
+                await _addDoc('leads', dummyLead);
                 console.log(`Lead ${i + 1} added.`);
             } catch (error) {
                 console.error('Error adding dummy lead: ', error);
