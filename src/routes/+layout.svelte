@@ -9,6 +9,10 @@
 
 	import { register } from 'swiper/element/bundle';
 	register();
+
+	import { inject } from '@vercel/analytics'
+	import { dev } from '$app/environment';
+	inject({ mode: dev ? 'development' : 'production' });
 </script>
 
 <Analytics />
