@@ -3,6 +3,8 @@
     import { TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, TableSearch} from 'flowbite-svelte';
     import { Section } from 'flowbite-svelte-blocks';
     import AssignLead from './AssignLead.svelte';
+    import ResponseLead from './ResponseLead.svelte';
+    import StatusLead from './StatusLead.svelte';
     import EditLead from './EditLead.svelte';
     import { Popover } from 'flowbite-svelte';
 
@@ -35,7 +37,12 @@
     $: if (searchTerm) {
         filteredLeads = leads.filter(lead => {
             const fullName = `${lead.first.toLowerCase()} ${lead.last.toLowerCase()}`;
-            return fullName.includes(searchTerm.toLowerCase());
+            const email = lead.email;
+            const response = lead.response.toLowerCase();
+            const status = lead.status.toLowerCase();
+            const phone = lead.phone.toLowerCase();
+
+            return fullName.includes(searchTerm.toLowerCase()) || email.includes(searchTerm.toLowerCase()) || response.includes(searchTerm.toLowerCase())|| status.includes(searchTerm.toLowerCase())|| phone.includes(searchTerm.toLowerCase());
         });
     } else {
         filteredLeads = leads;
@@ -110,8 +117,8 @@
                         </TableBodyCell>
 
                         <TableBodyCell tdClass="px-4 py-3"><AssignLead assigned={lead.assigned} leadID={lead.id}/></TableBodyCell>
-                        <TableBodyCell tdClass="px-4 py-3">{lead.response}</TableBodyCell>
-                        <TableBodyCell tdClass="px-4 py-3">{lead.status}</TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3"><ResponseLead _response={lead.response} leadID={lead.id}/></TableBodyCell>
+                        <TableBodyCell tdClass="px-4 py-3"><StatusLead status={lead.status} leadID={lead.id}/></TableBodyCell>
                         <TableBodyCell tdClass="px-4 py-3"><EditLead lead={lead}/></TableBodyCell>
                     </TableBodyRow>
                 {/each}
