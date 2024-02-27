@@ -8,7 +8,7 @@
 	<div class="m-auto max-w-screen-xl">
 		<H3 class="break-words">{title}</H3>
 
-		<div class="m-2 flex flex-wrap gap-4 text-white">
+		<div class="m-4 flex flex-wrap gap-4 text-white">
 			<slot />
 		</div>
 	</div>

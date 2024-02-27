@@ -16,6 +16,9 @@
 
 	export let showLogo = false;
 	export let indicatorInside: boolean = false;
+	export let showAlt: boolean = false;
+
+	let image: { [key: string]: any };
 
 	let isInView: boolean;
 	const options = {
@@ -29,7 +32,7 @@
 <div
 	use:inview="{options}"
 	on:inview_change="{handleChange}"
-	class="max-w-7xl w-full aspect-video relative mb-14"
+	class="max-w-7xl w-full aspect-video relative"
 >
 	{#if isInView}
 		<Carousel
@@ -39,6 +42,7 @@
 			duration="{7000}"
 			class="rounded-sm relative z-0 h-auto sm:h-auto md:h-auto xl:h-auto 2xl:h-auto aspect-video"
 			transition="{null}"
+			on:change="{({ detail }) => (image = detail)}"
 		>
 			<Indicators
 				class="translate-y-12 bg-white/30 px-4 rounded-full {indicatorInside
@@ -77,6 +81,10 @@
 				>
 			</Controls>
 		</Carousel>
+
+		{#if showAlt && image?.alt}
+			<p class="mt-4">{image?.alt}</p>
+		{/if}
 	{/if}
 
 	{#if showLogo}

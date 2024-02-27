@@ -11,6 +11,10 @@
   
 	let exclude = ['/backend', '/login', '/account'];
 	let includeLayout = !exclude.includes($page.url.pathname);
+
+	import { inject } from '@vercel/analytics'
+	import { dev } from '$app/environment';
+	inject({ mode: dev ? 'development' : 'production' });
 </script>
   
 <slot />

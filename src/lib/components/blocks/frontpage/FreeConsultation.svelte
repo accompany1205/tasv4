@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ConsultationIcon from '$lib/assets/svg/ConsultationIcon.svelte';
 	import SectionBlue from '../common/SectionBlue.svelte';
-	import LinkButton from '../common/LinkButton.svelte';
+	import FormModal from '../FormModal.svelte';
 </script>
 
 <SectionBlue title="Not sure which program to use?">
@@ -16,10 +16,9 @@
 				<div class="text-4xl font-bold my-4">720-335-5282</div>
 			</div>
 
-			<LinkButton
-				class="bg-white text-emerald-400 hover:bg-white micro:max-sm:text-xl"
-				title="Get a Free 15 Minute Consultation"
-				href="https://www.tutorsandservices.com/form/?specificPerson=&softwarePref=&cameFrom="
+			<FormModal
+				butClass="mt-4 bg-emerald-400 text-white hover:bg-emerald-500 text-xs md:text-2xl lg:text-3xl font-bold"
+				butTitle="Get a Free 15 Minute Consultation"
 			/>
 		</div>
 	</div>

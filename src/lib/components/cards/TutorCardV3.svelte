@@ -3,14 +3,20 @@
 
 	import '@fontsource-variable/akshar';
 	import ServiceTags from '../elements/ServiceTags.svelte';
-	import { Lightbox, LightboxGallery, GalleryThumbnail, GalleryImage } from 'svelte-lightbox';
-	import type { Tutor } from '$lib/tutors.ts'; 
-	import {featured_images, headshots} from '$lib/tutors';
-	
+	import type { Tutor } from '$lib/tutors.ts';
+	import { featured_images, headshots } from '$lib/tutors';
+
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
 	import { Button } from 'flowbite-svelte';
-	
+	import PortfolioThumbnail from '../blocks/common/PortfolioThumbnail.svelte';
+
+	let _class = '';
+	export { _class as class };
+	export let tutor: Tutor;
+
+	let openWorkGallery: boolean = false;
+
 	let isInView: boolean;
 	const options = {
 		rootMargin: '50px',
@@ -18,46 +24,35 @@
 	};
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) =>
 		(isInView = detail.inView);
-		
-	let _class = '';
-	export { _class as class };
-	export let tutor: Tutor;
-	
-    const dispatch = createEventDispatcher();
 
-    function handleConsultationClick() {
-        dispatch('consultationClick', { tutorId: tutor.id });
-    }
+	const dispatch = createEventDispatcher();
 
+	function handleConsultationClick() {
+		dispatch('consultationClick', { tutorId: tutor.id });
+	}
 
+	$: noSwiping = openWorkGallery ? 'swiper-no-swiping' : '';
 </script>
 
 <div
 	use:inview="{options}"
 	on:inview_change="{handleChange}"
-	class="grid max-h-full flex-shrink grid-rows-[auto_1fr_auto] overflow-clip rounded bg-white font-akshar shadow-lg {_class}"
+	class="{noSwiping} grid max-h-full flex-shrink grid-rows-[1fr_auto] overflow-clip rounded bg-white font-akshar shadow-lg {_class}"
 >
 	<div>
 		<!-- Image -->
-		<div class="block aspect-[21/9] w-full overflow-hidden bg-gray-200">
-			{#if isInView}
-				<Lightbox>
-					<img
-						srcset="{featured_images[tutor.id]}"
-						alt="Matthew W"
-						class="min-h-full min-w-full object-cover object-center"
-						width="512"
-						height="230"
-						decoding="async"
-						loading="lazy"
-					/>
-				</Lightbox>
-			{/if}
-		</div>
+		{#if isInView}
+			<PortfolioThumbnail
+				thumbnail="{featured_images[tutor.id]}"
+				featuredImages="{featured_images}"
+				bind:openWorkGallery="{openWorkGallery}"
+			/>
+		{/if}
+
 		<!-- Tutor Info -->
 		<div class="flex overflow-x-clip">
 			<!-- Headshot -->
-			<div class="-ml-4 -mt-10 flex-shrink-0">
+			<div class="-ml-4 -mt-10 micro:max-[480px]:-mt-20 flex-shrink-0 z-10">
 				<img
 					srcset="{headshots[tutor.id]}"
 					alt="Matthew W"
@@ -65,56 +60,68 @@
 				/>
 			</div>
 			<!-- Name -->
-			<div class="p-2">
-				<div class="text-4xl font-bold">{tutor.name}</div>
-				{#if tutor?.ratingCount ?? 0 >= 5}
+			<div
+				class="flex flex-1 items-center justify-center gap-2 mx-3 ml-0 sm:ml-2 micro:max-[480px]:mt-1"
+			>
+				<!-- <div class="text-4xl font-bold shrink break-words">Shanthihanssd S</div> -->
+				<div class="text-4xl flex-1 micro:max-[480px]:text-2xl font-bold inline-block"
+					>{tutor.name}</div
+				>
+				<!-- {#if tutor?.ratingCount ?? 0 >= 5}
 					<span class="font-medium text-yellow-300"
 						>{tutor?.ratingScore?.toFixed(1)}⭐ {tutor.ratingCount} Reviews</span
 					>
 				{:else}
 					<span class="font-medium text-yellow-300">New</span>
+				{/if} -->
+				<span class="font-medium text-gray-500 w-11">${tutor.hourlyRate}/hr</span>
+			</div>
+		</div>
+
+		<div class="h-auto max-h-[400px] micro:max-[375px]:max-h-[330px] overflow-y-auto">
+			<!-- Title -->
+			<div class="mx-3 my-2 text-left text-xl font-medium">{tutor?.title}</div>
+
+			<!-- Software Tags -->
+			<div class="mx-3 py-1">
+				<span class="font-semibold">Tutoring:</span>
+				<ServiceTags keywords="{tutor?.software?.slice(0, 8)}" />
+			</div>
+
+			<div>
+				<!-- Services -->
+				{#if tutor?.services?.length ?? 0 > 0}
+					<div class="mx-2 mb-2 p-1">
+						<div class="font-semibold">Services:</div>
+						<div class=" text-gray-500">
+							<ServiceTags keywords="{tutor?.services?.slice(0, 3)}" />
+							<!-- {#each tutor?.services?.slice(0, 3) ?? [] as service}
+              <li>{service}</li>
+            {/each} -->
+						</div>
+					</div>
 				{/if}
-				<span class="font-medium text-gray-500">• Expert • ${tutor.hourlyRate}/hr</span>
 			</div>
 		</div>
-
-		<!-- Software Tags -->
-		<div class="mx-3 py-1">
-			<ServiceTags keywords="{tutor?.software?.slice(0, 8)}" />
-		</div>
-	</div>
-
-	<div>
-		<!-- Title -->
-		<div class="mx-3 mb-1 text-left text-xl font-medium">{tutor?.title}</div>
-
-		<!-- Services -->
-		{#if tutor?.services?.length ?? 0 > 0}
-			<div class="mx-2 mb-2 p-1">
-				<div class="font-semibold">Services I Provide:</div>
-				<ul class="mt-2 list-disc pl-5 text-gray-500">
-					{#each tutor?.services?.slice(0, 3) ?? [] as service}
-						<li>{service}</li>
-					{/each}
-				</ul>
-			</div>
-		{/if}
 	</div>
 
 	<!-- Buttons -->
-	<div class="m-2 flex justify-between p-1">
-		<Button
+	<div class="m-2 flex justify-between p-1 h-min">
+		<!-- <Button
 			class="text-md mx-4 rounded bg-alabaster-300 p-2 font-medium text-white hover:bg-alabaster-200"
 			href="https://www.tutorsandservices.com/{tutor.first}-{tutor.id}/"
-			>Learn More About {tutor.first}
-		</Button>
-		
+			>See My work
+		</Button> -->
 		<Button
-			class="text-md mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300"
-			on:click={handleConsultationClick}
+			class="text-sm md:text-base mx-4 rounded bg-alabaster-300 p-2 font-medium text-white hover:bg-alabaster-200 outline-none !ring-0"
+			on:click="{() => (openWorkGallery = true)}"
+			>See My work
+		</Button>
 
-			>Book A Free Consultation
-		</Button
-		>
+		<Button
+			class="text-sm md:text-base mx-4 rounded bg-emerald-400 p-2 font-medium text-white hover:bg-emerald-300 outline-none !ring-0"
+			on:click="{handleConsultationClick}"
+			>Free Consultation
+		</Button>
 	</div>
 </div>
