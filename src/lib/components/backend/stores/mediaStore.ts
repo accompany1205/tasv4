@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 import { collection, query, onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '$lib/firebase';
 
-interface Media {
+export interface Media {
 	subscribe(arg0: (value: any) => void): unknown;
     id: string;
     show: boolean;
