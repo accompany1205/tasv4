@@ -39,8 +39,8 @@
     </div>
     
     {#if selectedDevice == 'desktop'}
-        <iframe src="/services/{$currentServiceName}" class="w-[1200px] h-[675px] m-auto rounded-xl shadow-xl" title="Website Preview" on:load={handleIframeLoad}></iframe>
+        <iframe src="/{$currentServiceName}" class="w-[1200px] h-[675px] m-auto rounded-xl shadow-xl" title="Website Preview" on:load={handleIframeLoad}></iframe>
     {:else}
-        <iframe src="/services/{$currentServiceName}" class="w-[400px] h-[800px] m-auto rounded-xl shadow-xl" title="Website Preview" on:load={handleIframeLoad}></iframe>
+        <iframe src="/{$currentServiceName}" class="w-[400px] h-[800px] m-auto rounded-xl shadow-xl" title="Website Preview" on:load={handleIframeLoad}></iframe>
     {/if}
 </div>
