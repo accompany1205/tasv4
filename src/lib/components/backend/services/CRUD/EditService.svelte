@@ -86,7 +86,7 @@
                 Description
             </div>
             <Textarea bind:value={serviceDetails.description} class="mt-2 w-full" id="about" name="about" placeholder="Describe the service" rows="4" maxlength={160}/>
-            <div class="text-xs relative text-gray-400">{serviceDetails.description.length}/60</div>
+            <div class="text-xs relative text-gray-400">{serviceDetails.description.length}/160</div>
         </div>
     </div>
 
