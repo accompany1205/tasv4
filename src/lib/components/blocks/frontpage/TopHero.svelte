@@ -16,7 +16,7 @@
 		gtag('event', 'sketchup_form_clicked');
 	}
 
-	console.log({currentUser: get(currentUser)});
+	// console.log({currentUser: get(currentUser).uid});
 	function handleLoginClick(){
 		goto("/login");
 	}
@@ -47,7 +47,7 @@
 		<div class="relative">
 			<div class="absolute right-2 top-[-40px] flex w-full justify-end">
 				<div class="border px-8 py-2 rounded-lg flex items-center justify-center text-white cursor-pointer font-bold">
-					{#if $currentUser}
+					{#if $currentUser?.uid}
 						<span on:click = {handleLogoutClick}>Log Out</span>
 					{:else}
 						<span on:click = {handleLoginClick}>Log In</span>

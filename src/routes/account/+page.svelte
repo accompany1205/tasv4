@@ -1,55 +1,63 @@
 <script lang="ts">
-    import BottomNav from "$lib/components/tutors-backend/nav/BottomNav.svelte";    
-    import LeadTable from "$lib/components/tutors-backend/leads/LeadTable.svelte";
-    import { doc, getDoc } from "firebase/firestore";
-    import { onMount } from "svelte";
-    import { db } from "$lib/firebase";
-    import EditServices from "$lib/components/tutors-backend/services/CRUD/EditServices.svelte"; 
-    import { Spinner } from 'flowbite-svelte';
+	import BottomNav from '$lib/components/tutors-backend/nav/BottomNav.svelte';
+	import LeadTable from '$lib/components/tutors-backend/leads/LeadTable.svelte';
+	import { doc, getDoc } from 'firebase/firestore';
+	import { onMount } from 'svelte';
+	import { db } from '$lib/firebase';
+	import EditServices from '$lib/components/tutors-backend/services/CRUD/EditServices.svelte';
+	import { Spinner } from 'flowbite-svelte';
+	import { currentUser } from '$lib/stores/sessions';
+    import {get} from "svelte/store";
 
+	let tutorId = 'dNF9UrjtmoT7fD5hsyU8';
+	let tutor: { id: string };
+    let userId = $currentUser.uid;
 
-    let tutorId = 'dNF9UrjtmoT7fD5hsyU8';
-    let tutor: { id: string; };
+	onMount(async () => {
+		try {
+			const tutorsRef = db.collection('tutors');
 
-    onMount(async () => {
-        const tutorRef = doc(db, 'tutors', tutorId);
-        try {
-            const docSnap = await getDoc(tutorRef);
-            if (docSnap.exists()) {
-                tutor = { id: docSnap.id, ...docSnap.data() };
-                console.log(tutor);
-            } else {
-                console.log("No such document!");
-            }
-        } catch (error) {
-            console.error("Error fetching tutor data: ", error);
-        }
-    });
+			// Perform the query
+			tutorsRef
+				.where('userUID', '==', userId)
+				.get()
+				.then((querySnapshot: any[]) => {
+                    console.log({querySnapshot});
+					tutor = {id: querySnapshot[0].id, ...querySnapshot[0]}
+				})
+				.catch((error:any) => {
+					console.log('Error getting documents: ', error);
+				});
+		} catch (error) {
+			console.error('Error fetching tutor data: ', error);
+		}
+        
+	});
 
-    // BottomNav Event Dispatcher
-    let currentNavIndex = 1;
+	// BottomNav Event Dispatcher
+	let currentNavIndex = 1;
 
-    function handleNavChange(event: { detail: { optionIndex: number; }; }) {
-        currentNavIndex = event.detail.optionIndex;
-    }
+	function handleNavChange(event: { detail: { optionIndex: number } }) {
+		currentNavIndex = event.detail.optionIndex;
+	}
 </script>
 
 <div class="bg-gray-50 h-screen w-screen fixed top-0 left-0 z-[-999]">
-    <!-- Page content -->
+	<!-- Page content -->
 </div>
 
 {#if tutor}
-    {#if currentNavIndex === 1}
-        <LeadTable tutor={tutor}/>
-    {:else if currentNavIndex === 2}
-        <EditServices tutor={tutor}/>
-    {:else if currentNavIndex === 3}
-        <!-- Other content -->
-    {:else if currentNavIndex === 4}
-        <!-- Other content -->
-    {/if}
+	{#if currentNavIndex === 1}
+		<LeadTable tutor="{tutor}" />
+	{:else if currentNavIndex === 2}
+		<EditServices tutor="{tutor}" />
+	{:else if currentNavIndex === 3}
+		<!-- Other content -->
+	{:else if currentNavIndex === 4}
+		<!-- Other content -->
+	{/if}
 {:else}
-    <Spinner/>
+	<Spinner />
 {/if}
 
-<BottomNav on:change={handleNavChange}/>
+<BottomNav on:change="{handleNavChange}" />

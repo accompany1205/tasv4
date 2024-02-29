@@ -17,9 +17,9 @@ export const login = async (email: string, password: string) => {
 				'Content-Type': 'application/json',
 				// Add any additional headers here
 			},
-			body: JSON.stringify({email, password}),
+			body: JSON.stringify({ email, password }),
 		});
-		if(res.ok){
+		if (res.ok) {
 			const data = await res.json();
 			currentUser.set(data.body);
 			console.log(data.body);
@@ -32,7 +32,7 @@ export const login = async (email: string, password: string) => {
 export const logout = async (): Promise<void> => {
 	try {
 		const res: Response = await fetch('/api/auth/logout');
-		if(res.ok){
+		if (res.ok) {
 			console.log(`User logged out successfully!`);
 			clearStoredUser();
 		}
@@ -48,7 +48,7 @@ export const sendPasswordResetEmailToUser = async (email: string): Promise<void>
 				'Content-Type': 'application/json',
 				// Add any additional headers here
 			},
-			body: JSON.stringify({email}),
+			body: JSON.stringify({ email }),
 		});
 		console.log('Password reset email sent to', email);
 	} catch (error) {
@@ -64,11 +64,12 @@ export const signup = async (email: string, password: string): Promise<string | 
 				'Content-Type': 'application/json',
 				// Add any additional headers here
 			},
-			body: JSON.stringify({email, password}),
+			body: JSON.stringify({ email, password }),
 		});
-		if(res.ok){
+		if (res.ok) {
 			const data = await res.json();
-			return data.body.uid;
+			console.log('signup', { data });
+			return data.body.user.uid;
 		}
 		return undefined;
 	} catch (error) {
