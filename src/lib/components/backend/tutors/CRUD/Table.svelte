@@ -39,7 +39,7 @@
     }
 </script>
 
-<Table class="xl:max-w-7xl xl:m-auto border-2 dark:border-gray-600 mb-20" divClass="relative overflow-x-auto mx-10" >
+<Table class="xl:max-w-7xl xl:m-auto border-2 dark:border-gray-600 mb-20 xl:mb-20" divClass="relative overflow-x-auto mx-10" >
     <TableHead>
         <TableHeadCell>Headshot</TableHeadCell>
         <TableHeadCell on:click={() => sortTable('first')}>

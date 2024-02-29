@@ -76,10 +76,10 @@
             <Select class="mt-2" name="status" items={$options} bind:value={tutorDetails.status} id="select" />
         </div>
 
-        <div class="sm:col-span-2">
+        <!-- <div class="sm:col-span-2">
             Tutor Title
             <Textarea bind:value={tutorDetails.title} class="mt-2" id="description" name="description" placeholder="Your description here" rows="4" />
-        </div>
+        </div> -->
 
         <Button on:click={saveChanges} class="w-52 mt-4">
             Add New Tutor
