@@ -50,7 +50,7 @@
 
         <div class="w-2/5">
             <Label>Name</Label>
-            <Textarea bind:value={subService.name} class="mt-2 w-1/2" rows="1"/>
+            <Textarea bind:value={subService.name} class="mt-2" rows="1"/>
             
             <Label>Description</Label>
             <Textarea bind:value={subService.description} class="mt-2" rows="3" />

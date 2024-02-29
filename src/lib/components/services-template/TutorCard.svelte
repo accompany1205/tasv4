@@ -1,19 +1,25 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 
 	import '@fontsource-variable/akshar';
 	import ServiceTags from '../elements/ServiceTags.svelte';
 	import type { Tutor } from '$lib/components/backend/stores/tutorStore';
+	import type { Media } from '$lib/components/backend/stores/mediaStore';
+
 	import { featured_images, headshots } from '$lib/tutors';
 
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
 	import { Button } from 'flowbite-svelte';
 	import PortfolioThumbnail from './PortfolioThumbnail.svelte';
+	import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
+	import { db } from '$lib/firebase';
 
 	let _class = '';
 	export { _class as class };
 	export let tutor: Tutor;
+	let portfolioImages: Media[] = [];
+
 
 	let openWorkGallery: boolean = false;
 
@@ -31,6 +37,20 @@
 		dispatch('consultationClick', { tutorId: tutor.id });
 	}
 
+    onMount(async () => {
+        const imageRefs = tutor.images.map(url => query(collection(db, 'media'), where('url', '==', url)));
+        const mediaDocsPromises = imageRefs.map(ref => getDocs(ref));
+
+        try {
+            const mediaDocsResults = await Promise.all(mediaDocsPromises);
+            portfolioImages = mediaDocsResults.flatMap(result => 
+                result.docs.map(doc => ({ id: doc.id, ...doc.data() } as Media))
+            );
+        } catch (error) {
+            console.error("Error fetching media documents:", error);
+        }
+    });
+
 	$: noSwiping = openWorkGallery ? 'swiper-no-swiping' : '';
 </script>
 
@@ -44,7 +64,7 @@
 		{#if isInView}
 			<PortfolioThumbnail
 				thumbnail={tutor.images[0]}
-				featuredImages={tutor.images}
+				portfolioImages={portfolioImages}
 				bind:openWorkGallery="{openWorkGallery}"
 			/>
 		{/if}

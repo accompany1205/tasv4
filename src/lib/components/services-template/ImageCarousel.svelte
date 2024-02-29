@@ -2,12 +2,9 @@
 	import { Carousel, Indicator, Button } from 'flowbite-svelte';
 	import { AngleRightSolid, AngleLeftSolid } from 'flowbite-svelte-icons';
 	import type { HTMLImgAttributes } from 'svelte/elements';
-	interface imageAttributes {
-		alt?: string;
-		srcset?: string;
-		src?: string;
-	}
-	export let images: HTMLImgAttributes[];
+	import type { Media } from '$lib/components/backend/stores/mediaStore';
+
+	export let portfolioImages: Media[] = [];
 
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
@@ -20,12 +17,22 @@
 	let image: { [key: string]: any };
 
 	let isInView: boolean;
+
 	const options = {
 		rootMargin: '50px',
 		unobserveOnEnter: true,
 	};
-	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) =>
-		(isInView = detail.inView);
+
+	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => (isInView = detail.inView);
+
+	console.log(portfolioImages);
+
+	let carouselImages: HTMLImgAttributes[] = portfolioImages.map((media) => ({
+        src: media.url,
+        alt: media.alt || 'Image', 
+    }));
+
+
 </script>
 
 <div
@@ -35,7 +42,7 @@
 >
 	{#if isInView}
 		<Carousel
-			images={images}
+			images={carouselImages}
 			let:Indicators
 			let:Controls
 			duration="{7000}"

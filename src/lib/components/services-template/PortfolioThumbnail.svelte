@@ -1,16 +1,14 @@
 <script lang="ts">
 	import PortfolioImageGallery from './PortfolioImageGallery.svelte';
-	import ImageCarousel from '$lib/components/cards/ImageCarousel.svelte';
+	import ImageCarousel from './ImageCarousel.svelte';
+	import type { Media } from '$lib/components/backend/stores/mediaStore';
+
 
 	export let thumbnail: string;
-	export let featuredImages: string[];
+	export let portfolioImages: Media[] = [];
 	export let openWorkGallery: boolean = false;
 
 	let randNumber: number = 1;
-
-	const hero_images_flattened = Object.values(featuredImages)
-		.map((url) => ({ alt: `Description ${randNumber++}`, srcset: url }))
-		.slice(0, 8);
 </script>
 
 <div
@@ -45,10 +43,11 @@
 {#if openWorkGallery}
 	<PortfolioImageGallery bind:OpenGallery="{openWorkGallery}" title="My work">
 		<ImageCarousel
-			images="{hero_images_flattened}"
+			portfolioImages={portfolioImages}
 			showLogo="{false}"
 			indicatorInside
 			showAlt
+			logo = ''
 		/>
 	</PortfolioImageGallery>
 {/if}
