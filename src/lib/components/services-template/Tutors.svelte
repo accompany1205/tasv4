@@ -1,22 +1,16 @@
-<style>
-	:global(swiper-container) {
-		--swiper-pagination-padding: 48px;
-		--swiper-pagination-bullet-inactive-color: #ffffff;
-		--swiper-pagination-bullet-inactive-opacity: 0.5;
-		--swiper-scrollbar-drag-bg-color: #61ce70;
-	}
-</style>
-
 <script lang="ts">
 	import { onMount } from 'svelte';
 
     import TutorCard from '$lib/components/services-template/TutorCard.svelte';
+	import type { Tutor } from '$lib/components/backend/stores/tutorStore';
+
 
 	import { AngleRightSolid, AngleLeftSolid } from 'flowbite-svelte-icons';
 	import type { SwiperContainer } from 'swiper/element';
 	import FormModal from '../blocks/FormModal.svelte';
 
-	export let tutors:any[] = [];
+	export let tutors:Tutor[] = [];
+	export let service:any;
 	console.log("Tutors", tutors);
 	let openForm = false;
 
@@ -77,11 +71,20 @@
 
 </script>
 
+<style>
+	:global(swiper-container) {
+		--swiper-pagination-padding: 48px;
+		--swiper-pagination-bullet-inactive-color: #ffffff;
+		--swiper-pagination-bullet-inactive-opacity: 0.5;
+		--swiper-scrollbar-drag-bg-color: #61ce70;
+	}
+</style>
+
 <div class="swiper block overflow-hidden bg-nile-blue-900 px-0 pb-16 pt-8">
 	<h2
 		class="m-auto mb-8 max-w-screen-xl border-b-4 border-emerald-400 px-4 pb-4 text-2xl font-bold text-white sm:text-5xl sm:fluid-h1"
 	>
-		Our SketchUp Tutors & Freelancers
+		Our {service.name} Tutors & Freelancers
 	</h2>
 
 	<div

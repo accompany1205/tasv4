@@ -1,30 +1,27 @@
 <script lang="ts">
-    import { derived, get } from 'svelte/store';
+    import { derived } from 'svelte/store';
     import { tutors, updateTutor } from '../../stores/tutorStore';
     import type { Tutor } from '../../stores/tutorStore';
-    import { tutorStatusOptions } from '../../stores/settingsStore';
-    import { Button, Modal, Input, Select, Textarea, Toggle, Spinner, DropdownDivider } from 'flowbite-svelte';
+    import { Button, Modal, ButtonGroup } from 'flowbite-svelte';
     import DelTutor from './DelTutor.svelte';
-    import GetMedia from '../../media/GetMedia.svelte';
-    
-    let options = derived(tutorStatusOptions, $tutorStatusOptions => {
-        return $tutorStatusOptions.map(option => ({
-            value: option,
-            name: option,
-        }));
-    });
+    import General from './edit-sections/General.svelte';
+    import Services from './edit-sections/Services.svelte';
+    import Images from './edit-sections/Images.svelte';
+    import Page from './edit-sections/Page.svelte';
 
     export let tutorId: any;
     let modal = false;
     const tutor = derived(tutors, $tutors => $tutors.find(t => t.id === tutorId));
-
-    let tutorDetails:Tutor;
+    let tutorDetails: Tutor;
+    let selected = 'border-emerald-300 border-2 dark:border-emerald-100';
 
     tutor.subscribe($tutor => {
         if ($tutor) {
             tutorDetails = {...$tutor};
         }
     });
+
+    let activeSection = 'General';
 
     function saveChanges() {
         if (tutorId) {
@@ -33,73 +30,41 @@
         }
     }
 
-    function handleImageSelect(event: { detail: { url: string; }; }) {
-        tutorDetails.headshot = event.detail.url;
-        console.log('Selected image URL:', event.detail.url);
+    function setActiveSection(section: string) {
+        activeSection = section;
+    }
+
+    function handleTutorDetailsUpdate(event: { detail: Tutor; }) {
+        tutorDetails = event.detail;
     }
 </script>
 
-<Button on:click={() => {modal = true}} color="alternative" size="xs">Edit</Button>
+<Button on:click={() => {modal = true}} color="alternative">Edit</Button>
 
-<Modal title="Edit Tutor" bind:open={modal} class="z-50">
-    <div class="flex justify-center">
-        <div class="relative inline-block m-auto"> 
-            {#if tutorDetails.headshot}
-                <img src={tutorDetails.headshot} alt="Tutor headshot" class="rounded-xl w-40"/>
-            {:else}
-                <img src='/default_user.jpg' alt="Tutor headshot" class="rounded-xl w-40 border-2 border-dashed p-2"/>
-            {/if}
-            <GetMedia modalTitle="Select A Headshot" on:select={handleImageSelect} btnClass="bg-gray-100 bg-opacity-80 backdrop-blur-m text-gray-700 absolute top-0 right-0 p-2 m-2 hover:bg-gray-200"/>
-        </div>
-    </div>
+<Modal title="Edit Tutor - {tutorDetails.name}" bind:open={modal} class="z-50 h-[800px]">
 
-    <div class="grid gap-4 mb-5 sm:grid-cols-2">
-        <div>
-            First
-            <Input bind:value={tutorDetails.first} class="mt-2" type="text" name="first" id="first"/>
-        </div>
+    <ButtonGroup class="mb-5">
+        <Button on:click={() => setActiveSection('General')} class="{activeSection === 'General' ? selected : ''}">General</Button>
+        <Button on:click={() => setActiveSection('Services')} class="{activeSection === 'Services' ? selected : ''}">Services</Button>
+        <Button on:click={() => setActiveSection('Page')} class="{activeSection === 'Page' ? selected : ''}">Page</Button>
+        <Button on:click={() => setActiveSection('Images')} class="{activeSection === 'Images' ? selected : ''}">Images</Button>
+    </ButtonGroup>
 
-        <div>
-            Last
-            <Input bind:value={tutorDetails.last} class="mt-2" type="text" name="last" id="last"/>
-        </div>
+    {#if activeSection === 'General'}
+        <General tutorId={tutorId} on:updateTutorDetails={handleTutorDetailsUpdate}/>
+    {/if}
 
-        <div>
-            Email
-            <Input bind:value={tutorDetails.email} class="mt-2" type="text" name="email" id="email"/>
-        </div>
+    {#if activeSection === 'Services'}
+        <Services tutorId={tutorId} on:updateTutorDetails={handleTutorDetailsUpdate}/>
+    {/if}
 
-        <div>
-            Phone
-            <Input bind:value={tutorDetails.phone} class="mt-2" type="text" name="phone" id="phone"/>
-        </div>
-    </div>   
-
-    <DropdownDivider/>
-
-    <div class="grid gap-4 mb-4 sm:grid-cols-2">
-        <div>
-            Rate
-            <Input bind:value={tutorDetails.rate} class="mt-2" type="text" name="rate" id="rate"/>
-        </div>
-
-        <div>
-            Status
-            <Select bind:value={tutorDetails.status} class="mt-2" name="status" items={$options} />
-        </div>
-    </div>
-
-    <div class="flex flex-col w-full">
-        Title
-        <Textarea bind:value={tutorDetails.title} class="mt-2" id="title" name="title" rows="2" />
-    </div>
-
-    <div class="flex flex-col w-full">
-        Description
-        <Textarea bind:value={tutorDetails.description} class="mt-2" id="description" name="description" rows="4" />
-    </div>
-
-    <Toggle bind:checked={tutorDetails.visible}>Published</Toggle>
+    {#if activeSection === 'Images'}
+        <Images tutorId={tutorId} on:updateTutorDetails={handleTutorDetailsUpdate}/>
+    {/if}
+    
+    {#if activeSection === 'Page'}
+        <Page tutorId={tutorId} on:updateTutorDetails={handleTutorDetailsUpdate}/>
+    {/if}
 
     <div class="flex justify-evenly gap-10">
         <Button on:click={saveChanges} class="w-1/2">Save</Button>

@@ -3,8 +3,8 @@
 </script>
 
 <SectionBlue title="Company Philosophy">
-	<div class="m-2 mx-auto flex max-w-screen-xl flex-wrap gap-4">
-		<div class="card w-full max-w-sm flex-shrink-0 pl-4">
+	<div class="flex max-w-screen-xl flex-wrap gap-4">
+		<div class="card w-full max-w-max lg:max-w-sm">
 			<h4 class="py-4 text-2xl">Don't Learn Alone</h4>
 			<p>
 				Professionals these days are sitting alone and staring at their computers. They
@@ -17,7 +17,7 @@
 			</p>
 		</div>
 
-		<div class="card w-full max-w-sm flex-shrink-0 pl-4">
+		<div class="card w-full max-w-max lg:max-w-sm">
 			<h4 class="py-4 text-2xl">Bring Back the Human Connection</h4>
 			<p>
 				We strive to bring human connection back to the work environment. Our tutors work
@@ -29,7 +29,7 @@
 			</p>
 		</div>
 
-		<div class="card w-full max-w-sm flex-shrink-0 pl-4">
+		<div class="card w-full max-w-max lg:max-w-sm">
 			<h4 class="py-4 text-2xl">Tutors, Services, or Both</h4>
 			<p>
 				Sometimes our clients want to learn a program from beginning to end, sometimes they

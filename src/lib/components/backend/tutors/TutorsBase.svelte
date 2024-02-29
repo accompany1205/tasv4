@@ -1,41 +1,23 @@
 <script lang="ts">
    import Table from "./CRUD/Table.svelte";
-   import { tutors } from '../stores/tutorStore';
+   import { loading , filterText} from '../stores/tutorStore';
    import { Spinner, Input } from "flowbite-svelte";
    import AddTutor from "./CRUD/AddTutor.svelte";
-   import { writable, derived } from 'svelte/store';
-
-   let searchTerm = writable('');
-   let showNoTutorsMessage = writable(false);
-
-   const noTutorsAfterDelay = derived(tutors, $tutors => {
-      if ($tutors.length === 0) {
-         setTimeout(() => {
-            showNoTutorsMessage.set(true);
-         }, 5000);
-         return false;
-      } else {
-         showNoTutorsMessage.set(false);
-         return true;
-      }
-   });
-
-   function handleInput(event) {
-      searchTerm.set(event.target.value);
-   }
+   
+   let searchText = '';
+   $: filterText.set(searchText);
 </script>
 
-<div class="max-w-7xl bg-white rounded-xl border-2 border-emerald-200 dark:border-gray-600 border-solid shadow-lg h-24 m-auto my-10 flex justify-between px-8 items-center gap-10 dark:bg-gray-800">
-   <Input on:input={handleInput} class="w-1/2" placeholder="Search Tutor"/>
+<div class="xl:max-w-7xl xl:m-auto xl:my-10
+            m-10 h-24 px-8
+            flex justify-between items-center
+            bg-white rounded-xl border-2 border-emerald-200 dark:border-gray-600 border-solid shadow-lg dark:bg-gray-800">
+   <Input bind:value={searchText} class="w-1/2" placeholder="Search Tutor"/>
    <AddTutor/>
 </div>
 
-{#if $noTutorsAfterDelay}
-   <Table searchTerm={searchTerm}/>
-{:else if $showNoTutorsMessage}
-   <div class="text-center py-10">
-      No tutors found, refresh page or contact admin.
-   </div>
+{#if $loading}
+    <Spinner class="m-auto w-full h-12 my-20"/>
 {:else}
-   <Spinner class="m-auto w-full h-12 my-20"/>
+    <Table />
 {/if}

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Button, Modal, Input  } from 'flowbite-svelte';
     import { ExclamationCircleOutline } from 'flowbite-svelte-icons';
-    import { deleteTutor } from '../../stores/tutorStore'; // Adjust the path as necessary
+    import { deleteTutor } from '../../stores/tutorStore';
 
     let popupModal = false;
 

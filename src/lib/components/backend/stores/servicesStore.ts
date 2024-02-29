@@ -22,14 +22,13 @@ export interface Service {
     description: string;
     hero: string;
     logo: string;
+    images: string[];
 }
-
-export type {Service as ServiceInterface}
-
 
 export const filterText = writable('');
 export const services = writable<Service[]>([])
 export let loading = writable(true);
+export let currentPageServiceId = writable('');
 
 export const filteredServices = derived(
     [services, filterText],
@@ -52,14 +51,15 @@ function fetchServices() {
         });
         services.set(servicesArray);
         loading.set(false);
-        console.log(get(services));
-
+        // console.log(get(services));
     }, 
     (error) => {
         console.error("Error fetching services from Firestore:", error);
         loading.set(false);
     });
 }
+
+fetchServices();
 
 export async function updateService(updatedService: Service) {
     // const serviceRef = doc(db, 'services', updatedService.id);
@@ -87,7 +87,8 @@ export async function deleteService(serviceId: string) {
     }
 }
 
-export async function addService(newService: Service) {
+
+export async function addService(newService:Service) {
     try {
         // await addDoc(collection(db, 'services'), newService);
         await _addDoc('services', newService);
@@ -98,4 +99,12 @@ export async function addService(newService: Service) {
     }
 }
 
-fetchServices();
+function sanitizeForFirestore(obj: Record<string, any>): Record<string, any> {
+    const sanitizedObj = { ...obj };
+    Object.keys(sanitizedObj).forEach(key => {
+        if (sanitizedObj[key] === undefined) {
+            sanitizedObj[key] = null;
+        }
+    });
+    return sanitizedObj;
+}

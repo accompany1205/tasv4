@@ -1,32 +1,40 @@
-import { writable } from 'svelte/store';
+import { derived, writable } from 'svelte/store';
 import { collection, doc, updateDoc, deleteDoc, addDoc } from 'firebase/firestore';
 import { db } from '$lib/firebase';
 import { query, onSnapshot } from 'firebase/firestore';
 import { signup, sendPasswordResetEmailToUser, _addDoc, _updateDoc, _deleteDoc } from '$lib/api';
 // import { send } from 'vite';
 
-interface Service {
-	[key: string]: any;
-}
-
 export interface Tutor {
-	description: string;
-	email: string;
-	first: string;
-	headshot: string;
-	id: string;
-	last: string;
-	name: string;
-	phone: string;
-	rate: string;
-	// services: Service[];
-	status: string;
-	title: string;
-	visible: boolean;
+    description: string;
+    email: string;
+    first: string;
+    headshot: string;
+    id: string;
+    last: string;
+    name: string;
+    phone: string;
+    rate: string;
+    services: string[];
+    status: string;
+    title: string;
+    visible: boolean;
+    images: string[];
 }
 
+export const filterText = writable('');
 export const tutors = writable<Tutor[]>([]);
 export let loading = writable(true);
+
+export const filteredTutors = derived(
+    [tutors, filterText],
+    ([$tutors, $filterText]) => {
+        return $tutors.filter(tutor =>
+            tutor.name.toLowerCase().includes($filterText.toLowerCase()) ||
+            tutor.email.toLowerCase().includes($filterText.toLowerCase())
+        );
+    }
+);
 
 function fetchTutors() {
 	const tutorsCollectionRef = collection(db, 'tutors');

@@ -6,7 +6,7 @@
 	<div
 		class="m-2 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-screen-xl flex-wrap gap-4"
 	>
-		<div class="card w-full max-w-xs flex-shrink-0 pl-4">
+		<div class="card w-full max-w-xs flex-shrink-0">
 			<h4 class="py-4 text-2xl">Effective</h4>
 			<p>
 				The process of learning 1-on-1 with a live tutor lets you participate in the
@@ -16,7 +16,7 @@
 			</p>
 		</div>
 
-		<div class="card w-full max-w-xs flex-shrink-0 pl-4">
+		<div class="card w-full max-w-xs flex-shrink-0">
 			<h4 class="py-4 text-2xl">Efficient</h4>
 			<p>
 				You could spend a whole semester driving to a local college to learn skills that may
@@ -27,7 +27,7 @@
 			</p>
 		</div>
 
-		<div class="card w-full max-w-xs flex-shrink-0 pl-4">
+		<div class="card w-full max-w-xs flex-shrink-0">
 			<h4 class="py-4 text-2xl">Recordable</h4>
 			<p>
 				No need to take notes! We can record the lesson so you can play it back at your own
@@ -35,7 +35,7 @@
 			</p>
 		</div>
 
-		<div class="card w-full max-w-xs flex-shrink-0 pl-4">
+		<div class="card w-full max-w-xs flex-shrink-0">
 			<h4 class="py-4 text-2xl">Fun</h4>
 			<p>
 				Having a direct learning partner is a much better experience than learning alone.

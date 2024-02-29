@@ -1,5 +1,7 @@
 <script lang="ts">
-	import screenshare from "$lib/assets/show-case/ScreenshareMockupV2.webp?w=800"
+	import screenshare from "$lib/assets/show-case/ScreenshareMockupV2.webp?w=800";
+	import Analytics from "../analytics/Analytics.svelte";
+	export let service:any;
 </script>
 
 <div class="bg-nile-blue-900 p-4 text-white">
@@ -8,9 +10,9 @@
 	</h3>
 	<div class="card mx-auto grid max-w-screen-xl flex-shrink-0 gap-4 p-4 sm:grid-cols-2">
 		<div class="max-w-sm">
-			<h4 class="py-4 text-2xl"> Sketchup Tutors and Services </h4>
+			<h4 class="py-4 text-2xl"> {service.name} Tutors and Services </h4>
 			<p>
-				Get on demand SketchUp classes! We are a team of tutors and freelancers that are
+				Get on demand {service.name} classes! We are a team of tutors and freelancers that are
 				hire-able on an as-needed basis for professional help with your projects. Call us
 				with a quick question, or a big project. Our availability is flexible. We teach
 				remotely, so you can learn from the comfort of your home, from the jobsite, or from

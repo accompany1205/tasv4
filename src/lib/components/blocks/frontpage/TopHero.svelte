@@ -73,7 +73,7 @@
 			m-6
 			"
 	>
-		<div class="left-col mt-3">
+		<div class="left-col mt-3 mb-14">
 			<ImageCarousel images="{images}" showLogo="{false}" />
 		</div>
 

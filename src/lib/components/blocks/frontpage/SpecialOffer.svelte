@@ -2,8 +2,8 @@
 	import SectionWhite from '$lib/components/blocks/common/SectionWhite.svelte';
 	import OffersIcon from '$lib/assets/svg/OffersIcon.svelte';
 	import TutorsHeadImage from '../common/TutorsHeadImage.svelte';
-	import LinkButton from '../common/LinkButton.svelte';
 	import H4 from '$lib/components/elements/H4.svelte';
+	import FormModal from '../FormModal.svelte';
 
 	let featuredTutorsHero = [
 		'1619',
@@ -23,7 +23,7 @@
 </script>
 
 <SectionWhite title="Don't struggle alone, Get help from a professional.">
-	<div class="flex flex-col items-start justify-start max-w-screen-xl gap-4 p-4">
+	<div class="flex flex-col items-start justify-start max-w-screen-xl gap-4">
 		<H4 class="tracking-widest text-center">START A CONVERSATION</H4>
 		<TutorsHeadImage
 			featuredTutors="{featuredTutorsHero}"
@@ -38,10 +38,9 @@
 			>Call or send a message and we would be happy to discuss your project!</H4
 		>
 		<H4 class="text-3xl font-semibold text-emerald-400 !py-0">720-335-5282</H4>
-		<LinkButton
-			class="mt-1 bg-emerald-400 text-white hover:bg-emerald-500"
-			title="Get a Free 15 Minute Consultation"
-			href="https://www.tutorsandservices.com/form/?specificPerson=&softwarePref=&cameFrom="
+		<FormModal
+			butClass="mt-1 bg-emerald-400 text-white hover:bg-emerald-500 text-xs md:text-3xl font-bold"
+			butTitle="Get a Free 15 Minute Consultation"
 		/>
 	</div>
 </SectionWhite>

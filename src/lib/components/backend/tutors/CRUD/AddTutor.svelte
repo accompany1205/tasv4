@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
     import { Button, Modal, Input, Select, Textarea, Toggle, DropdownDivider, Toast } from 'flowbite-svelte';
-    import { addTutor } from '../../stores/tutorStore';
+    import { addTutor, type Tutor } from '../../stores/tutorStore';
     import { tutorStatusOptions } from '../../stores/settingsStore';
     import { derived } from 'svelte/store';
 	import { CloseCircleSolid } from 'flowbite-svelte-icons';
@@ -9,19 +9,25 @@
     let showToast = false;
     let options = derived(tutorStatusOptions, $tutorStatusOptions => $tutorStatusOptions.map(option => ({ value: option, name: option })));
 
-    let tutorDetails = {
-        first: '', 
-        last: '', 
-        email: '', 
-        phone: '', 
-        rate: '', 
-        status: '', 
-        description: '', 
-        visible: true,
-        headshot: '', 
-        title: '', 
-        name: '',
-    };
+    let tutorDetails: Tutor = {
+		description: '',
+		email: '',
+		first: '',
+		headshot: '',
+		id: '',
+		last: '',
+		name: '',
+		phone: '',
+		rate: '',
+		status: '',
+		title: '',
+		visible: true,
+		images: [],
+		services: []
+	};
+
+    $: tutorDetails.name = `${tutorDetails.first} ${tutorDetails.last ? tutorDetails.last[0] + '.' : ''}`;
+
 
     async function saveChanges() {
         await addTutor(tutorDetails);
@@ -70,10 +76,10 @@
             <Select class="mt-2" name="status" items={$options} bind:value={tutorDetails.status} id="select" />
         </div>
 
-        <div class="sm:col-span-2">
+        <!-- <div class="sm:col-span-2">
             Tutor Title
             <Textarea bind:value={tutorDetails.title} class="mt-2" id="description" name="description" placeholder="Your description here" rows="4" />
-        </div>
+        </div> -->
 
         <Button on:click={saveChanges} class="w-52 mt-4">
             Add New Tutor

@@ -1,3 +1,19 @@
+export const _getDoc = async (documentName: string, dataId: string): Promise<Response | null> => {
+	try {
+		const res = await fetch('/api/doc', {
+			method: 'get',
+			headers: {
+				'Content-Type': 'application/json',
+				// Add any additional headers here
+			},
+			body: JSON.stringify({documentName, dataId}),
+		});
+		return res
+	} catch (error) {
+		console.log('Error adding the doc: ', documentName);
+		return null;
+	}
+};
 export const _addDoc = async (documentName: string, data: any): Promise<void> => {
 	try {
 		await fetch('/api/doc', {

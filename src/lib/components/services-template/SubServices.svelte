@@ -25,7 +25,7 @@
 </script>
 
 <div class="bg-nile-blue-900 p-4 text-white">
-	<H3 class="m-auto max-w-screen-xl">Sketchup Services We Provide</H3>
+	<H3 class="m-auto max-w-screen-xl">{service.name} Services We Provide</H3>
 
 	{#each transformedSubServices as sub}
 		<ServiceCard images={sub.images}>
@@ -45,7 +45,7 @@
 			</ul>
 		</div>
 		<div>
-			<H4>About Sketchup</H4>
+			<H4>About {service.name}</H4>
 			<P>
 				{service.about}
 			</P>

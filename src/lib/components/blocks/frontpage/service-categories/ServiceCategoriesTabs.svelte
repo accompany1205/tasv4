@@ -16,7 +16,7 @@
 			import: 'default',
 			eager: true,
 		});
-		console.log('pictures: ', pictures);
+
 		flattened = <string[]>(
 			Object.values(pictures).slice(0, Math.floor(Math.random() * (10 - 1 + 1)) + 1)
 		);
