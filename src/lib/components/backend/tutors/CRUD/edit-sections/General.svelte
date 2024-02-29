@@ -5,7 +5,9 @@
     import { Button, Modal, Input, Select, Textarea, Toggle, Spinner, DropdownDivider, ButtonGroup } from 'flowbite-svelte';
     import DelTutor from '../DelTutor.svelte';
     import GetMedia from '../../../media/GetMedia.svelte';
-    
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher();
+
     let options = derived(tutorStatusOptions, $tutorStatusOptions => {
         return $tutorStatusOptions.map(option => ({
             value: option,
@@ -29,10 +31,9 @@
         console.log('Selected image URL:', event.detail.url);
     }
 
-    function saveChanges() {
-        if (tutorId) {
-            updateTutor(tutorDetails);
-        }
+    function handleFieldChange() {
+        const detailsToUpdate = {...tutorDetails};
+        dispatch('updateTutorDetails', detailsToUpdate);
     }
 </script>
 
@@ -51,22 +52,22 @@
 <div class="grid gap-4 mb-5 sm:grid-cols-2">
     <div>
         First
-        <Input bind:value={tutorDetails.first} class="mt-2" type="text" name="first" id="first"/>
+        <Input bind:value={tutorDetails.first} on:input={handleFieldChange} class="mt-2" type="text" name="first" id="first"/>
     </div>
 
     <div>
         Last
-        <Input bind:value={tutorDetails.last} class="mt-2" type="text" name="last" id="last"/>
+        <Input bind:value={tutorDetails.last} on:input={handleFieldChange} class="mt-2" type="text" name="last" id="last"/>
     </div>
 
     <div>
         Email
-        <Input bind:value={tutorDetails.email} class="mt-2" type="text" name="email" id="email"/>
+        <Input bind:value={tutorDetails.email} on:input={handleFieldChange} class="mt-2" type="text" name="email" id="email"/>
     </div>
 
     <div>
         Phone
-        <Input bind:value={tutorDetails.phone} class="mt-2" type="text" name="phone" id="phone"/>
+        <Input bind:value={tutorDetails.phone} on:input={handleFieldChange} class="mt-2" type="text" name="phone" id="phone"/>
     </div>
 </div>   
 
@@ -75,22 +76,16 @@
 <div class="grid gap-4 sm:grid-cols-3">
     <div>
         Name
-        <Input bind:value={tutorDetails.name} class="mt-2 mb-4" name="name" />
+        <Input bind:value={tutorDetails.name} on:input={handleFieldChange} class="mt-2 mb-4" name="name" />
     </div>
 
     <div>
         Rate
-        <Input bind:value={tutorDetails.rate} class="mt-2" type="text" name="rate" id="rate"/>
+        <Input bind:value={tutorDetails.rate} on:input={handleFieldChange} class="mt-2" type="text" name="rate" id="rate"/>
     </div>
 
     <div>
         Status
-        <Select bind:value={tutorDetails.status} class="mt-2 mb-4" name="status" items={$options} />
+        <Select bind:value={tutorDetails.status} on:input={handleFieldChange} class="mt-2 mb-4" name="status" items={$options} />
     </div>
-</div>
-
-
-<div class="flex justify-evenly gap-10">
-    <Button on:click={saveChanges} class="w-1/2">Save</Button>
-    <DelTutor tutor={tutorDetails}/>
 </div>

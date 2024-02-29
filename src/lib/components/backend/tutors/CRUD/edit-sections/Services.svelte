@@ -5,7 +5,8 @@
     import { Button, Dropdown, DropdownDivider, DropdownItem, Input, Popover } from 'flowbite-svelte';
     import { TrashBinOutline } from 'flowbite-svelte-icons'; // Ensure this is imported
 	import DelTutor from '../DelTutor.svelte';
-
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher();
 
     export let tutorId: any;
     let tutorDetails: Tutor;
@@ -27,11 +28,13 @@
         if (serviceName && !tutorDetails.services.includes(serviceName)) {
             tutorDetails.services = [...tutorDetails.services, serviceName];
             newService.set('');
+            handleFieldChange();
         }
     }
 
     function removeService(serviceName: string) {
         tutorDetails.services = tutorDetails.services.filter(service => service !== serviceName);
+        handleFieldChange();
     }
 
     function getServiceType(serviceName: string) {
@@ -45,10 +48,9 @@
         }
     }
 
-    function saveChanges() {
-        if (tutorId) {
-            updateTutor(tutorDetails);
-        }
+    function handleFieldChange() {
+        const detailsToUpdate = {...tutorDetails};
+        dispatch('updateTutorDetails', detailsToUpdate);
     }
 
 </script>
@@ -99,9 +101,4 @@
             </Popover>
         {/each}
     </div>
-</div>
-
-<div class="flex justify-evenly gap-10">
-    <Button on:click={saveChanges} class="w-1/2">Save</Button>
-    <DelTutor tutor={tutorDetails}/>
 </div>

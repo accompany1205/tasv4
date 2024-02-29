@@ -8,7 +8,7 @@
     import Services from './edit-sections/Services.svelte';
     import Images from './edit-sections/Images.svelte';
     import Page from './edit-sections/Page.svelte';
-    
+
     export let tutorId: any;
     let modal = false;
     const tutor = derived(tutors, $tutors => $tutors.find(t => t.id === tutorId));
@@ -33,12 +33,17 @@
     function setActiveSection(section: string) {
         activeSection = section;
     }
+
+    function handleTutorDetailsUpdate(event: { detail: Tutor; }) {
+        tutorDetails = event.detail;
+    }
 </script>
 
 <Button on:click={() => {modal = true}} color="alternative">Edit</Button>
 
-<Modal title="Edit Tutor - {tutorDetails.name}" bind:open={modal} class="z-50">
-    <ButtonGroup>
+<Modal title="Edit Tutor - {tutorDetails.name}" bind:open={modal} class="z-50 h-[800px]">
+
+    <ButtonGroup class="mb-5">
         <Button on:click={() => setActiveSection('General')} class="{activeSection === 'General' ? selected : ''}">General</Button>
         <Button on:click={() => setActiveSection('Services')} class="{activeSection === 'Services' ? selected : ''}">Services</Button>
         <Button on:click={() => setActiveSection('Page')} class="{activeSection === 'Page' ? selected : ''}">Page</Button>
@@ -46,18 +51,23 @@
     </ButtonGroup>
 
     {#if activeSection === 'General'}
-        <General tutorId={tutorId}/>
+        <General tutorId={tutorId} on:updateTutorDetails={handleTutorDetailsUpdate}/>
     {/if}
 
     {#if activeSection === 'Services'}
-        <Services tutorId={tutorId}/>
+        <Services tutorId={tutorId} on:updateTutorDetails={handleTutorDetailsUpdate}/>
     {/if}
 
     {#if activeSection === 'Images'}
-        <Images tutorId={tutorId}/>
+        <Images tutorId={tutorId} on:updateTutorDetails={handleTutorDetailsUpdate}/>
     {/if}
     
     {#if activeSection === 'Page'}
-        <Page tutorId={tutorId}/>
+        <Page tutorId={tutorId} on:updateTutorDetails={handleTutorDetailsUpdate}/>
     {/if}
+
+    <div class="flex justify-evenly gap-10">
+        <Button on:click={saveChanges} class="w-1/2">Save</Button>
+        <DelTutor tutor={tutorDetails}/>
+    </div>
 </Modal>

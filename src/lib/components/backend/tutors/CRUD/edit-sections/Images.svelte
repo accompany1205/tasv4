@@ -5,6 +5,8 @@
     import { Button } from 'flowbite-svelte';
     import { TrashBinOutline } from 'flowbite-svelte-icons';
 	import DelTutor from '../DelTutor.svelte';
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher();
 
     export let tutorId: any;
 
@@ -19,19 +21,18 @@
 
     function handleImagesSelect(event: { detail: { urls: string[] }; }) {
         tutorDetails.images = event.detail.urls;
+        handleFieldChange();
     }
 
     function deleteImage(imageUrl: string) {
         tutorDetails.images = tutorDetails.images.filter(url => url !== imageUrl);
+        handleFieldChange();
     }
 
-    function saveChanges() {
-        if (tutorId) {
-            updateTutor(tutorDetails);
-        }
+    function handleFieldChange() {
+        const detailsToUpdate = {...tutorDetails};
+        dispatch('updateTutorDetails', detailsToUpdate);
     }
-
-
 </script>
 
 <div class="w-full grid grid-cols-4 p-5 bg-gray-100 rounded-xl border-2 border-dashed justify-items-center gap-5 dark:bg-gray-700">
@@ -47,10 +48,4 @@
     {/each}
 
     <GetMedias on:select={handleImagesSelect} currentImages={tutorDetails?.images || []} btnClass="text-gray-700 rounded-xl w-32 h-32 bg-transparent border-4 border-dotted hover:bg-gray-50 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-500" btnTitle="Add Images" showIcon={false}/>
-</div>
-
-
-<div class="flex justify-evenly gap-10">
-    <Button on:click={saveChanges} class="w-1/2">Save</Button>
-    <DelTutor tutor={tutorDetails}/>
 </div>
