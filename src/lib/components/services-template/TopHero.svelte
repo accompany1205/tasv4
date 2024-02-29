@@ -37,10 +37,10 @@
             <div class="w-full max-w-md pb-6">
                 <div class="flex flex-col gap-4">
                     <h2 class="font-bold text-2xl">
-                        Don't Struggle Alone, Get Sketchup Help from a Pro.
+                        Don't Struggle Alone, Get {service.name} Help from a Pro.
                     </h2>
                     <p class="font-normal text-gray-950">
-                        Get SketchUp classes & 1-on-1 help from a live SketchUp tutor online via Zoom. Call for a free consultation and demo.
+                        {service.description}
                     </p>
                     <p class="font-normal text-gray-950">
                         We are a team of tutors and freelancers that are hireable on an as-needed basis for professional help with your projects.
