@@ -77,18 +77,20 @@
     <div class="flex flex-col gap-5">
         <div>
             Page Title
-            <Input bind:value={serviceDetails.title} class="mt-2" type="text" name="title" id="title" placeholder="Page Title" autocomplete="on"/>
+            <Input bind:value={serviceDetails.title} class="mt-2" type="text" name="title" id="title" placeholder="Page Title" autocomplete="on" maxlength={60}/>
+            <div class="text-xs relative mt-1 text-gray-400">{serviceDetails.title.length}/60</div>
         </div>
 
         <div>
             <div>
-                About
+                Description
             </div>
-            <Textarea bind:value={serviceDetails.about} class="mt-2 w-full" id="about" name="about" placeholder="About the service" rows="4" />
+            <Textarea bind:value={serviceDetails.description} class="mt-2 w-full" id="about" name="about" placeholder="Describe the service" rows="4" maxlength={160}/>
+            <div class="text-xs relative text-gray-400">{serviceDetails.description.length}/60</div>
         </div>
     </div>
 
-    <DropdownDivider class="mt-9"/>
+    <DropdownDivider class="mt-10"/>
 
     <div class="flex justify-evenly">
         <Button on:click={saveChanges} class="w-52">

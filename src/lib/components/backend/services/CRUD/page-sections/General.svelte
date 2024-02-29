@@ -26,7 +26,11 @@
 
 
     let qualifiedTutors = derived([tutors, service], ([$tutors, $service]) => {
-        return $tutors.filter(tutor => tutor.services.includes($service.name));
+        if($service)
+        {
+            return $tutors.filter(tutor => tutor.services.includes($service.name));
+        }
+        return [''];
     });
 
     async function saveChanges() {
@@ -42,12 +46,23 @@
         </div>
         <div class="mb-4">
             <Label for="title" class="block text-sm font-medium text-gray-700">Title</Label>
-            <Input id="title" class="mt-1 block w-full" type="text" bind:value={serviceDetails.title} />
+            <Input id="title" class="mt-1 block w-full" type="text" bind:value={serviceDetails.title} maxlength={60}/>
+            <div class="text-xs relative mt-1 text-gray-400">{serviceDetails.title.length}/60</div>
         </div>
+
+        <div class="mb-4">
+            <Label for="about" class="block text-sm font-medium text-gray-700">Description</Label>
+            <Textarea id="about" rows=4 class="mt-1 block w-full" bind:value={serviceDetails.description} maxlength={160}/>
+            <div class="text-xs relative mt-1 text-gray-400">{serviceDetails.description.length}/160</div>
+        </div>
+
         <div class="mb-4">
             <Label for="about" class="block text-sm font-medium text-gray-700">About</Label>
-            <Textarea id="about" rows=4 class="mt-1 block w-full" bind:value={serviceDetails.about} />
+            <Textarea id="about" rows=4 class="mt-1 block w-full" bind:value={serviceDetails.about} maxlength={160}/>
+            <div class="text-xs relative mt-1 text-gray-400">{serviceDetails.about.length}/160</div>
         </div>
+
+
         <div class="mb-4">
             <Label for="tos" class="block text-sm font-medium text-gray-700">Type of Service</Label>
             <Select id="tos" class="mt-1 block w-full" items={$options} bind:value={serviceDetails.tos} />

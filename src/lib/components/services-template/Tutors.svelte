@@ -10,6 +10,7 @@
 	import FormModal from '../blocks/FormModal.svelte';
 
 	export let tutors:Tutor[] = [];
+	export let service:any;
 	console.log("Tutors", tutors);
 	let openForm = false;
 
@@ -83,7 +84,7 @@
 	<h2
 		class="m-auto mb-8 max-w-screen-xl border-b-4 border-emerald-400 px-4 pb-4 text-2xl font-bold text-white sm:text-5xl sm:fluid-h1"
 	>
-		Our SketchUp Tutors & Freelancers
+		Our {service.name} Tutors & Freelancers
 	</h2>
 
 	<div

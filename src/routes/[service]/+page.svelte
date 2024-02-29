@@ -100,9 +100,9 @@
 
 {#if service}
     <TopHero service={service} images={serviceImages}/>
-    <Tutors tutors={tutors}/>
+    <Tutors service={service} tutors={tutors}/>
     <GeneralServices />
-    <GeneralServicesDetail />
+    <GeneralServicesDetail service={service}/>
     <SubServices subServices={service.subServices} service={service}/>
     <FAQ faq={service.faq}/>
 {:else}
