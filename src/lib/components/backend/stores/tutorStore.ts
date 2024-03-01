@@ -46,7 +46,7 @@ function fetchTutors() {
 			const tutorsArray: Tutor[] = [];
 			querySnapshot.forEach((doc) => {
 				const data = doc.data() as Tutor;
-				tutorsArray.push({ ...data });
+				tutorsArray.push({ ...data, id: doc.id });
 			});
 			tutors.set(tutorsArray);
 			loading.set(false);

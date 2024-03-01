@@ -1,37 +1,29 @@
 <script lang="ts">
 	import BottomNav from '$lib/components/tutors-backend/nav/BottomNav.svelte';
 	import LeadTable from '$lib/components/tutors-backend/leads/LeadTable.svelte';
-	import { doc, getDoc } from 'firebase/firestore';
+	import { doc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
 	import { onMount } from 'svelte';
 	import { db } from '$lib/firebase';
 	import EditServices from '$lib/components/tutors-backend/services/CRUD/EditServices.svelte';
 	import { Spinner } from 'flowbite-svelte';
 	import { currentUser } from '$lib/stores/sessions';
-    import {get} from "svelte/store";
+	import { get } from 'svelte/store';
+	import { getTutorWithUserID } from '$lib/api/getTutor';
 
 	let tutorId = 'dNF9UrjtmoT7fD5hsyU8';
 	let tutor: { id: string };
-    let userId = $currentUser.uid;
+	let userId = get(currentUser)?.uid;
 
+	console.log({ userId });
 	onMount(async () => {
 		try {
-			const tutorsRef = db.collection('tutors');
-
-			// Perform the query
-			tutorsRef
-				.where('userUID', '==', userId)
-				.get()
-				.then((querySnapshot: any[]) => {
-                    console.log({querySnapshot});
-					tutor = {id: querySnapshot[0].id, ...querySnapshot[0]}
-				})
-				.catch((error:any) => {
-					console.log('Error getting documents: ', error);
-				});
+			if (userId) {
+				const res = await getTutorWithUserID(userId);
+				tutor = { ...res };
+			}
 		} catch (error) {
 			console.error('Error fetching tutor data: ', error);
 		}
-        
 	});
 
 	// BottomNav Event Dispatcher

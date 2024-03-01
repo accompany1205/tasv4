@@ -56,3 +56,5 @@ export const _updateDoc = async (documentName: string, data: any): Promise<void>
 		console.log('Error updating the doc: ', documentName);
 	}
 };
+
+
