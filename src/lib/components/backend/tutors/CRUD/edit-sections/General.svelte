@@ -29,6 +29,7 @@
     function handleImageSelect(event: { detail: { url: string; }; }) {
         tutorDetails.headshot = event.detail.url;
         console.log('Selected image URL:', event.detail.url);
+        dispatch('updateTutorDetails', tutorDetails);
     }
 
     function handleFieldChange() {

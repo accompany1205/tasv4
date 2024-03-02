@@ -8,7 +8,7 @@
 	import { Spinner } from 'flowbite-svelte';
 	import { currentUser } from '$lib/stores/sessions';
 	import { get } from 'svelte/store';
-	import { getTutorWithUserID } from '$lib/api/getTutor';
+	import { getTutorWithUserID } from '$lib/api/tutor'
 
 	let tutorId = 'dNF9UrjtmoT7fD5hsyU8';
 	let tutor: { id: string };

@@ -1,5 +1,5 @@
 import { derived, writable } from 'svelte/store';
-import { collection, doc, updateDoc, deleteDoc, addDoc } from 'firebase/firestore';
+import { collection } from 'firebase/firestore';
 import { db } from '$lib/firebase';
 import { query, onSnapshot } from 'firebase/firestore';
 import { signup, sendPasswordResetEmailToUser, _addDoc, _updateDoc, _deleteDoc } from '$lib/api';
@@ -30,8 +30,8 @@ export const filteredTutors = derived(
     [tutors, filterText],
     ([$tutors, $filterText]) => {
         return $tutors.filter(tutor =>
-            tutor.name.toLowerCase().includes($filterText.toLowerCase()) ||
-            tutor.email.toLowerCase().includes($filterText.toLowerCase())
+            tutor.name?.toLowerCase().includes($filterText.toLowerCase()) ||
+            tutor.email?.toLowerCase().includes($filterText.toLowerCase())
         );
     }
 );
@@ -61,12 +61,9 @@ function fetchTutors() {
 fetchTutors();
 
 export async function updateTutor(updatedTutor: Tutor) {
-	const sanitizedTutor = sanitizeForFirestore(updatedTutor);
-
-	const tutorRef = doc(db, 'tutors', sanitizedTutor.id);
 
 	try {
-		await updateDoc(tutorRef, sanitizedTutor);
+		await _updateDoc('tutors', updatedTutor);
 		console.log('Tutor updated successfully in Firestore');
 	} catch (error) {
 		console.error('Error updating tutor:', error);
@@ -74,22 +71,11 @@ export async function updateTutor(updatedTutor: Tutor) {
 	}
 }
 
-function sanitizeForFirestore(obj: Record<string, any>): Record<string, any> {
-	const sanitizedObj = { ...obj };
-	Object.keys(sanitizedObj).forEach((key) => {
-		if (sanitizedObj[key] === undefined) {
-			// Convert undefined values to null
-			sanitizedObj[key] = null;
-		}
-	});
-	return sanitizedObj;
-}
-
 export async function deleteTutor(tutorId: string) {
-	const tutorRef = doc(db, 'tutors', tutorId);
+	// const tutorRef = doc(db, 'tutors', tutorId);
 
 	try {
-		await deleteDoc(tutorRef);
+		await _deleteDoc("tutors", tutorId);
 		console.log('Tutor deleted successfully from Firestore');
 	} catch (error) {
 		console.error('Error deleting tutor:', error);

@@ -41,6 +41,7 @@
 
     function handleImageSelect(event: { detail: { url: any; }; }) {
         serviceDetails.logo = event.detail.url;
+        updateService(serviceDetails)
     }
 
 </script>
